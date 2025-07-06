@@ -1,10 +1,12 @@
 @use 'variables';
 @use 'fonts';
 @use 'buttons';
+@use 'tags';
 @use 'menu';
 
 /* sections */
 @use 'sections/hero';
+@use 'sections/why-manage-reputation';
 
 * {
   box-sizing: border-box;

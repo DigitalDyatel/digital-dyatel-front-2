@@ -1,0 +1,31 @@
+.tag {
+
+  div:first-child {
+    display: inline-block;
+    padding: 20px 16px;
+    color: var(--color-white-contrast);
+    font-size: var(--font-size-sm);
+    background: black;
+    border-radius: 100px;
+    font-weight: var(--font-weight-semi-bold);
+    transform: rotate(-4deg);
+  }
+
+  div:last-child {
+    display: inline-flex;
+    background: var(--color-contrast);
+    border-radius: 0 100px 100px 100px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    transform: translate(-12px, 0);
+
+    svg {
+      color: white;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

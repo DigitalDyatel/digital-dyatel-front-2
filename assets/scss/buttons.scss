@@ -6,7 +6,7 @@
   border: 2px solid var(--color-contrast);
   background: var(--color-contrast);
   color: var(--color-white-contrast);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@
     color: var(--color-primary);
     border: 2px solid var(--color-light-grey);
     background: var(--color-white);
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
 
     &:hover {
       color: var(--color-contrast);
@@ -32,7 +32,7 @@
     color: var(--color-contrast);
     border: 2px solid var(--color-light-grey);
     background: var(--color-white);
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
     padding: 12px;
 
     svg {
@@ -45,7 +45,7 @@
     color: var(--color-white);
     border: 2px solid var(--color-contrast);
     background: var(--color-contrast);
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
     padding: 12px;
 
     svg {

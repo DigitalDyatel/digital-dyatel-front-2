@@ -1,0 +1,63 @@
+.why-manage-reputation {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 140px auto 0 auto;
+  background: var(--background-light-grey);
+  padding: 78px 24px 0 24px;
+  border-radius: 32px;
+
+  .tag {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 58px;
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-primary);
+  }
+
+  &__line {
+    display: flex;
+    gap: 24px;
+    border-radius: 24px;
+
+    > div {
+      flex: 1;
+    }
+  }
+
+  &__block {
+    border-radius: 24px;
+    padding: 48px;
+
+    &.--left {
+      background: var(--color-white);
+
+      div {
+        &:first-child {
+          color: var(--color-secondary);
+          font-size: var(--font-size-lg);
+
+          span {
+            display: block;
+          }
+        }
+
+        &:last-child {
+          margin-top: 55px;
+          font-size: var(--font-size-3xl);
+          color: var(--color-primary);
+          font-weight: var(--font-weight-medium);
+
+          span {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

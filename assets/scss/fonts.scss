@@ -1,20 +1,20 @@
 @font-face {
   font-family: Involve;
   src: url('../fonts/Involve-Regular.otf');
-  font-weight: normal;
+  font-weight: var(--font-weight-normal);
   font-style: normal;
 }
 
 @font-face {
   font-family: Involve;
   src: url('../fonts/Involve-Medium.otf');
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-style: normal;
 }
 
 @font-face {
   font-family: Involve;
   src: url('../fonts/Involve-SemiBold.otf');
-  font-weight: 600;
+  font-weight: var(--font-weight-semi-bold);
   font-style: normal;
 }

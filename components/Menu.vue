@@ -40,7 +40,7 @@ const menuItems = ref([
       </div>
     </div>
     <div class="menu__right">
-      <Button class="--rounded --type-search">
+      <Button style="display: none;" class="--rounded --type-search">
         <svg><use :href="'/sprite.svg#search'" /></svg>
       </Button>
       <Button class="--rounded --type-grey">

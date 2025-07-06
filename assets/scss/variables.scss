@@ -4,17 +4,26 @@
 
   --color-contrast: #FE3E0E;
   --color-primary: #505662;
+  --color-secondary: #8d919a;
   --color-tertiary: #ABB2C0;
   --color-light-grey: #f2f6f9;
   --color-white-contrast: #fbfbfb;
   --color-white: #fff;
+  --color-accent-dark: #1D2128;
 
+  --background-light-grey: #e0eaf0;
   --body-background-color: var(--color-light-grey);
 
+  --font-size-sm: 14px;
   --font-size-base: 16px;
   --font-size-md: 18px;
   --font-size-lg: 20px;
   --font-size-xl: 24px;
+  --font-size-3xl: 38px;
+
+  --font-weight-normal: normal;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
 
 
   /**

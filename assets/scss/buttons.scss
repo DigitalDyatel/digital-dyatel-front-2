@@ -10,6 +10,8 @@
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 12px;
+  text-align: center;
 
   &.--rounded {
     border-radius: 100px;
@@ -30,6 +32,19 @@
     color: var(--color-contrast);
     border: 2px solid var(--color-light-grey);
     background: var(--color-white);
+    font-weight: 400;
+    padding: 12px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &.--type-login {
+    color: var(--color-white);
+    border: 2px solid var(--color-contrast);
+    background: var(--color-contrast);
     font-weight: 400;
     padding: 12px;
 

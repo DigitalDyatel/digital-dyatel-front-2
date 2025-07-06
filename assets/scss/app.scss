@@ -3,10 +3,17 @@
 @use 'buttons';
 @use 'menu';
 
+/* sections */
+@use 'sections/hero';
+
 * {
   box-sizing: border-box;
   font-family: Involve, serif;
   line-height: 1;
+}
+
+h1 {
+  margin: 0;
 }
 
 svg {

@@ -1,0 +1,24 @@
+@use 'variables';
+@use 'fonts';
+@use 'buttons';
+@use 'menu';
+
+* {
+  box-sizing: border-box;
+  font-family: Involve, serif;
+  line-height: 1;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+body {
+  background: var(--body-background-color);
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}

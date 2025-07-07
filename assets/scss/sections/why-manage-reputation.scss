@@ -45,19 +45,14 @@
         right: 0;
       }
 
-      div {
+      p {
         &:nth-child(2) {
           color: var(--color-secondary);
           font-size: var(--font-size-lg);
-          line-height: 116%;
 
           span {
+            line-height: 116%;
             display: block;
-            margin-bottom: 2px;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
           }
         }
 
@@ -68,12 +63,8 @@
           font-weight: var(--font-weight-medium);
 
           > span {
+            line-height: 104%;
             display: block;
-            margin-bottom: 2px;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
 
             span {
               color: black;
@@ -84,24 +75,194 @@
     }
 
     &.--right {
+      overflow-y: hidden;
       padding: 48px;
-      background: #1D2128;
+      background: var(--color-accent-dark);
+      position: relative;
 
-      div:first-child {
+      p:nth-child(3) {
 
         font-weight: var(--font-weight-medium);
         color: var(--color-white-contrast);
         font-size: var(--font-size-3xl);
 
         span {
-          margin-bottom: 2px;
           display: block;
+          line-height: 104%;
+        }
+      }
+
+      &:hover {
+        .why-manage-reputation__card-rating div {
+          &:first-child {
+            opacity: 0;
+          }
 
           &:last-child {
-            margin-bottom: 0;
+            opacity: 1;
+          }
+        }
+
+        .why-manage-reputation__card-review-count div {
+          &:first-child {
+            opacity: 0;
+          }
+
+          &:last-child {
+            opacity: 1;
+          }
+        }
+
+        .why-manage-reputation__card-icon svg {
+          &:last-child {
+            opacity: 1;
           }
         }
       }
+    }
+  }
+
+  &__blur {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 48px);
+    z-index: 1;
+    height: 117px;
+    background: linear-gradient(180deg, rgba(29, 33, 40, 0) 0%, rgba(29, 33, 40, 0.7728) 100%);
+  }
+
+  &__equal-sign {
+    position: absolute;
+    top: 48px;
+    right: 48px;
+    height: 72px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation-name: opacity-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    opacity: 1;
+
+    @keyframes opacity-animation {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    div {
+      height: 36px;
+      width: 100%;
+      border-radius: 100px;
+      opacity: 0.16;
+      background: linear-gradient(249.08deg, #FBFBFB -0.55%, rgba(251, 251, 251, 0) 99.96%);
+    }
+  }
+
+  &__cards {
+    margin-top: -12px;
+    display: flex;
+    gap: 9px;
+    transform: translateY(60px);
+
+    > div {
+      border-radius: 16px;
+      flex: 1;
+      background: var(--color-white);
+      padding: 24px;
+
+      img {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__card-icon {
+    position: relative;
+    right: 0;
+    z-index: 1;
+
+    svg {
+      width: 48px;
+      height: 48px;
+      position: absolute;
+      top: -52px;
+      right: 0;
+      transition: .5s opacity ;
+
+      &:first-child {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      &:last-child {
+        opacity: 0;
+        z-index: 2;
+      }
+    }
+  }
+
+  &__card-review-count {
+    position: relative;
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    margin-top: 20px;
+    width: 100%;
+    height: 15px;
+
+    div {
+      transition: opacity .2s ease-in-out;
+      position: absolute;
+      top: 0;
+
+      &:first-child {
+        opacity: 1;
+      }
+
+      &:last-child {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__card-rating {
+    display: inline-block;
+    line-height: 100%;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white-contrast);
+    position: relative;
+    height: 50px;
+    width: 66px;
+
+    div {
+      position: absolute;
+      padding: 16px;
+      border-radius: 12px;
+      transition: opacity .4s ease-in-out;
+
+      &:first-child {
+        opacity: 1;
+        background: #ea4335;
+      }
+
+      &:last-child {
+        opacity: 0;
+        position: absolute;
+        background: #afc676;
+      }
+    }
+
+    &.--positive {
+      position: absolute;
+      background: #AFC676;
     }
   }
 }

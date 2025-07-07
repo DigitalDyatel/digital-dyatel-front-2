@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const cards = ref([
+const topCards = ref([
   {
     negativeRating: '2.9',
     positiveRating: '4.3',
@@ -27,6 +27,41 @@ const cards = ref([
     alt: '2ГИС'
   },
 ])
+
+const bottomCards = ref([
+  {
+    percent: 91,
+    text: [
+      'клиентов изучают отзывы',
+      'и рейтинг до покупки'
+    ]
+  },
+  {
+    percent: 76,
+    alternative: true,
+    text: [
+      'потенциальных клиентов',
+      'отклоняют сделки из-за',
+      'негативных отзывов'
+    ]
+  },
+  {
+    percent: 81,
+    text: [
+      'репутационных потерь',
+      'происходят, потому что',
+      'не работают с репутацией'
+    ]
+  },
+  {
+    percent: 70,
+    text: [
+      'готовы переплачивать',
+      'за бренд с хорошей',
+      'репутацией'
+    ]
+  },
+]);
 </script>
 
 <template>
@@ -50,24 +85,28 @@ const cards = ref([
       <div class="why-manage-reputation__block --right">
         <div class="why-manage-reputation__blur"></div>
         <div class="why-manage-reputation__equal-sign">
-          <div />
-          <div />
+          <div/>
+          <div/>
         </div>
         <p>
           <span>Потеря доверия =</span>
           <span>потеря прибыли</span>
         </p>
         <div class="why-manage-reputation__cards">
-          <div v-for="card in cards">
+          <div v-for="card in topCards">
             <div class="why-manage-reputation__card-icon" v-if="card.positiveIcon">
-              <svg v-if="card.positiveIcon"><use :href="'/sprite.svg#tag-heart-crossed'" /></svg>
-              <svg v-if="card.negativeIcon"><use :href="'/sprite.svg#tag-heart'" /></svg>
+              <svg v-if="card.positiveIcon">
+                <use :href="'/sprite.svg#tag-heart-crossed'"/>
+              </svg>
+              <svg v-if="card.negativeIcon">
+                <use :href="'/sprite.svg#tag-heart'"/>
+              </svg>
             </div>
             <div class="why-manage-reputation__card-rating">
               <div>{{ card.negativeRating }}</div>
               <div>{{ card.positiveRating }}</div>
             </div>
-            <img :src="'/img/services/' + card.src" :alt="card.alt" />
+            <img :src="'/img/services/' + card.src" :alt="card.alt"/>
             <div class="why-manage-reputation__card-review-count">
               <div>{{ card.reviewCountBefore }} отзывов</div>
               <div>{{ card.reviewCountAfter }} отзывов</div>
@@ -76,5 +115,14 @@ const cards = ref([
         </div>
       </div>
     </div>
+    <div class="why-manage-reputation__bottom-cards">
+      <div class="why-manage-reputation__bottom-card" v-for="card in bottomCards" :class="{'--alternative': card.alternative}">
+        <div>{{ card.percent }}%</div>
+        <p>
+          <span v-for="text in card.text">{{ text }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="why-manage-reputation__description">согласно исследованию Edelman Trust Barometer</div>
   </section>
 </template>

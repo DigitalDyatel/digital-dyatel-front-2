@@ -54,7 +54,6 @@ const tags = ref([
           <div />
           <div />
           <div />
-          <div />
         </div>
         <div class="hero__advantages">
           <div>Стратегия под ваши цели</div>

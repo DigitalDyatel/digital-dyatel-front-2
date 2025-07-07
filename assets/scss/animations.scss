@@ -1,0 +1,29 @@
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes moveInCircle {
+  0%, 100% {
+    transform: translate(0) translateY(40%);
+  }
+  25% {
+    transform: translate(-40%) translateY(0);
+  }
+  50% {
+    transform: translate(30%) translateY(-30%);
+  }
+}
+
+@keyframes moveVertical {
+  0%, 100% {
+    transform: translate(0) translateY(0);
+  }
+  50% {
+    transform: translateY(-10%) translate(50%);
+  }
+}

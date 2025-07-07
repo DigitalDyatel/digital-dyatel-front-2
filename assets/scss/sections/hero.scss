@@ -75,18 +75,6 @@
         animation-iteration-count: infinite;
         animation-duration: 3s;
 
-        @keyframes pulse {
-          0% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-
         &:first-child {
           top: 37px;
           left: 102px;
@@ -148,8 +136,9 @@
       font-size: var(--font-size-md);
       top: 50%;
       left: 50%;
-      z-index: 2;
+      z-index: 3;
       backdrop-filter: blur(12.5px);
+      line-height: 100%;
 
       &:nth-child(1) {
         transform: translate(-156px, -188px);
@@ -187,6 +176,8 @@
         bottom: 19.66%;
         left: 13.64%;
         filter: blur(80px);
+        will-change: transform;
+        animation: moveInCircle 7s linear infinite;
       }
 
       &:nth-child(2) {
@@ -196,31 +187,28 @@
         bottom: 7.24%;
         right: -16%;
         filter: blur(70px);
+        will-change: transform;
+        animation: moveInCircle 15s linear infinite;
       }
 
       &:nth-child(3) {
-        background-color: #fff;
-        opacity: 64%;
-        height: 320px;
-        left: 40.15%;
-        bottom: 31.72%;
-        filter: blur(70px);
-      }
-
-      &:nth-child(4) {
         background-color: #435c99;
         height: 406px;
         right: -10%;
         top: -28%;
         filter: blur(120px);
+        will-change: transform;
+        animation: moveVertical 5s linear infinite;
       }
 
-      &:nth-child(5) {
+      &:nth-child(4) {
         background-color: #ff8e3e;
         height: 344px;
         left: 21.52%;
         bottom: 0;
         filter: blur(120px);
+        will-change: transform;
+        animation: moveInCircle 7s ease-in-out infinite;
       }
     }
   }
@@ -233,6 +221,7 @@
     .btn {
       font-size: var(--font-size-lg);
       padding: 24px;
+      border: none;
     }
 
     .btn:first-child {

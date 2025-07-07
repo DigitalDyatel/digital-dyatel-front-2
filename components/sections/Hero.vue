@@ -36,7 +36,32 @@ const tags = ref([
         </div>
       </div>
       <div class="hero__right">
-        <!--        -->
+        <div class="hero__circle-container --1">
+          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+          <div class="hero__circle" />
+        </div>
+        <div class="hero__circle-container --2">
+          <div class="hero__circle" />
+        </div>
+        <div class="hero__circle-container --3">
+          <div class="hero__circle" />
+        </div>
+        <div class="hero__active-gradient">
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+        <div class="hero__advantages">
+          <div>Стратегия под ваши цели</div>
+          <div>Реальные отзывы</div>
+          <div>Конфиденциальность</div>
+          <div>Понятные результаты</div>
+        </div>
       </div>
     </div>
   </section>

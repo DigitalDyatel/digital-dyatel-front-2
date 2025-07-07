@@ -8,6 +8,7 @@
   &__left {
     cursor: pointer;
     display: flex;
+    align-items: center;
     gap: 8px;
 
     div:last-child {

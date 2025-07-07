@@ -36,24 +36,18 @@ const tags = ref([
         </div>
       </div>
       <div class="hero__right">
-        <div class="hero__circle-container --1">
-          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
-          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
-          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
-          <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+        <div class="hero__circle-container">
+          <svg v-for="n in 4" :key="n"><use :href="'/sprite.svg#circle-star'" /></svg>
           <div class="hero__circle" />
         </div>
-        <div class="hero__circle-container --2">
+        <div class="hero__circle-container">
           <div class="hero__circle" />
         </div>
-        <div class="hero__circle-container --3">
+        <div class="hero__circle-container">
           <div class="hero__circle" />
         </div>
         <div class="hero__active-gradient">
-          <div />
-          <div />
-          <div />
-          <div />
+          <div v-for="n in 4" :key="n" />
         </div>
         <div class="hero__advantages">
           <div>Стратегия под ваши цели</div>

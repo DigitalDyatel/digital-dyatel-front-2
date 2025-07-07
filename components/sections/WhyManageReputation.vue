@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const topCards = ref([
   {
-    negativeRating: '2.9',
-    positiveRating: '4.3',
+    negativeRating: 2.9,
+    positiveRating: 4.3,
     reviewCountBefore: 73,
     reviewCountAfter: 121,
     src: 'otzovik.png',
     alt: 'Отзовик'
   },
   {
-    negativeRating: '1.7',
-    positiveRating: '4.9',
+    negativeRating: 1.7,
+    positiveRating: 4.9,
     reviewCountBefore: 61,
     reviewCountAfter: 101,
     positiveIcon: true,
@@ -19,8 +19,8 @@ const topCards = ref([
     alt: 'Яндекс Карты'
   },
   {
-    negativeRating: '3.5',
-    positiveRating: '4.7',
+    negativeRating: 3.5,
+    positiveRating: 4.7,
     reviewCountBefore: 82,
     reviewCountAfter: 143,
     src: '2gis.png',

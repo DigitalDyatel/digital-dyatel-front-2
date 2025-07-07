@@ -75,26 +75,30 @@
         animation-iteration-count: infinite;
         animation-duration: 3s;
 
-        &:first-child {
-          top: 37px;
-          left: 102px;
+        &:nth-child(1) {
+          top: 50%;
+          left: 50%;
+          transform: translate(-169px, -226px);
         }
 
         &:nth-child(2) {
-          top: 108px;
-          right: 33px;
+          top: 50%;
+          left: 50%;
+          transform: translate(210px, -156px);
           animation-delay: 1s;
         }
 
         &:nth-child(3) {
-          bottom: 108px;
-          left: 33px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-234px, 132px);
           animation-delay: 2s;
         }
 
         &:nth-child(4) {
-          bottom: 181px;
-          right: 105px;
+          top: 50%;
+          left: 50%;
+          transform: translate(86px, 30px);
         }
       }
     }
@@ -138,7 +142,6 @@
       left: 50%;
       z-index: 3;
       backdrop-filter: blur(12.5px);
-      line-height: 100%;
 
       &:nth-child(1) {
         transform: translate(-156px, -188px);
@@ -222,6 +225,7 @@
       font-size: var(--font-size-lg);
       padding: 24px;
       border: none;
+      max-width: 500px;
     }
 
     .btn:first-child {

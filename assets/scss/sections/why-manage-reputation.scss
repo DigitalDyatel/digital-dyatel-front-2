@@ -51,7 +51,7 @@
           font-size: var(--font-size-lg);
 
           span {
-            line-height: 116%;
+            line-height: 1.2;
             display: block;
           }
         }
@@ -63,7 +63,7 @@
           font-weight: var(--font-weight-medium);
 
           > span {
-            line-height: 104%;
+            line-height: 1.1;
             display: block;
 
             span {
@@ -88,7 +88,7 @@
 
         span {
           display: block;
-          line-height: 104%;
+          line-height: 1.1;
         }
       }
 
@@ -283,6 +283,7 @@
       color: var(--color-secondary);
 
       span {
+        line-height: 1.1;
         display: block;
       }
     }

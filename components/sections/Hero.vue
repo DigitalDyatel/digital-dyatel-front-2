@@ -27,10 +27,10 @@ const tags = ref([
           </div>
         </div>
         <div class="hero__button-container">
-          <Button>
+          <Button class="--large">
             Получить бесплатный SERM аудит
           </Button>
-          <Button class="--type-login">
+          <Button class="--large">
             <svg><use :href="'/sprite.svg#login'" /></svg>
           </Button>
         </div>

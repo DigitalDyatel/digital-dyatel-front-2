@@ -12,4 +12,129 @@
     font-weight: var(--font-weight-semi-bold);
     text-align: center;
   }
+
+  &__tag {
+    top: -30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__services {
+    margin-top: 48px;
+    display: flex;
+
+    > div {
+      background-color: var(--color-white);;
+      border-radius: 24px;
+    }
+  }
+
+  &__selected-service {
+    flex: 1;
+    padding: 48px;
+    position: relative;
+    height: 466px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 80%;
+      background-color: var(--color-quaternary);
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+    }
+
+    h3 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+    }
+
+    h4 {
+      margin-top: 10px;
+      font-size: var(--font-size-lg);
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-medium);
+    }
+
+    p {
+      margin-top: 24px;
+      color: #878fa0;
+      font-size: var(--font-size-lg);
+    }
+
+    .our-services__price {
+      margin-top: 64px;
+      display: flex;
+      justify-content: space-between;
+
+      > div {
+        flex: 1;
+
+        &:first-child {
+          display: flex;
+          font-weight: var(--font-weight-semi-bold);
+          font-size: 28px;
+          color: var(--color-primary);
+          align-items: center;
+
+          &:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--color-contrast);
+            border-radius: 100px;
+            margin-right: 8px;
+            flex-shrink: 0;
+          }
+        }
+
+        &:last-child {
+          color: var(--color-tertiary);
+          font-size: var(--font-size-sm);
+        }
+
+      }
+    }
+  }
+
+  &__services-list {
+    width: 408px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-lg);
+
+    > div {
+      background-color: var(--color-light-grey);
+      padding: 24px;
+      border-radius: 12px;
+      color: var(--color-primary);
+      cursor: pointer;
+
+      &.--selected {
+        color: var(--color-white-contrast);
+        background-color: var(--color-primary);
+      }
+    }
+  }
+
+  &__buttons {
+    display: inline-flex;
+    gap: 16px;
+    margin-top: 48px;
+
+    > div {
+      width: 304px;
+    }
+  }
 }

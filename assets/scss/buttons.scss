@@ -30,6 +30,11 @@
     background-color: var(--color-secondary);
   }
 
+  &.--tertiary {
+    background-color: var(--color-primary);
+    color: var(--color-white-contrast);
+  }
+
   &.--quaternary {
     color: var(--color-primary);
     background-color: var(--color-light-grey);

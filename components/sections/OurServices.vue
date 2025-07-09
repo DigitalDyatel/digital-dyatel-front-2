@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
+
 const services = ref([
   {
     title: 'Управление репутацией в интернете',
@@ -71,6 +73,20 @@ const onClickService = (service) => {
         >
           {{ service.title_short ?? service.title }}
         </div>
+      </div>
+    </div>
+    <div class="our-services__not-found">
+      <div>
+        <div>Не нашли для себя подходящий формат?</div>
+        <p>
+          <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
+          <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
+        </p>
+        <Button class="--large --tertiary">Получить предложение</Button>
+      </div>
+      <div>
+        <img src="/img/our-services-logo.png" alt="logo-alt">
+        <BackgroundLightBlue filled />
       </div>
     </div>
   </section>

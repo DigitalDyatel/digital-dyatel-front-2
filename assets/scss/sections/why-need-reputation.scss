@@ -1,0 +1,141 @@
+.when-need-reputation {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 43px auto 0 auto;
+  height: 555px;
+
+  h1 {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-primary);
+    margin-top: 211px;
+    z-index: 1;
+    font-weight: var(--font-weight-semi-bold);
+
+    span {
+      line-height: 1.1;
+      display: block;
+    }
+  }
+
+  &__circles {
+    position: relative;
+
+    div {
+      aspect-ratio: 1 / 1;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+
+      &:first-child {
+        width: 230px;
+        background: var(--color-white);
+        top: 155px;
+      }
+
+      &:nth-child(2) {
+        width: 400px;
+        border: 2px solid var(--color-white);
+        top: 70px;
+      }
+
+      &:last-child {
+        width: 540px;
+        border: 2px solid var(--color-white);
+        top: 0;
+      }
+    }
+  }
+
+  &__points {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+  }
+
+  &__point {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+
+    &.--reverse {
+      flex-direction: row-reverse;
+
+      div:first-child {
+        margin-left: 8px;
+      }
+
+      div:last-child {
+        margin-left: 0;
+      }
+    }
+
+    &:nth-child(1) {
+      transform: translate(-439px, -185px);
+
+      div:last-child {
+        background-color: var(--color-contrast);
+      }
+    }
+
+    &:nth-child(2) {
+      transform: translate(113px, -170px);
+
+      div:last-child {
+        background-color: var(--color-accent-dark);
+      }
+    }
+
+    &:nth-child(3) {
+      transform: translate(115px, 84px);
+
+      div:last-child {
+        background-color: var(--color-contrast-tint);
+      }
+    }
+
+    &:nth-child(4) {
+      transform: translate(-625px, 105px);
+
+      div:last-child {
+        background-color: var(--color-accent-blue);
+      }
+    }
+
+    &:nth-child(5) {
+      transform: translate(-92px, 219px);
+
+      div:last-child {
+        background-color: var(--color-primary);
+      }
+    }
+
+    > div {
+      display: inline-block;
+      padding: 24px;
+      border-radius: 100px;
+
+      &:first-child {
+        color: var(--color-primary);
+        font-size: var(--font-size-md);
+        background: var(--color-white);
+      }
+
+      &:last-child {
+        margin-left: 8px;
+
+        svg {
+          color: var(--color-white-contrast);
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

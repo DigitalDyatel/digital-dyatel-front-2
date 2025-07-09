@@ -1,0 +1,15 @@
+.our-services {
+  margin: 140px auto 0 auto;
+  background: var(--color-accent-dark);
+  max-width: var(--max-width);
+  padding: 78px 48px 92px 48px;
+  border-radius: 32px;
+  position: relative;
+
+  h2 {
+    color: var(--color-white-contrast);
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-semi-bold);
+    text-align: center;
+  }
+}

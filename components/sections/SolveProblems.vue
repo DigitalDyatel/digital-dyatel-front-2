@@ -46,5 +46,20 @@
         </div>
       </div>
     </div>
+    <div class="solve-problems__finish-description">
+      <p>
+        Мы следим за последними трендами <Tag class="--blue" icon="eye" as-span /> и внедряем современные решения,
+        чтобы обеспечить лучшие результаты для вашего бизнеса <Tag class="--red" icon="like" as-span />
+        Каждый проект получает максимум
+        внимания, независимо от его масштаба <Tag class="--black" icon="location-tick" as-span />
+      </p>
+    </div>
+    <div class="solve-problems__presentation">
+      <svg><use :href="'/sprite.svg#presentation-download'" /></svg>
+      <div>
+        <div>Презентация компании</div>
+        <div>44 кб</div>
+      </div>
+    </div>
   </section>
 </template>

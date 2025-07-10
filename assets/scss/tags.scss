@@ -38,9 +38,20 @@
 
 .tag {
   border-radius: 100px 100px 100px 0;
-  background-color: var(--color-contrast);
   padding: 12px;
   display: inline-block;
+
+  &.--blue {
+    background-color: var(--color-accent-blue);
+  }
+
+  &.--red {
+    background-color: var(--color-contrast);
+  }
+
+  &.--black {
+    background-color: var(--color-accent-dark);
+  }
 
   svg {
     color: var(--color-white-contrast);

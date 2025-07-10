@@ -1,4 +1,4 @@
-.tag {
+.tag-with-label {
 
   &.--alternative-color {
     div:first-child {
@@ -33,5 +33,18 @@
       width: 24px;
       height: 24px;
     }
+  }
+}
+
+.tag {
+  border-radius: 100px 100px 100px 0;
+  background-color: var(--color-contrast);
+  padding: 12px;
+  display: inline-block;
+
+  svg {
+    color: var(--color-white-contrast);
+    width: 24px;
+    height: 24px;
   }
 }

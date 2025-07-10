@@ -84,4 +84,22 @@
         <path d="M6.05017 16.46L3.93018 18.57" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M8.5 10.5H15.5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="5-dots" viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M77.5095 0C93.0547 0 105.656 13.0281 105.656 29.0991C105.656 45.17 93.0547 58.198 77.5095 58.198C61.9643 58.198 49.3628 45.17 49.3628 29.0991C49.3628 13.0281 61.9643 0 77.5095 0ZM30.4871 149.44C17.9109 139.994 15.123 121.797 24.2602 108.795C33.3973 95.793 50.9993 92.9109 63.5756 102.357C76.1518 111.803 78.9396 130.001 69.8028 143.003C60.6655 156.005 43.0633 158.887 30.4871 149.44ZM130.85 108.795C139.987 121.797 137.2 139.994 124.623 149.44C112.047 158.887 94.4447 156.005 85.308 143.003C76.1707 130.001 78.9584 111.803 91.5347 102.357C104.111 92.9109 121.713 95.793 130.85 108.795ZM1.3852 57.037C6.18888 41.7528 22.068 33.3883 36.8522 38.3545C51.6364 43.3207 59.7272 59.7372 54.9235 75.0214C50.1199 90.3056 34.2407 98.6702 19.4565 93.704C4.6723 88.7378 -3.41847 72.3218 1.3852 57.037ZM118.148 38.3545C132.932 33.3883 148.811 41.7528 153.615 57.037C158.418 72.3218 150.328 88.7378 135.544 93.704C120.759 98.6702 104.88 90.3056 100.077 75.0214C95.273 59.7372 103.364 43.3207 118.148 38.3545Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="status-up" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1174_5153)">
+            <path d="M6.87988 18.15V16.08" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 18.15V14.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17.1201 18.1501V11.9301" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17.1199 5.84998L16.6599 6.38998C14.1099 9.36998 10.6899 11.48 6.87988 12.43" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M14.1899 5.84998H17.1199V8.76998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_1174_5153">
+                <rect width="24" height="24" fill="currentColor"/>
+            </clipPath>
+        </defs>
+    </symbol>
 </svg>

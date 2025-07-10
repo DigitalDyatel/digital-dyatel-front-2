@@ -6,11 +6,6 @@ const props = defineProps<{
 
 <template>
   <div class="tag">
-    <div>
-      <slot></slot>
-    </div>
-    <div>
-      <svg><use :href="'/sprite.svg#' + props.icon" /></svg>
-    </div>
+    <svg><use :href="'/sprite.svg#' + props.icon" /></svg>
   </div>
 </template>

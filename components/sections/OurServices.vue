@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
+import TagWithLabel from '~/components/TagWithLabel.vue'
 
 const services = ref([
   {
@@ -46,7 +47,7 @@ const onClickService = (service) => {
 <template>
   <section class="our-services">
     <h2>Наши услуги</h2>
-    <Tag icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</Tag>
+    <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
     <div class="our-services__services">
       <div class="our-services__selected-service">
         <div>

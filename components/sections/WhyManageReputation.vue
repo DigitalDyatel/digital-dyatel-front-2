@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TagWithLabel from '~/components/TagWithLabel.vue'
+
 const topCards = ref([
   {
     negativeRating: 2.9,
@@ -67,7 +69,7 @@ const bottomCards = ref([
 
 <template>
   <section class="why-manage-reputation">
-    <Tag icon="idea">#зачем</Tag>
+    <TagWithLabel icon="idea">#зачем</TagWithLabel>
     <h2>Зачем управлять репутацией</h2>
     <div class="why-manage-reputation__line">
       <div class="why-manage-reputation__block --left">

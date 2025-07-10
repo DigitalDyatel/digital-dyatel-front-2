@@ -1,0 +1,22 @@
+.our-achievements {
+  position: relative;
+  margin: 140px auto 0 auto;
+  background-color: var(--color-primary);
+  border-radius: 32px;
+  padding: 78px 48px 92px 48px;
+  max-width: var(--max-width);
+
+  h2 {
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-white);
+  }
+
+  .tag-with-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

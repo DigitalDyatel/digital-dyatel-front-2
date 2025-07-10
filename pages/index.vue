@@ -5,6 +5,7 @@ import Footer from '~/components/sections/Footer.vue'
 import WhenNeedReputation from '~/components/sections/WhenNeedReputation.vue'
 import OurServices from '~/components/sections/OurServices.vue'
 import SolveProblems from '~/components/sections/SolveProblems.vue'
+import OurAchievements from '~/components/sections/OurAchievements.vue'
 </script>
 
 <template>
@@ -13,5 +14,6 @@ import SolveProblems from '~/components/sections/SolveProblems.vue'
   <WhenNeedReputation />
   <OurServices />
   <SolveProblems />
+  <OurAchievements />
   <Footer />
 </template>

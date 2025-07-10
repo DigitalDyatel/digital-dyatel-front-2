@@ -1,5 +1,9 @@
 .tag-with-label {
 
+  &.--alternative-rotate div:first-child {
+    transform: rotate(6deg);
+  }
+
   &.--alternative-color {
     div:first-child {
       background: var(--color-accent-blue);
@@ -8,13 +12,14 @@
 
   div:first-child {
     display: inline-block;
-    padding: 16px 12px;
+    padding: 12px 16px;
     color: var(--color-white-contrast);
     font-size: var(--font-size-sm);
     background: black;
     border-radius: 100px;
     font-weight: var(--font-weight-semi-bold);
     transform: rotate(-6deg);
+    line-height: 1.2;
   }
 
   div:last-child {

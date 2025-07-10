@@ -113,11 +113,11 @@
             </clipPath>
         </defs>
     </symbol>
-    <symbol id="like" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="like" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5.37158 12.2336L7.43825 13.8336C7.70492 14.1003 8.30492 14.2336 8.70492 14.2336H11.2382C12.0382 14.2336 12.9049 13.6336 13.1049 12.8336L14.7049 7.96697C15.0382 7.03364 14.4382 6.23364 13.4382 6.23364H10.7716C10.3716 6.23364 10.0382 5.9003 10.1049 5.43364L10.4382 3.3003C10.5716 2.7003 10.1716 2.03364 9.57158 1.83364C9.03825 1.63364 8.37158 1.9003 8.10492 2.3003L5.37158 6.36697" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
         <path d="M1.97119 12.2336V5.70026C1.97119 4.76693 2.37119 4.43359 3.30452 4.43359H3.97119C4.90452 4.43359 5.30452 4.76693 5.30452 5.70026V12.2336C5.30452 13.1669 4.90452 13.5003 3.97119 13.5003H3.30452C2.37119 13.5003 1.97119 13.1669 1.97119 12.2336Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
-    <symbol id="location-tick" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="location-tick" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.79807 5.65992C4.1114 -0.113413 12.6647 -0.106746 13.9714 5.66659C14.7381 9.05325 12.6314 11.9199 10.7847 13.6933C9.44473 14.9866 7.32473 14.9866 5.97807 13.6933C4.13807 11.9199 2.0314 9.04659 2.79807 5.65992Z" stroke="currentColor" stroke-width="1.5"/>
         <path d="M6.55127 7.66667L7.55127 8.66667L10.2179 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
@@ -135,4 +135,13 @@
             </clipPath>
         </defs>
     </symbol>
+    <symbol id="award" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.5854 16.5V18.6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.58545 22H17.5854V21C17.5854 19.9 16.6854 19 15.5854 19H9.58545C8.48545 19 7.58545 19.9 7.58545 21V22V22Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+        <path d="M6.58545 22H18.5854" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.4355 16C8.56555 16 5.43555 12.87 5.43555 9V6C5.43555 3.79 7.22555 2 9.43555 2H15.4355C17.6455 2 19.4355 3.79 19.4355 6V9C19.4355 12.87 16.3055 16 12.4355 16Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.90559 11.6501C5.15559 11.4101 4.49559 10.9701 3.97559 10.4501C3.07559 9.4501 2.47559 8.2501 2.47559 6.8501C2.47559 5.4501 3.57559 4.3501 4.97559 4.3501H5.62559C5.42559 4.8101 5.32559 5.3201 5.32559 5.8501V8.8501C5.32559 9.8501 5.53559 10.7901 5.90559 11.6501Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18.9653 11.6501C19.7153 11.4101 20.3753 10.9701 20.8953 10.4501C21.7953 9.4501 22.3953 8.2501 22.3953 6.8501C22.3953 5.4501 21.2953 4.3501 19.8953 4.3501H19.2453C19.4453 4.8101 19.5453 5.3201 19.5453 5.8501V8.8501C19.5453 9.8501 19.3353 10.7901 18.9653 11.6501Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
 </svg>

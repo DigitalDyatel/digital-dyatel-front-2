@@ -1,6 +1,7 @@
 @use 'variables';
 @use 'fonts';
 @use 'buttons';
+@use 'links';
 @use 'tags';
 @use 'menu';
 @use 'animations';
@@ -12,7 +13,7 @@
 @use 'sections/our-services';
 @use 'sections/solve-problems';
 @use 'sections/our-achievements';
-
+@use 'sections/team';
 @use 'sections/talk-about-us';
 
 * {

@@ -7,6 +7,7 @@ import OurServices from '~/components/sections/OurServices.vue'
 import SolveProblems from '~/components/sections/SolveProblems.vue'
 import OurAchievements from '~/components/sections/OurAchievements.vue'
 import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
+import Team from '~/components/sections/Team.vue'
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
   <OurServices />
   <SolveProblems />
   <OurAchievements />
-
+  <Team />
   <TalkAboutUs />
 
   <Footer />

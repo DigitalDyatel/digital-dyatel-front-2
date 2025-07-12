@@ -1,0 +1,17 @@
+.link {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  font-size: var(--font-size-lg);
+
+  span:first-child {
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  svg {
+    margin-left: 8px;
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+  }
+}

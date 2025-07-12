@@ -1,0 +1,37 @@
+.input {
+  position: relative;
+
+  &.--required {
+    &:after {
+      content: '*';
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: var(--color-tertiary);
+    }
+  }
+
+  input {
+    padding: 24px 48px 24px 24px;
+    border-radius: 12px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--color-dark);
+    color: var(--color-white-contrast);
+    font-size: var(--font-size-md);
+
+    &::placeholder {
+      color: var(--color-tertiary);
+    }
+  }
+
+  &__group {
+    display: flex;
+    gap: 8px;
+
+    > * {
+      flex: 1;
+    }
+  }
+}

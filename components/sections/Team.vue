@@ -82,6 +82,14 @@ const onClickNext = () => {
   splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
+const onPointerOverSlider = () => {
+  splideTemplateRef.value?.splide?.Components.Autoplay.pause()
+}
+
+const onPointerOutSlider = () => {
+  splideTemplateRef.value?.splide?.Components.Autoplay.play()
+}
+
 onMounted(() => {
 
   marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements'))).marginLeft
@@ -116,7 +124,7 @@ onMounted(() => {
         <Link icon="login" link="/">Вся команда</Link>
         <TagAsLabel class="--blue">#спецы с опытом</TagAsLabel>
       </div>
-      <div class="team__cards" :class="{'--mounted': splideIsMounted}">
+      <div class="team__cards" :class="{'--mounted': splideIsMounted}" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
         <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images">
           <SplideSlide style="display: inline-block;" v-for="card in cards" :key="card.name">
             <div class="team__card">

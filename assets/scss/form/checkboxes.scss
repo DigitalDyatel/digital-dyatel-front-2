@@ -1,0 +1,52 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &.--checked {
+    > div:first-child svg {
+      &:first-child {
+        z-index: 1;
+      }
+
+      &:last-child {
+        z-index: 2;
+      }
+    }
+  }
+
+  > div:first-child {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+
+      &:first-child {
+        z-index: 2;
+      }
+
+      &:last-child {
+        z-index: 1;
+      }
+    }
+  }
+
+  > div:last-child {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    border-bottom: 1px solid var(--color-secondary);
+
+    * {
+      color: var(--color-secondary);
+      text-decoration: none;
+      user-select: none;
+    }
+  }
+}

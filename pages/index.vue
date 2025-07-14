@@ -11,6 +11,7 @@ import Team from '~/components/sections/Team.vue'
 import ContactForm from '~/components/sections/ContactForm.vue'
 import Cases from '~/components/sections/Cases.vue'
 import Questions from '~/components/sections/Questions.vue'
+import ContactFormAlt from '~/components/sections/ContactFormAlt.vue'
 </script>
 
 <template>
@@ -23,7 +24,8 @@ import Questions from '~/components/sections/Questions.vue'
   <Team />
   <ContactForm />
   <Cases />
-  <Questions />
   <TalkAboutUs />
+  <Questions />
+  <ContactFormAlt />
   <Footer />
 </template>

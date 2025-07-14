@@ -28,7 +28,7 @@
       margin-top: 16px;
       border-radius: 12px;
       padding: 24px;
-      transition: max-height 3s ease-in-out;
+      transition: max-height .3s ease-in-out;
 
       &.--active {
         max-height: 1000px;

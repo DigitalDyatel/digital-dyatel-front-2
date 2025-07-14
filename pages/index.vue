@@ -10,6 +10,7 @@ import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
 import Team from '~/components/sections/Team.vue'
 import ContactForm from '~/components/sections/ContactForm.vue'
 import Cases from '~/components/sections/Cases.vue'
+import Questions from '~/components/sections/Questions.vue'
 </script>
 
 <template>
@@ -22,7 +23,7 @@ import Cases from '~/components/sections/Cases.vue'
   <Team />
   <ContactForm />
   <Cases />
-
+  <Questions />
   <TalkAboutUs />
   <Footer />
 </template>

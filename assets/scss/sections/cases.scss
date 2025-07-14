@@ -1,0 +1,233 @@
+.cases {
+  margin: 140px auto 0 auto;
+  max-width: var(--max-width);
+
+  h2 {
+    font-size: var(--font-size-5xl);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semi-bold);
+    text-align: center;
+  }
+
+  > p {
+    margin-top: 16px;
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+    text-align: center;
+  }
+
+  &__container {
+    margin-top: 48px;
+    border-radius: 32px;
+    background-color: var(--color-accent-dark);
+    padding: 48px 24px;
+  }
+
+  &__categories {
+    padding: 0 24px;
+    gap: 24px;
+    display: flex;
+
+    > div {
+      font-size: var(--font-size-md);
+      padding: 24px;
+      color: #bfc5d0;
+      font-weight: var(--font-weight-medium);
+      background-color: transparent;
+      border-radius: 12px;
+      cursor: pointer;
+
+      &.--active {
+        background-color: var(--color-primary);
+        color: var(--color-white-contrast);
+      }
+    }
+  }
+
+  &__paginator-container {
+    margin-top: 24px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+
+  &__paginator-progress-bar {
+    position: relative;
+    flex-grow: 1;
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+
+      &:first-child {
+        background-color: var(--color-primary);
+      }
+
+      &:last-child {
+        background-color: var(--color-tertiary);
+        width: 100px;
+      }
+    }
+  }
+
+  &__paginator-controls {
+    user-select: none;
+    display: inline-flex;
+    gap: 12px;
+
+    div {
+      padding: 12px;
+      background-color: var(--color-quaternary);
+      border-radius: 8px;
+      cursor: pointer;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__case-container {
+    display: flex;
+    gap: 24px;
+
+    .cases__case {
+      flex: 1;
+
+      .cases__case-content {
+        display: block;
+        margin-top: 32px;
+
+        > div:first-child {
+          padding: 0 0 16px;
+        }
+      }
+
+      .cases__case-description {
+        border-left: none;
+        padding: 0;
+      }
+    }
+  }
+
+  &__case  {
+    margin-top: 24px;
+    background-color: var(--color-white);
+    border-radius: 24px;
+    padding: 48px;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        height: 48px;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        font-size: var(--font-size-md);
+        color: var(--color-primary);
+
+        &:before {
+          content: "";
+          width: 6px;
+          height: 6px;
+          background-color: var(--color-contrast);
+          border-radius: 100px;
+          margin-right: 8px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    &-content {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+
+      > div:first-child {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        justify-content: space-between;
+
+        > div:first-child {
+          color: var(--color-primary);
+          font-size: var(--font-size-3xl);
+          font-weight: var(--font-weight-medium);
+        }
+      }
+    }
+
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      > div {
+        font-size: var(--font-size-base);
+        color: var(--color-primary);
+        display: inline-block;
+        background: var(--color-light-grey);
+        padding: 16px;
+        border-radius: 12px;
+        white-space: nowrap;
+      }
+    }
+
+    &-description {
+      flex: 1;
+      padding: 16px 24px;
+      border-left: 2px solid var(--color-quaternary);
+
+      p {
+        margin-top: 12px;
+        color: var(--color-secondary);
+        font-size: var(--font-size-md);
+        text-align: left;
+        line-height: 1.2;
+      }
+
+      > div:nth-child(1) {
+        color: var(--color-accent-dark);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-medium);
+      }
+
+      > div:nth-child(3) {
+        margin-top: 32px;
+        color: var(--color-accent-dark);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-medium);
+      }
+
+      > div:nth-child(5) {
+        margin-top: 32px;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+
+        div {
+          font-weight: var(--font-weight-medium);
+          font-size: var(--font-size-md);
+          color: var(--color-accent-dark);
+        }
+
+        svg {
+          width: 24px;
+          height: 24px;
+          color: var(--color-contrast);
+        }
+      }
+    }
+  }
+}

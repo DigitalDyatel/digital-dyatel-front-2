@@ -9,6 +9,7 @@ import OurAchievements from '~/components/sections/OurAchievements.vue'
 import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
 import Team from '~/components/sections/Team.vue'
 import ContactForm from '~/components/sections/ContactForm.vue'
+import Cases from '~/components/sections/Cases.vue'
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import ContactForm from '~/components/sections/ContactForm.vue'
   <OurAchievements />
   <Team />
   <ContactForm />
+  <Cases />
 
   <TalkAboutUs />
   <Footer />

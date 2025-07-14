@@ -21,11 +21,16 @@
 @use 'sections/contact-form-alt';
 @use 'sections/cases';
 @use 'sections/questions';
+@use 'sections/footer';
 
 * {
   box-sizing: border-box;
   font-family: Involve, serif;
   line-height: 1;
+}
+
+a {
+  text-decoration: none;
 }
 
 p {

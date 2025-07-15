@@ -1,0 +1,137 @@
+.reviews {
+  max-width: var(--max-width);
+  margin: 140px auto 0 auto;
+  opacity: 0;
+
+  &.--mounted {
+    opacity: 1;
+  }
+
+  h2 {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  &__container {
+    margin-top: 48px;
+    height: 405px;
+  }
+
+  &__review {
+    border-radius: 24px;
+    width: 318px;
+    height: 405px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &.--active {
+      img {
+        width: 48px;
+      }
+
+      .reviews__review-content {
+        overflow: auto;
+      }
+
+      .reviews__review-overlay {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__review-content {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    background-color: var(--color-white);
+  }
+
+  &__review-text-container {
+    margin-top: 24px;
+
+    div:first-child {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+    }
+
+    div:nth-child(2) {
+      font-size: var(--font-size-base);
+      margin-top: 6px;
+      color: var(--color-primary);
+    }
+
+    div:last-child {
+      font-size: var(--font-size-base);
+      margin-top: 16px;
+      color: var(--color-secondary);
+      line-height: 1.2;
+    }
+  }
+
+  &__review-header {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      aspect-ratio: 1 / 1;
+      width: 100px;
+      transition: width .3s ease-in-out;
+    }
+
+    .tag {
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: inline-flex;
+    gap: 16px;
+
+    > div {
+      background-color: var(--color-quaternary);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      user-select: none;
+
+      &.--disabled {
+        background-color: #e8eef4;
+
+        svg {
+          color: #a0a5ae;
+        }
+      }
+
+      svg {
+        color: var(--color-primary);
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__review-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.48) 0%, #FFFFFF 100%);
+    height: 48px;
+    opacity: 1;
+    transition: .3s opacity ease-in-out;
+  }
+}

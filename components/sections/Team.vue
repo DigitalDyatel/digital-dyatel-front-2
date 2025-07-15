@@ -121,7 +121,7 @@ onMounted(() => {
           <span>репутацией. Строим персональные стратегии</span>
           <span>и используем современные инструменты</span>
         </p>
-        <Link icon="login" link="/">Вся команда</Link>
+        <Link link="/">Вся команда</Link>
         <TagAsLabel class="--blue">#спецы с опытом</TagAsLabel>
       </div>
       <div class="team__cards" :class="{'--mounted': splideIsMounted}" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">

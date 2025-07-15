@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
-  icon: string,
+const props = withDefaults(defineProps<{
+  icon?: string,
   link: string,
-}>()
+}>(), {
+  icon: 'login'
+})
 </script>
 
 <template>

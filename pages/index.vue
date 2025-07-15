@@ -12,6 +12,7 @@ import ContactForm from '~/components/sections/ContactForm.vue'
 import Cases from '~/components/sections/Cases.vue'
 import ContactFormAlt from '~/components/sections/ContactFormAlt.vue'
 import FAQ from '~/components/sections/FAQ.vue'
+import Reviews from '~/components/sections/Reviews.vue'
 </script>
 
 <template>
@@ -24,6 +25,7 @@ import FAQ from '~/components/sections/FAQ.vue'
   <Team />
   <ContactForm />
   <Cases />
+  <Reviews />
   <TalkAboutUs />
   <FAQ />
   <ContactFormAlt />

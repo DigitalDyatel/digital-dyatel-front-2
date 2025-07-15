@@ -255,4 +255,29 @@
       }
     }
   }
+
+  &__button-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 48px;
+
+    .btn {
+      width: 304px;
+      max-width: 50%;
+    }
+  }
+
+  &__footer {
+    p {
+      margin-top: 48px;
+      text-align: center;
+
+      span {
+        font-size: var(--font-size-sm);
+        color: var(--color-secondary);
+        display: block;
+      }
+    }
+  }
 }

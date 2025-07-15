@@ -151,6 +151,16 @@ onMounted(() => {
           </div>
         </transition>
       </div>
+      <div class="cases__footer">
+        <div class="cases__button-container">
+          <Button class="--large --tertiary">Все кейсы</Button>
+          <Button class="--large">Хочу также</Button>
+        </div>
+        <p>
+          <span>Полное раскрытие кейсов недопустимо политикой нашей компании,</span>
+          <span>работа с клиентами надежно защищена рамками NDA</span>
+        </p>
+      </div>
     </div>
   </section>
 </template>

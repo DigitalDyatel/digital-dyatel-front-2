@@ -21,12 +21,24 @@
     border-radius: 32px;
     background-color: var(--color-accent-dark);
     padding: 48px 24px;
+    overflow-x: hidden;
+  }
+
+  &__active-category-container {
+    overflow-x: hidden;
+    border-radius: 24px;
+    margin-top: 24px;
+  }
+
+  &__categories-container {
+    width: 3000px;
+    overflow-x: hidden;
   }
 
   &__categories {
-    padding: 0 24px;
     gap: 24px;
-    display: flex;
+    display: inline-flex;
+    transition: transform .3s ease-in-out;
 
     > div {
       font-size: var(--font-size-md);
@@ -36,6 +48,8 @@
       background-color: transparent;
       border-radius: 12px;
       cursor: pointer;
+      user-select: none;
+      transition: background-color .2s ease-in-out;
 
       &.--active {
         background-color: var(--color-primary);
@@ -46,7 +60,6 @@
 
   &__paginator-container {
     margin-top: 24px;
-    padding: 0 24px;
     display: flex;
     align-items: center;
     gap: 48px;
@@ -55,23 +68,26 @@
   &__paginator-progress-bar {
     position: relative;
     flex-grow: 1;
+  }
 
-    div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 100%;
+  &__paginator-progress-bar-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
 
-      &:first-child {
-        background-color: var(--color-primary);
-      }
-
-      &:last-child {
-        background-color: var(--color-tertiary);
-        width: 100px;
-      }
-    }
+  &__paginator-progress-bar-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background-color: var(--color-tertiary);
+    transition: width .5s ease-in-out;
+    will-change: width;
   }
 
   &__paginator-controls {
@@ -96,6 +112,11 @@
   &__case-container {
     display: flex;
     gap: 24px;
+    margin-top: 24px;
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     .cases__case {
       flex: 1;
@@ -116,8 +137,12 @@
     }
   }
 
+  &__header-container {
+    padding: 0 24px;
+    overflow-x: hidden;
+  }
+
   &__case  {
-    margin-top: 24px;
     background-color: var(--color-white);
     border-radius: 24px;
     padding: 48px;

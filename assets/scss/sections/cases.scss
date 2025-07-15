@@ -58,19 +58,19 @@
     }
   }
 
-  &__paginator-container {
+  &__progress-bar-container {
     margin-top: 24px;
     display: flex;
     align-items: center;
     gap: 48px;
   }
 
-  &__paginator-progress-bar {
+  &__progress-bar {
     position: relative;
     flex-grow: 1;
   }
 
-  &__paginator-progress-bar-track {
+  &__progress-bar-track {
     position: absolute;
     top: 0;
     left: 0;
@@ -79,7 +79,7 @@
     background-color: var(--color-primary);
   }
 
-  &__paginator-progress-bar-slider {
+  &__progress-bar-slider {
     position: absolute;
     top: 0;
     left: 0;
@@ -90,7 +90,7 @@
     will-change: width;
   }
 
-  &__paginator-controls {
+  &__progress-bar-controls {
     user-select: none;
     display: inline-flex;
     gap: 12px;

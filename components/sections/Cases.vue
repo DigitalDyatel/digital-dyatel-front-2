@@ -81,12 +81,12 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="cases__paginator-container">
-          <div class="cases__paginator-progress-bar">
-            <div class="cases__paginator-progress-bar-track" ref="progressBarTrackTemplateRef"></div>
-            <div class="cases__paginator-progress-bar-slider" ref="progressBarSliderTemplateRef"></div>
+        <div class="cases__progress-bar-container">
+          <div class="cases__progress-bar">
+            <div class="cases__progress-bar-track" ref="progressBarTrackTemplateRef"></div>
+            <div class="cases__progress-bar-slider" ref="progressBarSliderTemplateRef"></div>
           </div>
-          <div class="cases__paginator-controls">
+          <div class="cases__progress-bar-controls">
             <div @click="onClickPrev(i)"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
             <div @click="onClickNext(i)"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>

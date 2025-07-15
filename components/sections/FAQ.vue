@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
+import { onMounted, type Ref } from 'vue'
 
 const activeQuestionIndex: Ref<number|null> = ref(null)
+
+const answerTemplateRef = useTemplateRef('answerTemplateRef')
+const questionTemplateRef = useTemplateRef('questionTemplateRef')
+const questionsTemplateRef = useTemplateRef('questionsTemplateRef')
+const answerHeights = []
 
 const questions = ref([
   {
@@ -31,26 +36,55 @@ const questions = ref([
 ])
 
 const toggle = (i: number) => {
+
+  if (i !== activeQuestionIndex.value && activeQuestionIndex.value !== null) {
+    answerTemplateRef.value[activeQuestionIndex.value].style.opacity = 0
+    answerTemplateRef.value[activeQuestionIndex.value].style.height = '0'
+    answerTemplateRef.value[activeQuestionIndex.value].style.paddingBottom = '0'
+  }
+
   if (i === activeQuestionIndex.value) {
     activeQuestionIndex.value = null
+    answerTemplateRef.value[i].style.opacity = 0
+    answerTemplateRef.value[i].style.height = '0'
+    answerTemplateRef.value[i].style.paddingBottom = '0'
     return
   }
 
   activeQuestionIndex.value = i
+  answerTemplateRef.value[i].style.opacity = 1
+  answerTemplateRef.value[i].style.height = answerHeights[i] + 'px'
+  answerTemplateRef.value[i].style.paddingBottom = '24px'
 }
+
+onMounted(() => {
+  answerTemplateRef.value.forEach(answer => {
+    answerHeights.push(answer.getBoundingClientRect().height)
+    answer.style.height = 0
+    answer.style.paddingBottom = 0
+  })
+
+  setTimeout(() => {
+    answerTemplateRef.value.forEach(answer => {
+      answer.classList.remove('--init')
+    })
+  }, 100)
+
+  questionsTemplateRef.value.style.opacity = 1
+})
 </script>
 
 <template>
-  <section class="questions">
+  <section class="faq">
     <h2>Ответы на частые вопросы</h2>
-    <div class="questions__container">
-      <div class="questions__questions">
-        <div v-for="(question, i) in questions" @click="toggle(i)" :class="{'--active': activeQuestionIndex === i}">
-          <div>
+    <div class="faq__container">
+      <div class="faq__questions" ref="questionsTemplateRef">
+        <div ref="questionTemplateRef" class="--init" v-for="(question, i) in questions" @click="toggle(i)" :key="i">
+          <div class="faq__question">
             <div>{{ question.question }}</div>
             <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
-          <div>{{ question.answer }}</div>
+          <div class="faq__question-answer --init" ref="answerTemplateRef">{{ question.answer }}</div>
         </div>
       </div>
     </div>

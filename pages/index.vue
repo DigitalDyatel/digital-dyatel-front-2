@@ -10,8 +10,8 @@ import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
 import Team from '~/components/sections/Team.vue'
 import ContactForm from '~/components/sections/ContactForm.vue'
 import Cases from '~/components/sections/Cases.vue'
-import Questions from '~/components/sections/Questions.vue'
 import ContactFormAlt from '~/components/sections/ContactFormAlt.vue'
+import FAQ from '~/components/sections/FAQ.vue'
 </script>
 
 <template>
@@ -25,7 +25,7 @@ import ContactFormAlt from '~/components/sections/ContactFormAlt.vue'
   <ContactForm />
   <Cases />
   <TalkAboutUs />
-  <Questions />
+  <FAQ />
   <ContactFormAlt />
   <Footer />
 </template>

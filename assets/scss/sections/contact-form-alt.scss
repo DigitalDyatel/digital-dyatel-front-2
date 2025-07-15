@@ -5,6 +5,28 @@
   background-color: var(--color-accent-dark);
   border-radius: 32px;
   position: relative;
+  overflow: hidden;
+
+  > svg {
+    position: absolute;
+    top: -605px;
+    width: 700px;
+    aspect-ratio: 1 / 1;
+    opacity: 0.5;
+    animation-iteration-count: infinite;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+
+    &:nth-child(5) {
+      right: -126px;
+      animation-name: spin-3;
+    }
+
+    &:nth-child(6) {
+      right: -288px;
+      animation-name: spin-4;
+    }
+  }
 
   h3 {
     font-size: var(--font-size-3xl);

@@ -236,6 +236,15 @@
             </linearGradient>
         </defs>
     </symbol>
+    <symbol id="circle-star-3" width="700" height="700" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="340" cy="340" r="339" transform="matrix(-1 0 0 1 690 10)" stroke="url(#paint0_linear_2356_2947)" stroke-width="2"/>
+        <defs>
+            <linearGradient id="paint0_linear_2356_2947" x1="653.556" y1="302.222" x2="243.667" y2="663.756" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="white" stop-opacity="0.12"/>
+            </linearGradient>
+        </defs>
+    </symbol>
     <symbol id="tick-square-filled" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.49984 18.3332H12.4998C16.6665 18.3332 18.3332 16.6665 18.3332 12.4998V7.49984C18.3332 3.33317 16.6665 1.6665 12.4998 1.6665H7.49984C3.33317 1.6665 1.6665 3.33317 1.6665 7.49984V12.4998C1.6665 16.6665 3.33317 18.3332 7.49984 18.3332Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M6.4585 9.99993L8.81683 12.3583L13.5418 7.6416" stroke="#1D2128" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

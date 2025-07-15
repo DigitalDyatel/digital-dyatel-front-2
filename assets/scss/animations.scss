@@ -45,3 +45,21 @@
     transform: rotate(420deg);
   }
 }
+
+@keyframes spin-3 {
+  0% {
+    transform: rotate(-194deg);
+  }
+  100% {
+    transform: rotate(166deg);
+  }
+}
+
+@keyframes spin-4 {
+  0% {
+    transform: rotate(200deg);
+  }
+  100% {
+    transform: rotate(560deg);
+  }
+}

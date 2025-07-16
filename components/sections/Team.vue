@@ -10,9 +10,9 @@ const splideIsMounted = ref(false)
 
 let io: IntersectionObserver | undefined = undefined
 
-const teamSectionTemplateRef = useTemplateRef('teamSectionTemplateRef')
-const splideTemplateRef = useTemplateRef('splideTemplateRef')
-const paginatorTemplateRef = useTemplateRef('paginatorTemplateRef')
+const teamSectionTemplateRef = useTemplateRef<HTMLElement>('teamSectionTemplateRef')
+const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
+const paginatorTemplateRef = useTemplateRef<HTMLDivElement>('paginatorTemplateRef')
 
 const cards = ref([
   {

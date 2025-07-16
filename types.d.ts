@@ -1,6 +1,7 @@
 declare module "*.svg?component" {
-    const content: any;
-    export default content;
+    import type { DefineComponent } from 'vue'
+    const component: DefineComponent;
+    export default component;
 }
 
 declare module '@splidejs/vue-splide' {

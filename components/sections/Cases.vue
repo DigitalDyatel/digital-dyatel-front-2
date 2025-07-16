@@ -4,15 +4,14 @@ import { categories as _categories } from '~/constants'
 
 let progressBarTrackWidth: number | undefined = undefined
 let categoriesContainerWidth: number | undefined = undefined
-let ratio: number | undefined = undefined
 
 const translateX = ref(0)
 
-const progressBarTrackTemplateRef = useTemplateRef('progressBarTrackTemplateRef')
-const progressBarSliderTemplateRef = useTemplateRef('progressBarSliderTemplateRef')
+const progressBarTrackTemplateRef = useTemplateRef<HTMLDivElement>('progressBarTrackTemplateRef')
+const progressBarSliderTemplateRef = useTemplateRef<HTMLDivElement>('progressBarSliderTemplateRef')
 
-const categoriesContainerTemplateRef = useTemplateRef('categoriesContainerTemplateRef')
-const categoriesTemplateRef = useTemplateRef('categoriesTemplateRef')
+const categoriesContainerTemplateRef = useTemplateRef<HTMLDivElement>('categoriesContainerTemplateRef')
+const categoriesTemplateRef = useTemplateRef<HTMLDivElement[]>('categoriesTemplateRef')
 
 const categories = ref(_categories)
 
@@ -57,8 +56,6 @@ const updateDimensions = (index: number) => {
 onMounted(() => {
   progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
   categoriesContainerWidth = categoriesContainerTemplateRef.value!.getBoundingClientRect().width
-
-  ratio = progressBarTrackWidth / categoriesContainerWidth
 
   setCategory(0)
 })

@@ -1,6 +1,6 @@
 interface Category {
     title: string,
-    cases: Case[] | Case[][]
+    cases: (Case | Case[])[]
 }
 
 interface Case {

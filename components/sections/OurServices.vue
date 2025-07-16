@@ -1,8 +1,17 @@
 <script setup lang="ts">
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
 import TagWithLabel from '~/components/TagWithLabel.vue'
+import type { Ref } from 'vue'
 
-const services = ref([
+interface Service {
+  title: string,
+  title_short?: string,
+  subtitle?: string,
+  description: string,
+  price: string,
+}
+
+const services: Ref<Service[]> = ref([
   {
     title: 'Управление репутацией в интернете',
     title_short: 'ORM',
@@ -19,19 +28,16 @@ const services = ref([
   },
   {
     title: 'Репутация с нуля',
-    subtitle: null,
     description: 'Помогаем сформировать положительный имидж компании с самого старта. Это станет вашим преимуществом, повысит лояльность клиентов и укрепит доверие к вашему бизнесу',
     price: 'от 130 000 ₽/мес'
   },
   {
     title: 'Позитивный контент',
-    subtitle: null,
     description: 'Создаем контент, который подчеркнет сильные стороны вашего бизнеса и грамотно продвигаем его в социальных сетях, блогах и на других платформах. Убедительный и качественный контент помогает формировать положительный имидж компании и усиливать лояльность аудитории',
     price: 'от 35 000 ₽ за материал'
   },
   {
     title: 'Мониторинг',
-    subtitle: null,
     description: 'Мы занимаемся исследованием информационного поля, отслеживаем отзывы и комментарии в реальном времени, оперативно реагируем на негатив и помогаем выстраивать доверительные отношения с клиентами',
     price: 'от 30 000 ₽/мес'
   },
@@ -39,7 +45,7 @@ const services = ref([
 
 const selectedService = ref(services.value[0])
 
-const onClickService = (service) => {
+const onClickService = (service: Service) => {
   selectedService.value = service
 }
 </script>

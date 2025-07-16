@@ -3,9 +3,9 @@ import { onMounted, type Ref } from 'vue'
 
 const activeQuestionIndex: Ref<number|null> = ref(null)
 
-const answerTemplateRef = useTemplateRef('answerTemplateRef')
+const answerTemplateRef = useTemplateRef<HTMLDivElement[]>('answerTemplateRef')
 const questionTemplateRef = useTemplateRef('questionTemplateRef')
-const questionsTemplateRef = useTemplateRef('questionsTemplateRef')
+const questionsTemplateRef = useTemplateRef<HTMLDivElement>('questionsTemplateRef')
 const answerHeights: number[] = []
 
 const questions = ref([
@@ -38,21 +38,21 @@ const questions = ref([
 const toggle = (i: number) => {
 
   if (i !== activeQuestionIndex.value && activeQuestionIndex.value !== null) {
-    answerTemplateRef.value![activeQuestionIndex.value].style.opacity = 0
+    answerTemplateRef.value![activeQuestionIndex.value].style.opacity = '0'
     answerTemplateRef.value![activeQuestionIndex.value].style.height = '0'
     answerTemplateRef.value![activeQuestionIndex.value].style.paddingBottom = '0'
   }
 
   if (i === activeQuestionIndex.value) {
     activeQuestionIndex.value = null
-    answerTemplateRef.value![i].style.opacity = 0
+    answerTemplateRef.value![i].style.opacity = '0'
     answerTemplateRef.value![i].style.height = '0'
     answerTemplateRef.value![i].style.paddingBottom = '0'
     return
   }
 
   activeQuestionIndex.value = i
-  answerTemplateRef.value![i].style.opacity = 1
+  answerTemplateRef.value![i].style.opacity = '1'
   answerTemplateRef.value![i].style.height = answerHeights[i] + 'px'
   answerTemplateRef.value![i].style.paddingBottom = '24px'
 }
@@ -60,8 +60,8 @@ const toggle = (i: number) => {
 onMounted(() => {
   answerTemplateRef.value!.forEach(answer => {
     answerHeights.push(answer.getBoundingClientRect().height)
-    answer.style.height = 0
-    answer.style.paddingBottom = 0
+    answer.style.height = '0'
+    answer.style.paddingBottom = '0'
   })
 
   setTimeout(() => {
@@ -70,7 +70,7 @@ onMounted(() => {
     })
   }, 100)
 
-  questionsTemplateRef.value!.style.opacity = 1
+  questionsTemplateRef.value!.style.opacity = '1'
 })
 </script>
 

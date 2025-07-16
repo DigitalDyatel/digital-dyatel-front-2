@@ -9,7 +9,7 @@ const emptyTemplateRef = useTemplateRef('emptyTemplateRef')
 
 const splideIsMounted = ref(false)
 
-const activeReviewIndex = ref(null)
+const activeReviewIndex: Ref<number | null> = ref(null)
 
 interface Review {
   img: string,
@@ -41,7 +41,8 @@ const reviews: Ref<Review[]> = ref([
     position: 'Основатель бизнеса',
     text: 'Мы – новички на рынке и сразу понимали, что без работы над управлением репутацией компании в сети нам не обойтись. В компании нам предложили четкий план действий, расписали все задачи, этапы работ и сроки. Оперативная обратная связь, рост запросов клиентов и продаж – то, за что мы продолжаем выбирать сотрудничество с компанией. Спасибо за качественную работу!',
     icon: {
-      icon: ''
+      icon: '',
+      text: ''
     }
   },
   {
@@ -105,7 +106,7 @@ const onClickReview = (i: number) => {
 }
 
 onMounted(() => {
-  emptyTemplateRef.value.style.width = linkContainerTemplateRef.value.getBoundingClientRect().width + 'px'
+  emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
 })
 </script>
 

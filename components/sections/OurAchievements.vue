@@ -25,7 +25,7 @@ const achievements = ref([
     <h2>Наши достижения</h2>
     <div class="our-achievements__achievements">
       <div v-for="(achievement, i) in achievements">
-        <div>{{ ++i }}</div>
+        <div>{{ i + 1 }}</div>
         <svg><use :href="'/sprite.svg#done'" /></svg>
         <div>{{ achievement.left }}</div>
         <div>{{ achievement.right }}</div>

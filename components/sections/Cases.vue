@@ -2,9 +2,9 @@
 import { onMounted, type Ref } from 'vue'
 import { categories as _categories } from '~/constants'
 
-let progressBarTrackWidth: float | undefined = undefined
-let categoriesContainerWidth: float | undefined = undefined
-let ratio: float | undefined = undefined
+let progressBarTrackWidth: number | undefined = undefined
+let categoriesContainerWidth: number | undefined = undefined
+let ratio: number | undefined = undefined
 
 const translateX = ref(0)
 
@@ -14,14 +14,12 @@ const progressBarSliderTemplateRef = useTemplateRef('progressBarSliderTemplateRe
 const categoriesContainerTemplateRef = useTemplateRef('categoriesContainerTemplateRef')
 const categoriesTemplateRef = useTemplateRef('categoriesTemplateRef')
 
-const categories: Ref<Category[]> = ref(_categories)
+const categories = ref(_categories)
 
 const activeCategoryIndex = ref(0)
-const activeCategory = ref(null)
 
 const setCategory = (i: number) => {
   activeCategoryIndex.value = i
-  activeCategory.value = categories.value[activeCategoryIndex.value]
 
   updateDimensions(i)
 }
@@ -32,7 +30,6 @@ const onClickPrev = () => {
   }
 
   activeCategoryIndex.value = --activeCategoryIndex.value
-  activeCategory.value = categories.value[activeCategoryIndex.value]
   updateDimensions(activeCategoryIndex.value)
 }
 
@@ -42,25 +39,24 @@ const onClickNext = () => {
   }
 
   activeCategoryIndex.value = ++activeCategoryIndex.value
-  activeCategory.value = categories.value[activeCategoryIndex.value]
   updateDimensions(activeCategoryIndex.value)
 }
 
 const updateDimensions = (index: number) => {
-  progressBarSliderTemplateRef.value.style.width = (progressBarTrackWidth / categories.value.length * (index + 1)) + 'px'
+  progressBarSliderTemplateRef.value!.style.width = (progressBarTrackWidth! / categories.value.length * (index + 1)) + 'px'
 
   let totalWidth = 0
 
   for (let i = 0; i < index; i++) {
-    totalWidth += categoriesTemplateRef.value[i].getBoundingClientRect().width + 24
+    totalWidth += categoriesTemplateRef.value![i].getBoundingClientRect().width + 24
   }
 
   translateX.value = totalWidth * -1
 }
 
 onMounted(() => {
-  progressBarTrackWidth = progressBarTrackTemplateRef.value.getBoundingClientRect().width
-  categoriesContainerWidth = categoriesContainerTemplateRef.value.getBoundingClientRect().width
+  progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
+  categoriesContainerWidth = categoriesContainerTemplateRef.value!.getBoundingClientRect().width
 
   ratio = progressBarTrackWidth / categoriesContainerWidth
 
@@ -87,8 +83,8 @@ onMounted(() => {
             <div class="cases__progress-bar-slider" ref="progressBarSliderTemplateRef"></div>
           </div>
           <div class="cases__progress-bar-controls">
-            <div @click="onClickPrev(i)"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-            <div @click="onClickNext(i)"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+            <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+            <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
         </div>
       </div>

@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
+import type { Ref } from 'vue'
 
-const menuItems = ref([
+interface MenuItem {
+  label: string,
+  icon?: string,
+  sub?: any[]
+}
+
+const menuItems: Ref<MenuItem[]> = ref([
   {
     label: 'Услуги',
     icon: 'hashtag',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const {data: serverTime} = await useAsyncData('server-time', () => Date.now())
+const {data: serverTime} = await useAsyncData('server-time', async() => Date.now())
 
 const props = withDefaults(defineProps<{
   required?: boolean,

@@ -6,7 +6,7 @@ const activeQuestionIndex: Ref<number|null> = ref(null)
 const answerTemplateRef = useTemplateRef('answerTemplateRef')
 const questionTemplateRef = useTemplateRef('questionTemplateRef')
 const questionsTemplateRef = useTemplateRef('questionsTemplateRef')
-const answerHeights = []
+const answerHeights: number[] = []
 
 const questions = ref([
   {
@@ -38,39 +38,39 @@ const questions = ref([
 const toggle = (i: number) => {
 
   if (i !== activeQuestionIndex.value && activeQuestionIndex.value !== null) {
-    answerTemplateRef.value[activeQuestionIndex.value].style.opacity = 0
-    answerTemplateRef.value[activeQuestionIndex.value].style.height = '0'
-    answerTemplateRef.value[activeQuestionIndex.value].style.paddingBottom = '0'
+    answerTemplateRef.value![activeQuestionIndex.value].style.opacity = 0
+    answerTemplateRef.value![activeQuestionIndex.value].style.height = '0'
+    answerTemplateRef.value![activeQuestionIndex.value].style.paddingBottom = '0'
   }
 
   if (i === activeQuestionIndex.value) {
     activeQuestionIndex.value = null
-    answerTemplateRef.value[i].style.opacity = 0
-    answerTemplateRef.value[i].style.height = '0'
-    answerTemplateRef.value[i].style.paddingBottom = '0'
+    answerTemplateRef.value![i].style.opacity = 0
+    answerTemplateRef.value![i].style.height = '0'
+    answerTemplateRef.value![i].style.paddingBottom = '0'
     return
   }
 
   activeQuestionIndex.value = i
-  answerTemplateRef.value[i].style.opacity = 1
-  answerTemplateRef.value[i].style.height = answerHeights[i] + 'px'
-  answerTemplateRef.value[i].style.paddingBottom = '24px'
+  answerTemplateRef.value![i].style.opacity = 1
+  answerTemplateRef.value![i].style.height = answerHeights[i] + 'px'
+  answerTemplateRef.value![i].style.paddingBottom = '24px'
 }
 
 onMounted(() => {
-  answerTemplateRef.value.forEach(answer => {
+  answerTemplateRef.value!.forEach(answer => {
     answerHeights.push(answer.getBoundingClientRect().height)
     answer.style.height = 0
     answer.style.paddingBottom = 0
   })
 
   setTimeout(() => {
-    answerTemplateRef.value.forEach(answer => {
+    answerTemplateRef.value!.forEach(answer => {
       answer.classList.remove('--init')
     })
   }, 100)
 
-  questionsTemplateRef.value.style.opacity = 1
+  questionsTemplateRef.value!.style.opacity = 1
 })
 </script>
 

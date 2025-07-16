@@ -94,7 +94,7 @@ onMounted(() => {
 
   marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements'))).marginLeft
 
-  paginatorTemplateRef.value.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
+  paginatorTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 
   io = new IntersectionObserver((entries) => {
     entries[0].isIntersecting ?
@@ -104,7 +104,7 @@ onMounted(() => {
     rootMargin: '0px 0px -500px 0px'
   })
 
-  io.observe(teamSectionTemplateRef.value)
+  io.observe(teamSectionTemplateRef.value!)
 })
 </script>
 

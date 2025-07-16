@@ -114,7 +114,6 @@ onMounted(() => {
   <section class="reviews" :class="{'--mounted': splideIsMounted}">
     <h2>Отзывы</h2>
     <div class="reviews__container">
-      <Link link="/" ref="test"></Link>
       <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images" @splide:mounted="onSplideMounted">
         <SplideSlide style="display: inline-block;" v-for="(review, i) in reviews" :key="review.name" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
           <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}">

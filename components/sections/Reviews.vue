@@ -3,9 +3,9 @@ import Link from '~/components/Link.vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import { onMounted, type Ref } from 'vue'
 
-const splideTemplateRef = useTemplateRef('splideTemplateRef')
-const linkContainerTemplateRef = useTemplateRef('linkContainerTemplateRef')
-const emptyTemplateRef = useTemplateRef('emptyTemplateRef')
+const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
+const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
+const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
 
 const splideIsMounted = ref(false)
 
@@ -114,6 +114,7 @@ onMounted(() => {
   <section class="reviews" :class="{'--mounted': splideIsMounted}">
     <h2>Отзывы</h2>
     <div class="reviews__container">
+      <Link link="/" ref="test"></Link>
       <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images" @splide:mounted="onSplideMounted">
         <SplideSlide style="display: inline-block;" v-for="(review, i) in reviews" :key="review.name" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
           <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Link from '~/components/Link.vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
-import { onMounted, type Ref } from 'vue'
+import { onMounted } from 'vue'
 
 const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
 const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
@@ -9,7 +9,7 @@ const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
 
 const splideIsMounted = ref(false)
 
-const activeReviewIndex: Ref<number | null> = ref(null)
+const activeReviewIndex = ref<number|null>(null)
 
 interface Review {
   img: string,
@@ -22,7 +22,7 @@ interface Review {
   }
 }
 
-const reviews: Ref<Review[]> = ref([
+const reviews = ref<Review[]>([
   {
     img: '1.png',
     name: 'Алла Медведева',

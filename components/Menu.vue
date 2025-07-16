@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
-import type { Ref } from 'vue'
 
 interface MenuItem {
   label: string,
@@ -9,7 +8,7 @@ interface MenuItem {
   sub?: any[]
 }
 
-const menuItems: Ref<MenuItem[]> = ref([
+const menuItems = ref<MenuItem[]>([
   {
     label: 'Услуги',
     icon: 'hashtag',

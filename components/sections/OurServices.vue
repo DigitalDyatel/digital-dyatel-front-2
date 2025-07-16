@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
 import TagWithLabel from '~/components/TagWithLabel.vue'
-import type { Ref } from 'vue'
 
 interface Service {
   title: string,
@@ -11,7 +10,7 @@ interface Service {
   price: string,
 }
 
-const services: Ref<Service[]> = ref([
+const services = ref<Service[]>([
   {
     title: 'Управление репутацией в интернете',
     title_short: 'ORM',

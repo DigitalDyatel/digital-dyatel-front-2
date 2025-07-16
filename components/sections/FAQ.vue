@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted, type Ref } from 'vue'
+import { onMounted } from 'vue'
 
-const activeQuestionIndex: Ref<number|null> = ref(null)
+const activeQuestionIndex = ref<number|null>(null)
 
 const answerTemplateRef = useTemplateRef<HTMLDivElement[]>('answerTemplateRef')
 const questionTemplateRef = useTemplateRef('questionTemplateRef')

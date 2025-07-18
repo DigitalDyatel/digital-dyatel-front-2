@@ -13,8 +13,13 @@
     "@splidejs/vue-splide": "^0.6.12",
     "nuxt": "^3.17.6",
     "nuxt-svgo": "^4.2.3",
+    "overlayscrollbars-vue": "^0.5.9",
     "sass": "^1.89.2",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vue-tsc": "^3.0.1"
   }
 }

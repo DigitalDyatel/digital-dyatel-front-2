@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "^0.6.12",
+    "@vueuse/components": "^13.5.0",
+    "@vueuse/core": "^13.5.0",
     "nuxt": "^3.17.6",
     "nuxt-svgo": "^4.2.3",
     "overlayscrollbars-vue": "^0.5.9",

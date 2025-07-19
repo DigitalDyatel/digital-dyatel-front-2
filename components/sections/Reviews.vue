@@ -1,11 +1,23 @@
 <script setup lang="ts">
 import Link from '~/components/Link.vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
+import { onClickOutside } from '@vueuse/core'
+
 import { onMounted } from 'vue'
 
 const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
 const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
 const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
+const scrollTemplateRef = useTemplateRef<typeof OverlayScrollbarsComponent[]>('scrollTemplateRef')
+const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
+
+const scrollDefaultOptions = {
+  scrollbars: {
+    visibility: 'hidden',
+    autoHide: 'never',
+  },
+}
 
 const splideIsMounted = ref(false)
 
@@ -71,23 +83,11 @@ const sliderOptions = {
 }
 
 const onClickPrev = () => {
-  splideTemplateRef.value?.splide?.Components.Autoplay.pause()
   splideTemplateRef.value?.splide.go('<')
-  splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
 const onClickNext = () => {
-  splideTemplateRef.value?.splide?.Components.Autoplay.pause()
   splideTemplateRef.value?.splide.go('>')
-  splideTemplateRef.value?.splide?.Components.Autoplay.play()
-}
-
-const onPointerOverSlider = () => {
-  splideTemplateRef.value?.splide?.Components.Autoplay.pause()
-}
-
-const onPointerOutSlider = () => {
-  //splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
 const onSplideMounted = () => {
@@ -98,15 +98,70 @@ const onClickReview = (i: number) => {
 
   if (i === activeReviewIndex.value) {
     activeReviewIndex.value = null
-
+    disableScrollbar(i)
     return
   }
 
   activeReviewIndex.value = i
+  enableScrollbar(i)
+}
+
+const initScrollbars = () => {
+  scrollTemplateRef.value.forEach((el, i) => {
+    disableScrollbar(i)
+  })
+
+  const splide = splideTemplateRef.value?.splide
+
+  if (splide) {
+    splide.on('click', (slide) => {
+      const realIndex = slide.index % reviews.value.length
+      const data = reviews.value[realIndex]
+
+      console.log(realIndex)
+
+      onClickReview(realIndex)
+
+      //console.log('Клик по слайду:', data)
+    })
+  }
+}
+
+const enableScrollbar = (i: number) => {
+  const osInstance = scrollTemplateRef.value[i].osInstance()
+
+  osInstance.elements().viewport.style.overflow = ''
+  osInstance.options({
+    scrollbars: {
+      visibility: 'auto',
+      autoHide: 'never',
+    }
+  })
+
+  const stopClickOutside = onClickOutside(reviewTemplateRef.value[i], () => {
+    activeReviewIndex.value = null
+    disableScrollbar(i)
+    stopClickOutside?.()
+  })
+}
+
+const disableScrollbar = (i: number) => {
+  const osInstance = scrollTemplateRef.value[i].osInstance()
+
+  osInstance.elements().viewport.scrollTo({top: 0, behavior: 'smooth'})
+  osInstance.elements().viewport.style.overflow = 'hidden'
+  osInstance.options({
+    scrollbars: {
+      visibility: 'hidden',
+      autoHide: 'never'
+    }
+  })
 }
 
 onMounted(() => {
   emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
+
+  initScrollbars()
 })
 </script>
 
@@ -115,22 +170,25 @@ onMounted(() => {
     <h2>Отзывы</h2>
     <div class="reviews__container">
       <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images" @splide:mounted="onSplideMounted">
-        <SplideSlide style="display: inline-block;" v-for="(review, i) in reviews" :key="review.name" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
-          <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}">
-            <div class="reviews__review-content">
-              <div class="reviews__review-header">
-                <img :src="'/img/team/' + review.img" :alt="review.name + ' - ' + review.position">
-                <Tag class="--blue" icon="chat-edit" />
+        <SplideSlide style="display: inline-block;" v-for="(review, i) in reviews" :key="review.name" >
+          <div class="reviews__review"  :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
+              <div class="reviews__review-content">
+                <div class="reviews__review-header">
+                  <img :src="'/img/team/' + review.img" :alt="review.name + ' - ' + review.position">
+                  <Tag class="--blue" icon="chat-edit" />
+                </div>
+                <div class="reviews__review-text-container">
+                  <div>{{ review.name }}</div>
+                  <div>{{ review.position }}</div>
+                  <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollTemplateRef" :options="scrollDefaultOptions">
+                    <div class="reviews__review-text">{{ review.text }}</div>
+                  </OverlayScrollbarsComponent>
+                </div>
               </div>
-              <div class="reviews__review-text-container">
-                <div>{{ review.name }}</div>
-                <div>{{ review.position }}</div>
-                <div>{{ review.text }}</div>
-              </div>
-            </div>
-            <div class="reviews__review-overlay">
+              <div class="reviews__review-overlay">
 
-            </div>
+              </div>
+
           </div>
         </SplideSlide>
       </Splide>

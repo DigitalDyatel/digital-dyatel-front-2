@@ -24,6 +24,9 @@
 @use 'sections/faq';
 @use 'sections/footer';
 
+/* imports */
+@import 'overlayscrollbars/styles/overlayscrollbars.css';
+
 * {
   box-sizing: border-box;
   font-family: Involve, serif;

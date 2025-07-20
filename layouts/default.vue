@@ -1,7 +1,9 @@
 <script setup lang="ts">
-
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 </script>
 
 <template>
-  <slot />
+  <OverlayScrollbarsComponent defer class="main-custom-scroll">
+    <slot />
+  </OverlayScrollbarsComponent>
 </template>

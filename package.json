@@ -15,6 +15,7 @@
     "@vueuse/core": "^13.5.0",
     "nuxt": "^3.17.6",
     "nuxt-svgo": "^4.2.3",
+    "nuxt-swiper": "^2.0.1",
     "overlayscrollbars-vue": "^0.5.9",
     "sass": "^1.89.2",
     "vue": "^3.5.17",

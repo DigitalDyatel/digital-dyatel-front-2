@@ -16,15 +16,15 @@ import Reviews from '~/components/sections/Reviews.vue'
 </script>
 
 <template>
-  <Hero />
+<!--  <Hero />
   <WhyManageReputation />
   <WhenNeedReputation />
   <OurServices />
-  <SolveProblems />
+  <SolveProblems />-->
   <OurAchievements />
-  <Team />
+<!--  <Team />
   <ContactForm />
-  <Cases />
+  <Cases />-->
   <Reviews />
   <TalkAboutUs />
   <FAQ />

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
   css: ['~/assets/scss/app.scss'],
-  modules: ['nuxt-svgo'],
+  modules: ['nuxt-svgo', 'nuxt-swiper'],
   svgo: {
     global: false,
     autoImportPath: false

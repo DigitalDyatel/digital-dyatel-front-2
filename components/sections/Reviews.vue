@@ -1,27 +1,9 @@
 <script setup lang="ts">
-import Link from '~/components/Link.vue'
-import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import type { SwiperContainer } from 'swiper/element'
 import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
+import Link from '~/components/Link.vue'
 import { onClickOutside } from '@vueuse/core'
-
 import { onMounted } from 'vue'
-
-const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
-const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
-const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
-const scrollTemplateRef = useTemplateRef<typeof OverlayScrollbarsComponent[]>('scrollTemplateRef')
-const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
-
-const scrollDefaultOptions = {
-  scrollbars: {
-    visibility: 'hidden',
-    autoHide: 'never',
-  },
-}
-
-const splideIsMounted = ref(false)
-
-const activeReviewIndex = ref<number|null>(null)
 
 interface Review {
   img: string,
@@ -34,21 +16,41 @@ interface Review {
   }
 }
 
+const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
+const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
+const scrollTemplateRef = useTemplateRef<typeof OverlayScrollbarsComponent[]>('scrollTemplateRef')
+const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
+
+const scrollDefaultOptions = {
+  scrollbars: {
+    visibility: 'hidden',
+    autoHide: 'never',
+  },
+}
+
+const marginLeft = ref('0')
+const middleScreenWidth = ref(0);
+const sectionIsReady = ref(false)
+const activeReviewIndex = ref<number|null>(null)
+
+useSwiper(swiperContainerTemplateRef)
+
 const reviews = ref<Review[]>([
   {
-    img: '1.png',
+    img: 'Alla Medvedeva.webp',
     name: 'Алла Медведева',
     position: 'Директор по маркетингу',
     text: 'До сотрудничества на нашем счету не было успешного взаимодействия с другими подрядчиками. Отсутствие наглядных результатов, непрозрачность процессов – частые проблемы, с которыми мы сталкивались раньше в работе. С командой мы работаем по договору, отслеживаем результаты на основании отчетности. Появились отзывы довольных клиентов и оценки на страницах наших ресурсов, поэтому делаем выводы о позитивных результатах!'
   },
   {
-    img: '1.png',
+    img: 'no-photo.jpg',
     name: 'Ольга Ильина',
     position: 'Руководитель отдела продаж',
     text: 'Шаблонность мышления и отсутствие индивидуального подхода – с этим мы часто сталкивались при работе с предыдущими репутационными агентствами. В результате сотрудничества с Digital Dyatel рейтинг нашей компании вырос до 4.8 баллов, а количество продаж увеличилось на 18%. Мы не просто ощущаем, что о нашей компании сформировался положительный образ в сети, но и видим это в цифрах'
   },
   {
-    img: '1.png',
+    img: 'Egor Aleksandrov.webp',
     name: 'Егор Александров',
     position: 'Основатель бизнеса',
     text: 'Мы – новички на рынке и сразу понимали, что без работы над управлением репутацией компании в сети нам не обойтись. В компании нам предложили четкий план действий, расписали все задачи, этапы работ и сроки. Оперативная обратная связь, рост запросов клиентов и продаж – то, за что мы продолжаем выбирать сотрудничество с компанией. Спасибо за качественную работу!',
@@ -58,40 +60,37 @@ const reviews = ref<Review[]>([
     }
   },
   {
-    img: '1.png',
+    img: 'Olga Yakovleva.webp',
     name: 'Ольга Яковлева',
     position: 'Директор по PR',
     text: 'Мы столкнулись с волной негативных отзывов о нашей компании в интернете. В агентство мы обратились с целью их скрытия и формирования положительного имиджа компании. Команде понадобилось 2 месяца, чтобы сделать поиск чистым, привлечь новый трафик и улучшить репутацию нашего бренда. Сейчас активно продолжаем работать над укреплением деловой репутации компании'
   },
   {
-    img: '1.png',
+    img: 'Inga Boltova.webp',
+    name: 'Инга Болтова',
+    position: 'Генеральный директор',
+    text: '3 месяца назад мы столкнулись с падением продаж в нашей компании. После анализа упоминаний и поисковых запросов, мы нашли отзывы и негатив, которые нанесли урон нашей репутации. Команда специалистов во время работы почистила данные из поиска и регулярно следит за комментариями и публикациями в интернете о нашей компании. Нас устраивает скорость работы, цена и постоянная обратная связь'
+  },
+  {
+    img: 'Inga Boltova.webp',
     name: 'Инга Болтова',
     position: 'Генеральный директор',
     text: '3 месяца назад мы столкнулись с падением продаж в нашей компании. После анализа упоминаний и поисковых запросов, мы нашли отзывы и негатив, которые нанесли урон нашей репутации. Команда специалистов во время работы почистила данные из поиска и регулярно следит за комментариями и публикациями в интернете о нашей компании. Нас устраивает скорость работы, цена и постоянная обратная связь'
   },
 ])
 
-const sliderOptions = {
-  perPage: reviews.value.length,
-  rewind : true,
-  arrows: false,
-  perMove: 1,
-  type: 'loop',
-  gap: 150,
-  speed: 1000,
-  interval: 2500
+const swiperProps = {
+  slidesPerView: reviews.value.length - 1,
+  loop: true,
+  spaceBetween: 24,
 }
 
 const onClickPrev = () => {
-  splideTemplateRef.value?.splide.go('<')
+  swiperContainerTemplateRef.value.swiper.slidePrev(500)
 }
 
 const onClickNext = () => {
-  splideTemplateRef.value?.splide.go('>')
-}
-
-const onSplideMounted = () => {
-  splideIsMounted.value = true
+  swiperContainerTemplateRef.value.swiper.slideNext(500)
 }
 
 const onClickReview = (i: number) => {
@@ -110,21 +109,6 @@ const initScrollbars = () => {
   scrollTemplateRef.value.forEach((el, i) => {
     disableScrollbar(i)
   })
-
-  const splide = splideTemplateRef.value?.splide
-
-  if (splide) {
-    splide.on('click', (slide) => {
-      const realIndex = slide.index % reviews.value.length
-      const data = reviews.value[realIndex]
-
-      console.log(realIndex)
-
-      onClickReview(realIndex)
-
-      //console.log('Клик по слайду:', data)
-    })
-  }
 }
 
 const enableScrollbar = (i: number) => {
@@ -159,40 +143,46 @@ const disableScrollbar = (i: number) => {
 }
 
 onMounted(() => {
-  emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
 
   initScrollbars()
+
+  marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
+  middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
+
+  nextTick(() => {
+    emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
+    sectionIsReady.value = true
+  })
 })
 </script>
 
 <template>
-  <section class="reviews" :class="{'--mounted': splideIsMounted}">
-    <h2>Отзывы</h2>
+  <section class="reviews" :class="{'--ready': sectionIsReady}" :style="{marginLeft: marginLeft}">
+    <h2 :style="{width: middleScreenWidth + 'px'}">Отзывы</h2>
     <div class="reviews__container">
-      <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images" @splide:mounted="onSplideMounted">
-        <SplideSlide style="display: inline-block;" v-for="(review, i) in reviews" :key="review.name" >
-          <div class="reviews__review"  :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
-              <div class="reviews__review-content">
-                <div class="reviews__review-header">
-                  <img :src="'/img/team/' + review.img" :alt="review.name + ' - ' + review.position">
-                  <Tag class="--blue" icon="chat-edit" />
-                </div>
-                <div class="reviews__review-text-container">
-                  <div>{{ review.name }}</div>
-                  <div>{{ review.position }}</div>
-                  <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollTemplateRef" :options="scrollDefaultOptions">
-                    <div class="reviews__review-text">{{ review.text }}</div>
-                  </OverlayScrollbarsComponent>
-                </div>
+      <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
+        <swiper-slide v-for="(review, i) in reviews" @click="onClickReview(i)">
+          <div class="reviews__review" :class="{'--active': i === activeReviewIndex, '--without-img': !review.img}" ref="reviewTemplateRef" :key="review.name">
+            <div class="reviews__review-content">
+              <div class="reviews__review-header">
+                <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
+                <Tag class="--blue" icon="chat-edit" />
               </div>
-              <div class="reviews__review-overlay">
-
+              <div class="reviews__review-text-container">
+                <div>{{ review.name }}</div>
+                <div>{{ review.position }}</div>
+                <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollTemplateRef" :options="scrollDefaultOptions">
+                  <div class="reviews__review-text">{{ review.text }}</div>
+                </OverlayScrollbarsComponent>
               </div>
+            </div>
+            <div class="reviews__review-overlay">
 
+            </div>
           </div>
-        </SplideSlide>
-      </Splide>
-      <div class="reviews__footer">
+        </swiper-slide>
+      </swiper-container>
+      <div class="reviews__footer" :style="{width: middleScreenWidth + 'px'}">
         <div ref="emptyTemplateRef" />
         <div class="reviews__controls">
           <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>

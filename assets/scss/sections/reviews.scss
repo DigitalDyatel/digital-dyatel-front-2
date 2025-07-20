@@ -1,9 +1,8 @@
 .reviews {
-  max-width: var(--max-width);
-  margin: 140px auto 0 auto;
+  margin-top: 140px;
   opacity: 0;
 
-  &.--mounted {
+  &.--ready {
     opacity: 1;
   }
 
@@ -30,6 +29,7 @@
     &.--active {
       img {
         width: 48px;
+        border-radius: 8px;
       }
 
       .reviews__review-overlay {
@@ -74,10 +74,12 @@
     justify-content: space-between;
     padding-right: 8px;
 
-    img {
+    > *:first-child {
       aspect-ratio: 1 / 1;
       width: 100px;
-      transition: width .3s ease-in-out;
+      transition: width .3s ease-in-out, border-radius .3s ease-in-out;
+      border-radius: 16px;
+      object-fit: cover;
     }
 
     .tag {
@@ -155,5 +157,9 @@
     .os-scrollbar-vertical .os-scrollbar-handle {
       max-height: 120px;
     }
+  }
+
+  &__container {
+    width: 1686px;
   }
 }

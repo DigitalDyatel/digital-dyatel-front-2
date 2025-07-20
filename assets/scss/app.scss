@@ -58,3 +58,9 @@ body {
 html {
   height: 100%;
 }
+
+.main-custom-scroll {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

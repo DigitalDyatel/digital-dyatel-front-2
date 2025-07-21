@@ -6,4 +6,4 @@ node version `v22.17.1`
 `yarn` - установить зависимости  
 `yarn dev` - запуск локальной разработки  
 `yarn build` - сбилдить проект
-`pm2 start ecosystem.config.js --only DD_2_FRONT:DEV`
+`pm2 start ecosystem.config.cjs --only DD_2_FRONT:DEV`

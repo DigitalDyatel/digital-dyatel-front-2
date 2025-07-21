@@ -21,14 +21,16 @@ const achievements = ref([
 
 <template>
   <section class="our-achievements">
-    <TagWithLabel class="--alternative-rotate" icon="award">#победители</TagWithLabel>
-    <h2>Наши достижения</h2>
-    <div class="our-achievements__achievements">
-      <div v-for="(achievement, i) in achievements">
-        <div>{{ i + 1 }}</div>
-        <svg><use :href="'/sprite.svg#done'" /></svg>
-        <div>{{ achievement.left }}</div>
-        <div>{{ achievement.right }}</div>
+    <div class="our-achievements__container">
+      <TagWithLabel class="--alternative-rotate" icon="award">#победители</TagWithLabel>
+      <h2>Наши достижения</h2>
+      <div class="our-achievements__achievements">
+        <div v-for="(achievement, i) in achievements">
+          <div>{{ i + 1 }}</div>
+          <svg><use :href="'/sprite.svg#done'" /></svg>
+          <div>{{ achievement.left }}</div>
+          <div>{{ achievement.right }}</div>
+        </div>
       </div>
     </div>
   </section>

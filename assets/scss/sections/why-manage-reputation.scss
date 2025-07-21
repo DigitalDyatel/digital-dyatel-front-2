@@ -2,9 +2,13 @@
   position: relative;
   max-width: var(--max-width);
   margin: 140px auto 0 auto;
-  background: var(--background-light-grey);
-  padding: 78px 24px;
-  border-radius: 32px;
+  padding: 0 48px;
+
+  &__container {
+    background: var(--background-light-grey);
+    padding: 78px 24px;
+    border-radius: 32px;
+  }
 
   .tag-with-label {
     position: absolute;

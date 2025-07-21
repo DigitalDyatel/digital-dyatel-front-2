@@ -2,6 +2,7 @@
   margin-top: 140px;
   opacity: 0;
   height: 608px;
+  overflow-x: hidden;
 
   &.--ready {
     opacity: 1;

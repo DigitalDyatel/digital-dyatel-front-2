@@ -116,7 +116,9 @@ const init = () => {
   videoTimelines.value = videoTimelinesData
 
   /** Т.к. ширина секции не ограничена, высчитываем середину экрана для других блоков */
-  marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
+  const computedStyles = window.getComputedStyle(document.querySelector('section.hero'))
+
+  marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
   middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
 
   nextTick(() => {

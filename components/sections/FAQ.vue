@@ -76,15 +76,17 @@ onMounted(() => {
 
 <template>
   <section class="faq">
-    <h2>Ответы на частые вопросы</h2>
     <div class="faq__container">
-      <div class="faq__questions" ref="questionsTemplateRef">
-        <div ref="questionTemplateRef" class="--init" v-for="(question, i) in questions" @click="toggle(i)" :key="i">
-          <div class="faq__question">
-            <div>{{ question.question }}</div>
-            <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+      <h2>Ответы на частые вопросы</h2>
+      <div class="faq__questions-container">
+        <div class="faq__questions" ref="questionsTemplateRef">
+          <div ref="questionTemplateRef" class="--init" v-for="(question, i) in questions" @click="toggle(i)" :key="i">
+            <div class="faq__question">
+              <div>{{ question.question }}</div>
+              <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+            </div>
+            <div class="faq__question-answer --init" ref="answerTemplateRef">{{ question.answer }}</div>
           </div>
-          <div class="faq__question-answer --init" ref="answerTemplateRef">{{ question.answer }}</div>
         </div>
       </div>
     </div>

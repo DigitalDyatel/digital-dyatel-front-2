@@ -51,48 +51,50 @@ const onClickService = (service: Service) => {
 
 <template>
   <section class="our-services">
-    <h2>Наши услуги</h2>
-    <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
-    <div class="our-services__services">
-      <div class="our-services__selected-service">
-        <div>
-          <h3>{{ selectedService.title }}</h3>
-          <h4 v-if="selectedService.subtitle">{{ selectedService.subtitle }}</h4>
-          <p>{{ selectedService.description }}</p>
-        </div>
-        <div>
-          <div class="our-services__price">
-            <div>{{ selectedService.price }}</div>
-            <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
+    <div class="our-services__container">
+      <h2>Наши услуги</h2>
+      <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
+      <div class="our-services__services">
+        <div class="our-services__selected-service">
+          <div>
+            <h3>{{ selectedService.title }}</h3>
+            <h4 v-if="selectedService.subtitle">{{ selectedService.subtitle }}</h4>
+            <p>{{ selectedService.description }}</p>
           </div>
-          <div class="our-services__buttons">
-            <Button class="--large">Оставьте заявку</Button>
-            <Button class="--large --quaternary">Подробнее</Button>
+          <div>
+            <div class="our-services__price">
+              <div>{{ selectedService.price }}</div>
+              <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
+            </div>
+            <div class="our-services__buttons">
+              <Button class="--large">Оставьте заявку</Button>
+              <Button class="--large --quaternary">Подробнее</Button>
+            </div>
+          </div>
+        </div>
+        <div class="our-services__services-list">
+          <div
+              v-for="service in services"
+              :class="{'--selected': service === selectedService}"
+              @click="onClickService(service)"
+          >
+            {{ service.title_short ?? service.title }}
           </div>
         </div>
       </div>
-      <div class="our-services__services-list">
-        <div
-            v-for="service in services"
-            :class="{'--selected': service === selectedService}"
-            @click="onClickService(service)"
-        >
-          {{ service.title_short ?? service.title }}
+      <div class="our-services__not-found">
+        <div>
+          <div>Не нашли для себя подходящий формат?</div>
+          <p>
+            <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
+            <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
+          </p>
+          <Button class="--large --tertiary">Получить предложение</Button>
         </div>
-      </div>
-    </div>
-    <div class="our-services__not-found">
-      <div>
-        <div>Не нашли для себя подходящий формат?</div>
-        <p>
-          <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
-          <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
-        </p>
-        <Button class="--large --tertiary">Получить предложение</Button>
-      </div>
-      <div>
-        <img src="/img/our-services-logo.png" alt="logo-alt">
-        <BackgroundLightBlue filled />
+        <div>
+          <img src="/img/our-services-logo.png" alt="logo-alt">
+          <BackgroundLightBlue filled />
+        </div>
       </div>
     </div>
   </section>

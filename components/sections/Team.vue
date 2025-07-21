@@ -92,7 +92,9 @@ const onPointerOutSlider = () => {
 
 onMounted(() => {
 
-  marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
+  const computedStyles = window.getComputedStyle(document.querySelector('section.hero'))
+
+  marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
 
   paginatorTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 

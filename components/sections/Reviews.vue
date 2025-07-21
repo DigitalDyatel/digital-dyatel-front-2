@@ -31,6 +31,7 @@ const middleScreenWidth = ref(0);
 const sectionIsReady = ref(false)
 const activeReviewIndex = ref<number|null>(null)
 const videoStatuses = ref<boolean[]>([])
+const videoTimelines = ref<number[]>([])
 
 useSwiper(swiperContainerTemplateRef)
 
@@ -103,13 +104,16 @@ const onClickReview = (i: number) => {
 const init = () => {
 
   const videoStatusesData = []
+  const videoTimelinesData = []
 
   scrollOrVideoTemplateRef.value.forEach((el, i) => {
     disableScrollbar(i)
-    videoStatusesData[0] = false
+    videoStatusesData[i] = false
+    videoTimelines[i] = '-100%'
   })
 
   videoStatuses.value = videoStatusesData
+  videoTimelines.value = videoTimelinesData
 
   /** Т.к. ширина секции не ограничена, высчитываем середину экрана для других блоков */
   marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
@@ -169,13 +173,26 @@ const disableScrollbar = (i: number) => {
 const toggleVideo = (i: number) => {
   const video: HTMLVideoElement = reviewTemplateRef.value[i].children[0] as HTMLVideoElement
 
+  const timeUpdateListener = () => {
+    videoTimelines.value[i] = (video.currentTime / video.duration) * 100
+  }
+
+  const endedListener = () => {
+    videoStatuses.value[i] = false
+    video.removeEventListener('timeupdate', timeUpdateListener)
+  }
+
   if (video.paused) {
     video.play()
     videoStatuses.value[i] = true
 
+    video.addEventListener('timeupdate', timeUpdateListener)
+    video.addEventListener('ended', endedListener)
+
     const stopClickOutside = onClickOutside(reviewTemplateRef.value[i], () => {
       video.pause()
       videoStatuses.value[i] = false
+      video.removeEventListener('timeupdate', timeUpdateListener)
       stopClickOutside?.()
     })
 
@@ -184,6 +201,7 @@ const toggleVideo = (i: number) => {
 
   videoStatuses.value[i] = false
   video.pause()
+  video.removeEventListener('timeupdate', timeUpdateListener)
 }
 
 onMounted(() => {
@@ -201,6 +219,7 @@ onMounted(() => {
             <template v-if="review.video">
               <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
               <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+              <div class="reviews__video-timeline" :style="{transform: 'translateX(' + videoTimelines[i] + '%)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
             </template>
             <template v-else>
               <div class="reviews__review-content">

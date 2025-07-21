@@ -182,4 +182,17 @@
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .16);
     pointer-events: none;
   }
+
+  &__video-timeline {
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background-color: var(--color-contrast);
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    transform: translateX(0);
+    will-change: transform;
+    transition: transform .5s linear;
+  }
 }

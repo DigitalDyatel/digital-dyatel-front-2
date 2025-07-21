@@ -199,7 +199,7 @@ onMounted(() => {
         <swiper-slide v-for="(review, i) in reviews" >
           <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
             <template v-if="review.video">
-              <video autoplay :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
+              <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
               <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
             </template>
             <template v-else>

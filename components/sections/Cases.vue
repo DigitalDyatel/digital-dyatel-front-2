@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { onMounted, type Ref } from 'vue'
+import { onMounted } from 'vue'
 import { categories as _categories } from '~/constants'
 
 let progressBarTrackWidth: number | undefined = undefined
-let categoriesContainerWidth: number | undefined = undefined
 
 const translateX = ref(0)
 
@@ -55,7 +54,6 @@ const updateDimensions = (index: number) => {
 
 onMounted(() => {
   progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
-  categoriesContainerWidth = categoriesContainerTemplateRef.value!.getBoundingClientRect().width
 
   setCategory(0)
 })

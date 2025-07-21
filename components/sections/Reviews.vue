@@ -10,15 +10,12 @@ interface Review {
   name: string,
   position: string,
   text: string,
-  icon?: {
-    icon: string,
-    text: string
-  }
+  video?: string
 }
 
 const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
 const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
-const scrollTemplateRef = useTemplateRef<typeof OverlayScrollbarsComponent[]>('scrollTemplateRef')
+const scrollOrVideoTemplateRef = useTemplateRef<(typeof OverlayScrollbarsComponent | HTMLVideoElement)[]>('scrollOrVideoTemplateRef')
 const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
 const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 
@@ -33,6 +30,7 @@ const marginLeft = ref('0')
 const middleScreenWidth = ref(0);
 const sectionIsReady = ref(false)
 const activeReviewIndex = ref<number|null>(null)
+const videoStatuses = ref<boolean[]>([])
 
 useSwiper(swiperContainerTemplateRef)
 
@@ -41,7 +39,8 @@ const reviews = ref<Review[]>([
     img: 'Alla Medvedeva.webp',
     name: 'Алла Медведева',
     position: 'Директор по маркетингу',
-    text: 'До сотрудничества на нашем счету не было успешного взаимодействия с другими подрядчиками. Отсутствие наглядных результатов, непрозрачность процессов – частые проблемы, с которыми мы сталкивались раньше в работе. С командой мы работаем по договору, отслеживаем результаты на основании отчетности. Появились отзывы довольных клиентов и оценки на страницах наших ресурсов, поэтому делаем выводы о позитивных результатах!'
+    text: 'До сотрудничества на нашем счету не было успешного взаимодействия с другими подрядчиками. Отсутствие наглядных результатов, непрозрачность процессов – частые проблемы, с которыми мы сталкивались раньше в работе. С командой мы работаем по договору, отслеживаем результаты на основании отчетности. Появились отзывы довольных клиентов и оценки на страницах наших ресурсов, поэтому делаем выводы о позитивных результатах!',
+    video: 'example.mp4'
   },
   {
     img: 'no-photo.jpg',
@@ -54,10 +53,6 @@ const reviews = ref<Review[]>([
     name: 'Егор Александров',
     position: 'Основатель бизнеса',
     text: 'Мы – новички на рынке и сразу понимали, что без работы над управлением репутацией компании в сети нам не обойтись. В компании нам предложили четкий план действий, расписали все задачи, этапы работ и сроки. Оперативная обратная связь, рост запросов клиентов и продаж – то, за что мы продолжаем выбирать сотрудничество с компанией. Спасибо за качественную работу!',
-    icon: {
-      icon: '',
-      text: ''
-    }
   },
   {
     img: 'Olga Yakovleva.webp',
@@ -105,14 +100,38 @@ const onClickReview = (i: number) => {
   enableScrollbar(i)
 }
 
-const initScrollbars = () => {
-  scrollTemplateRef.value.forEach((el, i) => {
+const init = () => {
+
+  const videoStatusesData = []
+
+  scrollOrVideoTemplateRef.value.forEach((el, i) => {
     disableScrollbar(i)
+    videoStatusesData[0] = false
+  })
+
+  videoStatuses.value = videoStatusesData
+
+  /** Т.к. ширина секции не ограничена, высчитываем середину экрана для других блоков */
+  marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
+  middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
+
+  nextTick(() => {
+    emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
+    sectionIsReady.value = true
   })
 }
 
+const isHTMLVideoElement = (el: unknown): el is HTMLVideoElement =>  {
+  return el instanceof HTMLVideoElement;
+}
+
 const enableScrollbar = (i: number) => {
-  const osInstance = scrollTemplateRef.value[i].osInstance()
+
+  if (isHTMLVideoElement(scrollOrVideoTemplateRef.value[i])) {
+    return
+  }
+
+  const osInstance = scrollOrVideoTemplateRef.value[i].osInstance()
 
   osInstance.elements().viewport.style.overflow = ''
   osInstance.options({
@@ -130,7 +149,12 @@ const enableScrollbar = (i: number) => {
 }
 
 const disableScrollbar = (i: number) => {
-  const osInstance = scrollTemplateRef.value[i].osInstance()
+
+  if (isHTMLVideoElement(scrollOrVideoTemplateRef.value[i])) {
+    return
+  }
+
+  const osInstance = scrollOrVideoTemplateRef.value[i].osInstance()
 
   osInstance.elements().viewport.scrollTo({top: 0, behavior: 'smooth'})
   osInstance.elements().viewport.style.overflow = 'hidden'
@@ -142,17 +166,28 @@ const disableScrollbar = (i: number) => {
   })
 }
 
+const toggleVideo = (i: number) => {
+  const video: HTMLVideoElement = reviewTemplateRef.value[i].children[0] as HTMLVideoElement
+
+  if (video.paused) {
+    video.play()
+    videoStatuses.value[i] = true
+
+    const stopClickOutside = onClickOutside(reviewTemplateRef.value[i], () => {
+      video.pause()
+      videoStatuses.value[i] = false
+      stopClickOutside?.()
+    })
+
+    return
+  }
+
+  videoStatuses.value[i] = false
+  video.pause()
+}
+
 onMounted(() => {
-
-  initScrollbars()
-
-  marginLeft.value = (window.getComputedStyle(document.querySelector('section.our-achievements')!)).marginLeft
-  middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
-
-  nextTick(() => {
-    emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
-    sectionIsReady.value = true
-  })
+  init()
 })
 </script>
 
@@ -161,24 +196,28 @@ onMounted(() => {
     <h2 :style="{width: middleScreenWidth + 'px'}">Отзывы</h2>
     <div class="reviews__container">
       <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
-        <swiper-slide v-for="(review, i) in reviews" @click="onClickReview(i)">
-          <div class="reviews__review" :class="{'--active': i === activeReviewIndex, '--without-img': !review.img}" ref="reviewTemplateRef" :key="review.name">
-            <div class="reviews__review-content">
-              <div class="reviews__review-header">
-                <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
-                <Tag class="--blue" icon="chat-edit" />
+        <swiper-slide v-for="(review, i) in reviews" >
+          <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
+            <template v-if="review.video">
+              <video autoplay :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
+              <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+            </template>
+            <template v-else>
+              <div class="reviews__review-content">
+                <div class="reviews__review-header">
+                  <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
+                  <Tag class="--blue" icon="chat-edit" />
+                </div>
+                <div class="reviews__review-text-container">
+                  <div>{{ review.name }}</div>
+                  <div>{{ review.position }}</div>
+                  <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollOrVideoTemplateRef" :options="scrollDefaultOptions">
+                    <div class="reviews__review-text">{{ review.text }}</div>
+                  </OverlayScrollbarsComponent>
+                </div>
               </div>
-              <div class="reviews__review-text-container">
-                <div>{{ review.name }}</div>
-                <div>{{ review.position }}</div>
-                <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollTemplateRef" :options="scrollDefaultOptions">
-                  <div class="reviews__review-text">{{ review.text }}</div>
-                </OverlayScrollbarsComponent>
-              </div>
-            </div>
-            <div class="reviews__review-overlay">
-
-            </div>
+              <div class="reviews__review-overlay" />
+            </template>
           </div>
         </swiper-slide>
       </swiper-container>

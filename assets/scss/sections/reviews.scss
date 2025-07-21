@@ -162,4 +162,24 @@
   &__container {
     width: 1686px;
   }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__video-controls {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: rgba(255, 255, 255, .24);
+    padding: 16px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: var(--color-white-contrast);
+    border-radius: 100px;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .16);
+    pointer-events: none;
+  }
 }

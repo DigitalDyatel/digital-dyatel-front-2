@@ -1,0 +1,108 @@
+.sharing-experience {
+  margin: 140px auto 0 auto;
+  max-width: var(--max-width);
+  padding: 0 48px;
+
+  &__container {
+    border-radius: 32px;
+    padding: 78px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--color-white-contrast);
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-image .5s ease-in-out;
+
+    .btn {
+      margin-top: 36px;
+      width: 304px;
+    }
+  }
+
+  &__slider {
+    margin-top: 48px;
+    height: 16px;
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  &__slider-point {
+    background: rgba(255, 255, 255, .24);
+    height: 16px;
+    width: 16px;
+    border-radius: 100px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid rgba(255, 255, 255, .16);
+    transition: width 1s ease-in-out;
+    will-change: width;
+
+    &.--active {
+      width: 120px;
+
+      .sharing-experience__slider-point-timeline {
+        display: block;
+      }
+    }
+  }
+
+  &__slider-point-timeline {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 0;
+    left: 0;
+    height: 14px;
+    width: 100%;
+    transform: translateX(-100%);
+    animation-name: filling-timeline;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    will-change: transform;
+
+    &.--animation-is-active {
+      animation-play-state: running;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-5xl);
+  }
+
+  h3 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-3xl);
+    text-align: center;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__subtitle {
+    text-align: center;
+    margin-top: 16px;
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+
+    span {
+      line-height: 1.2;
+      display: block;
+    }
+  }
+
+  &__article-subtitle {
+    font-size: var(--font-size-md);
+    text-align: center;
+    color: var(--color-white-contrast);
+    margin-top: 8px;
+  }
+}

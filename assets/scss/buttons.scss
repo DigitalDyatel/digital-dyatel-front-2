@@ -40,6 +40,11 @@
     background-color: var(--color-light-grey);
   }
 
+  &.--white {
+    color: var(--color-primary);
+    background-color: var(--color-white-contrast);
+  }
+
   &.--large {
     padding: 24px;
     font-size: var(--font-size-lg);

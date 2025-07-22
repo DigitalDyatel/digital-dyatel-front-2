@@ -18,6 +18,7 @@
 @use 'sections/team';
 @use 'sections/reviews';
 @use 'sections/talk-about-us';
+@use 'sections/sharing-experience';
 @use 'sections/contact-form';
 @use 'sections/contact-form-alt';
 @use 'sections/cases';
@@ -63,4 +64,8 @@ html {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  .os-scrollbar-handle {
+    background-color: var(--color-contrast);
+  }
 }

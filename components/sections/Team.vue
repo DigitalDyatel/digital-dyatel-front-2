@@ -2,7 +2,7 @@
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import Link from '~/components/Link.vue'
 import TagAsLabel from '~/components/TagAsLabel.vue'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
 const marginLeft = ref('0')
 
@@ -107,6 +107,10 @@ onMounted(() => {
   })
 
   io.observe(teamSectionTemplateRef.value!)
+})
+
+onUnmounted(() => {
+  io.disconnect()
 })
 </script>
 

@@ -1,5 +1,5 @@
 .btn {
-  padding: 1rem;
+  padding: 16px;
   transition: var(--base-transition);
   cursor: pointer;
   font-size: var(--font-size-base);
@@ -9,7 +9,7 @@
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 0.75rem;
+  border-radius: 12px;
   text-align: center;
 
   > div {
@@ -17,12 +17,12 @@
   }
 
   svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
   }
 
   &.--rounded {
-    border-radius: 6.25rem;
+    border-radius: 100px;
   }
 
   &.--secondary {
@@ -46,7 +46,7 @@
   }
 
   &.--large {
-    padding: 1.5rem;
+    padding: 24px;
     font-size: var(--font-size-lg);
   }
 
@@ -66,11 +66,11 @@
     border: 2px solid var(--color-light-grey);
     background: var(--color-white);
     font-weight: var(--font-weight-normal);
-    padding: 0.75rem;
+    padding: 12px;
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 24px;
+      height: 24px;
     }
   }
 }

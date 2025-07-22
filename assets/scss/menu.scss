@@ -1,15 +1,15 @@
 .menu {
   background: var(--color-white);
-  border-radius: 6.25rem;
+  border-radius: 100px;
   display: flex;
-  padding: 0.625rem;
+  padding: 10px;
   justify-content: space-between;
 
   &__left {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
 
     div:last-child {
       display: flex;
@@ -38,13 +38,13 @@
 
   &__list {
     display: flex;
-    gap: 2rem;
+    gap: 32px;
 
     &-item {
       user-select: none;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
       font-size: var(--font-size-base);
       cursor: pointer;
       color: var(--color-primary);
@@ -58,8 +58,8 @@
       }
 
       svg {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 24px;
+        height: 24px;
       }
     }
   }
@@ -68,10 +68,10 @@
 
     > div {
       &:nth-child(2) {
-        margin-left: 0.25rem;
+        margin-left: 4px;
       }
       &:last-child {
-        margin-left: 0.75rem;
+        margin-left: 12px;
       }
     }
   }

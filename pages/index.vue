@@ -7,6 +7,7 @@ import OurServices from '~/components/sections/OurServices.vue'
 import SolveProblems from '~/components/sections/SolveProblems.vue'
 import OurAchievements from '~/components/sections/OurAchievements.vue'
 import TalkAboutUs from '~/components/sections/TalkAboutUs.vue'
+import SharingExperience from '~/components/sections/SharingExperience.vue'
 import Team from '~/components/sections/Team.vue'
 import ContactForm from '~/components/sections/ContactForm.vue'
 import Cases from '~/components/sections/Cases.vue'
@@ -27,6 +28,7 @@ import Reviews from '~/components/sections/Reviews.vue'
   <Cases />
   <Reviews />
   <TalkAboutUs />
+<!--  SharingExperience-->
   <FAQ />
   <ContactFormAlt />
   <Footer />

@@ -97,7 +97,7 @@
         }
       }
 
-      &:hover {
+      @media (hover: hover) {
         .why-manage-reputation__card-rating div {
           &:first-child {
             opacity: 0;

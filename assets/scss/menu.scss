@@ -1,9 +1,25 @@
 .menu {
-  background: var(--color-white);
-  border-radius: 100px;
-  display: flex;
-  padding: 10px;
-  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  margin: 16px auto 0 auto;
+  z-index: 2;
+
+  &__container {
+    max-width: var(--max-width);
+    padding: 0 48px;
+    margin: 0 auto;
+  }
+
+  &__flex {
+    background: var(--color-white);
+    border-radius: 100px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 9999;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px 0;
+  }
 
   &__left {
     cursor: pointer;

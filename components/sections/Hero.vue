@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Menu from '~/components/Menu.vue'
 import Button from '~/components/Button.vue'
 
 const tags = ref([
@@ -13,7 +12,6 @@ const tags = ref([
 
 <template>
   <section class="hero">
-    <Menu />
     <div class="hero__container">
       <div class="hero__left">
         <h1>

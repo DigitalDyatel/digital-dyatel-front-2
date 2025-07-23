@@ -15,6 +15,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      white-space: nowrap;
 
       div {
         font-weight: var(--font-weight-medium);
@@ -40,6 +41,14 @@
     display: flex;
     gap: 32px;
 
+    @media (min-width: 1024px) and (max-width: 1130px) {
+      gap: 24px;
+    }
+
+    @media (min-width: 1130px) and (max-width: 1511px) {
+      gap: clamp(16px, 4.188vw - 31.28px, 32px);
+    }
+
     &-item {
       user-select: none;
       display: flex;
@@ -48,6 +57,10 @@
       font-size: var(--font-size-base);
       cursor: pointer;
       color: var(--color-primary);
+
+      > div {
+        white-space: nowrap;
+      }
 
       &:hover {
         color: var(--color-contrast);
@@ -65,13 +78,17 @@
   }
 
   &__right {
+    display: inline-flex;
 
     > div {
-      &:nth-child(2) {
-        margin-left: 4px;
-      }
       &:last-child {
         margin-left: 12px;
+      }
+    }
+
+    .btn.--rounded.--type-grey {
+      @media (min-width: 1024px) and (max-width: 1130px) {
+        display: none;
       }
     }
   }

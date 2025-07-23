@@ -119,7 +119,7 @@
     border: 2px solid white;
     border-radius: 50%;
     height: 532px;
-    width: 532px;
+    aspect-ratio: 1 / 1;
     mask-image: linear-gradient(#fff, #fff0);
   }
 
@@ -143,6 +143,7 @@
       left: 50%;
       z-index: 3;
       backdrop-filter: blur(12.5px);
+      white-space: nowrap;
 
       &:nth-child(1) {
         transform: translate(-156px, -188px);
@@ -228,6 +229,10 @@
 
     .btn:first-child {
       flex-grow: 1;
+      
+      @media (min-width: 1024px) and (max-width: 1350px) {
+        font-size: clamp(17px, 0.92vw + 7.584px, 20px);
+      }
     }
   }
 }

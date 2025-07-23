@@ -17,10 +17,19 @@
     background: var(--color-white);
     border-radius: 48px;
 
+    @media (min-width: 1024px) and (max-width: 1349px) {
+      font-size: clamp(40px, 2.462vw + 14.8px, 48px);
+      border-radius: clamp(40px, 2.462vw + 14.8px, 48px);
+    }
+
     h1 {
       font-size: var(--font-size-6xl);
       font-weight: var(--font-weight-semi-bold);
       color: var(--color-primary);
+
+      @media (min-width: 1024px) and (max-width: 1349px) {
+        font-size: clamp(58px, 3.067vw + 26.592px, 68px);
+      }
 
       span {
         display: block;
@@ -35,6 +44,10 @@
     margin-top: 52px;
     gap: 8px;
 
+    @media (min-width: 1024px) and (max-width: 1349px) {
+      margin-top: clamp(43.33px, 2.769vw + 14.64px, 52px);
+    }
+
     div {
       font-size: var(--font-size-md);
       color: var(--color-tertiary);
@@ -43,6 +56,11 @@
       padding: 16px;
       border-radius: 12px;
       white-space: nowrap;
+
+      @media (min-width: 1024px) and (max-width: 1349px) {
+        font-size: clamp(15px, 0.923vw + 5.552px, 18px);
+        padding: clamp(13.33px, 0.923vw + 3.552px, 16px);
+      }
     }
   }
 
@@ -75,6 +93,10 @@
         animation-name: pulse;
         animation-iteration-count: infinite;
         animation-duration: 3s;
+
+        @media (min-width: 1024px) and (max-width: 1349px) {
+          display: none;
+        }
 
         &:nth-child(1) {
           top: 50%;
@@ -121,6 +143,10 @@
     height: 532px;
     aspect-ratio: 1 / 1;
     mask-image: linear-gradient(#fff, #fff0);
+
+    @media (min-width: 1024px) and (max-width: 1349px) {
+      height: clamp(360px, 52.923vw - 181.936px, 532px)
+    }
   }
 
   &__advantages {
@@ -144,6 +170,11 @@
       z-index: 3;
       backdrop-filter: blur(12.5px);
       white-space: nowrap;
+
+      @media (min-width: 1024px) and (max-width: 1349px) {
+        font-size: clamp(15px, 0.923vw + 5.552px, 18px);
+        padding: clamp(8.12px, 1.231vw + 4.608px, 12px) clamp(10.82px, 1.846vw - 8.912px, 16px);
+      }
 
       &:nth-child(1) {
         transform: translate(-156px, -188px);
@@ -223,6 +254,10 @@
     gap: 4px;
     margin-top: 52px;
 
+    @media (min-width: 1024px) and (max-width: 1349px) {
+      margin-top: clamp(43.33px, 2.769vw + 14.64px, 52px);
+    }
+
     .btn {
       max-width: 500px;
     }
@@ -230,8 +265,9 @@
     .btn:first-child {
       flex-grow: 1;
       
-      @media (min-width: 1024px) and (max-width: 1350px) {
-        font-size: clamp(17px, 0.92vw + 7.584px, 20px);
+      @media (min-width: 1024px) and (max-width: 1349px) {
+        font-size: clamp(17.05px, 0.92vw + 7.584px, 20px);
+        padding: clamp(20.47px, 1.231vw + 7.392px, 24px);
       }
     }
   }

@@ -27,7 +27,7 @@ const tags = ref([
           </div>
         </div>
         <div class="hero__button-container">
-          <Button class="--large">
+          <Button class="--large --no-wrap">
             Получить бесплатный SERM аудит
           </Button>
           <Button class="--large">

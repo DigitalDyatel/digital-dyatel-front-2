@@ -21,6 +21,10 @@
     height: 24px;
   }
 
+  &.--no-wrap {
+    white-space: nowrap;
+  }
+
   &.--rounded {
     border-radius: 100px;
   }

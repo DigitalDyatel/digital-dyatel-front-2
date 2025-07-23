@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import LogoAlt from '~/assets/svg/logo-alt.svg?component'
+import { type CustomRuntimeConfig } from '~/types'
 
-const phones = ref([
-  {
-    phone: '+7 926 387 5461',
-    description: 'Связаться напрямую'
-  }
-])
+const config = useRuntimeConfig() as CustomRuntimeConfig
+
+const phones = ref(config.public.phones)
+const metro = ref(config.public.legal.metro.map((metro, i) => {
+  return i < config.public.legal.metro.length - 1 ? metro + ',' : metro
+}))
 </script>
 
 <template>
@@ -34,25 +35,22 @@ const phones = ref([
           </div>
         </div>
         <div class="footer__column --contacts">
-          <div><a class="footer__link" href="/">info@digitaldyatel.ru</a></div>
-          <div><a class="footer__link --underline" href="/">Написать в WhatsApp</a></div>
-          <div><a class="footer__link --underline" href="/">Написать в Telegram</a></div>
+          <div><a class="footer__link" href="/">{{ config.public.email }}</a></div>
+          <div><a class="footer__link --underline" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
+          <div><a class="footer__link --underline" :href="config.public.telegram">Написать в Telegram</a></div>
         </div>
         <div class="footer__column --address">
-          <div class="footer__text --primary --no-wrap">г. Москва, Дербеневская набережная, д.11</div>
-          <div class="footer__text">Режим работы: будние дни 10:00–19:00</div>
+          <div class="footer__text --primary --no-wrap">{{ config.public.legal.address }}</div>
+          <div class="footer__text">Режим работы: {{ config.public.legal.openingHours }}</div>
           <div class="footer__metro">
             <svg><use :href="'/sprite.svg#metro'" /></svg>
-            <div>
-              <span>Павелецкая,</span>
-              <span>Пролетарская</span>
-            </div>
+            <div><span v-for="_metro in metro">{{ _metro }}</span></div>
           </div>
         </div>
       </div>
       <div class="footer__line">
         <div class="footer__column">
-          <div class="footer__text --no-wrap">ИП Дятлова Евгения Александровна, ИНН: 771615282860, ОГРНИП: 322774600601138</div>
+          <div class="footer__text --no-wrap">{{ config.public.legal.details}}</div>
         </div>
         <div class="footer__column">
           <a class="footer__link --secondary" href="/">Политика конфиденциальности</a>

@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import config from './config.env.json'
+
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: config
+  },
   app: {
     head: {
       meta: [

@@ -96,7 +96,7 @@ onMounted(() => {
               Заказать звонок
             </Button>
           </div>
-          <transition name="fade-in">
+          <transition name="menu-contact-us-fade-in">
             <div ref="contactUsTemplateRef" class="menu__contact-us" v-if="contactUsIsOpen">
               <div class="menu__contact-us-line">
                 <div class="menu__contact-us-header">Связаться с нами</div>
@@ -124,17 +124,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: all .1s ease-out;
-}
-.fade-in-enter-from {
-  opacity: 0;
-  transform: rotateX(-30deg) scale(.9);
-}
-.fade-in-leave-to {
-  opacity: 0;
-  transform: rotateX(-30deg) scale(.9);
-}
-</style>

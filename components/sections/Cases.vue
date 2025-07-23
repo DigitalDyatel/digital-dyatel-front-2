@@ -84,7 +84,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="cases__active-category-container">
-        <transition name="slide-fade" mode="out-in">
+        <transition name="cases-slide-fade" mode="out-in">
           <div class="cases__active-category" :key="activeCategoryIndex">
             <template v-for="_case in categories[activeCategoryIndex].cases">
               <div class="cases__case-container" v-if="_case instanceof Array">
@@ -155,17 +155,3 @@ onMounted(() => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.slide-fade-enter-active, .slide-fade-leave-active {
-  transition: all 0.5s ease-out;
-}
-.slide-fade-enter-from {
-  transform: translateX(100%);
-  opacity: 0;
-}
-.slide-fade-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-</style>

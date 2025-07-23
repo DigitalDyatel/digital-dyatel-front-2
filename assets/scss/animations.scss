@@ -72,3 +72,29 @@
     transform: translateX(0);
   }
 }
+
+/* components/Menu.vue */
+.menu-contact-us-fade-in {
+  &-enter-active, &-leave-active {
+    transition: all .1s ease-out;
+  }
+  &-enter-from, &-leave-to {
+    opacity: 0;
+    transform: rotateX(-30deg) scale(.9);
+  }
+}
+
+/* components/sections/Cases.vue */
+.cases-slide-fade {
+  &-enter-active, &-leave-active {
+    transition: all 0.5s ease-out;
+  }
+  &-enter-from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  &-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}

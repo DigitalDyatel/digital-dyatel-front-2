@@ -97,30 +97,32 @@
         }
       }
 
-      @media (hover: hover) {
-        .why-manage-reputation__card-rating div {
-          &:first-child {
-            opacity: 0;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          .why-manage-reputation__card-rating div {
+            &:first-child {
+              opacity: 0;
+            }
+
+            &:last-child {
+              opacity: 1;
+            }
           }
 
-          &:last-child {
-            opacity: 1;
-          }
-        }
+          .why-manage-reputation__card-review-count div {
+            &:first-child {
+              opacity: 0;
+            }
 
-        .why-manage-reputation__card-review-count div {
-          &:first-child {
-            opacity: 0;
+            &:last-child {
+              opacity: 1;
+            }
           }
 
-          &:last-child {
-            opacity: 1;
-          }
-        }
-
-        .why-manage-reputation__card-icon svg {
-          &:last-child {
-            opacity: 1;
+          .why-manage-reputation__card-icon svg {
+            &:last-child {
+              opacity: 1;
+            }
           }
         }
       }

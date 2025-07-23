@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
+import { type CustomRuntimeConfig } from '~/types'
+
+const config = useRuntimeConfig() as CustomRuntimeConfig
 
 interface MenuItem {
   label: string,
@@ -62,7 +65,7 @@ onMounted(() => {
             </svg>
           </Button>
           <Button class="--rounded --type-grey">
-            info@digitaldyatel.ru
+            {{ config.public.email }}
           </Button>
           <Button class="--rounded">
             Заказать звонок

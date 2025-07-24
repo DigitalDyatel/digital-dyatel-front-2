@@ -32,6 +32,14 @@
   box-sizing: border-box;
   font-family: Involve, serif;
   line-height: 1;
+
+  &:focus-visible {
+    outline: 1px solid var(--color-contrast);
+  }
+}
+
+button {
+  border: none;
 }
 
 a {

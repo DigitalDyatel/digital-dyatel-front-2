@@ -1,6 +1,7 @@
 :root {
   --max-width: 1640px;
   --base-transition: color .5s ease;
+  --default-transition-timing-function: cubic-bezier(.4,0,.2,1);
 
   --color-contrast: #FE3E0E;
   --color-primary: #505662;

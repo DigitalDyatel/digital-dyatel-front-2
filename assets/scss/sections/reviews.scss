@@ -108,6 +108,13 @@
       padding: 12px;
       cursor: pointer;
       user-select: none;
+      transition: all .3s var(--default-transition-timing-function);
+
+      @media (hover: hover) {
+        &:hover {
+          transform: scale(102%);
+        }
+      }
 
       &.--disabled {
         background-color: #e8eef4;

@@ -95,7 +95,7 @@ onMounted(() => {
                 <use :href="'/sprite.svg#search'"/>
               </svg>
             </Button>
-            <Button class="--rounded --type-grey" @click="copyEmailToClipboard">
+            <Button class="--rounded --type-grey" @pointerdown="copyEmailToClipboard" @contextmenu.prevent>
               {{ config.public.email }}
             </Button>
             <Button class="--rounded" @click="toggleContactUs">

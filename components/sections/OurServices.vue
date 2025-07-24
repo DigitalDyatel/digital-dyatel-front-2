@@ -73,13 +73,13 @@ const onClickService = (service: Service) => {
           </div>
         </div>
         <div class="our-services__services-list">
-          <div
+          <button
               v-for="service in services"
               :class="{'--selected': service === selectedService}"
               @click="onClickService(service)"
           >
             {{ service.title_short ?? service.title }}
-          </div>
+          </button>
         </div>
       </div>
       <div class="our-services__not-found">

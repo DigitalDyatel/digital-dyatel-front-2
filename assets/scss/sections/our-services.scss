@@ -118,12 +118,22 @@
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-lg);
 
-    > div {
+    > button {
       background-color: var(--color-light-grey);
       padding: 24px;
       border-radius: 12px;
       color: var(--color-primary);
       cursor: pointer;
+      text-align: left;
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-medium);
+      transition: all .3s var(--default-transition-timing-function);
+
+      @media (hover: hover) {
+        &:hover {
+          transform: scale(102%);
+        }
+      }
 
       &.--selected {
         color: var(--color-white-contrast);

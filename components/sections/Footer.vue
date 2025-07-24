@@ -5,6 +5,7 @@ import { type CustomRuntimeConfig } from '~/types'
 const config = useRuntimeConfig() as CustomRuntimeConfig
 
 const notification = useNotification()
+const device = useDevice()
 
 const phones = ref(config.public.phones)
 const metro = ref(config.public.legal.metro.map((metro, i) => {
@@ -12,7 +13,6 @@ const metro = ref(config.public.legal.metro.map((metro, i) => {
 }))
 
 const copyEmailToClipboard = async (e) => {
-  e.preventDefault()
   await navigator.clipboard.writeText(config.public.email)
   notification.fire({
     title: 'Email скопирован!',
@@ -20,9 +20,29 @@ const copyEmailToClipboard = async (e) => {
   })
 }
 
+const clickOnPhone = async (phone) => {
+  if (device.isMobile()) {
+    const a = document.createElement('a')
+    a.href = 'tel:' + phone.phoneRaw
+    a.click()
+    a.remove()
+    return
+  }
+
+  await navigator.clipboard.writeText(phone.phoneRaw)
+  notification.fire({
+    title: 'Телефон скопирован!',
+    class: 'izi-toast --white',
+  })
+}
+
 const callMeModal = () => {
   alert(1)
 }
+
+onMounted(() => {
+
+})
 </script>
 
 <template>
@@ -44,15 +64,15 @@ const callMeModal = () => {
           <div><a class="footer__link --underline" @click="callMeModal()">Позвоните мне</a></div>
           <div class="footer__phones">
             <div class="footer__phone" v-for="phone in phones">
-              <a class="footer__link">{{ phone.phone }}</a>
+              <a class="footer__link --underline-on-hover" @pointerdown="clickOnPhone(phone)" @contextmenu.prevent>{{ phone.phone }}</a>
               <div>{{ phone.description }}</div>
             </div>
           </div>
         </div>
         <div class="footer__column --contacts">
-          <div><a class="footer__link" @click="copyEmailToClipboard">{{ config.public.email }}</a></div>
-          <div><a class="footer__link --underline" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
-          <div><a class="footer__link --underline" :href="config.public.telegram">Написать в Telegram</a></div>
+          <div><a class="footer__link --underline-on-hover" @pointerdown="copyEmailToClipboard" @contextmenu.prevent>{{ config.public.email }}</a></div>
+          <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
+          <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram">Написать в Telegram</a></div>
         </div>
         <div class="footer__column --address">
           <div class="footer__text --primary --no-wrap">{{ config.public.legal.address }}</div>

@@ -48,6 +48,17 @@
     display: inline-block;
     font-size: var(--font-size-base);
     cursor: pointer;
+    border-bottom: 1px solid transparent;
+
+    &.--underline-on-hover {
+      &:hover {
+        border-bottom: 1px solid var(--color-white-contrast);
+      }
+    }
+
+    &.--user-select-none {
+      user-select: none;
+    }
 
     &.--underline {
       border-bottom: 1px solid var(--color-white-contrast);
@@ -94,10 +105,6 @@
 
     &:first-child {
       margin-top: 0;
-    }
-
-    > a {
-      border-bottom: none;
     }
 
     div {

@@ -73,6 +73,13 @@
       font-size: var(--font-size-base);
       cursor: pointer;
       color: var(--color-primary);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+
+      @media (hover: hover) {
+        &:hover {
+          transform: scale(103%);
+        }
+      }
 
       > div {
         white-space: nowrap;
@@ -161,5 +168,11 @@
   &__contact-us-social-group {
     display: inline-flex;
     gap: 8px;
+  }
+
+  &__button-group {
+    > .btn:last-child {
+      margin-left: 12px;
+    }
   }
 }

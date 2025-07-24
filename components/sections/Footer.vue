@@ -4,10 +4,25 @@ import { type CustomRuntimeConfig } from '~/types'
 
 const config = useRuntimeConfig() as CustomRuntimeConfig
 
+const notification = useNotification()
+
 const phones = ref(config.public.phones)
 const metro = ref(config.public.legal.metro.map((metro, i) => {
   return i < config.public.legal.metro.length - 1 ? metro + ',' : metro
 }))
+
+const copyEmailToClipboard = async (e) => {
+  e.preventDefault()
+  await navigator.clipboard.writeText(config.public.email)
+  notification.fire({
+    title: 'Email скопирован!',
+    class: 'izi-toast --white',
+  })
+}
+
+const callMeModal = () => {
+  alert(1)
+}
 </script>
 
 <template>
@@ -26,7 +41,7 @@ const metro = ref(config.public.legal.metro.map((metro, i) => {
           </div>
         </div>
         <div class="footer__column --phones">
-          <div><a class="footer__link --underline" href="/">Позвоните мне</a></div>
+          <div><a class="footer__link --underline" @click="callMeModal()">Позвоните мне</a></div>
           <div class="footer__phones">
             <div class="footer__phone" v-for="phone in phones">
               <a class="footer__link">{{ phone.phone }}</a>
@@ -35,7 +50,7 @@ const metro = ref(config.public.legal.metro.map((metro, i) => {
           </div>
         </div>
         <div class="footer__column --contacts">
-          <div><a class="footer__link" href="/">{{ config.public.email }}</a></div>
+          <div><a class="footer__link" @click="copyEmailToClipboard">{{ config.public.email }}</a></div>
           <div><a class="footer__link --underline" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
           <div><a class="footer__link --underline" :href="config.public.telegram">Написать в Telegram</a></div>
         </div>

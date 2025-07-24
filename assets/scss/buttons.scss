@@ -1,6 +1,5 @@
 .btn {
   padding: 16px;
-  transition: var(--base-transition);
   cursor: pointer;
   font-size: var(--font-size-base);
   background: var(--color-contrast);
@@ -12,6 +11,13 @@
   border-radius: 12px;
   text-align: center;
   user-select: none;
+  transition: all .3s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(102%);
+    }
+  }
 
   > div {
     line-height: 1.2;
@@ -63,6 +69,7 @@
 
     &:hover {
       color: var(--color-contrast);
+      transform: none;
     }
   }
 

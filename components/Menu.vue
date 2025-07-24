@@ -5,6 +5,7 @@ import { onClickOutside } from '@vueuse/core'
 import { type CustomRuntimeConfig } from '~/types'
 
 const config = useRuntimeConfig() as CustomRuntimeConfig
+const notification = useNotification()
 
 const contactUsIsOpen = ref(false)
 const contactUsTemplateRef = useTemplateRef<HTMLDivElement>('contactUsTemplateRef')
@@ -54,6 +55,11 @@ const toggleContactUs = () => {
   })
 }
 
+const copyEmailToClipboard = async () => {
+  await navigator.clipboard.writeText(config.public.email)
+  notification.fire({title: 'Email скопирован!'})
+}
+
 onMounted(() => {
 
 })
@@ -89,7 +95,7 @@ onMounted(() => {
                 <use :href="'/sprite.svg#search'"/>
               </svg>
             </Button>
-            <Button class="--rounded --type-grey">
+            <Button class="--rounded --type-grey" @click="copyEmailToClipboard">
               {{ config.public.email }}
             </Button>
             <Button class="--rounded" @click="toggleContactUs">

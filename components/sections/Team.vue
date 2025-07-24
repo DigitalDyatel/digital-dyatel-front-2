@@ -117,35 +117,37 @@ onUnmounted(() => {
 <template>
   <section class="team" ref="teamSectionTemplateRef" :class="{'--mounted': marginLeft !== '0'}" :style="{marginLeft: marginLeft}">
     <div class="team__container">
-      <div class="team__about">
-        <div>
-          <span>Команда</span>
-          <span>Digital Dyatel</span>
+      <div class="team__slider">
+        <div class="team__about">
+          <div>
+            <span>Команда</span>
+            <span>Digital Dyatel</span>
+          </div>
+          <p>
+            <span>Эксперты с опытом более 3 лет в управлении</span>
+            <span>репутацией. Строим персональные стратегии</span>
+            <span>и используем современные инструменты</span>
+          </p>
+          <Link link="/">Вся команда</Link>
+          <TagAsLabel class="--blue">#спецы с опытом</TagAsLabel>
         </div>
-        <p>
-          <span>Эксперты с опытом более 3 лет в управлении</span>
-          <span>репутацией. Строим персональные стратегии</span>
-          <span>и используем современные инструменты</span>
-        </p>
-        <Link link="/">Вся команда</Link>
-        <TagAsLabel class="--blue">#спецы с опытом</TagAsLabel>
+        <div class="team__cards" :class="{'--mounted': splideIsMounted}" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
+          <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images">
+            <SplideSlide style="display: inline-block;" v-for="card in cards" :key="card.name">
+              <div class="team__card">
+                <img :src="'/img/team/' + card.img" :alt="card.name + '-' + card.position">
+                <img :src="'/img/team/' + card.altImg" :alt="card.name + '-' + card.position">
+                <div>{{ card.name }}</div>
+                <div>{{ card.position }}</div>
+              </div>
+            </SplideSlide>
+          </Splide>
+        </div>
       </div>
-      <div class="team__cards" :class="{'--mounted': splideIsMounted}" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">
-        <Splide ref="splideTemplateRef" :options="sliderOptions" aria-label="My Favorite Images">
-          <SplideSlide style="display: inline-block;" v-for="card in cards" :key="card.name">
-            <div class="team__card">
-              <img :src="'/img/team/' + card.img" :alt="card.name + '-' + card.position">
-              <img :src="'/img/team/' + card.altImg" :alt="card.name + '-' + card.position">
-              <div>{{ card.name }}</div>
-              <div>{{ card.position }}</div>
-            </div>
-          </SplideSlide>
-        </Splide>
+      <div class="team__paginator" ref="paginatorTemplateRef">
+        <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+        <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
       </div>
-    </div>
-    <div class="team__paginator" ref="paginatorTemplateRef">
-      <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-      <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
     </div>
   </section>
 </template>

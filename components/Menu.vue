@@ -6,6 +6,7 @@ import { type CustomRuntimeConfig } from '~/types'
 
 const config = useRuntimeConfig() as CustomRuntimeConfig
 const notification = useNotification()
+const { goToAnchor } = useAnchor()
 
 const contactUsIsOpen = ref(false)
 const contactUsTemplateRef = useTemplateRef<HTMLDivElement>('contactUsTemplateRef')
@@ -14,6 +15,7 @@ let clickOutsideFunction: ReturnType<typeof onClickOutside> | undefined = undefi
 
 interface MenuItem {
   label: string,
+  scrollSelector: string,
   icon?: string,
   sub?: any[]
 }
@@ -22,18 +24,23 @@ const menuItems = ref<MenuItem[]>([
   {
     label: 'Услуги',
     icon: 'hashtag',
+    scrollSelector: '.our-services'
   },
   {
     label: 'О нас',
+    scrollSelector: '.solve-problems'
   },
   {
     label: 'Команда',
+    scrollSelector: '.team'
   },
   {
     label: 'Кейсы',
+    scrollSelector: '.cases'
   },
   {
     label: 'Отзывы',
+    scrollSelector: '.reviews',
   },
 ])
 
@@ -60,6 +67,10 @@ const copyEmailToClipboard = async () => {
   notification.fire({title: 'Email скопирован!'})
 }
 
+const onClickMenu = (menuItem: MenuItem) => {
+  goToAnchor(menuItem.scrollSelector)
+}
+
 onMounted(() => {
 
 })
@@ -77,7 +88,7 @@ onMounted(() => {
         </div>
         <div class="menu__middle">
           <div class="menu__list">
-            <div class="menu__list-item" v-for="menuItem in menuItems">
+            <div class="menu__list-item" v-for="menuItem in menuItems" @click="onClickMenu(menuItem)">
               <svg v-if="menuItem.icon">
                 <use :href="'/sprite.svg#' + menuItem.icon"/>
               </svg>

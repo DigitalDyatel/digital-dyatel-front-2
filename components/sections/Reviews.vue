@@ -215,41 +215,43 @@ onMounted(() => {
   <section class="reviews" :class="{'--ready': sectionIsReady}" :style="{marginLeft: marginLeft}">
     <h2 :style="{width: middleScreenWidth + 'px'}">Отзывы</h2>
     <div class="reviews__container">
-      <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
-        <swiper-slide v-for="(review, i) in reviews" >
-          <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
-            <template v-if="review.video">
-              <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
-              <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
-              <div class="reviews__video-timeline" :style="{transform: 'translateX(' + videoTimelines[i] + '%)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
-            </template>
-            <template v-else>
-              <div class="reviews__review-content">
-                <div class="reviews__review-header">
-                  <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
-                  <Tag class="--blue" icon="chat-edit" />
+      <div class="reviews__slider">
+        <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
+          <swiper-slide v-for="(review, i) in reviews" >
+            <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
+              <template v-if="review.video">
+                <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
+                <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+                <div class="reviews__video-timeline" :style="{transform: 'translateX(' + videoTimelines[i] + '%)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+              </template>
+              <template v-else>
+                <div class="reviews__review-content">
+                  <div class="reviews__review-header">
+                    <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
+                    <Tag class="--blue" icon="chat-edit" />
+                  </div>
+                  <div class="reviews__review-text-container">
+                    <div>{{ review.name }}</div>
+                    <div>{{ review.position }}</div>
+                    <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollOrVideoTemplateRef" :options="scrollDefaultOptions">
+                      <div class="reviews__review-text">{{ review.text }}</div>
+                    </OverlayScrollbarsComponent>
+                  </div>
                 </div>
-                <div class="reviews__review-text-container">
-                  <div>{{ review.name }}</div>
-                  <div>{{ review.position }}</div>
-                  <OverlayScrollbarsComponent class="reviews__review-scrollbar" ref="scrollOrVideoTemplateRef" :options="scrollDefaultOptions">
-                    <div class="reviews__review-text">{{ review.text }}</div>
-                  </OverlayScrollbarsComponent>
-                </div>
-              </div>
-              <div class="reviews__review-overlay" />
-            </template>
+                <div class="reviews__review-overlay" />
+              </template>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+        <div class="reviews__footer" :style="{width: middleScreenWidth + 'px'}">
+          <div ref="emptyTemplateRef" />
+          <div class="reviews__controls">
+            <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+            <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
-        </swiper-slide>
-      </swiper-container>
-      <div class="reviews__footer" :style="{width: middleScreenWidth + 'px'}">
-        <div ref="emptyTemplateRef" />
-        <div class="reviews__controls">
-          <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-          <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
-        </div>
-        <div ref="linkContainerTemplateRef">
-          <Link link="/">Больше отзывов</Link>
+          <div ref="linkContainerTemplateRef">
+            <Link link="/">Больше отзывов</Link>
+          </div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
   max-width: var(--max-width);
   position: relative;
   padding: 0 48px;
+  scroll-margin-block-start: 140px;
 
   &__container {
     background: var(--color-accent-dark);

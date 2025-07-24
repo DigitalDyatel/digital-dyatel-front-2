@@ -1,13 +1,17 @@
 .team {
   margin-top: 140px;
-  overflow: hidden;
   opacity: 0;
+  scroll-margin-block-start: 140px;
 
   &.--mounted {
     opacity: 1;
   }
 
   &__container {
+    overflow-x: hidden;
+  }
+
+  &__slider {
     display: inline-flex;
     gap: 36px;
     width: 4000px;

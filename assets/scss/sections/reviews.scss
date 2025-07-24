@@ -2,7 +2,7 @@
   margin-top: 140px;
   opacity: 0;
   height: 608px;
-  overflow-x: hidden;
+  scroll-margin-block-start: 140px;
 
   &.--ready {
     opacity: 1;
@@ -16,6 +16,11 @@
   }
 
   &__container {
+    overflow-x: hidden;
+    height: 608px;
+  }
+
+  &__slider {
     margin-top: 48px;
     height: 405px;
   }

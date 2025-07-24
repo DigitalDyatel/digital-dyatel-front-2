@@ -222,6 +222,41 @@
     display: flex;
     gap: 4px;
     margin-top: 52px;
+    transition: all .3s var(--default-transition-timing-function);
+
+    .btn {
+      transition: all .3s var(--default-transition-timing-function);
+      transform: none;
+      overflow: hidden;
+
+      svg {
+        transition: all .3s var(--default-transition-timing-function);
+      }
+
+      &:last-child {
+        svg:last-child {
+          position: absolute;
+          transform: translateX(-48px);
+        }
+      }
+    }
+
+    &:hover {
+      gap: 7px;
+
+      .btn {
+        transform: scale(101%);
+
+        &:last-child {
+          svg:first-child {
+            transform: translateX(48px);
+          }
+          svg:last-child {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
 
     .btn {
       max-width: 500px;

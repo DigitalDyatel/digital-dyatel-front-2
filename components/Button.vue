@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <div class="btn">
-    <div>
+  <button class="btn">
       <slot />
-    </div>
-  </div>
+  </button>
 </template>

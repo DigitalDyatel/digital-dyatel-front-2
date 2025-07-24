@@ -30,6 +30,7 @@ const tags = ref([
           </Button>
           <Button class="--large">
             <svg><use :href="'/sprite.svg#login'" /></svg>
+            <svg><use :href="'/sprite.svg#login'" /></svg>
           </Button>
         </div>
       </div>

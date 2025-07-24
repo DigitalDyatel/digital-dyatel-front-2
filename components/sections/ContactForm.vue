@@ -26,8 +26,8 @@ const isAgree = ref(true)
           <Input placeholder="Email" required />
         </div>
         <Button class="--large">Заказать консультацию</Button>
-        <p>Нажимая на кнопку, я соглашаюсь на <a href="/">обработку персональных данных</a></p>
-        <Checkbox v-model="isAgree"><a href="/">Я согласен получить рекламу и звонки</a></Checkbox>
+        <p>Нажимая на кнопку, я соглашаюсь на <a target="_blank" href="/docs/personal-data-processing-policy.pdf">обработку персональных данных</a></p>
+        <Checkbox v-model="isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
       </form>
     </div>
     <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>

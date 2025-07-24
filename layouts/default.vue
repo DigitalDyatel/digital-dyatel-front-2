@@ -7,5 +7,6 @@ import Menu from '../components/Menu.vue'
   <OverlayScrollbarsComponent defer class="main-custom-scroll">
     <Menu />
     <slot />
+    <ToTop />
   </OverlayScrollbarsComponent>
 </template>

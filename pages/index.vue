@@ -20,6 +20,7 @@ import Reviews from '~/components/sections/Reviews.vue'
   <Hero />
   <WhyManageReputation />
   <WhenNeedReputation />
+  <DeepScrollHookIntersection />
   <OurServices />
   <SolveProblems />
   <OurAchievements />

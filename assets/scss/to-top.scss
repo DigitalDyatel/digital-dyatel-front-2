@@ -1,0 +1,23 @@
+.to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 16px;
+  transition: transform .3s ease-in-out;
+  transform: translateY(100px);
+
+  &.--active {
+    transform: translateY(0);
+  }
+
+  &__top-button {
+    padding: 12px;
+    background-color: var(--color-primary);
+    border-radius: 100px;
+    cursor: pointer;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

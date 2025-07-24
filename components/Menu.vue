@@ -16,6 +16,7 @@ let clickOutsideFunction: ReturnType<typeof onClickOutside> | undefined = undefi
 interface MenuItem {
   label: string,
   scrollSelector: string,
+  class?: string,
   icon?: string,
   sub?: any[]
 }
@@ -36,11 +37,12 @@ const menuItems = ref<MenuItem[]>([
   },
   {
     label: 'Кейсы',
+    class: '--cases',
     scrollSelector: '.cases'
   },
   {
     label: 'Отзывы',
-    scrollSelector: '.reviews',
+    scrollSelector: '.reviews'
   },
 ])
 
@@ -88,7 +90,8 @@ onMounted(() => {
         </div>
         <div class="menu__middle">
           <div class="menu__list">
-            <div class="menu__list-item" v-for="menuItem in menuItems" @click="onClickMenu(menuItem)">
+            <div class="menu__list-item" :class="menuItem.class" v-for="menuItem in menuItems" @click="onClickMenu(menuItem)">
+              <span v-if="menuItem.class === '--cases'">+{{ config.public.casesMenuCount }}</span>
               <svg v-if="menuItem.icon">
                 <use :href="'/sprite.svg#' + menuItem.icon"/>
               </svg>

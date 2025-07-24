@@ -74,6 +74,22 @@
       cursor: pointer;
       color: var(--color-primary);
       transition: transform .3s var(--default-transition-timing-function);
+      position: relative;
+
+      &.--cases {
+        span {
+          position: absolute;
+          top: -10px;
+          right: -14px;
+          font-size: var(--font-size-xxs);
+          font-weight: var(--font-weight-semi-bold);
+          padding: 4px;
+          color: var(--color-contrast);
+          background: #ffe8d9;
+          border-radius: 100px;
+          height: 14px;
+        }
+      }
 
       @media (hover: hover) {
         &:hover {

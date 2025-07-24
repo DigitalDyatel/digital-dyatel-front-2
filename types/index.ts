@@ -5,6 +5,7 @@ export interface Phone {
 
 export interface CustomRuntimeConfig {
     public: {
+        casesMenuCount: number
         phones: Phone[],
         telegram: string,
         whatsapp: string,
@@ -14,6 +15,6 @@ export interface CustomRuntimeConfig {
             address: string,
             metro: string[],
             openingHours: string
-        }
+        },
     }
 }

@@ -88,13 +88,13 @@ onMounted(() => {
           <div class="footer__text --no-wrap">{{ config.public.legal.details}}</div>
         </div>
         <div class="footer__column">
-          <a class="footer__link --secondary" target="_blank" href="/docs/privacy-policy.pdf">Политика конфиденциальности</a>
+          <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/privacy-policy.pdf">Политика конфиденциальности</a>
         </div>
         <div class="footer__column --center">
-          <a class="footer__link --secondary" target="_blank" href="/docs/offer.pdf">Оферта</a>
+          <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/offer.pdf">Оферта</a>
         </div>
         <div class="footer__column">
-          <a class="footer__link --secondary" target="_blank" href="/docs/user-agreement.pdf">Пользовательское соглашение</a>
+          <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/user-agreement.pdf">Пользовательское соглашение</a>
         </div>
       </div>
     </div>

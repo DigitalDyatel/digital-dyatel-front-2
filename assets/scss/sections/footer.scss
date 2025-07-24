@@ -56,6 +56,14 @@
       }
     }
 
+    &.--contrast-on-hover {
+      @media (hover: hover) {
+        &:hover {
+          color: var(--color-white-contrast);
+        }
+      }
+    }
+
     &.--user-select-none {
       user-select: none;
     }

@@ -16,6 +16,11 @@
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
     text-align: center;
+
+    span {
+      display: block;
+      line-height: 1.2;
+    }
   }
 
   &__container {

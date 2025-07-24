@@ -28,7 +28,7 @@ import Reviews from '~/components/sections/Reviews.vue'
   <Cases />
   <Reviews />
   <TalkAboutUs />
-<!--  SharingExperience-->
+  <SharingExperience />
   <FAQ />
   <ContactFormAlt />
   <Footer />

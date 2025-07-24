@@ -82,7 +82,7 @@ onMounted(() => {
   <div class="menu">
     <div class="menu__container">
       <div class="menu__flex">
-        <div class="menu__left">
+        <div class="menu__left" @click="goToAnchor('.hero')">
           <Logo width="48" height="48" filled/>
           <div>
             <div>Digital Dyatel</div>

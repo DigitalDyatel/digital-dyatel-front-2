@@ -2,6 +2,7 @@
   max-width: var(--max-width);
   margin: 100px auto 0 auto;
   padding: 0 48px;
+  scroll-margin-block-start: 100px;
 
   &__container {
     display: flex;

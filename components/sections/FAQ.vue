@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
+import { onClickOutside } from '@vueuse/core'
+
 const activeQuestionIndex = ref<number|null>(null)
 
 const answerTemplateRef = useTemplateRef<HTMLDivElement[]>('answerTemplateRef')
@@ -37,24 +39,28 @@ const questions = ref([
 
 const toggle = (i: number) => {
 
-  if (i !== activeQuestionIndex.value && activeQuestionIndex.value !== null) {
-    answerTemplateRef.value![activeQuestionIndex.value].style.opacity = '0'
-    answerTemplateRef.value![activeQuestionIndex.value].style.height = '0'
-    answerTemplateRef.value![activeQuestionIndex.value].style.paddingBottom = '0'
-  }
+  const answerEl = answerTemplateRef.value![i]
 
   if (i === activeQuestionIndex.value) {
     activeQuestionIndex.value = null
-    answerTemplateRef.value![i].style.opacity = '0'
-    answerTemplateRef.value![i].style.height = '0'
-    answerTemplateRef.value![i].style.paddingBottom = '0'
+    answerEl.style.opacity = '0'
+    answerEl.style.height = '0'
+    answerEl.style.paddingBottom = '0'
     return
   }
 
   activeQuestionIndex.value = i
-  answerTemplateRef.value![i].style.opacity = '1'
-  answerTemplateRef.value![i].style.height = answerHeights[i] + 'px'
-  answerTemplateRef.value![i].style.paddingBottom = '24px'
+  answerEl.style.opacity = '1'
+  answerEl.style.height = answerHeights[i] + 'px'
+  answerEl.style.paddingBottom = '24px'
+
+  const clickOutsideFunction = onClickOutside(answerTemplateRef.value![i], () => {
+    activeQuestionIndex.value = null
+    answerEl.style.opacity = '0'
+    answerEl.style.height = '0'
+    answerEl.style.paddingBottom = '0'
+    clickOutsideFunction?.()
+  })
 }
 
 onMounted(() => {
@@ -81,7 +87,7 @@ onMounted(() => {
       <div class="faq__questions-container">
         <div class="faq__questions" ref="questionsTemplateRef">
           <div ref="questionTemplateRef" class="--init" v-for="(question, i) in questions" @click="toggle(i)" :key="i">
-            <div class="faq__question">
+            <div class="faq__question" :class="{'--active': activeQuestionIndex === i}">
               <div>{{ question.question }}</div>
               <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
             </div>

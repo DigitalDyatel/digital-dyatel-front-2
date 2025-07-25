@@ -4,6 +4,7 @@
   right: 16px;
   transition: transform .3s ease-in-out;
   transform: translateY(100px);
+  z-index: 1;
 
   &.--active {
     transform: translateY(0);

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Link from '~/components/Link.vue'
+
 const mediaResources = ref([
   {
     img: 'm24.png',
@@ -31,7 +33,7 @@ const mediaResources = ref([
         <img :src="'/img/media/' + mediaResource.img" :alt="mediaResource.alt">
       </div>
       <div>
-        <a href=""><span>Все публикации</span><Tag as-span icon="login"/></a>
+        <Link class="--contrast-on-hover" link="/">Все публикации</Link>
       </div>
     </div>
   </section>

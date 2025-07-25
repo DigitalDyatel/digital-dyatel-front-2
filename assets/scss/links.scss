@@ -2,8 +2,26 @@
   color: var(--color-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-lg);
+  transition: all .3s var(--default-transition-timing-function);
+
+  &.--contrast-on-hover {
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-contrast);
+
+        span:first-child {
+          border-bottom: 2px solid var(--color-contrast);
+        }
+
+        svg {
+          color: var(--color-contrast);
+        }
+      }
+    }
+  }
 
   span:first-child {
+    transition: all .3s var(--default-transition-timing-function);
     border-bottom: 2px solid var(--color-primary);
   }
 
@@ -12,5 +30,6 @@
     width: 24px;
     height: 24px;
     color: var(--color-primary);
+    transition: all .3s var(--default-transition-timing-function);
   }
 }

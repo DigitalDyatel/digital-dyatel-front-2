@@ -128,7 +128,7 @@ onUnmounted(() => {
             <span>репутацией. Строим персональные стратегии</span>
             <span>и используем современные инструменты</span>
           </p>
-          <Link link="/">Вся команда</Link>
+          <Link class="--contrast-on-hover" link="/">Вся команда</Link>
           <TagAsLabel class="--blue">#спецы с опытом</TagAsLabel>
         </div>
         <div class="team__cards" :class="{'--mounted': splideIsMounted}" @pointerover="onPointerOverSlider" @pointerout="onPointerOutSlider">

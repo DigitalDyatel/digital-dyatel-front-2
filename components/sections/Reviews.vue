@@ -250,7 +250,7 @@ onMounted(() => {
             <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
           <div ref="linkContainerTemplateRef">
-            <Link link="/">Больше отзывов</Link>
+            <Link class="--contrast-on-hover" link="/">Больше отзывов</Link>
           </div>
         </div>
       </div>

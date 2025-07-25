@@ -36,5 +36,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <section ref="toTopIntersectionTemplateRef" class="deep-scroll-hook-intersection" />
+  <div ref="toTopIntersectionTemplateRef" class="deep-scroll-hook-intersection" />
 </template>

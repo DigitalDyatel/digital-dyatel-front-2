@@ -93,7 +93,7 @@ const onClickService = (service: Service) => {
         </div>
         <div>
           <img src="/img/our-services-logo.png" alt="logo-alt">
-          <BackgroundLightBlue filled />
+          <BackgroundLightBlue />
         </div>
       </div>
     </div>

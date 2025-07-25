@@ -4,7 +4,7 @@ import Menu from '../components/Menu.vue'
 </script>
 
 <template>
-  <OverlayScrollbarsComponent defer class="main-custom-scroll">
+  <OverlayScrollbarsComponent class="main-custom-scroll">
     <Menu />
     <slot />
     <ToTop />

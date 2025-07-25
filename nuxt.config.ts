@@ -22,9 +22,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
   css: ['~/assets/scss/app.scss'],
-  modules: ['nuxt-svgo', 'nuxt-swiper', 'nuxt-toast'],
+  modules: ['nuxt-svgo', 'nuxt-swiper', 'nuxt-toast', 'v-gsap-nuxt'],
   svgo: {
     global: false,
     autoImportPath: false
+  },
+  vgsap: {
+    scroller: '.main-custom-scroll > div:first-child'
   }
 })

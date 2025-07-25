@@ -601,7 +601,7 @@
     which "^5.0.0"
     ws "^8.18.3"
 
-"@nuxt/kit@^3.15.2", "@nuxt/kit@^3.15.4", "@nuxt/kit@^3.17.2", "@nuxt/kit@^3.17.6", "@nuxt/kit@^3.4.0", "@nuxt/kit@3.17.6":
+"@nuxt/kit@^3.14.1592", "@nuxt/kit@^3.15.2", "@nuxt/kit@^3.15.4", "@nuxt/kit@^3.17.2", "@nuxt/kit@^3.17.6", "@nuxt/kit@^3.4.0", "@nuxt/kit@3.17.6":
   version "3.17.6"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.17.6.tgz"
   integrity sha512-8PKRwoEF70IXVrpGEJZ4g4V2WtE9RjSMgSZLLa0HZCoyT+QczJcJe3kho/XKnJOnNnHep4WqciTD7p4qRRtBqw==
@@ -2669,6 +2669,11 @@ graceful-fs@^4.2.0, graceful-fs@^4.2.11, graceful-fs@^4.2.4, graceful-fs@^4.2.9:
   version "4.2.11"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
+
+gsap@^3.12.5:
+  version "3.13.0"
+  resolved "https://registry.npmjs.org/gsap/-/gsap-3.13.0.tgz"
+  integrity sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==
 
 gzip-size@^7.0.0:
   version "7.0.0"
@@ -5306,6 +5311,15 @@ uuid@^11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/uuid/-/uuid-11.1.0.tgz"
   integrity sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==
+
+v-gsap-nuxt@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.npmjs.org/v-gsap-nuxt/-/v-gsap-nuxt-1.4.4.tgz"
+  integrity sha512-ygzTkdVmiHHytIS9Hw2xXeIuyLbKLKHGakPfYwLj3MA1OfaSCbANPTwEa2/4EkA9DyJA7xYwvO8T3Gf2+hc8kA==
+  dependencies:
+    "@nuxt/kit" "^3.14.1592"
+    defu "^6.1.4"
+    gsap "^3.12.5"
 
 validate-npm-package-license@^3.0.4:
   version "3.0.4"

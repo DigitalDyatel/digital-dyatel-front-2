@@ -12,6 +12,9 @@
 @use 'form/file-inputs';
 @use 'form/processing-personal-data-agree';
 
+/* plugins and libraries */
+@use 'third-party/izi-toast';
+
 /* sections */
 @use 'sections/hero';
 @use 'sections/why-manage-reputation';
@@ -94,50 +97,5 @@ html {
 
   .os-scrollbar {
     padding: 20px 2px;
-  }
-}
-
-.iziToast.izi-toast {
-  border-radius: 12px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
-  min-height: 40px;
-  padding: 5px 0 4px 0;
-  cursor: pointer;
-  background: var(--color-accent-dark);
-
-  &.--white {
-    background: var(--color-white);
-
-    >.iziToast-body {
-      padding: 0 10px;
-      margin: 0 15px;
-
-      .iziToast-title {
-        color: var(--color-primary);
-      }
-    }
-  }
-
-  >.iziToast-body {
-    padding: 0 10px;
-    margin: 0 15px;
-
-    .iziToast-title {
-      color: var(--color-white-contrast);
-    }
-  }
-
-  .iziToast-close {
-    display: none;
-  }
-
-  .iziToast-progressbar {
-    width: calc(100% - 15px);
-    left: 8px;
-    background: transparent;
-  }
-
-  &:after {
-    display: none;
   }
 }

@@ -1,0 +1,83 @@
+.iziToast.izi-toast {
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  min-height: 40px;
+  padding: 5px 0 4px 0;
+  cursor: pointer;
+  background: var(--color-accent-dark);
+
+  &.--cookie {
+    cursor: default;
+
+    .iziToast-buttons-child {
+      color: var(--color-primary);
+      outline: none;
+      box-shadow: none;
+      border: 1px solid var(--color-white-contrast);
+      border-radius: 8px;
+      background: var(--color-white);
+      font-weight: var(--font-weight-bold);
+      padding: 12px;
+
+      &:hover {
+        background: var(--color-white);
+      }
+    }
+
+    > .iziToast-body {
+      display: flex;
+      align-items: center;
+      margin: 0 0 0 15px;
+
+      .iziToast-texts {
+        margin: 0;
+      }
+
+      .iziToast-title > a {
+        color: var(--color-white-contrast);
+        border-bottom: 1px solid var(--color-white-contrast);
+
+        &:hover {
+          color: var(--color-quaternary);
+          border-bottom: 1px solid var(--color-quaternary);
+        }
+      }
+    }
+  }
+
+  &.--white {
+    background: var(--color-white);
+
+    >.iziToast-body {
+      padding: 0 10px;
+      margin: 0 15px;
+
+      .iziToast-title {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  >.iziToast-body {
+    padding: 0 10px;
+    margin: 0 15px;
+
+    .iziToast-title {
+      color: var(--color-white-contrast);
+    }
+  }
+
+  .iziToast-close {
+    display: none;
+  }
+
+  .iziToast-progressbar {
+    width: calc(100% - 15px);
+    left: 8px;
+    background: transparent;
+  }
+
+  &:after {
+    display: none;
+  }
+}

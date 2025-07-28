@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import Button from '~/components/Button.vue'
+import Lead from '~/components/modals/Lead.vue'
+import { useModal } from 'vue-final-modal'
+
+const { open, close } = useModal({
+  component: Lead,
+  attrs: {
+    title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
+    onConfirm: () => {
+      close()
+    }
+  },
+})
 
 const tags = ref([
     'ORM',
@@ -8,6 +20,10 @@ const tags = ref([
     'Мониторинг',
     'Создание позитивного контента'
 ])
+
+const onClick = () => {
+  open()
+}
 </script>
 
 <template>
@@ -24,7 +40,7 @@ const tags = ref([
             {{ tag }}
           </div>
         </div>
-        <div class="hero__button-container">
+        <div class="hero__button-container" @click="onClick">
           <Button class="--large --no-wrap">
             Получить бесплатный SERM аудит
           </Button>

@@ -220,7 +220,7 @@
   }
 
   &__button-container {
-    display: flex;
+    display: inline-flex;
     gap: 4px;
     margin-top: 52px;
     transition: all .3s var(--default-transition-timing-function);
@@ -259,8 +259,8 @@
       }
     }
 
-    .btn {
-      max-width: 500px;
+    .btn:first-child {
+      width: 500px;
     }
 
     .btn:first-child {

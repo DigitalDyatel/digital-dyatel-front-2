@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Input from '~/components/form/Input.vue'
 import Checkbox from '~/components/form/Checkbox.vue'
+import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 
 const isAgree = ref(true)
 </script>
@@ -17,7 +18,7 @@ const isAgree = ref(true)
         </div>
         <Button class="--large">Оставить заявку</Button>
       </form>
-      <p>Нажимая на кнопку, я соглашаюсь на <a target="_blank" href="/docs/personal-data-processing-policy.pdf">обработку персональных данных</a></p>
+      <ProcessingPersonalDataAgree />
       <Checkbox v-model="isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
       <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>
       <svg><use :href="'/sprite.svg#circle-star-3'" /></svg>

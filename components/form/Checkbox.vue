@@ -8,8 +8,7 @@ const onClick = () => {
 
 <template>
   <div class="checkbox" :class="{'--checked': model}" @click="onClick">
-    <div>
-      <svg><use :href="'/sprite.svg#tick-square'" /></svg>
+    <div class="checkbox__container">
       <svg><use :href="'/sprite.svg#tick-square-filled'" /></svg>
     </div>
     <div>

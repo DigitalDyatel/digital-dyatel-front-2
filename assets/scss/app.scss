@@ -6,8 +6,11 @@
 @use 'menu';
 @use 'to-top';
 @use 'animations';
+@use 'modal';
 @use 'form/inputs';
 @use 'form/checkboxes';
+@use 'form/file-inputs';
+@use 'form/processing-personal-data-agree';
 
 /* sections */
 @use 'sections/hero';
@@ -76,6 +79,21 @@ html {
 
   .os-scrollbar-handle {
     background-color: var(--color-contrast);
+  }
+}
+
+.modal-custom-scroll {
+  max-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+
+  .os-scrollbar-handle {
+    background-color: var(--color-contrast);
+  }
+
+  .os-scrollbar {
+    padding: 20px 2px;
   }
 }
 

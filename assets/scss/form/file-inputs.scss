@@ -1,0 +1,104 @@
+.file-input {
+  position: relative;
+
+  &.--filled {
+    .file-input__text {
+      color: var(--color-primary);
+    }
+
+    .file-input__btn svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  &__constraints {
+    display: inline-flex;
+    gap: 14px;
+    align-items: center;
+    margin-top: 16px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover + .file-input__constraints-more {
+      opacity: 1;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-tertiary);
+    }
+  }
+
+  &__constraints-more {
+    position: absolute;
+    top: -38px;
+    left: 0;
+    background-color: var(--color-accent-dark);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    border-radius: 16px;
+    transition: opacity .3s var(--default-transition-timing-function);
+    user-select: none;
+    pointer-events: none;
+
+    > div {
+      white-space: nowrap;
+      color: var(--color-tertiary);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  &__file-types {
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", sans-serif;
+    color: var(--color-tertiary);
+    padding-top: 4px;
+    user-select: none;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-modal-inputs-background);
+    padding: 16px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &.--drag-over {
+      background-color: var(--color-modal-inputs-background-drag-over);
+    }
+  }
+
+  input[type=file] {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &__text {
+    color: var(--color-secondary);
+    font-size: var(--font-size-base);
+
+    &.--added {
+      color: var(--color-primary);
+    }
+  }
+
+  &__btn {
+    border-radius: 8px;
+    background-color: var(--color-contrast);
+    padding: 8px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-white);
+      transition: transform .3s var(--default-transition-timing-function);
+    }
+  }
+}

@@ -25,7 +25,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
   css: ['~/assets/scss/app.scss'],
-  modules: ['nuxt-svgo', 'nuxt-swiper', 'nuxt-toast', 'v-gsap-nuxt'],
+  modules: [
+    'nuxt-svgo',
+    'nuxt-swiper',
+    'nuxt-toast',
+    'v-gsap-nuxt',
+    '@vue-final-modal/nuxt'
+  ],
   svgo: {
     global: false,
     autoImportPath: false

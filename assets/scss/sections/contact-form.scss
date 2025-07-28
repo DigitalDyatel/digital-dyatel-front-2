@@ -50,7 +50,7 @@
     }
   }
 
-  p {
+  &__subtitle {
     margin-top: 16px;
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
@@ -71,17 +71,8 @@
     width: 100%;
   }
 
-  form {
-    p {
-      margin-top: 24px;
-      font-size: var(--font-size-base);
-      color: var(--color-secondary);
-
-      a {
-        color: var(--color-secondary);
-        border-bottom: 1px solid var(--color-secondary);
-      }
-    }
+  form .processing-personal-data-agree {
+    margin-top: 24px;
   }
 
   .checkbox {

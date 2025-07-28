@@ -3,15 +3,19 @@
   align-items: center;
   gap: 10px;
 
+  &.--contrast {
+    > div:first-child {
+      background-color: var(--color-contrast);
+
+      svg {
+        color: var(--color-white);
+      }
+    }
+  }
+
   &.--checked {
     > div:first-child svg {
-      &:first-child {
-        z-index: 1;
-      }
-
-      &:last-child {
-        z-index: 2;
-      }
+      opacity: 1;
     }
   }
 
@@ -20,6 +24,8 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+    background-color: var(--color-white);
+    border-radius: 5px;
 
     svg {
       position: absolute;
@@ -27,14 +33,10 @@
       top: 0;
       width: 20px;
       height: 20px;
-
-      &:first-child {
-        z-index: 2;
-      }
-
-      &:last-child {
-        z-index: 1;
-      }
+      user-select: none;
+      opacity: 0;
+      transition: opacity .1s var(--default-transition-timing-function);
+      color: var(--color-accent-dark);
     }
   }
 

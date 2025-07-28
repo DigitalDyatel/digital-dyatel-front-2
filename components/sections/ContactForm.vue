@@ -2,12 +2,12 @@
 import Input from '~/components/form/Input.vue'
 import Checkbox from '~/components/form/Checkbox.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
-import ThankYou from '~/components/modals/ThankYou.vue'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 import { useModal } from 'vue-final-modal'
 
 const { open, close } = useModal({
-  component: ThankYou,
+  component: ThankYouModal,
   attrs: {
     title: 'Готово! Спасибо за ваш запрос, мы скоро свяжемся с вами',
     content: 'Наш менеджер скоро свяжется с вами, проконсультируем и ответим на все интересующие вопросы',

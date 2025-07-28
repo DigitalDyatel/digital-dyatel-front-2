@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Button from '~/components/Button.vue'
-import Lead from '~/components/modals/Lead.vue'
+import FreeSERMAuditModal from '~/components/modals/FreeSERMAuditModal.vue'
 import { useModal } from 'vue-final-modal'
 
 const { open, close } = useModal({
-  component: Lead,
+  component: FreeSERMAuditModal,
   attrs: {
     title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
     onConfirm: () => {

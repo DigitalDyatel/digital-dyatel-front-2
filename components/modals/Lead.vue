@@ -36,8 +36,8 @@ const onSubmitForm = () => {
     <form class="form">
       <Input placeholder="Имя" v-model="formData.name" />
       <div class="form__group">
-        <Input placeholder="Номер телефона" v-model="formData.phone" />
-        <Input placeholder="Email" v-model="formData.email" />
+        <Input placeholder="Номер телефона" v-model="formData.phone" required />
+        <Input placeholder="Email" v-model="formData.email" required />
       </div>
       <FileInput
           v-model="formData.files"

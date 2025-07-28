@@ -28,7 +28,7 @@
 
 <template>
   <section class="when-need-reputation">
-    <h1>
+    <h1 v-gsap.desktop.parallax.faster>
       <span>В каком случае обращаются за</span>
       <span>услугами в репутационную компанию?</span>
     </h1>
@@ -42,6 +42,7 @@
           class="when-need-reputation__point"
           v-for="point in points"
           :class="{'--reverse': point.reverse}"
+          v-gsap.desktop.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'
       >
         <div>{{ point.title }}</div>
         <div>

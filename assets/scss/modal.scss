@@ -42,7 +42,9 @@
     font-weight: var(--font-weight-semi-bold);
     color: var(--color-primary);
   }
+}
 
+.modal-lead {
   .form {
     margin-top: 32px;
 
@@ -81,5 +83,18 @@
         color: var(--color-secondary);
       }
     }
+  }
+}
+
+.modal-thank-you {
+ p {
+   margin-top: 16px;
+   font-size: var(--font-size-lg);
+   color: var(--color-secondary);
+ }
+
+  .btn {
+    margin-top: 48px;
+    width: 100%;
   }
 }

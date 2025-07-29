@@ -83,6 +83,10 @@ const initTimer = () => {
 }
 
 const onClickPoint = (i) => {
+  if (i === activeArticleIndex.value) {
+    return
+  }
+
   if (timer.value) {
     timer.value.stop()
   }

@@ -2,7 +2,7 @@
 import { useTimer } from 'maz-ui'
 
 let io: IntersectionObserver | undefined = undefined
-const animationDuration = 8000
+const animationDuration = 5000
 
 const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
 
@@ -42,6 +42,10 @@ const initTimer = () => {
 }
 
 const onClickPoint = (i) => {
+  if (i === activeImageIndex.value) {
+    return
+  }
+
   if (timer.value) {
     timer.value.stop()
   }
@@ -84,7 +88,8 @@ onMounted(() => {
     </h2>
     <div class="solve-problems__container">
       <div ref="sliderTemplateRef">
-        <div :style="{backgroundImage: 'url(/img/team-together/' + images[activeImageIndex].img + ')'}">
+        <div class="solve-problems__slider-container">
+          <img v-for="(image, i) in images" :class="{'--active': activeImageIndex === i}" :src="'/img/team-together/' + image.img" :alt="image.alt" />
           <div class="solve-problems__slider">
             <div
                 v-for="(_, i) in images"

@@ -16,6 +16,25 @@
     }
   }
 
+  &__slider-container {
+    position: relative;
+    height: 100%;
+
+    > img {
+      opacity: 0;
+      height: 100%;
+      border-radius: 24px;
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      transition: opacity .7s ease-in-out;
+
+      &.--active {
+        opacity: 1;
+      }
+    }
+  }
+
   &__container {
     display: flex;
     gap: 24px;
@@ -27,18 +46,6 @@
       border-radius: 32px;
       flex: 1;
       height: 580px;
-
-      &:first-child {
-        > div {
-          height: 100%;
-          border-radius: 24px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          transition: background-image .5s ease-in-out;
-          position: relative;
-        }
-      }
 
       &:last-child {
         display: flex;
@@ -277,7 +284,7 @@
     cursor: pointer;
     user-select: none;
     border: 1px solid rgba(255, 255, 255, .32);
-    transition: width 1s ease-in-out;
+    transition: width .7s ease-in-out;
     will-change: width;
 
     &.--active {

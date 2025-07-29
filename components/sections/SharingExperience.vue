@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import Button from '~/components/Button.vue'
 import { onMounted, onUnmounted } from 'vue'
+import { useTimer } from 'maz-ui'
 
 let io: IntersectionObserver | undefined = undefined
-let interval: ReturnType<typeof setInterval> | undefined = undefined
-const defaultTimer = 8000
+const animationDuration = 8000
 
 const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
 
 const animationIsActive = ref(false)
+
+const timer = ref<null, ReturnType<typeof useTimer>>(null)
 
 const articles = ref([
   {
@@ -63,33 +65,50 @@ const articles = ref([
 
 const activeArticleIndex = ref(0)
 
-const initInterval = (timeout) => {
-  return setInterval(() => {
-    if (activeArticleIndex.value === articles.value.length - 1) {
-      activeArticleIndex.value = 0
-      return
-    }
+const initTimer = () => {
+  timer.value = useTimer({
+    timeout: animationDuration,
+    callback() {
+      if (activeArticleIndex.value === articles.value.length - 1) {
+        activeArticleIndex.value = 0
+        initTimer()
+        return
+      }
 
-    activeArticleIndex.value++
-  }, timeout)
+      activeArticleIndex.value++
+      initTimer()
+    }
+  })
+  timer.value.start()
 }
 
 const onClickPoint = (i) => {
-  clearInterval(interval)
+  if (timer.value) {
+    timer.value.stop()
+  }
   activeArticleIndex.value = i
-  interval = initInterval(defaultTimer)
+  initTimer()
 }
 
 onMounted(() => {
   io = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       animationIsActive.value = true
-      interval = initInterval(defaultTimer)
+
+      if (timer.value) {
+        timer.value.resume()
+        return
+      }
+
+      initTimer()
       return
     }
 
     animationIsActive.value = false
-    clearInterval(interval)
+
+    if (timer.value) {
+      timer.value.pause()
+    }
   }, {
     rootMargin: '0px 0px 0px 0px'
   })
@@ -98,7 +117,9 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  clearInterval(interval)
+  if (timer.value) {
+    timer.value.stop()
+  }
   io.disconnect()
 })
 </script>
@@ -124,7 +145,7 @@ onUnmounted(() => {
           <div
               class="sharing-experience__slider-point-timeline"
               :class="{'--animation-is-active': animationIsActive}"
-              :style="{animationDuration: `${defaultTimer}ms`}"
+              :style="{animationDuration: `${animationDuration}ms`}"
           />
         </div>
       </div>

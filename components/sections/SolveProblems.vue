@@ -1,5 +1,79 @@
 <script setup lang="ts">
+import { useTimer } from 'maz-ui'
 
+let io: IntersectionObserver | undefined = undefined
+const animationDuration = 8000
+
+const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
+
+const animationIsActive = ref(false)
+const timer = ref<null, ReturnType<typeof useTimer>>(null)
+const activeImageIndex = ref(0)
+const images = ref([
+  {
+    img: '1.png',
+    alt: 'team'
+  },
+  {
+    img: '2.jpg',
+    alt: 'team-2'
+  },
+  {
+    img: '3.jpg',
+    alt: 'team-3'
+  },
+])
+
+const initTimer = () => {
+  timer.value = useTimer({
+    timeout: animationDuration,
+    callback() {
+      if (activeImageIndex.value === images.value.length - 1) {
+        activeImageIndex.value = 0
+        initTimer()
+        return
+      }
+
+      activeImageIndex.value++
+      initTimer()
+    }
+  })
+  timer.value.start()
+}
+
+const onClickPoint = (i) => {
+  if (timer.value) {
+    timer.value.stop()
+  }
+  activeImageIndex.value = i
+  initTimer()
+}
+
+onMounted(() => {
+  io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animationIsActive.value = true
+
+      if (timer.value) {
+        timer.value.resume()
+        return
+      }
+
+      initTimer()
+      return
+    }
+
+    animationIsActive.value = false
+
+    if (timer.value) {
+      timer.value.pause()
+    }
+  }, {
+    rootMargin: '0px 0px 0px 0px'
+  })
+
+  io.observe(sliderTemplateRef.value!)
+})
 </script>
 
 <template>
@@ -9,8 +83,23 @@
       <span>проблемы любой сложности</span>
     </h2>
     <div class="solve-problems__container">
-      <div>
-        <img src="/img/solve-problems-team.png" alt="team">
+      <div ref="sliderTemplateRef">
+        <div :style="{backgroundImage: 'url(/img/team-together/' + images[activeImageIndex].img + ')'}">
+          <div class="solve-problems__slider">
+            <div
+                v-for="(_, i) in images"
+                class="solve-problems__slider-point"
+                :class="{'--active': i === activeImageIndex}"
+                @click="onClickPoint(i)"
+            >
+              <div
+                  class="solve-problems__slider-point-timeline"
+                  :class="{'--animation-is-active': animationIsActive}"
+                  :style="{animationDuration: `${animationDuration}ms`}"
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         <h4>Наша компания — это эксперты, которые помогут сформировать положительный образ вашего бренда и укрепить хорошую репутацию в информационном пространстве</h4>

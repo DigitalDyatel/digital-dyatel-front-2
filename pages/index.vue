@@ -18,15 +18,15 @@ import Reviews from '~/components/sections/Reviews.vue'
 
 <template>
   <Hero />
-<!--  <WhyManageReputation />
-  <WhenNeedReputation />-->
+  <WhyManageReputation />
+  <WhenNeedReputation />
   <DeepScrollHookIntersection />
-<!--  <OurServices />
+  <OurServices />
   <SolveProblems />
   <OurAchievements />
   <Team />
   <ContactForm />
-  <Cases />-->
+  <Cases />
   <Reviews />
   <TalkAboutUs />
   <SharingExperience />

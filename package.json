@@ -15,6 +15,7 @@
     "@vueuse/components": "^13.5.0",
     "@vueuse/core": "^13.5.0",
     "izitoast": "^1.4.0",
+    "maska": "^3.2.0",
     "maz-ui": "^3.50.1",
     "nuxt": "^3.17.6",
     "nuxt-svgo": "^4.2.3",

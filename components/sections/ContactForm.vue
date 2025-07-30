@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { useModal } from 'vue-final-modal'
 import Input from '~/components/form/Input.vue'
 import Checkbox from '~/components/form/Checkbox.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
-
-import { useModal } from 'vue-final-modal'
+import InputPhone from '~/components/form/InputPhone.vue'
 
 const { open, close } = useModal({
   component: ThankYouModal,
@@ -41,7 +41,7 @@ const onSubmit = () => {
       <form autocomplete="off">
         <Input placeholder="Имя" />
         <div class="contact-form__group input__group">
-          <Input placeholder="Номер телефона" required />
+          <InputPhone placeholder="Номер телефона" required />
           <Input placeholder="Email" required />
         </div>
         <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>

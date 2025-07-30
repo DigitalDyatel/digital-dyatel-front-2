@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { categories as _categories } from '~/constants'
+import Button from '~/components/Button.vue'
 
 let progressBarTrackWidth: number | undefined = undefined
 
@@ -106,9 +107,9 @@ onMounted(() => {
                       <div>Результат</div>
                       <p>{{ __case.result }}</p>
                       <div>
-                        <div>{{ __case.startRating }} репутация</div>
-                        <svg><use :href="'/sprite.svg#arrow-right'" /></svg>
-                        <div>{{ __case.finishRating }} репутация</div>
+                        <Button class="--tertiary">
+                          <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -134,9 +135,9 @@ onMounted(() => {
                     <div>Результат</div>
                     <p>{{ _case.result }}</p>
                     <div>
-                      <div>{{ _case.startRating }} репутация</div>
-                      <svg><use :href="'/sprite.svg#arrow-right'" /></svg>
-                      <div>{{ _case.finishRating }} репутация</div>
+                      <Button class="--tertiary">
+                        <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
+                      </Button>
                     </div>
                   </div>
                 </div>

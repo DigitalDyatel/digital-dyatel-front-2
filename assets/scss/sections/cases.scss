@@ -263,20 +263,17 @@
 
       > div:nth-child(5) {
         margin-top: 32px;
-        display: inline-flex;
-        gap: 8px;
+        display: flex;
         align-items: center;
+        justify-content: right;
 
-        div {
-          font-weight: var(--font-weight-medium);
-          font-size: var(--font-size-md);
-          color: var(--color-accent-dark);
-        }
+        .btn span {
+          line-height: 1.1;
 
-        svg {
-          width: 24px;
-          height: 24px;
-          color: var(--color-contrast);
+          svg {
+            width: 16px;
+            height: 16px;
+          }
         }
       }
     }

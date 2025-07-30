@@ -44,7 +44,7 @@ const reviews = ref<Review[]>([
     video: 'example.mp4'
   },
   {
-    img: 'no-photo.jpg',
+    img: 'no-photo.svg',
     name: 'Ольга Ильина',
     position: 'Руководитель отдела продаж',
     text: 'Шаблонность мышления и отсутствие индивидуального подхода – с этим мы часто сталкивались при работе с предыдущими репутационными агентствами. В результате сотрудничества с Digital Dyatel рейтинг нашей компании вырос до 4.8 баллов, а количество продаж увеличилось на 18%. Мы не просто ощущаем, что о нашей компании сформировался положительный образ в сети, но и видим это в цифрах'
@@ -109,7 +109,7 @@ const init = () => {
   scrollOrVideoTemplateRef.value.forEach((el, i) => {
     disableScrollbar(i)
     videoStatusesData[i] = false
-    videoTimelines[i] = '-100%'
+    videoTimelinesData[i] = 0
   })
 
   videoStatuses.value = videoStatusesData
@@ -218,10 +218,16 @@ onMounted(() => {
       <div class="reviews__slider">
         <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
           <swiper-slide v-for="(review, i) in reviews" >
-            <div class="reviews__review" @click="onClickReview(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
+            <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
               <template v-if="review.video">
-                <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef" @click.stop="toggleVideo(i)"/>
-                <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+                <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
+                <div class="reviews__video-container">
+                  <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+                  <div class="reviews__video-info" :class="{'--playing': videoStatuses[i]}">
+                    <div>{{ review.name }}</div>
+                    <div>{{ review.position }}</div>
+                  </div>
+                </div>
                 <div class="reviews__video-timeline" :style="{transform: 'translateX(' + videoTimelines[i] + '%)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
               </template>
               <template v-else>

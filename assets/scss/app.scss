@@ -14,6 +14,7 @@
 
 /* plugins and libraries */
 @use 'third-party/izi-toast';
+@use 'third-party/custom-scroll';
 
 /* sections */
 @use 'sections/hero';
@@ -73,29 +74,4 @@ body {
 
 html {
   height: 100%;
-}
-
-.main-custom-scroll {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-
-  .os-scrollbar-handle {
-    background-color: var(--color-contrast);
-  }
-}
-
-.modal-custom-scroll {
-  max-height: 90vh;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 24px;
-
-  .os-scrollbar-handle {
-    background-color: var(--color-contrast);
-  }
-
-  .os-scrollbar {
-    padding: 20px 2px;
-  }
 }

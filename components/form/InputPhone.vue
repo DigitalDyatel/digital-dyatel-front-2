@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { MaskInputOptions } from "maska"
 
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void
+}>()
+
 const props = withDefaults(defineProps<{
   required?: boolean,
   type?: 'text' | 'password' | 'email',
@@ -21,6 +25,7 @@ const options = reactive<MaskInputOptions>({
 <template>
   <div class="input" :class="{'--required': props.required}">
     <input
+        @input="emit('update:modelValue', $event.target.value)"
         ref="inputTemplateRef"
         :type="type"
         autocomplete="off"

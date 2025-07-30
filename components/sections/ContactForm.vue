@@ -6,6 +6,15 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
 
+const { initForm } = useForm()
+
+const formData = ref(initForm([
+  'name',
+  'phone',
+  'email',
+  {isAgree: true}
+] as const))
+
 const { open, close } = useModal({
   component: ThankYouModal,
   attrs: {
@@ -16,8 +25,6 @@ const { open, close } = useModal({
     }
   },
 })
-
-const isAgree = ref(true)
 
 const onSubmit = () => {
   open()
@@ -39,14 +46,14 @@ const onSubmit = () => {
         </p>
       </div>
       <form autocomplete="off">
-        <Input placeholder="Имя" />
+        <Input v-model="formData.name" placeholder="Имя" />
         <div class="contact-form__group input__group">
-          <InputPhone placeholder="Номер телефона" required />
-          <Input placeholder="Email" required />
+          <InputPhone v-model="formData.phone" placeholder="Номер телефона" required />
+          <Input v-model="formData.email" placeholder="Email" type="email" required />
         </div>
         <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
         <ProcessingPersonalDataAgree />
-        <Checkbox v-model="isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
+        <Checkbox v-model="formData.isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
       </form>
     </div>
     <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>

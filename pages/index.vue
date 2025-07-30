@@ -21,14 +21,14 @@ import Reviews from '~/components/sections/Reviews.vue'
   <WhyManageReputation />
   <WhenNeedReputation />
   <DeepScrollHookIntersection />
-  <OurServices />
+<!--  <OurServices />
   <SolveProblems />
   <OurAchievements />
   <Team />
   <ContactForm />
   <Cases />
   <Reviews />
-  <TalkAboutUs />
+  <TalkAboutUs />-->
   <SharingExperience />
   <FAQ />
   <ContactFormAlt />

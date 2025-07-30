@@ -6,7 +6,8 @@ import { useTimer } from 'maz-ui'
 let io: IntersectionObserver | undefined = undefined
 const animationDuration = 8000
 
-const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
+const articlesContainerTemplateRef = useTemplateRef('articlesContainerTemplateRef')
+const articlesTemplateRef = useTemplateRef('articlesTemplateRef')
 
 const animationIsActive = ref(false)
 
@@ -16,10 +17,11 @@ const articles = ref([
   {
     title: [
       'Инфлюенс-маркетинг:',
-      'что это и как найти блогера'
+      'что это и как найти блогера',
     ],
-    subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
-    background: '1.png'
+    subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений ',
+    background: '1.png',
+    buttonText: 'Перейти в блог'
   },
   {
     title: [
@@ -27,7 +29,8 @@ const articles = ref([
       'как быть в условиях неопределенности?'
     ],
     subtitle: 'методы борьбы с прокрастинацией',
-    background: '2.jpg'
+    background: '2.jpg',
+    buttonText: 'Смотреть решение'
   },
   {
     title: [
@@ -35,31 +38,8 @@ const articles = ref([
       'что это и как найти блогера'
     ],
     subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
-    background: '1.png'
-  },
-  {
-    title: [
-      'Прократинация в IT:',
-      'как быть в условиях неопределенности?'
-    ],
-    subtitle: 'методы борьбы с прокрастинацией',
-    background: '2.jpg'
-  },
-  {
-    title: [
-      'Инфлюенс-маркетинг:',
-      'что это и как найти блогера'
-    ],
-    subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
-    background: '1.png'
-  },
-  {
-    title: [
-      'Прократинация в IT:',
-      'как быть в условиях неопределенности?'
-    ],
-    subtitle: 'методы борьбы с прокрастинацией',
-    background: '2.jpg'
+    background: '1.png',
+    buttonText: 'Перейти в блог'
   },
 ])
 
@@ -95,6 +75,9 @@ const onClickPoint = (i) => {
 }
 
 onMounted(() => {
+
+  articlesContainerTemplateRef.value.style.height = articlesTemplateRef.value[0].offsetHeight + 'px'
+
   io = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       animationIsActive.value = true
@@ -117,7 +100,7 @@ onMounted(() => {
     rootMargin: '0px 0px 0px 0px'
   })
 
-  io.observe(sliderTemplateRef.value!)
+  io.observe(articlesContainerTemplateRef.value!)
 })
 
 onUnmounted(() => {
@@ -135,10 +118,20 @@ onUnmounted(() => {
       <span>Аналитика, кейсы, советы и практики по управлению репутацией и маркетингу</span>
       <span>Только реальные истории и работающие решения</span>
     </p>
-    <div class="sharing-experience__container" ref="sliderTemplateRef" :style="{backgroundImage: 'url(/img/blog/' + articles[activeArticleIndex].background + ')'}">
-      <h3><span v-for="title in articles[activeArticleIndex].title">{{ title }}</span></h3>
-      <p class="sharing-experience__article-subtitle">{{ articles[activeArticleIndex].subtitle }}</p>
-      <Button class="--white --large">Перейти в блог</Button>
+    <div class="sharing-experience__container" ref="articlesContainerTemplateRef">
+      <div class="sharing-experience__articles">
+        <div
+            v-for="(article, i) in articles"
+            class="sharing-experience__article"
+            :class="{'--active': i === activeArticleIndex}"
+            :style="{backgroundImage: 'url(/img/blog/'+ article.background +')'}"
+            ref="articlesTemplateRef"
+        >
+          <h3><span v-for="title in articles[activeArticleIndex].title">{{ title }}</span></h3>
+          <p class="sharing-experience__article-subtitle">{{ articles[activeArticleIndex].subtitle }}</p>
+          <Button class="--white --large">{{ article.buttonText }}</Button>
+        </div>
+      </div>
       <div class="sharing-experience__slider">
         <div
             v-for="(_, i) in articles"

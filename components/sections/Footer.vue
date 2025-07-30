@@ -2,6 +2,8 @@
 import LogoAlt from '~/assets/svg/logo-alt.svg?component'
 import { type CustomRuntimeConfig } from '~/types'
 
+const currentYear = (new Date()).getFullYear()
+
 const config = useRuntimeConfig() as CustomRuntimeConfig
 
 const notification = useNotification()
@@ -54,9 +56,9 @@ onMounted(() => {
             <LogoAlt />
             <div>Digital Dyatel</div>
           </div>
-          <div class="footer__text">© 2024-2025 Digital Dyatel</div>
+          <div class="footer__text">© {{ currentYear }} Digital Dyatel</div>
           <div class="footer__text --small">
-            <span>Управление репутацией. Все права защищены.</span>
+            <span>Все права защищены.</span>
             <span>При копировании информации ссылка на источник обязательна</span>
           </div>
         </div>

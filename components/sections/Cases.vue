@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { categories as _categories } from '~/constants'
+import { categories as _categories, type Case } from '~/constants'
 import Button from '~/components/Button.vue'
+import { useModal } from 'vue-final-modal'
+import CaseModal from '~/components/modals/CaseModal.vue'
 
 let progressBarTrackWidth: number | undefined = undefined
 
@@ -51,6 +53,21 @@ const updateDimensions = (index: number) => {
   }
 
   translateX.value = totalWidth * -1
+}
+
+const openCaseModal = (_case: Case) => {
+
+  const { open, close } = useModal({
+    component: CaseModal,
+    attrs: {
+      case: _case,
+      close: () => {
+        close()
+      },
+    },
+  })
+
+  open()
 }
 
 onMounted(() => {
@@ -107,7 +124,7 @@ onMounted(() => {
                       <div>Результат</div>
                       <p>{{ __case.result }}</p>
                       <div>
-                        <Button class="--tertiary">
+                        <Button class="--tertiary" @click="openCaseModal(__case)">
                           <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
                         </Button>
                       </div>
@@ -135,7 +152,7 @@ onMounted(() => {
                     <div>Результат</div>
                     <p>{{ _case.result }}</p>
                     <div>
-                      <Button class="--tertiary">
+                      <Button class="--tertiary" @click="openCaseModal(_case)">
                         <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
                       </Button>
                     </div>

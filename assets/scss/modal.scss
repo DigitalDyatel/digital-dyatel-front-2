@@ -3,6 +3,33 @@
   justify-content: center;
   align-items: center;
 
+  &.--right {
+    justify-content: right;
+    align-items: start;
+    opacity: 0;
+    transition: opacity 0.3s var(--default-transition-timing-function);
+
+    .modal__content {
+      width: 716px;
+      padding: 48px 32px 48px 48px;
+      height: calc(100vh - 32px);
+      overflow: hidden;
+    }
+
+    .modal__container {
+      padding: 16px;
+    }
+
+    .modal__close {
+      top: 24px;
+      right: 24px;
+    }
+  }
+
+  &.--ready {
+    opacity: 1;
+  }
+
   &__container {
     padding: 24px;
     position: relative;

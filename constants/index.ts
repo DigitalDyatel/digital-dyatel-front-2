@@ -3,8 +3,9 @@ interface Category {
     cases: (Case | Case[])[]
 }
 
-interface Case {
+export interface Case {
     img: string,
+    imgSmall?: string,
     header: string,
     task: string,
     result: string,
@@ -20,6 +21,7 @@ export const categories: Category[] = [
         cases: [
             {
                 img: 'moscow.mba.png',
+                imgSmall: 'moscow.mba.small.png',
                 header: 'Moscow Business Academy',
                 task: 'Выстроить репутацию бренда с нуля, повысить узнаваемость и вытеснить прямого конкурента из топ-10 поисковой выдачи бренда',
                 result: 'Вывели компанию в ТОП-10 выдачи поисковиков по брендовым запросам, вытеснив конкурента. В результате слаженной работы повысили узнаваемость академии на рынке и увеличили органический трафик в несколько раз',

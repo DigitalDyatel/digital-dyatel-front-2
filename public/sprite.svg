@@ -337,4 +337,7 @@
         <path d="M3.14185 3.14099L8.7987 8.79785" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         <path d="M8.79871 3.14099L3.14185 8.79784" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </symbol>
+    <symbol id="play" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 5.9997V4.2197C2 2.0097 3.565 1.1047 5.48 2.2097L7.025 3.0997L8.57 3.9897C10.485 5.0947 10.485 6.9047 8.57 8.0097L7.025 8.8997L5.48 9.7897C3.565 10.8947 2 9.9897 2 7.7797V5.9997Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
 </svg>

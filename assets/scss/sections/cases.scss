@@ -305,3 +305,111 @@
     }
   }
 }
+
+/* Модальное окно при открытии кейсов */
+.cases-modal {
+  height: 100%;
+  overflow: hidden;
+
+  &__header {
+    display: inline-flex;
+    gap: 12px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--color-light-grey);
+
+    img {
+      height: 24px;
+    }
+
+    h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--color-primary);
+    }
+  }
+
+  &__content {
+    padding: 32px 16px 0 0;
+
+    h4, h5 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--color-primary);
+    }
+
+    h4 {
+      margin-top: 48px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    h4 + p, h4 + ul {
+      margin-top: 12px;
+    }
+
+    h5 {
+      margin-top: 32px;
+
+      span {
+        color: var(--color-secondary);
+      }
+    }
+
+    p {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-normal);
+      color: var(--color-secondary);
+      line-height: 1.2;
+    }
+
+    ul {
+      display: flex;
+      margin-top: 24px;
+      padding: 0;
+      flex-wrap: wrap;
+      column-gap: 16px;
+      row-gap: 10px;
+
+      &.--classic {
+        li {
+          display: flex;
+          flex: unset;
+          gap: 8px;
+          align-items: start;
+
+          &:before {
+            display: none;
+          }
+
+          svg {
+            width: 12px;
+            height: 12px;
+            color: var(--color-contrast);
+          }
+        }
+      }
+
+      li {
+        display: inline-flex;
+        flex: 0 1 calc(50% - 8px);
+        color: var(--color-secondary);
+        font-weight: var(--font-weight-normal);
+        font-size: var(--font-size-base);
+        list-style-type: none;
+        align-items: center;
+
+        &:before {
+          content: "";
+          width: 6px;
+          height: 6px;
+          background-color: var(--color-contrast);
+          border-radius: 100px;
+          margin-right: 7px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

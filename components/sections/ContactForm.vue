@@ -15,19 +15,8 @@ const formData = ref(initForm([
   {isAgree: true}
 ] as const))
 
-const { open, close } = useModal({
-  component: ThankYouModal,
-  attrs: {
-    title: 'Готово! Спасибо за ваш запрос, мы скоро свяжемся с вами',
-    content: 'Наш менеджер скоро свяжется с вами, проконсультируем и ответим на все интересующие вопросы',
-    onConfirm: () => {
-      close()
-    }
-  },
-})
-
 const onSubmit = () => {
-  open()
+  (useModal({component: ThankYouModal})).open()
 }
 </script>
 

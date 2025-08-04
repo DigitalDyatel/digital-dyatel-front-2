@@ -9,18 +9,7 @@ import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 const isAgree = ref(true)
 
 const onSubmit = () => {
-  const { open, close } = useModal({
-    component: ThankYouModal,
-    attrs: {
-      title: 'Готово! Спасибо за ваш запрос, мы скоро свяжемся с вами',
-      content: 'Наш менеджер скоро свяжется с вами, проконсультируем и ответим на все интересующие вопросы',
-      onConfirm: () => {
-        close()
-      }
-    },
-  })
-
-  open()
+  (useModal({component: ThankYouModal})).open()
 }
 </script>
 

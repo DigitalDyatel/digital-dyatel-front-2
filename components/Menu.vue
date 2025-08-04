@@ -5,6 +5,7 @@ import { type CustomRuntimeConfig } from '~/types'
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 const config = useRuntimeConfig() as CustomRuntimeConfig
 const notification = useNotification()
@@ -108,6 +109,9 @@ const openFormModal = () => {
       buttonText: 'Жду звонка',
       onConfirm: () => {
         close()
+
+        const thankYouModal = useModal({component: ThankYouModal})
+        thankYouModal.open()
       }
     },
   })

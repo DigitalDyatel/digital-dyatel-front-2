@@ -329,7 +329,7 @@
   }
 
   &__content {
-    padding: 32px 16px 0 0;
+    padding: 32px 23px 0 0;
 
     h4, h5 {
       font-size: var(--font-size-base);
@@ -393,7 +393,6 @@
 
       li {
         display: inline-flex;
-        flex: 0 1 calc(50% - 8px);
         color: var(--color-secondary);
         font-weight: var(--font-weight-normal);
         font-size: var(--font-size-base);

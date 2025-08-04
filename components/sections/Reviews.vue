@@ -173,7 +173,11 @@ const disableScrollbar = (i: number) => {
 }
 
 const toggleVideo = (i: number) => {
-  const video: HTMLVideoElement = reviewTemplateRef.value[i].children[0] as HTMLVideoElement
+  const video: HTMLVideoElement | HTMLDivElement = reviewTemplateRef.value[i].children[0] as HTMLVideoElement
+
+  if (video instanceof HTMLDivElement) {
+    return
+  }
 
   const timeUpdateListener = () => {
     videoTimelines.value[i] = (video.currentTime / video.duration) * 100

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
+import { useModal } from 'vue-final-modal'
+import { type CustomRuntimeConfig } from '~/types'
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
-import { onClickOutside } from '@vueuse/core'
-import { type CustomRuntimeConfig } from '~/types'
+import FormModal from '~/components/modals/FormModal.vue'
 
 const config = useRuntimeConfig() as CustomRuntimeConfig
 const notification = useNotification()
@@ -97,6 +99,21 @@ const createLinkAndFollow = (href: string) => {
   a.click()
   a.remove()
 }
+
+const openFormModal = () => {
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Оставьте номер, обсудим детали',
+      buttonText: 'Жду звонка',
+      onConfirm: () => {
+        close()
+      }
+    },
+  })
+
+  open()
+}
 </script>
 
 <template>
@@ -152,7 +169,7 @@ const createLinkAndFollow = (href: string) => {
                 </div>
               </div>
               <div class="menu__contact-us-line --social">
-                <Button>Обратный звонок</Button>
+                <Button @click="openFormModal">Обратный звонок</Button>
                 <div class="menu__contact-us-social-group">
                   <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram)"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
                   <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp)"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>

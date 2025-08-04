@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useModal } from 'vue-final-modal'
+import { type Case } from '~/constants'
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
 import TagWithLabel from '~/components/TagWithLabel.vue'
+import FormModal from '~/components/modals/FormModal.vue'
 
 interface Service {
   title: string,
@@ -47,6 +50,28 @@ const selectedService = ref(services.value[0])
 const onClickService = (service: Service) => {
   selectedService.value = service
 }
+
+const onClick = (_case?: Case, title: string) => {
+
+  const attrs = {}
+
+  if (_case) {
+    attrs.data = _case
+  }
+
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title,
+      onConfirm: () => {
+        close()
+      },
+      ...attrs
+    },
+  })
+
+  open()
+}
 </script>
 
 <template>
@@ -67,7 +92,7 @@ const onClickService = (service: Service) => {
               <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
             </div>
             <div class="our-services__buttons">
-              <Button class="--large">Оставьте заявку</Button>
+              <Button class="--large" @click="onClick(selectedService, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
               <Button class="--large --quaternary">Подробнее</Button>
             </div>
           </div>
@@ -89,7 +114,7 @@ const onClickService = (service: Service) => {
             <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
             <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
           </p>
-          <Button class="--large --tertiary">Получить предложение</Button>
+          <Button class="--large --tertiary" @click="onClick(undefined, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Получить предложение</Button>
         </div>
         <div>
           <img src="/img/our-services-logo.png" alt="logo-alt">

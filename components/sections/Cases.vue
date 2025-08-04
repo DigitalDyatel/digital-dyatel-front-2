@@ -4,6 +4,7 @@ import { categories as _categories, type Case } from '~/constants'
 import Button from '~/components/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
+import FormModal from '~/components/modals/FormModal.vue'
 
 let progressBarTrackWidth: number | undefined = undefined
 
@@ -61,6 +62,21 @@ const openCaseModal = (_case: Case) => {
     component: CaseModal,
     attrs: {
       case: _case,
+      close: () => {
+        close()
+      },
+    },
+  })
+
+  open()
+}
+
+const openFormModal = () => {
+
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Получить консультацию прямо сейчас!',
       close: () => {
         close()
       },
@@ -166,7 +182,7 @@ onMounted(() => {
       <div class="cases__footer">
         <div class="cases__button-container">
           <Button class="--large --tertiary">Все кейсы</Button>
-          <Button class="--large">Хочу также</Button>
+          <Button class="--large" @click="openFormModal">Хочу также</Button>
         </div>
         <p>
           <span>Полное раскрытие кейсов недопустимо политикой нашей компании,</span>

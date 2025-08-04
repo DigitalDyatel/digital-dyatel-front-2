@@ -6,23 +6,35 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 
+const props = withDefaults(defineProps<{
+  title: string,
+  buttonText?: string,
+  withFiles?: boolean,
+  data?: any
+}>(), {
+  buttonText: 'Оставить заявку',
+  withFiles: false
+})
+
+const emit = defineEmits<{
+  (e: 'confirm'): void
+}>()
+
 const { initForm } = useForm()
 
-const formData = ref(initForm([
+const formDataFields = [
     'name',
     'phone',
     'email',
     'files',
     {isAgree: true}
-] as const))
+]
 
-const props = defineProps<{
-  title: string,
-}>()
+if (props.withFiles) {
+  formDataFields.push('files')
+}
 
-const emit = defineEmits<{
-  (e: 'confirm'): void
-}>()
+const formData = ref(initForm(formDataFields as const))
 
 const onSubmitForm = () => {
   alert('Отправляем запрос')
@@ -40,6 +52,7 @@ const onSubmitForm = () => {
         <Input placeholder="Email" v-model="formData.email" required />
       </div>
       <FileInput
+          v-if="props.withFiles"
           v-model="formData.files"
           types-label="word, excel, pdf"
           types-label-more="doc, docx, xlsx, xls, ods, pdf, md, txt"
@@ -56,7 +69,7 @@ const onSubmitForm = () => {
             'text/plain'
           ]"
       />
-      <Button class="--large" type="submit" @click.prevent="onSubmitForm">Оставить заявку</Button>
+      <Button class="--large" type="submit" @click.prevent="onSubmitForm">{{ props.buttonText }}</Button>
       <ProcessingPersonalDataAgree />
       <Checkbox class="--contrast" v-model="formData.isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
     </form>

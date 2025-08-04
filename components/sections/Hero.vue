@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Button from '~/components/Button.vue'
-import FreeSERMAuditModal from '~/components/modals/FreeSERMAuditModal.vue'
+import FormModal from '~/components/modals/FormModal.vue'
 import { useModal } from 'vue-final-modal'
 
 const { open, close } = useModal({
-  component: FreeSERMAuditModal,
+  component: FormModal,
   attrs: {
     title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
+    withFiles: true,
     onConfirm: () => {
       close()
     }

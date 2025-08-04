@@ -54,7 +54,7 @@ const toggle = (i: number) => {
   answerEl.style.height = answerHeights[i] + 'px'
   answerEl.style.paddingBottom = '24px'
 
-  const clickOutsideFunction = onClickOutside(answerTemplateRef.value![i], () => {
+  const clickOutsideFunction = onClickOutside(questionTemplateRef.value![i], () => {
     activeQuestionIndex.value = null
     answerEl.style.opacity = '0'
     answerEl.style.height = '0'

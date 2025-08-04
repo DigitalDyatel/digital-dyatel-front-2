@@ -52,6 +52,8 @@
     will-change: height, padding, opacity;
     overflow: hidden;
     opacity: 0;
+    line-height: 1.2;
+    cursor: pointer;
 
     &.--init {
       transition: none;

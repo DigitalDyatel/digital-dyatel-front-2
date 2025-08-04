@@ -99,8 +99,8 @@ onMounted(() => {
             <div class="cases__progress-bar-slider" ref="progressBarSliderTemplateRef"></div>
           </div>
           <div class="cases__progress-bar-controls">
-            <div @click="onClickPrev"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-            <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+            <div @click="onClickPrev" :class="{'--disabled': activeCategoryIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+            <div @click="onClickNext" :class="{'--disabled': activeCategoryIndex === categories.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
         </div>
       </div>

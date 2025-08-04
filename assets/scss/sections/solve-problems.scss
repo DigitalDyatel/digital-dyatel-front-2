@@ -213,11 +213,12 @@
       line-height: 1.2;
 
       .tag {
+        display: inline;
         height: 32px;
         font-size: 30px;
         padding: 0 8px;
-        transform: translateY(-6px);
         line-height: 1.1;
+        vertical-align: text-top;
 
         svg {
           width: 16px;

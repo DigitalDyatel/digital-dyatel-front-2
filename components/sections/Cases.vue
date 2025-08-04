@@ -5,6 +5,7 @@ import Button from '~/components/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
 import FormModal from '~/components/modals/FormModal.vue'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 let progressBarTrackWidth: number | undefined = undefined
 
@@ -77,8 +78,11 @@ const openFormModal = () => {
     component: FormModal,
     attrs: {
       title: 'Получить консультацию прямо сейчас!',
-      close: () => {
+      onConfirm: () => {
         close()
+
+        const thankYouModal = useModal({component: ThankYouModal})
+        thankYouModal.open()
       },
     },
   })

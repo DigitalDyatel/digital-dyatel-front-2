@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
 
 const { open, close } = useModal({
@@ -10,6 +11,9 @@ const { open, close } = useModal({
     withFiles: true,
     onConfirm: () => {
       close()
+
+      const thankYouModal = useModal({component: ThankYouModal})
+      thankYouModal.open()
     }
   },
 })

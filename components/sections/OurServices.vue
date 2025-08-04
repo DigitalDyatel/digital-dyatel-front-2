@@ -4,6 +4,7 @@ import { type Case } from '~/constants'
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
 import TagWithLabel from '~/components/TagWithLabel.vue'
 import FormModal from '~/components/modals/FormModal.vue'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 interface Service {
   title: string,
@@ -65,6 +66,9 @@ const onClick = (_case?: Case, title: string) => {
       title,
       onConfirm: () => {
         close()
+
+        const thankYouModal = useModal({component: ThankYouModal})
+        thankYouModal.open()
       },
       ...attrs
     },

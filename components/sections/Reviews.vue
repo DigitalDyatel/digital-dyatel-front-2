@@ -233,7 +233,7 @@ onMounted(() => {
                       <div>{{ review.position }}</div>
                     </div>
                   </div>
-                  <div class="reviews__video-timeline" :style="{transform: 'translateX(' + videoTimelines[i] + '%)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
+                  <div class="reviews__video-timeline" :style="{transform: videoTimelines[i] ? 'translateX(' + videoTimelines[i] + '%)' : 'translateX(0)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
                 </template>
                 <template v-else>
                   <div class="reviews__review-content">

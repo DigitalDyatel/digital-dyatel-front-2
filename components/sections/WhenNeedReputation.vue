@@ -28,10 +28,10 @@
 
 <template>
   <section class="when-need-reputation">
-    <h1 v-gsap.desktop.parallax.faster>
+    <h2 v-gsap.desktop.parallax.faster>
       <span>В каком случае обращаются за </span>
       <span>услугами в репутационную компанию?</span>
-    </h1>
+    </h2>
     <div class="when-need-reputation__circles">
       <div />
       <div />

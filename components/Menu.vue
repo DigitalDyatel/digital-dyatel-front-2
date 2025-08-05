@@ -14,6 +14,12 @@ const { goToAnchor } = useAnchor()
 
 const contactUsIsOpen = ref(false)
 const contactUsTemplateRef = useTemplateRef<HTMLDivElement>('contactUsTemplateRef')
+const isShowMenu = ref(true)
+
+const { scrollIsDeep } = useGlobalState()
+
+let lastScrollTop = undefined
+let isTicking = false
 
 let clickOutsideFunction: ReturnType<typeof onClickOutside> | undefined = undefined
 
@@ -118,10 +124,41 @@ const openFormModal = () => {
 
   open()
 }
+
+const scrollEventListener = (e) => {
+
+  if (!isTicking) {
+    requestAnimationFrame(() => {
+      isShowMenu.value = e.target.scrollTop <= lastScrollTop;
+      lastScrollTop = e.target.scrollTop
+      isTicking = false
+    })
+
+    isTicking = true
+  }
+}
+
+watch(scrollIsDeep, (currentScrollIsDeep) => {
+
+  const mainScrollEl = document.querySelector('.main-custom-scroll').children[0]
+
+  if (currentScrollIsDeep) {
+    lastScrollTop = mainScrollEl.scrollTop
+    mainScrollEl.addEventListener('scroll', scrollEventListener)
+
+    return
+  }
+
+  mainScrollEl.removeEventListener('scroll', scrollEventListener)
+})
+
+onUnmounted(() => {
+  document.querySelector('.main-custom-scroll').children[0].removeEventListener('scroll', scrollEventListener)
+})
 </script>
 
 <template>
-  <div class="menu">
+  <div class="menu" :class="{'--hidden': !isShowMenu}">
     <div class="menu__container">
       <div class="menu__flex">
         <div class="menu__left" @click="goToAnchor('.hero')">

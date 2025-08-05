@@ -3,10 +3,19 @@
   max-width: var(--max-width);
   padding: 0 48px;
 
+  @media (max-width: 767px) {
+    margin: 80px auto 0 auto;
+    padding: 0 12px;
+  }
+
   &__container {
     padding: 78px 0 92px 0;
     background-color: var(--background-light-grey);
     border-radius: 32px;
+
+    @media (max-width: 767px) {
+      padding: 32px 24px;
+    }
   }
 
   h2 {
@@ -14,6 +23,10 @@
     font-weight: var(--font-weight-semi-bold);
     color: var(--color-primary);
     text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-2xl);
+    }
   }
 
   &__questions-container {
@@ -22,6 +35,10 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: 48px;
+
+    @media (max-width: 767px) {
+      margin-top: 24px;
+    }
   }
 
   &__questions {
@@ -33,6 +50,10 @@
       margin-top: 16px;
       border-radius: 12px;
       transition: max-height .3s linear;
+
+      &:first-child {
+        margin-top: 0;
+      }
 
       &.--active {
         > div > div:last-child svg {
@@ -54,6 +75,12 @@
     opacity: 0;
     line-height: 1.2;
     cursor: pointer;
+    font-size: var(--font-size-base);
+
+    @media (max-width: 767px) {
+      padding: 0 16px 16px 16px;
+      font-size: var(--font-size-sm);
+    }
 
     &.--init {
       transition: none;
@@ -68,6 +95,13 @@
     cursor: pointer;
     user-select: none;
     padding: 24px;
+    gap: 0;
+
+    @media (max-width: 767px) {
+      padding: 16px;
+      align-items: start;
+      gap: 4px;
+    }
 
     &.--active {
       > div:last-child svg {
@@ -80,6 +114,10 @@
         color: var(--color-primary);
         font-size: var(--font-size-lg);
         font-weight: var(--font-weight-semi-bold);
+
+        @media (max-width: 767px) {
+          font-size: var(--font-size-md);
+        }
       }
 
       &:last-child {
@@ -87,12 +125,21 @@
         border-radius: 8px;
         background-color: var(--color-contrast);
 
+        @media (max-width: 767px) {
+          padding: 6px;
+        }
+
         svg {
           width: 24px;
           height: 24px;
           color: var(--color-white);
           transform: rotate(90deg);
           transition: transform .3s ease-in-out;
+
+          @media (max-width: 767px) {
+            width: 17px;
+            height: 17px;
+          }
         }
       }
     }

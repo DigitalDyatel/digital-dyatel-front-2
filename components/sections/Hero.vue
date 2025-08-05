@@ -4,20 +4,6 @@ import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
 
-const { open, close } = useModal({
-  component: FormModal,
-  attrs: {
-    title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
-    withFiles: true,
-    onConfirm: () => {
-      close()
-
-      const thankYouModal = useModal({component: ThankYouModal})
-      thankYouModal.open()
-    }
-  },
-})
-
 const tags = ref([
     'ORM',
     'SERM',
@@ -27,6 +13,20 @@ const tags = ref([
 ])
 
 const onClick = () => {
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
+      withFiles: true,
+      onConfirm: () => {
+        close()
+
+        const thankYouModal = useModal({component: ThankYouModal})
+        thankYouModal.open()
+      }
+    },
+  })
+
   open()
 }
 </script>

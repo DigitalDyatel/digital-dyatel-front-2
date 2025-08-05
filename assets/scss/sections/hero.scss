@@ -4,6 +4,10 @@
   padding: 0 48px;
   scroll-margin-block-start: 100px;
 
+  @media (max-width: 767px) {
+    display: none;
+  }
+
   &__container {
     display: flex;
     margin-top: 16px;

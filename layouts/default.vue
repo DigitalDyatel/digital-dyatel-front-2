@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ModalsContainer } from 'vue-final-modal'
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
-import Menu from '../components/Menu.vue'
+import Menu from '~/components/Menu.vue'
 </script>
 
 <template>

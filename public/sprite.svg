@@ -340,4 +340,7 @@
     <symbol id="play" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 5.9997V4.2197C2 2.0097 3.565 1.1047 5.48 2.2097L7.025 3.0997L8.57 3.9897C10.485 5.0947 10.485 6.9047 8.57 8.0097L7.025 8.8997L5.48 9.7897C3.565 10.8947 2 9.9897 2 7.7797V5.9997Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="burger" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.1665 14.1667H10.8332M4.1665 10H15.8332M9.1665 5.83337H15.8332" stroke="#FE3E0E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
 </svg>

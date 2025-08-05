@@ -14,7 +14,8 @@ const { goToAnchor } = useAnchor()
 
 const contactUsIsOpen = ref(false)
 const contactUsTemplateRef = useTemplateRef<HTMLDivElement>('contactUsTemplateRef')
-const isShowMenu = ref(true)
+const isShowMenuByScroll = ref(true)
+const isBurgerMenuOpen = ref(false)
 
 const { scrollIsDeep } = useGlobalState()
 
@@ -129,13 +130,31 @@ const scrollEventListener = (e) => {
 
   if (!isTicking) {
     requestAnimationFrame(() => {
-      isShowMenu.value = e.target.scrollTop <= lastScrollTop;
+      isShowMenuByScroll.value = e.target.scrollTop <= lastScrollTop;
       lastScrollTop = e.target.scrollTop
       isTicking = false
     })
 
     isTicking = true
   }
+}
+
+const onClickGetFreeSERMAudit = () => {
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
+      withFiles: true,
+      onConfirm: () => {
+        close()
+
+        const thankYouModal = useModal({component: ThankYouModal})
+        thankYouModal.open()
+      }
+    },
+  })
+
+  open()
 }
 
 watch(scrollIsDeep, (currentScrollIsDeep) => {
@@ -158,7 +177,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="menu" :class="{'--hidden': !isShowMenu}">
+  <!-- menu-desktop -->
+  <div class="menu" :class="{'--hidden': !isShowMenuByScroll}">
     <div class="menu__container">
       <div class="menu__flex">
         <div class="menu__left" @click="goToAnchor('.hero')">
@@ -220,6 +240,60 @@ onUnmounted(() => {
           </transition>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- menu-mobile -->
+  <div class="menu-mobile">
+    <div class="menu-mobile__overlay" :class="{'--active': isBurgerMenuOpen}" @click="isBurgerMenuOpen = false"/>
+    <div class="menu-mobile__menu-container">
+      <div class="menu-mobile__menu-header">
+        <div class="menu-mobile__side">
+          <Logo width="44" height="44" />
+        </div>
+        <div class="menu-mobile__side --right">
+          <Button class="--rounded" @click="toggleContactUs">Заказать звонок</Button>
+          <div class="menu-mobile__button-group">
+            <Button style="display: none;" class="--rounded --type-search">
+              <svg>
+                <use :href="'/sprite.svg#search'"/>
+              </svg>
+            </Button>
+            <Button class="--rounded --type-grey" @contextmenu.prevent @click="isBurgerMenuOpen = !isBurgerMenuOpen">
+              <svg>
+                <use :href="'/sprite.svg#burger'"/>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+        <div class="menu-mobile__content-container">
+          <transition name="menu-contact-us-fade-in">
+            <div class="menu-mobile__content" v-if="isBurgerMenuOpen">
+              <div class="menu-mobile__list">
+                <div class="menu-mobile__list-item" :class="menuItem.class" v-for="menuItem in menuItems">
+                  <div>
+                    <span v-if="menuItem.class === '--cases'">+{{ config.public.casesMenuCount }}</span>
+                    {{ menuItem.label }}
+                  </div>
+                  <div v-if="menuItem.sub">
+                    <svg v-if="menuItem.sub">
+                      <use :href="'/sprite.svg#dropdown'"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <Button @click="onClickGetFreeSERMAudit">Получить бесплатный SERM аудит</Button>
+              <div class="menu-mobile__phones">
+                <div class="menu-mobile__phone" v-for="phone in config.public.phones">
+                  <div>{{ phone.phone }}</div>
+                  <div>{{ phone.description }}</div>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
     </div>
   </div>
 </template>

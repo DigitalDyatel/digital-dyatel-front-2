@@ -3,7 +3,8 @@ import config from './config.env.json'
 
 export default defineNuxtConfig({
   experimental: {
-    inlineSSRStyles: false
+    inlineSSRStyles: false,
+    prefetchLinks: false
   },
   runtimeConfig: {
     public: config

@@ -36,8 +36,8 @@ const onClick = () => {
     <div class="hero__container">
       <div class="hero__left">
         <h1>
-          <span>Управление</span>
-          <span>репутацией</span>
+          <span>Управление </span>
+          <span>репутацией </span>
           <span>в интернете</span>
         </h1>
         <div class="hero__tags">

@@ -83,7 +83,7 @@ onMounted(() => {
 <template>
   <section class="solve-problems">
     <h2>
-      <span>Решаем репутационные</span>
+      <span>Решаем репутационные </span>
       <span>проблемы любой сложности</span>
     </h2>
     <div class="solve-problems__container">

@@ -25,7 +25,7 @@ const onSubmit = () => {
     <div class="contact-form__container">
       <div>
         <h3>
-          <span>Оставьте заявку —</span>
+          <span>Оставьте заявку — </span>
           <span>Мы свяжемся с вами</span>
         </h3>
         <p class="contact-form__subtitle">

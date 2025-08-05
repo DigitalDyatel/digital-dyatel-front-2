@@ -17,7 +17,13 @@
 
   &__container {
     overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  &__slider-container {
+    overflow-x: hidden;
     height: 608px;
+    width: 1686px;
   }
 
   &__video-container {
@@ -181,10 +187,6 @@
     .os-scrollbar-vertical .os-scrollbar-handle {
       max-height: 120px;
     }
-  }
-
-  &__container {
-    width: 1686px;
   }
 
   video {

@@ -24,10 +24,10 @@ const onSubmit = () => {
   <section class="contact-form">
     <div class="contact-form__container">
       <div>
-        <h3>
+        <p class="contact-form__title">
           <span>Оставьте заявку — </span>
           <span>Мы свяжемся с вами</span>
-        </h3>
+        </p>
         <p class="contact-form__subtitle">
           <span>Расскажем, как работать с репутацией,</span>
           <span>покажем наши успешные кейсы</span>

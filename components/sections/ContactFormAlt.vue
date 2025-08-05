@@ -16,7 +16,7 @@ const onSubmit = () => {
 <template>
   <section class="contact-form-alt">
     <div class="contact-form-alt__container">
-      <h3>Остались вопросы?</h3>
+      <div class="contact-form-alt__title">Остались вопросы?</div>
       <form>
         <div class="contact-form-alt__group">
           <Input placeholder="Имя"/>

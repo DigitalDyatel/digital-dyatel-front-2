@@ -119,10 +119,10 @@ onUnmounted(() => {
     <div class="team__container">
       <div class="team__slider">
         <div class="team__about">
-          <div>
-            <span>Команда</span>
+          <h2>
+            <span>Команда </span>
             <span>Digital Dyatel</span>
-          </div>
+          </h2>
           <p>
             <span>Эксперты с опытом более 3 лет в управлении</span>
             <span>репутацией. Строим персональные стратегии</span>

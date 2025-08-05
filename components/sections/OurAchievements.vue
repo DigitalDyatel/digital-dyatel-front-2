@@ -25,11 +25,15 @@ const achievements = ref([
       <TagWithLabel class="--alternative-rotate" icon="award">#победители</TagWithLabel>
       <h2>Наши достижения</h2>
       <div class="our-achievements__achievements">
-        <div v-for="(achievement, i) in achievements" v-gsap.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'>
-          <div>{{ i + 1 }}</div>
-          <svg><use :href="'/sprite.svg#done'" /></svg>
-          <div>{{ achievement.left }}</div>
-          <div>{{ achievement.right }}</div>
+        <div class="our-achievements__achievement" v-for="(achievement, i) in achievements" v-gsap.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'>
+          <div class="our-achievements__achievement-group">
+            <div class="our-achievements__achievement-badge">
+              <span>{{ i + 1 }}</span>
+              <svg><use :href="'/sprite.svg#done'" /></svg>
+            </div>
+            <div>{{ achievement.left }}</div>
+          </div>
+          <div class="our-achievements__achievement-description">{{ achievement.right }}</div>
         </div>
       </div>
     </div>

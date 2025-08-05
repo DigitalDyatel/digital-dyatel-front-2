@@ -1,7 +1,7 @@
 .tag-with-label {
 
   &.--alternative-rotate div:first-child {
-    transform: rotate(6deg);
+    transform: translateX(6px) rotate(6deg);
   }
 
   &.--alternative-color {
@@ -18,8 +18,13 @@
     background: black;
     border-radius: 100px;
     font-weight: var(--font-weight-semi-bold);
-    transform: rotate(-6deg);
+    transform: translateX(6px) rotate(-6deg);
     line-height: 1.2;
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-xxs);
+      padding: 11px;
+    }
   }
 
   div:last-child {
@@ -31,12 +36,23 @@
     align-items: center;
     height: 48px;
     width: 48px;
-    transform: translate(-9px, -7px);
+    transform: translate(-6px, -7px);
+
+    @media (max-width: 767px) {
+      height: 36px;
+      width: 36px;
+      padding: 10px;
+    }
 
     svg {
       color: white;
       width: 24px;
       height: 24px;
+
+      @media (max-width: 767px) {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 }

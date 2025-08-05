@@ -125,7 +125,7 @@ const openFormModal = () => {
     <div class="menu__container">
       <div class="menu__flex">
         <div class="menu__left" @click="goToAnchor('.hero')">
-          <Logo width="48" height="48" filled/>
+          <Logo width="48" height="48" />
           <div>
             <div>Digital Dyatel</div>
           </div>

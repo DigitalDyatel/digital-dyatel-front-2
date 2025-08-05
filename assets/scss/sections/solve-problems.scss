@@ -213,14 +213,19 @@
       line-height: 1.2;
 
       .tag {
-        display: inline;
+        display: inline-block;
         height: 32px;
-        font-size: 30px;
-        padding: 0 8px;
+        width: 32px;
+        position: relative;
+        font-size: 38px;
         line-height: 1.2;
         vertical-align: text-top;
 
         svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           width: 16px;
           height: 16px;
         }

@@ -75,6 +75,19 @@ const toggleContactUs = () => {
   })
 }
 
+const toggleContactUsForMobile = () => {
+
+  isBurgerMenuOpen.value = false
+
+  if (contactUsIsOpen.value) {
+    contactUsIsOpen.value = false
+    clickOutsideFunction()
+    return
+  }
+
+  contactUsIsOpen.value = true
+}
+
 const copyEmailToClipboard = async () => {
   await navigator.clipboard.writeText(config.public.email)
   notification.fire({title: 'Email скопирован!'})
@@ -117,7 +130,15 @@ const openFormModal = () => {
       onConfirm: () => {
         close()
 
-        const thankYouModal = useModal({component: ThankYouModal})
+        const thankYouModal = useModal({
+          component: ThankYouModal,
+          attrs: {
+            onClose: () => {
+              thankYouModal.close()
+              contactUsIsOpen.value = false
+            }
+          }
+        })
         thankYouModal.open()
       }
     },
@@ -253,21 +274,21 @@ onUnmounted(() => {
 
   <!-- menu-mobile -->
   <div class="menu-mobile">
-    <div class="menu-mobile__overlay" :class="{'--active': isBurgerMenuOpen}" @click="isBurgerMenuOpen = false"/>
+    <div class="menu-mobile__overlay" :class="{'--active': isBurgerMenuOpen || contactUsIsOpen}" @click="isBurgerMenuOpen = false; contactUsIsOpen = false;"/>
     <div class="menu-mobile__menu-container">
       <div class="menu-mobile__menu-header">
-        <div class="menu-mobile__side">
+        <div class="menu-mobile__side" @click="isBurgerMenuOpen = false; contactUsIsOpen = false;">
           <Logo width="44" height="44" />
         </div>
         <div class="menu-mobile__side --right">
-          <Button class="--rounded" @click="toggleContactUs">Заказать звонок</Button>
+          <Button class="--rounded" @click="toggleContactUsForMobile">Заказать звонок</Button>
           <div class="menu-mobile__button-group">
-            <Button style="display: none;" class="--rounded --type-search">
+            <Button style="display: none;" class="--rounded --type-search" @contextmenu.prevent @click="toggleContactUsForMobile">
               <svg>
                 <use :href="'/sprite.svg#search'"/>
               </svg>
             </Button>
-            <Button class="--rounded --type-grey" @contextmenu.prevent @click="isBurgerMenuOpen = !isBurgerMenuOpen">
+            <Button class="--rounded --type-grey" @contextmenu.prevent @click="isBurgerMenuOpen = !isBurgerMenuOpen; contactUsIsOpen = false">
               <svg>
                 <use :href="'/sprite.svg#burger'"/>
               </svg>
@@ -275,33 +296,47 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-
-        <div class="menu-mobile__content-container">
-          <transition name="menu-contact-us-fade-in">
-            <div class="menu-mobile__content" v-if="isBurgerMenuOpen">
-              <div class="menu-mobile__list">
-                <div class="menu-mobile__list-item" :class="menuItem.class" v-for="menuItem in menuItems">
-                  <div>
-                    <span v-if="menuItem.class === '--cases'">+{{ config.public.casesMenuCount }}</span>
-                    {{ menuItem.label }}
-                  </div>
-                  <div v-if="menuItem.sub">
-                    <svg v-if="menuItem.sub">
-                      <use :href="'/sprite.svg#dropdown'"/>
-                    </svg>
-                  </div>
-                </div>
+      <div class="menu-mobile__content-container">
+        <transition name="menu-contact-us-fade-in">
+          <div class="menu-mobile__content --call" v-if="contactUsIsOpen">
+            <div class="menu-mobile__contact-us-header">
+              <div >Связаться с нами</div>
+              <svg @click="toggleContactUs"><use :href="'/sprite.svg#close'" /></svg>
+            </div>
+            <div class="menu-mobile__contact-us-phones">
+              <div class="menu-mobile__contact-us-phone" v-for="phone in config.public.phones">
+                <div @click="clickOnPhone(phone)">{{ phone.phone }}</div>
+                <div>{{ phone.description }}</div>
               </div>
-              <Button @click="onClickGetFreeSERMAudit">Получить бесплатный SERM аудит</Button>
-              <div class="menu-mobile__phones">
-                <div class="menu-mobile__phone" @click="clickOnPhone(phone)" v-for="phone in config.public.phones">
-                  <div>{{ phone.phone }}</div>
-                  <div>{{ phone.description }}</div>
+            </div>
+            <Button @click="openFormModal">Обратный звонок</Button>
+          </div>
+        </transition>
+        <transition name="menu-contact-us-fade-in">
+          <div class="menu-mobile__content --menu" v-if="isBurgerMenuOpen">
+            <div class="menu-mobile__list">
+              <div class="menu-mobile__list-item" :class="menuItem.class" v-for="menuItem in menuItems">
+                <div>
+                  <span v-if="menuItem.class === '--cases'">+{{ config.public.casesMenuCount }}</span>
+                  {{ menuItem.label }}
+                </div>
+                <div v-if="menuItem.sub">
+                  <svg v-if="menuItem.sub">
+                    <use :href="'/sprite.svg#dropdown'"/>
+                  </svg>
                 </div>
               </div>
             </div>
-          </transition>
-        </div>
+            <Button @click="onClickGetFreeSERMAudit">Получить бесплатный SERM аудит</Button>
+            <div class="menu-mobile__phones">
+              <div class="menu-mobile__phone" @click="clickOnPhone(phone)" v-for="phone in config.public.phones">
+                <div>{{ phone.phone }}</div>
+                <div>{{ phone.description }}</div>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
     </div>
   </div>
 </template>

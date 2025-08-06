@@ -5,7 +5,7 @@ import Button from '~/components/Button.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
-import InputPhone from '../form/InputPhone.vue'
+import InputPhone from '~/components/form/InputPhone.vue'
 
 const props = withDefaults(defineProps<{
   title: string,

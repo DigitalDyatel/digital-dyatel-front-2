@@ -148,7 +148,15 @@ const onClickGetFreeSERMAudit = () => {
       onConfirm: () => {
         close()
 
-        const thankYouModal = useModal({component: ThankYouModal})
+        const thankYouModal = useModal({
+          component: ThankYouModal,
+          attrs: {
+            onClose: () => {
+              thankYouModal.close()
+              isBurgerMenuOpen.value = false
+            }
+          }
+        })
         thankYouModal.open()
       }
     },

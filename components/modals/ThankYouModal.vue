@@ -2,6 +2,10 @@
 import Button from '~/components/Button.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
+
 const props = withDefaults(defineProps<{
   title?: string,
   content?: string
@@ -12,9 +16,9 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <Modal class="modal-thank-you" v-slot="slotProps">
+  <Modal class="modal-thank-you" v-slot="slotProps" @close="emit('close')">
     <h4>{{ props.title }}</h4>
     <p>{{ props.content }}</p>
-    <Button class="--large" type="submit" @click="slotProps.close()">Вернуться на сайт</Button>
+    <Button class="--large" type="submit" @click="emit('close'); slotProps.close()">Вернуться на сайт</Button>
   </Modal>
 </template>

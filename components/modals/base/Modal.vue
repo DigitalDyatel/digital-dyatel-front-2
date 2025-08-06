@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal'
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
+
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
 </script>
 
 <template>
@@ -8,6 +12,7 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
       class="modal"
       overlay-transition="vfm-fade"
       content-transition="vfm-fade"
+      @closed="emit('close')"
   >
     <template #default="{ close }">
       <div class="modal__container" @click="(e) => e.target === e.currentTarget && close()">

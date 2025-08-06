@@ -164,7 +164,7 @@
 
       &:nth-child(1) {
         top: 18px;
-        left: 29px;
+        transform: translateX(-64.5%);
       }
 
       &:nth-child(2) {
@@ -179,9 +179,8 @@
       &:nth-child(4) {
         flex-direction: row-reverse;
         bottom: 17px;
-        right: 23px;
         top: unset;
-        left: unset;
+        transform: translateX(-32.5%);
       }
 
       svg {

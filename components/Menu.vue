@@ -294,7 +294,7 @@ onUnmounted(() => {
               </div>
               <Button @click="onClickGetFreeSERMAudit">Получить бесплатный SERM аудит</Button>
               <div class="menu-mobile__phones">
-                <div class="menu-mobile__phone" v-for="phone in config.public.phones">
+                <div class="menu-mobile__phone" @click="clickOnPhone(phone)" v-for="phone in config.public.phones">
                   <div>{{ phone.phone }}</div>
                   <div>{{ phone.description }}</div>
                 </div>

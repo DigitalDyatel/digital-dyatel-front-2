@@ -47,12 +47,13 @@ const onSubmitForm = () => {
   <Modal class="modal-lead" @confirm="emit('confirm')">
     <h4>{{ props.title }}</h4>
     <form class="form">
-      <Input placeholder="Имя" v-model="formData.name" />
+      <Input class="--light" placeholder="Имя" v-model="formData.name" />
       <div class="form__group">
-        <InputPhone placeholder="Номер телефона" v-model="formData.phone" required />
-        <Input placeholder="Email" v-model="formData.email" required />
+        <InputPhone class="--light" placeholder="Номер телефона" v-model="formData.phone" required />
+        <Input class="--light" placeholder="Email" v-model="formData.email" required />
       </div>
       <FileInput
+          class="--light"
           v-if="props.withFiles"
           v-model="formData.files"
           types-label="word, excel, pdf"

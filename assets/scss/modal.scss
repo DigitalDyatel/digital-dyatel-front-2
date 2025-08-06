@@ -114,10 +114,18 @@
 
     > .processing-personal-data-agree {
       margin-top: 24px;
+
+      @media (max-width: 767px) {
+        margin-top: 16px;
+      }
     }
 
     > .checkbox {
       margin-top: 20px;
+
+      @media (max-width: 767px) {
+        margin-top: 16px;
+      }
     }
 
     &__group {
@@ -134,16 +142,6 @@
         flex: 1;
       }
     }
-
-    .input input {
-      background-color: var(--color-modal-inputs-background);
-      color: var(--color-primary);
-      border: 1px solid var(--color-inputs-border-light);
-
-      &::placeholder {
-        color: var(--color-secondary);
-      }
-    }
   }
 }
 
@@ -152,10 +150,19 @@
    margin-top: 16px;
    font-size: var(--font-size-lg);
    color: var(--color-secondary);
+
+   @media (max-width: 767px) {
+     font-size: var(--font-size-sm);
+     margin-top: 12px;
+   }
  }
 
   .btn {
     margin-top: 48px;
     width: 100%;
+
+    @media (max-width: 767px) {
+      margin-top: 32px;
+    }
   }
 }

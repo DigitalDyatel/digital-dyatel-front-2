@@ -34,6 +34,14 @@ const emit = defineEmits<{
   (e: 'update:modelValue', files: FileList): void
 }>()
 
+const text = computed(() => {
+  if (window.innerWidth < 768) {
+    return 'Нажмите, чтобы загрузить файл'
+  }
+
+  return 'Перетащите файл' + (props.maxCount > 1 ? 'ы' : '') + ' или загрузите'
+})
+
 const dropzoneTemplateRef = useTemplateRef<HTMLInputElement>('dropzoneTemplateRef')
 
 const { fire } = useNotification()
@@ -117,6 +125,10 @@ onMounted(() => {
     dropzoneTemplateRef.value.classList.remove('--drag-over')
     handleFiles(e.dataTransfer.files);
   });
+
+
+
+  console.log(window.innerWidth)
 })
 </script>
 
@@ -128,7 +140,7 @@ onMounted(() => {
           Добавлено файлов: {{ props.modelValue.length }}
         </template>
         <template v-else>
-          Перетащите файл{{ maxCount > 1 ? 'ы' : '' }} или загрузите
+          {{ text }}
         </template>
       </div>
       <div class="file-input__btn" @click="onRemove">

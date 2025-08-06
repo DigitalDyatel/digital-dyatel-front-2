@@ -1,6 +1,12 @@
 .file-input {
   position: relative;
 
+  &.--light {
+    .file-input__flex {
+      border: 1px solid var(--color-inputs-border-light);
+    }
+  }
+
   &.--filled {
     .file-input__text {
       color: var(--color-primary);
@@ -59,6 +65,11 @@
     color: var(--color-tertiary);
     padding-top: 4px;
     user-select: none;
+    font-size: var(--font-size-base);
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-sm);
+    }
   }
 
   &__flex {
@@ -66,9 +77,14 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-modal-inputs-background);
-    padding: 16px 24px;
+    padding: 15px 24px;
     border-radius: 12px;
     cursor: pointer;
+    border: 1px solid var(--color-inputs-border);
+
+    @media (max-width: 767px) {
+      padding: 12px 16px;
+    }
 
     &.--drag-over {
       background-color: var(--color-modal-inputs-background-drag-over);
@@ -82,7 +98,11 @@
 
   &__text {
     color: var(--color-secondary);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-md);
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-sm);
+    }
 
     &.--added {
       color: var(--color-primary);
@@ -94,11 +114,20 @@
     background-color: var(--color-contrast);
     padding: 8px;
 
+    @media (max-width: 767px) {
+      padding: 10px;
+    }
+
     svg {
       width: 24px;
       height: 24px;
       color: var(--color-white);
       transition: transform .3s var(--default-transition-timing-function);
+
+      @media (max-width: 767px) {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 }

@@ -4,6 +4,13 @@ import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
 
+const advantages = [
+    'Стратегия под ваши цели',
+    'Реальные отзывы',
+    'Конфиденциальность',
+    'Понятные результаты'
+]
+
 const tags = ref([
     'ORM',
     'SERM',
@@ -40,9 +47,29 @@ const onClick = () => {
           <span>репутацией </span>
           <span>в интернете</span>
         </h1>
-        <div class="hero__tags">
-          <div v-for="tag in tags">
-            {{ tag }}
+        <div class="hero__tags-container">
+          <div class="hero__tags-overlay" />
+          <div class="hero__tags">
+            <div v-for="tag in tags">
+              {{ tag }}
+            </div>
+          </div>
+        </div>
+        <div class="hero__visual-mobile">
+          <div class="hero__advantages-mobile">
+            <div v-for="advantage in advantages">
+              <svg><use :href="'/sprite.svg#circle-star'" /></svg>
+              <div>{{ advantage }}</div>
+            </div>
+          </div>
+          <div class="hero__circle-container-mobile --top">
+            <div class="hero__circle" />
+          </div>
+          <div class="hero__circle-container-mobile --center">
+            <div class="hero__circle" />
+          </div>
+          <div class="hero__circle-container-mobile --bottom">
+            <div class="hero__circle" />
           </div>
         </div>
         <div class="hero__button-container" @click="onClick">
@@ -70,10 +97,7 @@ const onClick = () => {
           <div v-for="n in 4" :key="n" />
         </div>
         <div class="hero__advantages">
-          <div>Стратегия под ваши цели</div>
-          <div>Реальные отзывы</div>
-          <div>Конфиденциальность</div>
-          <div>Понятные результаты</div>
+          <div v-for="advantage in advantages">{{  advantage }}</div>
         </div>
       </div>
     </div>

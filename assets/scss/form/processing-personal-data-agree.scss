@@ -2,6 +2,10 @@
   font-size: var(--font-size-base);
   color: var(--color-secondary);
 
+  @media (max-width: 767px) {
+    font-size: var(--font-size-xs);
+  }
+
   a {
     color: var(--color-secondary);
     border-bottom: 1px solid var(--color-secondary);

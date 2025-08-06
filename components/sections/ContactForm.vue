@@ -22,11 +22,12 @@ const onSubmit = () => {
 
 <template>
   <section class="contact-form">
+    <Tag icon="archive-tick" />
     <div class="contact-form__container">
       <div>
         <p class="contact-form__title">
           <span>Оставьте заявку — </span>
-          <span>Мы свяжемся с вами</span>
+          <span>мы свяжемся с вами</span>
         </p>
         <p class="contact-form__subtitle">
           <span>Расскажем, как работать с репутацией,</span>

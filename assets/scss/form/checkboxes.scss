@@ -3,6 +3,10 @@
   align-items: center;
   gap: 10px;
 
+  @media (max-width: 767px) {
+    align-items: end;
+  }
+
   &.--contrast {
     > div:first-child {
       background-color: var(--color-contrast);
@@ -27,12 +31,17 @@
     background-color: var(--color-white);
     border-radius: 5px;
 
+    @media (max-width: 767px) {
+      width: 16px;
+      height: 16px;
+    }
+
     svg {
       position: absolute;
       left: 0;
       top: 0;
-      width: 20px;
-      height: 20px;
+      width: inherit;
+      height: inherit;
       user-select: none;
       opacity: 0;
       transition: opacity .1s var(--default-transition-timing-function);
@@ -44,6 +53,10 @@
     font-size: var(--font-size-base);
     color: var(--color-secondary);
     border-bottom: 1px solid var(--color-secondary);
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-xs);
+    }
 
     * {
       color: var(--color-secondary);

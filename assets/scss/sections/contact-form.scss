@@ -5,6 +5,44 @@
   overflow: hidden;
   padding: 0 48px;
 
+  @media (max-width: 767px) {
+    margin: 62px auto 0 auto;
+    padding: 18px 12px 0 12px;
+  }
+
+  .tag {
+    position: absolute;
+    bottom: 48px;
+    left: 96px;
+    background-color: var(--color-accent-blue);
+    border-radius: 100px 0 100px 100px;
+    z-index: 1;
+    height: 48px;
+    width: 48px;
+    padding: 12px;
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+
+    @media (max-width: 767px) {
+      top: 0;
+      right: 48px;
+      left: unset;
+      height: 36px;
+      width: 36px;
+      padding: 10px;
+
+      svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+
+
   > svg {
     width: 680px;
     aspect-ratio: 1 / 1;
@@ -14,16 +52,32 @@
     animation-timing-function: linear;
     opacity: .8;
 
-    &:nth-child(2) {
-      bottom: -28px;
-      left: -69px;
-      animation-name: spin-1;
+    @media (max-width: 767px) {
+      width: 300px;
     }
 
     &:nth-child(3) {
+      bottom: -28px;
+      left: -69px;
+      top: unset;
+      animation-name: spin-1;
+
+      @media (max-width: 767px) {
+        top: -36px;
+        left: -226px;
+      }
+    }
+
+    &:nth-child(4) {
       bottom: -570px;
       left: -97px;
       animation-name: spin-2;
+      top: unset;
+
+      @media (max-width: 767px) {
+        top: -197px;
+        left: -114px;
+      }
     }
   }
 
@@ -33,9 +87,26 @@
     justify-content: space-between;
     background-color: var(--color-accent-dark);
     border-radius: 32px;
+    flex-direction: row;
 
-    > div, > form {
+    @media (max-width: 767px) {
+      flex-direction: column;
+      padding: 36px 24px 32px 24px;
+      border-radius: 24px;
+    }
+
+    > form {
       flex: 1;
+      margin-top: 0;
+
+      @media (max-width: 767px) {
+        margin-top: 24px;
+      }
+    }
+
+    > div {
+      flex: 1;
+      margin-top: 0;
     }
   }
 
@@ -43,6 +114,13 @@
     font-weight: var(--font-weight-medium);
     color: var(--color-white-contrast);
     font-size: var(--font-size-3xl);
+    text-align: left;
+
+    @media (max-width: 767px) {
+      font-weight: var(--font-weight-semi-bold);
+      font-size: var(--font-size-2xl);
+      text-align: center;
+    }
 
     span {
       line-height: 1.2;
@@ -54,6 +132,13 @@
     margin-top: 16px;
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
+    text-align: left;
+
+    @media (max-width: 767px) {
+      margin-top: 12px;
+      font-size: var(--font-size-sm);
+      text-align: center;
+    }
 
     span {
       line-height: 1.2;
@@ -63,16 +148,28 @@
 
   &__group {
     margin-top: 16px;
+
+    @media (max-width: 767px) {
+      margin-top: 12px;
+    }
   }
 
   .btn {
     margin-top: 48px;
     display: flex;
     width: 100%;
+
+    @media (max-width: 767px) {
+      margin-top: 24px;
+    }
   }
 
   form .processing-personal-data-agree {
     margin-top: 24px;
+
+    @media (max-width: 767px) {
+      margin-top: 16px;
+    }
   }
 
   .checkbox {

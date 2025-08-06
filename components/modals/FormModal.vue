@@ -5,6 +5,7 @@ import Button from '~/components/Button.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
+import InputPhone from '../form/InputPhone.vue'
 
 const props = withDefaults(defineProps<{
   title: string,
@@ -48,7 +49,7 @@ const onSubmitForm = () => {
     <form class="form">
       <Input placeholder="Имя" v-model="formData.name" />
       <div class="form__group">
-        <Input placeholder="Номер телефона" v-model="formData.phone" required />
+        <InputPhone placeholder="Номер телефона" v-model="formData.phone" required />
         <Input placeholder="Email" v-model="formData.email" required />
       </div>
       <FileInput

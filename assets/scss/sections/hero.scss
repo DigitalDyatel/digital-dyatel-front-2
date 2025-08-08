@@ -134,22 +134,43 @@
       aspect-ratio: 1/1;
       position: absolute;
 
-      &:first-child {
+      &:nth-child(1) {
+        background-color: #fff;
+        height: 61px;
+        bottom: 19.66%;
+        left: 13.64%;
+        filter: blur(27px);
+        will-change: transform;
+        animation: moveInCircle 7s linear infinite;
+      }
+
+      &:nth-child(2) {
+        background-color: #fff;
+        opacity: 72%;
+        height: 69px;
+        bottom: 7.24%;
+        right: -16%;
+        filter: blur(24px);
+        will-change: transform;
+        animation: moveInCircle 15s linear infinite;
+      }
+
+      &:nth-child(3) {
         background-color: #435c99;
-        height: 185px;
+        height: 141px;
         right: -10%;
         top: -28%;
-        filter: blur(60px);
+        filter: blur(41px);
         will-change: transform;
         animation: moveVertical 5s linear infinite;
       }
 
-      &:last-child {
+      &:nth-child(4) {
         background-color: #ff8e3e;
-        height: 160px;
+        height: 119px;
         left: 21.52%;
         bottom: 0;
-        filter: blur(60px);
+        filter: blur(41px);
         will-change: transform;
         animation: moveInCircle 7s ease-in-out infinite;
       }

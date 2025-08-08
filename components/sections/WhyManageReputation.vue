@@ -79,7 +79,8 @@ onMounted(() => {
   io = new IntersectionObserver((entries) => {
     isMobileIntersected.value = entries[0].isIntersecting
   }, {
-    rootMargin: '0px 0px -225px 0px'
+    rootMargin: '0px 0px -200px 0px',
+    threshold: 1,
   })
 
   io.observe(intersectedTemplateRef.value!)
@@ -116,7 +117,7 @@ onMounted(() => {
             <span>Потеря доверия =</span>
             <span>потеря прибыли</span>
           </p>
-          <div class="why-manage-reputation__cards">
+          <div class="why-manage-reputation__cards" ref="intersectedTemplateRef">
             <div v-for="card in topCards">
               <div class="why-manage-reputation__card-icon" v-if="card.positiveIcon">
                 <svg v-if="card.positiveIcon">
@@ -151,7 +152,7 @@ onMounted(() => {
           </p>
         </div>
       </div>
-      <div class="why-manage-reputation__bottom-cards --mobile" ref="intersectedTemplateRef">
+      <div class="why-manage-reputation__bottom-cards --mobile">
         <swiper-container ref="swiperContainerTemplateRef"  style="width: 500px;">
           <swiper-slide v-for="(card, i) in bottomCards">
             <div class="why-manage-reputation__bottom-card" :class="{'--alternative': card.alternative}">

@@ -129,6 +129,33 @@
     }
   }
 
+  &__active-gradient-mobile {
+    div {
+      aspect-ratio: 1/1;
+      position: absolute;
+
+      &:first-child {
+        background-color: #435c99;
+        height: 185px;
+        right: -10%;
+        top: -28%;
+        filter: blur(60px);
+        will-change: transform;
+        animation: moveVertical 5s linear infinite;
+      }
+
+      &:last-child {
+        background-color: #ff8e3e;
+        height: 160px;
+        left: 21.52%;
+        bottom: 0;
+        filter: blur(60px);
+        will-change: transform;
+        animation: moveInCircle 7s ease-in-out infinite;
+      }
+    }
+  }
+
   &__visual-mobile {
     position: relative;
     height: 200px;

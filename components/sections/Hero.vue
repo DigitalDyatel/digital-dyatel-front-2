@@ -64,6 +64,8 @@ const touchStartEventListener = e => {
 const touchMoveEventListener = e => {
   if (!isTouching || e.touches.length !== 1) return;
 
+  e.preventDefault()
+
   const currentX = e.touches[0].pageX;
   const dx = currentX - startX;
   tagsTemplateRef.value.scrollLeft = scrollStartX - dx;
@@ -102,7 +104,7 @@ onMounted(() => {
   }
 
   tagsTemplateRef.value.addEventListener('touchstart', touchStartEventListener, { passive: true });
-  tagsTemplateRef.value.addEventListener('touchmove', touchMoveEventListener, { passive: true })
+  tagsTemplateRef.value.addEventListener('touchmove', touchMoveEventListener, { passive: false })
   tagsTemplateRef.value.addEventListener('touchend', touchEndEventListener)
 
   const io = new IntersectionObserver(
@@ -125,7 +127,7 @@ onUnmounted(() => {
   }
 
   tagsTemplateRef.value.removeEventListener('touchstart', touchStartEventListener, { passive: true });
-  tagsTemplateRef.value.removeEventListener('touchmove', touchMoveEventListener, { passive: true })
+  tagsTemplateRef.value.removeEventListener('touchmove', touchMoveEventListener, { passive: false })
   tagsTemplateRef.value.removeEventListener('touchend', touchEndEventListener)
   io.disconnect()
 })

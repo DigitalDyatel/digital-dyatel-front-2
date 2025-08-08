@@ -111,6 +111,10 @@ onMounted(() => {
       (entries) => {
         entries.forEach((entry) => {
           isMobileTagsOverlayHidden.value = entry.isIntersecting
+
+          if (entry.isIntersecting) {
+            alert(1)
+          }
         });
       },
       {

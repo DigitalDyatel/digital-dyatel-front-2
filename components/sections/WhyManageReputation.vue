@@ -1,11 +1,23 @@
 <script setup lang="ts">
 import TagWithLabel from '~/components/TagWithLabel.vue'
 
-let io: IntersectionObserver | undefined = undefined
-
 const intersectedTemplateRef = useTemplateRef('intersectedTemplateRef')
+const bottomCardsTemplateRef = useTemplateRef('bottomCardsTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
+const containerTemplateRef = useTemplateRef('containerTemplateRef')
 
 const isMobileIntersected = ref(false)
+const activeSlideIndex = ref(0)
+
+let io: IntersectionObserver | undefined = undefined
+
+const onSlideChanged = () => {
+  activeSlideIndex.value = swiperContainerTemplateRef.value.swiper.activeIndex
+}
+
+const onClickSlide = (i) => {
+  swiperContainerTemplateRef.value.swiper.slideTo(i)
+}
 
 const topCards = ref([
   {
@@ -71,7 +83,8 @@ const bottomCards = ref([
     ]
   },
 ]);
-onMounted(() => {
+
+const initMobileIntersection = () => {
   if (window.innerWidth >= 768) {
     return
   }
@@ -101,6 +114,31 @@ onMounted(() => {
   })
 
   io.observe(intersectedTemplateRef.value!)
+}
+
+const initMobileSlider = () => {
+  if (window.innerWidth >= 768) {
+    return
+  }
+
+  let maxHeight = 0
+
+  bottomCardsTemplateRef.value.forEach(el => {
+    if (el.offsetHeight > maxHeight) {
+      maxHeight = el.offsetHeight
+    }
+  })
+
+  bottomCardsTemplateRef.value.forEach(el => {
+    el.style.height = maxHeight + 'px'
+  })
+
+  swiperContainerTemplateRef.value.style.width = window.getComputedStyle(containerTemplateRef.value).width
+}
+
+onMounted(() => {
+  initMobileIntersection()
+  initMobileSlider()
 })
 
 onUnmounted(() => {
@@ -132,7 +170,7 @@ onUnmounted(() => {
             <span>и <span>нанести ущерб бизнесу</span></span>
           </p>
         </div>
-        <div class="why-manage-reputation__block --right" :class="{'--intersection': isMobileIntersected}" >
+        <div class="why-manage-reputation__block --right" ref="containerTemplateRef" :class="{'--intersection': isMobileIntersected}" >
           <div class="why-manage-reputation__blur"></div>
           <div class="why-manage-reputation__equal-sign">
             <div/>
@@ -178,9 +216,9 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="why-manage-reputation__bottom-cards --mobile">
-        <swiper-container ref="swiperContainerTemplateRef"  style="width: 500px;">
-          <swiper-slide v-for="(card, i) in bottomCards">
-            <div class="why-manage-reputation__bottom-card" :class="{'--alternative': card.alternative}">
+        <swiper-container ref="swiperContainerTemplateRef" @swiperslidechange="onSlideChanged" :spaceBetween="16" :slides-per-view="1.1">
+          <swiper-slide v-for="card in bottomCards">
+            <div class="why-manage-reputation__bottom-card" ref="bottomCardsTemplateRef" :class="{'--alternative': card.alternative}">
               <div>{{ card.percent }}%</div>
               <p>
                 <span v-for="text in card.text">{{ text }}</span>
@@ -188,6 +226,9 @@ onUnmounted(() => {
             </div>
           </swiper-slide>
         </swiper-container>
+        <div class="why-manage-reputation__swiper-custom-pagination">
+          <div v-for="(_, i) in bottomCards" :class="{'--active': activeSlideIndex === i}" @click="onClickSlide(i)"/>
+        </div>
       </div>
       <div class="why-manage-reputation__description">согласно исследованию Edelman Trust Barometer</div>
     </div>

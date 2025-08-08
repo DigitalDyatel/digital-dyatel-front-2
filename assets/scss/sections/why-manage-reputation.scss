@@ -253,17 +253,11 @@
       @media (max-width: 767px) {
         padding: 12px;
         border-radius: 8px;
-
-
-        display: flex;
-        flex-direction: column;
-        height: 93px;
-        justify-content: space-between;
       }
 
       img {
         display: block;
-        width: 100%;
+        width: auto;
         transform: none;
         position: static;
 
@@ -271,8 +265,20 @@
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
+          width: 100%;
         }
       }
+    }
+  }
+
+  &__card-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+      height: 69px;
     }
   }
 

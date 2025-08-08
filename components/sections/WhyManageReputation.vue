@@ -107,16 +107,18 @@ const bottomCards = ref([
                   <use :href="'/sprite.svg#tag-heart'"/>
                 </svg>
               </div>
-              <div class="why-manage-reputation__card-rating">
-                <div>{{ card.negativeRating }}</div>
-                <div>{{ card.positiveRating }}</div>
-              </div>
-              <div class="why-manage-reputation__card-img-container">
-                <img :src="'/img/services/' + card.src" :alt="card.alt"/>
-              </div>
-              <div class="why-manage-reputation__card-review-count">
-                <div>{{ card.reviewCountBefore }} отзывов</div>
-                <div>{{ card.reviewCountAfter }} отзывов</div>
+              <div class="why-manage-reputation__card-content">
+                <div class="why-manage-reputation__card-rating">
+                  <div>{{ card.negativeRating }}</div>
+                  <div>{{ card.positiveRating }}</div>
+                </div>
+                <div class="why-manage-reputation__card-img-container">
+                  <img :src="'/img/services/' + card.src" :alt="card.alt"/>
+                </div>
+                <div class="why-manage-reputation__card-review-count">
+                  <div>{{ card.reviewCountBefore }} отзывов</div>
+                  <div>{{ card.reviewCountAfter }} отзывов</div>
+                </div>
               </div>
             </div>
           </div>

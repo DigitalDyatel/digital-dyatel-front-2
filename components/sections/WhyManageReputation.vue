@@ -3,7 +3,7 @@ import TagWithLabel from '~/components/TagWithLabel.vue'
 
 let io: IntersectionObserver | undefined = undefined
 
-const rightTemplateRef = useTemplateRef('rightTemplateRef')
+const intersectedTemplateRef = useTemplateRef('intersectedTemplateRef')
 
 const isMobileIntersected = ref(false)
 
@@ -80,7 +80,7 @@ onMounted(() => {
     isMobileIntersected.value = entries[0].isIntersecting
   })
 
-  io.observe(rightTemplateRef.value!)
+  io.observe(intersectedTemplateRef.value!)
 })
 </script>
 
@@ -149,7 +149,19 @@ onMounted(() => {
           </p>
         </div>
       </div>
-      <div class="why-manage-reputation__description">согласно исследованию Edelman Trust Barometer</div>
+      <div class="why-manage-reputation__bottom-cards --mobile">
+        <swiper-container ref="swiperContainerTemplateRef"  style="width: 500px;">
+          <swiper-slide v-for="(card, i) in bottomCards">
+            <div class="why-manage-reputation__bottom-card" :class="{'--alternative': card.alternative}">
+              <div>{{ card.percent }}%</div>
+              <p>
+                <span v-for="text in card.text">{{ text }}</span>
+              </p>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+      <div class="why-manage-reputation__description" ref="intersectedTemplateRef">согласно исследованию Edelman Trust Barometer</div>
     </div>
   </section>
 </template>

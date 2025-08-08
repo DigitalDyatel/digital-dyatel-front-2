@@ -72,14 +72,12 @@ const bottomCards = ref([
   },
 ]);
 onMounted(() => {
-  if (window.innerHeight >= 768) {
+  if (window.innerWidth >= 768) {
     return
   }
 
   io = new IntersectionObserver((entries) => {
     isMobileIntersected.value = entries[0].isIntersecting
-  }, {
-    rootMargin: '0px 0px -400px 0px'
   })
 
   io.observe(rightTemplateRef.value!)
@@ -106,7 +104,7 @@ onMounted(() => {
             <span>и <span>нанести ущерб бизнесу</span></span>
           </p>
         </div>
-        <div class="why-manage-reputation__block --right" :class="{'--intersection': isMobileIntersected}" ref="rightTemplateRef">
+        <div class="why-manage-reputation__block --right" :class="{'--intersection': isMobileIntersected}" >
           <div class="why-manage-reputation__blur"></div>
           <div class="why-manage-reputation__equal-sign">
             <div/>

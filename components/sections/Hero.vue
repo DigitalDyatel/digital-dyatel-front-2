@@ -111,14 +111,11 @@ onMounted(() => {
       (entries) => {
         entries.forEach((entry) => {
           isMobileTagsOverlayHidden.value = entry.isIntersecting
-
-          if (entry.isIntersecting) {
-            alert(1)
-          }
         });
       },
       {
         root: tagsTemplateRef.value,
+        rootMargin: '0px 10px 0px 0px',
         threshold: 1.0,
       }
   );

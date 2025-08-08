@@ -97,7 +97,7 @@ onMounted(() => {
     }
   }, {
     rootMargin: `0px 0px ${halfDisplay} 0px`,
-    threshold: 1,
+    threshold: 0.5,
   })
 
   io.observe(intersectedTemplateRef.value!)

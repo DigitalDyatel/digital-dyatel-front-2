@@ -6,6 +6,10 @@
   .os-scrollbar-handle {
     background-color: var(--color-contrast);
   }
+
+  .os-scrollbar {
+    padding: 2px 3px;
+  }
 }
 
 .modal-custom-scroll {

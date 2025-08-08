@@ -125,10 +125,6 @@ onMounted(() => {
     dropzoneTemplateRef.value.classList.remove('--drag-over')
     handleFiles(e.dataTransfer.files);
   });
-
-
-
-  console.log(window.innerWidth)
 })
 </script>
 

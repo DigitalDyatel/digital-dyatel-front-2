@@ -76,14 +76,39 @@ onMounted(() => {
     return
   }
 
+  const halfDisplay = (window.innerWidth / 2) * -1 + 'px'
+
+  let lastScrollY = document.querySelector('.main-custom-scroll').children[0].scrollTop;
+
   io = new IntersectionObserver((entries) => {
-    isMobileIntersected.value = entries[0].isIntersecting
+    const currentScrollY = document.querySelector('.main-custom-scroll').children[0].scrollTop;
+    const scrollingDown = currentScrollY > lastScrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+
+    lastScrollY = currentScrollY;
+
+    if (entries[0].isIntersecting && scrollingDown) {
+      isMobileIntersected.value = true
+      return
+    }
+
+    if (!entries[0].isIntersecting && scrollingUp) {
+      isMobileIntersected.value = false
+    }
   }, {
-    rootMargin: '0px 0px -200px 0px',
+    rootMargin: `0px 0px ${halfDisplay} 0px`,
     threshold: 1,
   })
 
   io.observe(intersectedTemplateRef.value!)
+})
+
+onUnmounted(() => {
+  if (window.innerWidth >= 768) {
+    return
+  }
+
+  io.disconnect()
 })
 </script>
 

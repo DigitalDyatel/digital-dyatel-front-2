@@ -78,6 +78,8 @@ onMounted(() => {
 
   io = new IntersectionObserver((entries) => {
     isMobileIntersected.value = entries[0].isIntersecting
+  }, {
+    rootMargin: '0px 0px -225px 0px'
   })
 
   io.observe(intersectedTemplateRef.value!)
@@ -149,7 +151,7 @@ onMounted(() => {
           </p>
         </div>
       </div>
-      <div class="why-manage-reputation__bottom-cards --mobile">
+      <div class="why-manage-reputation__bottom-cards --mobile" ref="intersectedTemplateRef">
         <swiper-container ref="swiperContainerTemplateRef"  style="width: 500px;">
           <swiper-slide v-for="(card, i) in bottomCards">
             <div class="why-manage-reputation__bottom-card" :class="{'--alternative': card.alternative}">
@@ -161,7 +163,7 @@ onMounted(() => {
           </swiper-slide>
         </swiper-container>
       </div>
-      <div class="why-manage-reputation__description" ref="intersectedTemplateRef">согласно исследованию Edelman Trust Barometer</div>
+      <div class="why-manage-reputation__description">согласно исследованию Edelman Trust Barometer</div>
     </div>
   </section>
 </template>

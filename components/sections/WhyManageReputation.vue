@@ -75,6 +75,7 @@ const bottomCards = ref([
       <div class="why-manage-reputation__line">
         <div class="why-manage-reputation__block --left">
           <img src="/img/why-manage-reputation-figure.png" alt="figure">
+          <img src="/img/why-manage-reputation-figure-mobile.png" alt="figure">
           <p>
             <span>Решение остаться или уйти</span>
             <span>пользователи принимают за</span>
@@ -110,7 +111,9 @@ const bottomCards = ref([
                 <div>{{ card.negativeRating }}</div>
                 <div>{{ card.positiveRating }}</div>
               </div>
-              <img :src="'/img/services/' + card.src" :alt="card.alt"/>
+              <div class="why-manage-reputation__card-img-container">
+                <img :src="'/img/services/' + card.src" :alt="card.alt"/>
+              </div>
               <div class="why-manage-reputation__card-review-count">
                 <div>{{ card.reviewCountBefore }} отзывов</div>
                 <div>{{ card.reviewCountAfter }} отзывов</div>

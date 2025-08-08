@@ -76,7 +76,7 @@ onMounted(() => {
     return
   }
 
-  const halfDisplay = (window.innerWidth / 2) * -1 + 'px'
+  const halfDisplay = (window.innerHeight / 2) * -1 + 'px'
 
   let lastScrollY = document.querySelector('.main-custom-scroll').children[0].scrollTop;
 

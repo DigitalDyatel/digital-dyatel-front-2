@@ -72,7 +72,7 @@ const onClick = () => {
             <div class="hero__circle" />
           </div>
           <div class="hero__active-gradient-mobile">
-            <div v-for="n in 4" :key="n" />
+            <div v-for="n in 3" :key="n" />
           </div>
         </div>
         <div class="hero__button-container" @click="onClick">

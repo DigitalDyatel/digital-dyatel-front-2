@@ -65,6 +65,11 @@
   display: inline-block;
   height: 48px;
 
+  @media (max-width: 767px) {
+    padding: 10px;
+    height: 36px;
+  }
+
   &.--blue {
     background-color: var(--color-accent-blue);
   }
@@ -81,6 +86,11 @@
     color: var(--color-white-contrast);
     width: 24px;
     height: 24px;
+    
+    @media (max-width: 767px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 

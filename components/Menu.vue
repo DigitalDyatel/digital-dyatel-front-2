@@ -57,18 +57,24 @@ const menuItems = ref<MenuItem[]>([
   },
 ])
 
-const toggleContactUs = () => {
+const toggleContactUs = (e) => {
 
   if (contactUsIsOpen.value) {
     contactUsIsOpen.value = false
-    clickOutsideFunction()
+    clickOutsideFunction?.()
     return
   }
 
   contactUsIsOpen.value = true
 
+  const buttonEl = e.target
+
   nextTick(() => {
-    clickOutsideFunction = onClickOutside(contactUsTemplateRef.value, () => {
+    clickOutsideFunction = onClickOutside(contactUsTemplateRef.value, (e) => {
+      if (e.target === buttonEl) {
+        return
+      }
+
       clickOutsideFunction?.()
       contactUsIsOpen.value = false
     })
@@ -81,7 +87,6 @@ const toggleContactUsForMobile = () => {
 
   if (contactUsIsOpen.value) {
     contactUsIsOpen.value = false
-    clickOutsideFunction()
     return
   }
 

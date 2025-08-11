@@ -94,16 +94,16 @@ const toggleMobileService = (i: number) => {
     return
   }
 
+  const prevEl = mobileContentTemplateRef.value[activeMobileServiceIndex.value]
+
+  if (prevEl) {
+    prevEl.style.opacity = '0'
+    prevEl.style.height = '0'
+  }
+
   activeMobileServiceIndex.value = i
   el.style.opacity = '1'
   el.style.height = mobileContentHeight[i] + 'px'
-
-  const clickOutsideFunction = onClickOutside(mobileServiceTemplateRef.value![i], () => {
-    activeMobileServiceIndex.value = null
-    el.style.opacity = '0'
-    el.style.height = '0'
-    clickOutsideFunction?.()
-  })
 }
 
 onMounted(() => {
@@ -127,8 +127,8 @@ onMounted(() => {
       <h2>Наши услуги</h2>
       <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
       <div v-if="isMobile" class="our-services__services-mobile">
-        <div class="our-services__service-mobile" @click="toggleMobileService(i)" :class="{'--open': i === activeMobileServiceIndex}" v-for="(service, i) in services" ref="mobileServiceTemplateRef">
-          <div class="our-services__service-mobile-header">
+        <div class="our-services__service-mobile" :class="{'--open': i === activeMobileServiceIndex}" v-for="(service, i) in services" ref="mobileServiceTemplateRef">
+          <div class="our-services__service-mobile-header" @click="toggleMobileService(i)">
             <h3>{{ service.title_short ? service.title_short : service.title }}</h3>
             <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>

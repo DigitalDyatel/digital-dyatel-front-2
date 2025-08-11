@@ -24,6 +24,7 @@
     @media (max-width: 767px) {
       font-size: var(--font-size-xxs);
       padding: 11px;
+      transform: translateX(4px) rotate(-6deg);
     }
   }
 
@@ -42,6 +43,7 @@
       height: 36px;
       width: 36px;
       padding: 10px;
+      transform: translate(-4px, -6px);
     }
 
     svg {

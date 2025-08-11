@@ -37,6 +37,10 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (max-width: 767px) {
+      top: -25px;
+    }
   }
 
   &__services {
@@ -195,6 +199,7 @@
 
         @media (max-width: 767px) {
           font-size: var(--font-size-lg-xl);
+          color: var(--color-accent-dark);
         }
       }
 
@@ -220,6 +225,7 @@
 
         @media (max-width: 767px) {
           width: 100%;
+          margin-top: 36px;
         }
       }
     }

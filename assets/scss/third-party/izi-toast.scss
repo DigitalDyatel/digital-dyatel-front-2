@@ -4,23 +4,25 @@
   min-height: 40px;
   padding: 5px 0 4px 0;
   cursor: pointer;
-  background: var(--color-accent-dark);
+  //background: var(--color-primary);
+  background: var(--color-white);
 
   &.--cookie {
     cursor: default;
 
     .iziToast-buttons-child {
-      color: var(--color-primary);
       outline: none;
       box-shadow: none;
-      border: 1px solid var(--color-white-contrast);
+      // border: 1px solid var(--color-white-contrast);
+      border: none;
       border-radius: 8px;
-      background: var(--color-white);
+      background: var(--color-primary);
+      color: var(--color-white-contrast);
       font-weight: var(--font-weight-bold);
       padding: 12px;
 
       &:hover {
-        background: var(--color-white);
+        background: var(--color-primary);
       }
     }
 
@@ -34,12 +36,12 @@
       }
 
       .iziToast-title > a {
-        color: var(--color-white-contrast);
-        border-bottom: 1px solid var(--color-white-contrast);
+        color: var(--color-secondary);
+        border-bottom: 1px solid var(--color-secondary);
 
         &:hover {
-          color: var(--color-quaternary);
-          border-bottom: 1px solid var(--color-quaternary);
+          color: var(--color-tertiary);
+          border-bottom: 1px solid var(--color-tertiary);
         }
       }
     }
@@ -63,7 +65,8 @@
     margin: 0 15px;
 
     .iziToast-title {
-      color: var(--color-white-contrast);
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-medium);
     }
   }
 

@@ -140,6 +140,20 @@
             </clipPath>
         </defs>
     </symbol>
+    <symbol id="presentation-downloaded" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 56H48C52.4183 56 56 52.4183 56 48V12L44 0H8C3.58172 0 0 3.58172 0 8V48C0 52.4183 3.58172 56 8 56Z" fill="#E0EAF0"/>
+        <g clip-path="url(#clip0_1370_2686)">
+            <path d="M32.44 24.8999C36.04 25.2099 37.51 27.0599 37.51 31.1099V31.2399C37.51 35.7099 35.72 37.4999 31.25 37.4999H24.74C20.27 37.4999 18.48 35.7099 18.48 31.2399V31.1099C18.48 27.0899 19.93 25.2399 23.47 24.9099" stroke="#505662" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M28 18V30.88" stroke="#505662" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M31.3499 28.6499L27.9999 31.9999L24.6499 28.6499" stroke="#505662" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <path d="M46 12H56L44 0V10C44 11.1046 44.8954 12 46 12Z" fill="#505662"/>
+        <defs>
+            <clipPath id="clip0_1370_2686">
+                <rect width="24" height="24" fill="white" transform="translate(16 16)"/>
+            </clipPath>
+        </defs>
+    </symbol>
     <symbol id="award" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.5854 16.5V18.6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M7.58545 22H17.5854V21C17.5854 19.9 16.6854 19 15.5854 19H9.58545C8.48545 19 7.58545 19.9 7.58545 21V22V22Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>

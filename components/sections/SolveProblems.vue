@@ -9,6 +9,7 @@ const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
 const animationIsActive = ref(false)
 const timer = ref<null, ReturnType<typeof useTimer>>(null)
 const activeImageIndex = ref(0)
+const isPresentationAreLoaded = ref(false)
 const images = ref([
   {
     img: '1.png',
@@ -51,6 +52,16 @@ const onClickPoint = (i) => {
   }
   activeImageIndex.value = i
   initTimer()
+}
+
+const downloadPresentation = () => {
+  const a = document.createElement('a')
+  a.download = 'company-presentation.pdf'
+  a.href = '/docs/company-presentation.pdf'
+  a.click()
+  a.remove()
+
+  isPresentationAreLoaded.value = true
 }
 
 onMounted(() => {
@@ -148,11 +159,14 @@ onMounted(() => {
         внимания, независимо от его масштаба <Tag class="--black" icon="location-tick" as-span />
       </p>
     </div>
-    <div class="solve-problems__presentation">
-      <svg><use :href="'/sprite.svg#presentation-download'" /></svg>
-      <div>
+    <div class="solve-problems__presentation" :class="{'--loaded': isPresentationAreLoaded}" @click="downloadPresentation">
+      <div class="solve-problems__presentation-icon">
+        <svg><use :href="'/sprite.svg#presentation-download'" /></svg>
+        <svg><use :href="'/sprite.svg#presentation-downloaded'" /></svg>
+      </div>
+      <div class="solve-problems__presentation-text-container">
         <div>Презентация компании</div>
-        <div>44 кб</div>
+        <div>{{ isPresentationAreLoaded ? 'Загружено' : '44 кб' }}</div>
       </div>
     </div>
   </section>

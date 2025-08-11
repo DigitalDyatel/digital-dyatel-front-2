@@ -5,6 +5,13 @@ import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?componen
 import TagWithLabel from '~/components/TagWithLabel.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
+import { onClickOutside } from '@vueuse/core'
+
+const isMobile = ref(false)
+const activeMobileServiceIndex = ref(null)
+const mobileContentHeight: number[] = []
+const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
+const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
 
 interface Service {
   title: string,
@@ -76,6 +83,43 @@ const onClick = (_case?: Case, title: string) => {
 
   open()
 }
+
+const toggleMobileService = (i: number) => {
+  const el = mobileContentTemplateRef.value[i]
+
+  if (i === activeMobileServiceIndex.value) {
+    activeMobileServiceIndex.value = null
+    el.style.opacity = '0'
+    el.style.height = '0'
+    return
+  }
+
+  activeMobileServiceIndex.value = i
+  el.style.opacity = '1'
+  el.style.height = mobileContentHeight[i] + 'px'
+
+  const clickOutsideFunction = onClickOutside(mobileServiceTemplateRef.value![i], () => {
+    activeMobileServiceIndex.value = null
+    el.style.opacity = '0'
+    el.style.height = '0'
+    clickOutsideFunction?.()
+  })
+}
+
+onMounted(async() => {
+  if (window.innerWidth < 768) {
+    isMobile.value = true
+
+    await nextTick()
+
+    mobileContentTemplateRef.value.forEach((mobileContentEl) => {
+      mobileContentHeight.push(mobileContentEl.getBoundingClientRect().height)
+      mobileContentEl.style.height = '0'
+    })
+
+    toggleMobileService(0)
+  }
+})
 </script>
 
 <template>
@@ -83,7 +127,27 @@ const onClick = (_case?: Case, title: string) => {
     <div class="our-services__container">
       <h2>Наши услуги</h2>
       <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
-      <div class="our-services__services">
+      <div v-if="isMobile" class="our-services__services-mobile">
+        <div class="our-services__service-mobile" @click="toggleMobileService(i)" :class="{'--open': i === activeMobileServiceIndex}" v-for="(service, i) in services" ref="mobileServiceTemplateRef">
+          <div class="our-services__service-mobile-header">
+            <h3>{{ service.title_short ? service.title_short : service.title }}</h3>
+            <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+          </div>
+          <div class="our-services__service-mobile-content" ref="mobileContentTemplateRef">
+            <h4 v-if="service.subtitle">{{ service.subtitle }}</h4>
+            <p>{{ service.description }}</p>
+            <div class="our-services__service-mobile-price">
+              <div>{{ selectedService.price }}</div>
+              <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
+            </div>
+            <div class="our-services__service-mobile-buttons">
+              <Button class="--large" @click="onClick(selectedService, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
+              <Button class="--large --quaternary">Подробнее</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="our-services__services">
         <div class="our-services__selected-service">
           <div>
             <h3>{{ selectedService.title }}</h3>

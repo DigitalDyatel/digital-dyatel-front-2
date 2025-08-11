@@ -5,10 +5,20 @@
   padding: 0 48px;
   scroll-margin-block-start: 140px;
 
+  @media (max-width: 767px) {
+    margin: 80px auto 0 auto;
+    padding: 0 12px;
+  }
+
   &__container {
     background: var(--color-accent-dark);
     padding: 78px 48px 92px 48px;
     border-radius: 32px;
+
+    @media (max-width: 767px) {
+      padding: 36px 16px 32px 16px;
+      border-radius: 24px;
+    }
   }
 
   h2 {
@@ -16,6 +26,10 @@
     font-size: var(--font-size-5xl);
     font-weight: var(--font-weight-semi-bold);
     text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-2xl);
+    }
   }
 
   &__tag {
@@ -163,17 +177,36 @@
     min-height: 318px;
     overflow: hidden;
 
+    @media (max-width: 767px) {
+      margin-top: 32px;
+      border-radius: 16px;
+      padding: 16px;
+      min-height: auto;
+      background-image: url("/img/our-services-background.jpg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
     > div:first-child {
       > div:first-child {
         font-size: var(--font-size-3xl);
         color: var(--color-primary);
         font-weight: var(--font-weight-medium);
+
+        @media (max-width: 767px) {
+          font-size: var(--font-size-lg-xl);
+        }
       }
 
       p {
         margin-top: 16px;
         color: var(--color-secondary);
         font-size: var(--font-size-lg);
+
+        @media (max-width: 767px) {
+          margin-top: 12px;
+          font-size: var(--font-size-sm);
+        }
 
         span {
           display: block;
@@ -184,12 +217,21 @@
       .btn {
         margin-top: 48px;
         width: 304px;
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
       }
     }
 
     > div:last-child {
       position: relative;
       width: 291px;
+      display: block;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
 
       img {
         position: absolute;
@@ -204,7 +246,113 @@
         left: -459px;
         width: 798px;
         height: 657px;
+        display: block;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
       }
     }
+  }
+
+  &__services-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 24px;
+  }
+
+  &__service-mobile {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    color: var(--color-primary);
+
+    &.--open {
+      .our-services__service-mobile-header svg {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  &__service-mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+
+    > h3 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-medium);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      transform: rotate(90deg);
+      transition: transform .3s var(--default-transition-timing-function);
+    }
+  }
+
+  &__service-mobile-content {
+    padding: 0 16px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.4s ease-in-out;
+
+    h4 {
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+    }
+
+    p {
+      color: var(--color-secondary);
+      font-size: var(--font-size-sm);
+    }
+
+    h4 + p {
+      margin-top: 12px;
+    }
+  }
+
+  &__service-mobile-price {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 8px;
+
+    > div {
+      flex: 1;
+
+      &:first-child {
+        display: flex;
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-md);
+        color: var(--color-primary);
+        align-items: center;
+
+        &:before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          background-color: var(--color-contrast);
+          border-radius: 100px;
+          margin-right: 8px;
+          flex-shrink: 0;
+        }
+      }
+
+      &:last-child {
+        color: var(--color-tertiary);
+        font-size: var(--font-size-xs);
+      }
+    }
+  }
+
+  &__service-mobile-buttons {
+    margin-top: 36px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }

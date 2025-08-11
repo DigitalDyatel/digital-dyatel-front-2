@@ -7,12 +7,14 @@ import { onMounted, onUnmounted } from 'vue'
 const marginLeft = ref('0')
 
 const splideIsMounted = ref(false)
+const isMobile = ref(true)
 
 let io: IntersectionObserver | undefined = undefined
 
 const teamSectionTemplateRef = useTemplateRef<HTMLElement>('teamSectionTemplateRef')
 const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
 const paginatorTemplateRef = useTemplateRef<HTMLDivElement>('paginatorTemplateRef')
+const teamAboutTemplateRef = useTemplateRef<HTMLDivElement>('teamAboutTemplateRef')
 
 const cards = ref([
   {
@@ -73,20 +75,39 @@ const sliderOptions = {
 const onClickPrev = () => {
   splideTemplateRef.value?.splide?.Components.Autoplay.pause()
   splideTemplateRef.value?.splide.go('<')
+
+  if (isMobile.value) {
+    return
+  }
+
   splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
 const onClickNext = () => {
   splideTemplateRef.value?.splide?.Components.Autoplay.pause()
   splideTemplateRef.value?.splide.go('>')
+
+  if (isMobile.value) {
+    return
+  }
+
   splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
 const onPointerOverSlider = () => {
+  if (isMobile.value) {
+    return
+  }
+
   splideTemplateRef.value?.splide?.Components.Autoplay.pause()
 }
 
 const onPointerOutSlider = () => {
+
+  if (isMobile.value) {
+    return
+  }
+
   splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
@@ -99,6 +120,11 @@ onMounted(() => {
   paginatorTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 
   io = new IntersectionObserver((entries) => {
+
+    if (isMobile.value) {
+      return
+    }
+
     entries[0].isIntersecting ?
         splideTemplateRef.value?.splide?.Components.Autoplay.play() :
         splideTemplateRef.value?.splide?.Components.Autoplay.pause()
@@ -107,6 +133,13 @@ onMounted(() => {
   })
 
   io.observe(teamSectionTemplateRef.value!)
+
+  if (window.innerWidth >= 768) {
+    isMobile.value = false
+    return
+  }
+
+  teamAboutTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 })
 
 onUnmounted(() => {
@@ -118,7 +151,7 @@ onUnmounted(() => {
   <section class="team" ref="teamSectionTemplateRef" :class="{'--mounted': marginLeft !== '0'}" :style="{marginLeft: marginLeft}">
     <div class="team__container">
       <div class="team__slider">
-        <div class="team__about">
+        <div class="team__about" ref="teamAboutTemplateRef">
           <h2>
             <span>Команда </span>
             <span>Digital Dyatel</span>

@@ -3,6 +3,10 @@
   opacity: 0;
   scroll-margin-block-start: 140px;
 
+  @media (max-width: 767px) {
+    margin-top: 80px;
+  }
+
   &.--mounted {
     opacity: 1;
   }
@@ -15,6 +19,12 @@
     display: inline-flex;
     gap: 36px;
     width: 4000px;
+    flex-direction: row;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 24px;
+    }
   }
 
   &__about {
@@ -25,10 +35,17 @@
     flex-shrink: 0;
 
     h2 {
+      font-size: var(--font-size-5xl);
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semi-bold);
+      text-align: left;
+      
+      @media (max-width: 767px) {
+        font-size: var(--font-size-2xl);
+        text-align: center;
+      }
+      
       span {
-        color: var(--color-primary);
-        font-weight: var(--font-weight-semi-bold);
-        font-size: var(--font-size-5xl);
         display: block;
         line-height: 1.1;
       }
@@ -39,6 +56,13 @@
       font-size: var(--font-size-lg);
       color: var(--color-secondary);
       line-height: 1.1;
+      text-align: left;
+
+      @media (max-width: 767px) {
+        font-size: var(--font-size-sm);
+        margin-top: 12px;
+        text-align: center;
+      }
 
       span {
         display: block;
@@ -48,6 +72,10 @@
     a {
       margin-top: 48px;
       display: block;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
     }
 
     .tag-as-label {
@@ -55,6 +83,10 @@
       left: 50%;
       top: 50%;
       transform: translate(50%, 136%) rotate(-4deg);
+
+      @media (max-width: 767px) {
+        display: none;
+      }
     }
   }
 
@@ -74,6 +106,10 @@
     padding: 24px;
     background-color: var(--color-white);
     border-radius: 24px;
+
+    @media (max-width: 767px) {
+      padding: 24px 24px 32px 24px;
+    }
 
     &:hover {
       img:first-child {
@@ -109,6 +145,10 @@
       display: flex;
       align-items: center;
 
+      @media (max-width: 767px) {
+        font-size: var(--font-size-lg);
+      }
+
       &:before {
         content: "";
         width: 6px;
@@ -138,6 +178,10 @@
     margin-top: 48px;
     justify-content: center;
 
+    @media (max-width: 767px) {
+      margin-top: 32px;
+    }
+
     > div {
       display: inline-block;
       padding: 12px;
@@ -147,6 +191,12 @@
       width: 48px;
       cursor: pointer;
       transition: transform .3s var(--default-transition-timing-function);
+
+      @media (max-width: 767px) {
+        height: 36px;
+        width: 36px;
+        padding: 6px;
+      }
 
       @media (hover: hover) {
         &:hover {

@@ -29,7 +29,12 @@
     > .iziToast-body {
       display: flex;
       align-items: center;
+      justify-content: start;
       margin: 0 0 0 15px;
+
+      @media (max-width: 767px) {
+        justify-content: center;
+      }
 
       .iziToast-texts {
         margin: 0;

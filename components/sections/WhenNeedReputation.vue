@@ -42,8 +42,7 @@ const points = ref([
             class="when-need-reputation__point"
             v-for="point in points"
             :class="{'--reverse': point.reverse}"
-            v-gsap.desktop.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'
-            v-gsap.mobile.whenVisible.once.from='{ autoAlpha: 0, start: "top 90%", end: "bottom 10%"}'
+            v-gsap.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'
         >
           <div>{{ point.title }}</div>
           <div>

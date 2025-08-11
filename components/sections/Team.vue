@@ -67,7 +67,7 @@ const sliderOptions = {
   arrows: false,
   perMove: 1,
   type: 'loop',
-  gap: 330,
+  gap: 338,
   speed: 1000,
   interval: 2500
 }

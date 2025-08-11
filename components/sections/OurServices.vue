@@ -7,7 +7,7 @@ import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { onClickOutside } from '@vueuse/core'
 
-const isMobile = ref(false)
+const isMobile = ref(true)
 const activeMobileServiceIndex = ref(null)
 const mobileContentHeight: number[] = []
 const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
@@ -106,19 +106,18 @@ const toggleMobileService = (i: number) => {
   })
 }
 
-onMounted(async() => {
-  if (window.innerWidth < 768) {
-    isMobile.value = true
-
-    await nextTick()
-
-    mobileContentTemplateRef.value.forEach((mobileContentEl) => {
-      mobileContentHeight.push(mobileContentEl.getBoundingClientRect().height)
-      mobileContentEl.style.height = '0'
-    })
-
-    toggleMobileService(0)
+onMounted(() => {
+  if (window.innerWidth >= 768) {
+    isMobile.value = false
+    return
   }
+
+  mobileContentTemplateRef.value.forEach((mobileContentEl) => {
+    mobileContentHeight.push(mobileContentEl.getBoundingClientRect().height)
+    mobileContentEl.style.height = '0'
+  })
+
+  toggleMobileService(0)
 })
 </script>
 

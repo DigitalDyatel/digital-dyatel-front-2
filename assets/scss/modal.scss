@@ -9,6 +9,14 @@
     opacity: 0;
     transition: opacity 0.3s var(--default-transition-timing-function);
 
+    .vfm__content {
+      width: auto;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
     .modal__content {
       width: 716px;
       padding: 48px 32px 48px 48px;
@@ -18,11 +26,16 @@
       @media (max-width: 767px) {
         width: 100%;
         padding: 24px 16px 24px 24px;
+        height: calc(100vh - 24px);
       }
     }
 
     .modal__container {
       padding: 16px;
+
+      @media (max-width: 767px) {
+        padding: 12px;
+      }
     }
 
     .modal__close {

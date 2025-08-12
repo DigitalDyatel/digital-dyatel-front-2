@@ -4,6 +4,10 @@
   font-size: var(--font-size-lg);
   transition: all .3s var(--default-transition-timing-function);
 
+  @media (max-width: 767px) {
+    font-size: var(--font-size-base);
+  }
+
   &.--contrast-on-hover {
     @media (hover: hover) {
       &:hover {

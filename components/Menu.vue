@@ -98,7 +98,12 @@ const copyEmailToClipboard = async () => {
   notification.fire({title: 'Email скопирован!'})
 }
 
-const onClickMenu = (menuItem: MenuItem) => {
+const onClickMenu = (menuItem: MenuItem, isMobile = false) => {
+
+  if (isMobile) {
+    isBurgerMenuOpen.value = false
+  }
+
   goToAnchor(menuItem.scrollSelector)
 }
 
@@ -321,7 +326,7 @@ onUnmounted(() => {
           <div class="menu-mobile__content --menu" v-if="isBurgerMenuOpen">
             <div class="menu-mobile__list">
               <div class="menu-mobile__list-item" :class="menuItem.class" v-for="menuItem in menuItems">
-                <div>
+                <div @click="onClickMenu(menuItem, true)">
                   <span v-if="menuItem.class === '--cases'">+{{ config.public.casesMenuCount }}</span>
                   {{ menuItem.label }}
                 </div>

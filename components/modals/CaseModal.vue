@@ -66,8 +66,11 @@ const onModalClosing = async (e) => {
         </div>
         <div class="cases-modal" ref="modalTemplateRef">
           <div class="cases-modal__header">
-            <img :src="'/img/cases/' + (props.case.imgSmall ? props.case.imgSmall : props.case.img)" :alt="props.case.header">
-            <h3>{{ props.case.header }}</h3>
+            <div>{{ props.case.category }}</div>
+            <div class="cases-modal__header-line">
+              <img :src="'/img/cases/' + (props.case.imgSmall ? props.case.imgSmall : props.case.img)" :alt="props.case.header">
+              <h3>{{ props.case.header }}</h3>
+            </div>
           </div>
           <OverlayScrollbarsComponent class="modal-custom-scroll --right" :style="{height: modalHeight}">
             <div class="cases-modal__content" v-html="props.case.content" /> <!-- Здесь должен быть динамический контент из админки -->

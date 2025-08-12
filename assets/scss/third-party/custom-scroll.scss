@@ -28,6 +28,10 @@
 
     .os-scrollbar {
       padding: 0 3px;
+
+      @media (max-width: 767px) {
+        padding: 16px 3px 0 3px;
+      }
     }
 
     .os-scrollbar-track {

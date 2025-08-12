@@ -58,15 +58,15 @@ export const categories: Category[] = [
                       <h4>Проблемы</h4>
                       <ul class="--classic">
                         <li>
-                          <div><svg><use :href="'/sprite.svg#play'" /></svg></div>
+                          <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Отсутствие заметного присутствия в поисковой выдаче по брендовым запросам</div>
                         </li>
                         <li>
-                          <div><svg><use :href="'/sprite.svg#play'" /></svg></div>
+                          <div><svg><use href="/sprite.svg#play" /></svg></div>
                           <div>Конкурент, Moscow Business School, занимал лидирующие позиции в поисковой выдаче Яндекс и Google, что значительно затрудняло продвижение бренда и снижало его видимость среди целевой аудитории</div>
                         </li>
                         <li>
-                          <div><svg><use :href="'/sprite.svg#play'" /></svg></div>
+                          <div><svg><use href="/sprite.svg#play" /></svg></div>
                           <div>Необходимость создания позитивного имиджа бренда с нуля и устранения возможных репутационных угроз</div>
                         </li>
                       </ul>

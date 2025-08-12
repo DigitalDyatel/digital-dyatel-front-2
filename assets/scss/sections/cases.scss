@@ -514,24 +514,66 @@
   overflow: hidden;
 
   &__header {
+    div:first-child {
+      display: none;
+      align-items: center;
+      padding-bottom: 16px;
+      color: var(--color-secondary);
+      font-size: var(--font-size-xs);
+
+      @media (max-width: 767px) {
+        display: flex;
+      }
+
+      &:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background-color: var(--color-contrast);
+        border-radius: 100px;
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &__header-line {
     display: inline-flex;
     gap: 12px;
     padding-bottom: 32px;
     border-bottom: 2px solid var(--color-light-grey);
+    align-items: start;
+
+    @media (max-width: 767px) {
+      align-items: center;
+      padding-bottom: 16px;
+    }
 
     img {
       height: 24px;
+
+      @media (max-width: 767px) {
+        height: 28px;
+      }
     }
 
     h3 {
       font-size: var(--font-size-2xl);
       font-weight: var(--font-weight-semi-bold);
       color: var(--color-primary);
+
+      @media (max-width: 767px) {
+        font-size: var(--font-size-md);
+      }
     }
   }
 
   &__content {
     padding: 32px 23px 0 0;
+
+    @media (max-width: 767px) {
+      padding: 24px 15px 0 0;
+    }
 
     h4, h5 {
       font-size: var(--font-size-base);
@@ -541,6 +583,10 @@
 
     h4 {
       margin-top: 48px;
+
+      @media (max-width: 767px) {
+        margin-top: 24px;
+      }
 
       &:first-child {
         margin-top: 0;
@@ -554,6 +600,10 @@
     h5 {
       margin-top: 32px;
 
+      @media (max-width: 767px) {
+        margin-top: 24px;
+      }
+
       span {
         color: var(--color-secondary);
       }
@@ -564,6 +614,10 @@
       font-weight: var(--font-weight-normal);
       color: var(--color-secondary);
       line-height: 1.2;
+
+      @media (max-width: 767px) {
+        font-size: var(--font-size-sm);
+      }
     }
 
     ul {
@@ -601,6 +655,10 @@
         list-style-type: none;
         align-items: center;
 
+        @media (max-width: 767px) {
+          font-size: var(--font-size-sm);
+        }
+
         &:before {
           content: "";
           width: 6px;
@@ -609,6 +667,10 @@
           border-radius: 100px;
           margin-right: 7px;
           flex-shrink: 0;
+
+          @media (max-width: 767px) {
+            margin-right: 8px;
+          }
         }
       }
     }

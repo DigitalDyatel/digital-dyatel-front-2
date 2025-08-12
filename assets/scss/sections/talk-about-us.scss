@@ -185,7 +185,7 @@
       width: 8px;
       height: 8px;
       background-color: var(--color-white);
-      transition: .3s background-color var(--default-transition-timing-function);
+      transition: .1s background-color var(--default-transition-timing-function);
       border-radius: 50%;
 
       &.--current {

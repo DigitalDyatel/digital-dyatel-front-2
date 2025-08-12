@@ -9,6 +9,10 @@
     opacity: 0;
     transition: opacity 0.3s var(--default-transition-timing-function);
 
+    @media (max-width: 767px) {
+      align-items: center;
+    }
+
     .vfm__content {
       width: auto;
 

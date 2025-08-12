@@ -209,6 +209,11 @@
   position: fixed;
   width: 100%;
   z-index: 9999;
+  transition: all .5s var(--default-transition-timing-function);
+
+  &.--hidden {
+    transform: translateY(-100px);
+  }
 
   @media (min-width: 768px) {
     display: none;

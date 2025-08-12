@@ -196,6 +196,17 @@ const onClickGetFreeSERMAudit = () => {
   open()
 }
 
+const onClickMobileLogo = () => {
+
+  if (isBurgerMenuOpen.value || contactUsIsOpen.value) {
+    isBurgerMenuOpen.value = false;
+    contactUsIsOpen.value = false;
+    return
+  }
+
+  goToAnchor('.hero')
+}
+
 watch(scrollIsDeep, (currentScrollIsDeep) => {
 
   const mainScrollEl = document.querySelector('.main-custom-scroll').children[0]
@@ -283,11 +294,11 @@ onUnmounted(() => {
   </div>
 
   <!-- menu-mobile -->
-  <div class="menu-mobile">
+  <div class="menu-mobile" :class="{'--hidden': !isShowMenuByScroll}">
     <div class="menu-mobile__overlay" :class="{'--active': isBurgerMenuOpen || contactUsIsOpen}" @click="isBurgerMenuOpen = false; contactUsIsOpen = false;"/>
     <div class="menu-mobile__menu-container">
       <div class="menu-mobile__menu-header">
-        <div class="menu-mobile__side" @click="isBurgerMenuOpen = false; contactUsIsOpen = false;">
+        <div class="menu-mobile__side" @click="onClickMobileLogo">
           <Logo width="44" height="44" />
         </div>
         <div class="menu-mobile__side --right">

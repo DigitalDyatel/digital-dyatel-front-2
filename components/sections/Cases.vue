@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { categories as _categories, type Case } from '~/constants'
+import { categories as _categories, mobileCategories as _mobileCategories, type Case } from '~/constants'
 import Button from '~/components/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
@@ -10,39 +10,81 @@ import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 let progressBarTrackWidth: number | undefined = undefined
 
 const translateX = ref(0)
+let gap = 24
 
 const progressBarTrackTemplateRef = useTemplateRef<HTMLDivElement>('progressBarTrackTemplateRef')
 const progressBarSliderTemplateRef = useTemplateRef<HTMLDivElement>('progressBarSliderTemplateRef')
 
 const categoriesContainerTemplateRef = useTemplateRef<HTMLDivElement>('categoriesContainerTemplateRef')
 const categoriesTemplateRef = useTemplateRef<HTMLDivElement[]>('categoriesTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
 
 const categories = ref(_categories)
+const mobileCategories = ref(_mobileCategories)
 
 const activeCategoryIndex = ref(0)
+const activeCaseIndex = ref(0)
+const isMobile = ref(false)
 
 const setCategory = (i: number) => {
   activeCategoryIndex.value = i
 
+  if (isMobile) {
+    activeCaseIndex.value = 0
+    swiperContainerTemplateRef.value?.swiper.slideTo(0, 0)
+  }
+
   updateDimensions(i)
 }
 
-const onClickPrev = () => {
+const onClickPrevCategory = () => {
   if (activeCategoryIndex.value === 0) {
     return
+  }
+
+  if (isMobile) {
+    activeCaseIndex.value = 0
+    swiperContainerTemplateRef.value?.swiper.slideTo(0, 0)
   }
 
   activeCategoryIndex.value = --activeCategoryIndex.value
   updateDimensions(activeCategoryIndex.value)
 }
 
-const onClickNext = () => {
+const onClickNextCategory = () => {
   if (activeCategoryIndex.value === (categories.value.length - 1)) {
     return
   }
 
+  if (isMobile) {
+    activeCaseIndex.value = 0
+    swiperContainerTemplateRef.value?.swiper.slideTo(0, 0)
+  }
+
   activeCategoryIndex.value = ++activeCategoryIndex.value
   updateDimensions(activeCategoryIndex.value)
+}
+
+const onClickPrevCase = () => {
+  if (activeCaseIndex.value === 0) {
+    return
+  }
+
+  swiperContainerTemplateRef.value.swiper.slideTo(--activeCaseIndex.value)
+  activeCaseIndex.value = activeCaseIndex.value
+}
+
+const onClickNextCase = () => {
+  if (activeCaseIndex.value === (mobileCategories.value[activeCategoryIndex.value].cases.length - 1)) {
+    return
+  }
+
+  swiperContainerTemplateRef.value.swiper.slideTo(++activeCaseIndex.value)
+  activeCaseIndex.value = activeCaseIndex.value
+}
+
+const onCaseChanged = () => {
+  activeCaseIndex.value = swiperContainerTemplateRef.value.swiper.activeIndex
 }
 
 const updateDimensions = (index: number) => {
@@ -51,7 +93,7 @@ const updateDimensions = (index: number) => {
   let totalWidth = 0
 
   for (let i = 0; i < index; i++) {
-    totalWidth += categoriesTemplateRef.value![i].getBoundingClientRect().width + 24
+    totalWidth += categoriesTemplateRef.value![i].getBoundingClientRect().width + gap
   }
 
   translateX.value = totalWidth * -1
@@ -90,8 +132,15 @@ const openFormModal = () => {
   open()
 }
 
-onMounted(() => {
+onMounted(async () => {
+
   progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
+
+  if (window.innerWidth < 768) {
+    isMobile.value = true
+    gap = 8
+    await nextTick()
+  }
 
   setCategory(0)
 })
@@ -119,13 +168,49 @@ onMounted(() => {
             <div class="cases__progress-bar-slider" ref="progressBarSliderTemplateRef"></div>
           </div>
           <div class="cases__progress-bar-controls">
-            <div @click="onClickPrev" :class="{'--disabled': activeCategoryIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-            <div @click="onClickNext" :class="{'--disabled': activeCategoryIndex === categories.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+            <div @click="onClickPrevCategory" :class="{'--disabled': activeCategoryIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+            <div @click="onClickNextCategory" :class="{'--disabled': activeCategoryIndex === categories.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
           </div>
         </div>
       </div>
       <div class="cases__active-category-container">
-        <transition name="cases-slide-fade" mode="out-in">
+        <transition v-if="isMobile" name="cases-slide-fade" mode="out-in">
+          <div class="cases__active-category">
+            <swiper-container ref="swiperContainerTemplateRef" @swiperslidechange="onCaseChanged" :spaceBetween="16" :slides-per-view="1" :key="activeCategoryIndex">
+              <swiper-slide v-for="_case in mobileCategories[activeCategoryIndex].cases">
+                <div class="cases__case-container">
+                  <div class="cases__case">
+                    <div class="cases__case-header">
+                      <img :src="'/img/cases/' + _case.img" :alt="_case.header">
+                      <div>{{ _case.category ?? mobileCategories[activeCategoryIndex].title }}</div>
+                    </div>
+                    <div class="cases__case-content">
+                      <div>
+                        <div>{{ _case.header }}</div>
+                      </div>
+                      <div class="cases__case-description">
+                        <div>Задача</div>
+                        <p>{{ _case.task }}</p>
+                        <div>Результат</div>
+                        <p>{{ _case.result }}</p>
+                        <div>
+                          <Button class="--tertiary" @click="openCaseModal(_case)">
+                            <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+            </swiper-container>
+            <div class="cases__cases-pagination">
+              <div @click="onClickPrevCase" :class="{'--disabled': activeCaseIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
+              <div @click="onClickNextCase" :class="{'--disabled': activeCaseIndex === mobileCategories[activeCategoryIndex].cases.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+            </div>
+          </div>
+        </transition>
+        <transition v-else name="cases-slide-fade" mode="out-in">
           <div class="cases__active-category" :key="activeCategoryIndex">
             <template v-for="_case in categories[activeCategoryIndex].cases">
               <div class="cases__case-container" v-if="_case instanceof Array">

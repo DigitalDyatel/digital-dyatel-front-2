@@ -204,3 +204,35 @@ export const categories: Category[] = [
         ]
     },
 ]
+
+const initMobileCategories = (categories) => {
+
+    const _categories = []
+
+    for (let i = 0; categories.length > i; ++i) {
+        const category = {
+            title: categories[i].title,
+        }
+
+        const cases: Case[] = []
+
+        tag: for (let j = 0; categories[i].cases.length > j; ++j) {
+            if (categories[i].cases[j] instanceof Array) {
+                for (let k = 0; categories[i].cases[j].length > k; k++) {
+                    cases.push(categories[i].cases[j][k])
+                }
+                continue tag
+            }
+
+            cases.push(categories[i].cases[j])
+        }
+
+        category.cases = cases
+
+        _categories.push(category)
+    }
+
+    return _categories
+}
+
+export const mobileCategories: Case[] = initMobileCategories(categories)

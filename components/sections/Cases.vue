@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { categories as _categories, mobileCategories as _mobileCategories, type Case } from '~/constants'
+import { desktopCategories as _desktopCategories, categories as _categories, type Case } from '~/constants'
 import Button from '~/components/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
@@ -19,8 +19,8 @@ const categoriesContainerTemplateRef = useTemplateRef<HTMLDivElement>('categorie
 const categoriesTemplateRef = useTemplateRef<HTMLDivElement[]>('categoriesTemplateRef')
 const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
 
+const desktopCategories = ref(_desktopCategories)
 const categories = ref(_categories)
-const mobileCategories = ref(_mobileCategories)
 
 const activeCategoryIndex = ref(0)
 const activeCaseIndex = ref(0)
@@ -75,7 +75,7 @@ const onClickPrevCase = () => {
 }
 
 const onClickNextCase = () => {
-  if (activeCaseIndex.value === (mobileCategories.value[activeCategoryIndex.value].cases.length - 1)) {
+  if (activeCaseIndex.value === (categories.value[activeCategoryIndex.value].cases.length - 1)) {
     return
   }
 
@@ -177,12 +177,12 @@ onMounted(async () => {
         <transition v-if="isMobile" name="cases-slide-fade" mode="out-in">
           <div class="cases__active-category">
             <swiper-container ref="swiperContainerTemplateRef" @swiperslidechange="onCaseChanged" :spaceBetween="16" :slides-per-view="1" :key="activeCategoryIndex">
-              <swiper-slide v-for="_case in mobileCategories[activeCategoryIndex].cases">
+              <swiper-slide v-for="_case in categories[activeCategoryIndex].cases">
                 <div class="cases__case-container">
                   <div class="cases__case">
                     <div class="cases__case-header">
                       <img :src="'/img/cases/' + _case.img" :alt="_case.header">
-                      <div>{{ _case.category ?? mobileCategories[activeCategoryIndex].title }}</div>
+                      <div>{{ _case.category ?? categories[activeCategoryIndex].title }}</div>
                     </div>
                     <div class="cases__case-content">
                       <div>
@@ -206,18 +206,18 @@ onMounted(async () => {
             </swiper-container>
             <div class="cases__cases-pagination">
               <div @click="onClickPrevCase" :class="{'--disabled': activeCaseIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
-              <div @click="onClickNextCase" :class="{'--disabled': activeCaseIndex === mobileCategories[activeCategoryIndex].cases.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
+              <div @click="onClickNextCase" :class="{'--disabled': activeCaseIndex === categories[activeCategoryIndex].cases.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
             </div>
           </div>
         </transition>
         <transition v-else name="cases-slide-fade" mode="out-in">
           <div class="cases__active-category" :key="activeCategoryIndex">
-            <template v-for="_case in categories[activeCategoryIndex].cases">
+            <template v-for="_case in desktopCategories[activeCategoryIndex].cases">
               <div class="cases__case-container" v-if="_case instanceof Array">
                 <div class="cases__case" v-for="__case in _case">
                   <div class="cases__case-header">
                     <img :src="'/img/cases/' + __case.img" :alt="__case.header">
-                    <div>{{ __case.category ?? categories[activeCategoryIndex].title }}</div>
+                    <div>{{ __case.category ?? desktopCategories[activeCategoryIndex].title }}</div>
                   </div>
                   <div class="cases__case-content">
                     <div>

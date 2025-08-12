@@ -18,6 +18,7 @@ const emptyTemplateRef = useTemplateRef<HTMLDivElement>('emptyTemplateRef')
 const scrollOrVideoTemplateRef = useTemplateRef<(typeof OverlayScrollbarsComponent | HTMLVideoElement)[]>('scrollOrVideoTemplateRef')
 const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
 const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
+const sliderContainerTemplateRef = useTemplateRef<HTMLDivElement>('sliderContainerTemplateRef')
 
 const scrollDefaultOptions = {
   scrollbars: {
@@ -32,6 +33,7 @@ const sectionIsReady = ref(false)
 const activeReviewIndex = ref<number|null>(null)
 const videoStatuses = ref<boolean[]>([])
 const videoTimelines = ref<number[]>([])
+const isMobile = ref(false)
 
 useSwiper(swiperContainerTemplateRef)
 
@@ -67,19 +69,17 @@ const reviews = ref<Review[]>([
     position: 'Генеральный директор',
     text: '3 месяца назад мы столкнулись с падением продаж в нашей компании. После анализа упоминаний и поисковых запросов, мы нашли отзывы и негатив, которые нанесли урон нашей репутации. Команда специалистов во время работы почистила данные из поиска и регулярно следит за комментариями и публикациями в интернете о нашей компании. Нас устраивает скорость работы, цена и постоянная обратная связь'
   },
-  {
-    img: 'IngaBoltova.webp',
-    name: 'Инга Болтова',
-    position: 'Генеральный директор',
-    text: '3 месяца назад мы столкнулись с падением продаж в нашей компании. После анализа упоминаний и поисковых запросов, мы нашли отзывы и негатив, которые нанесли урон нашей репутации. Команда специалистов во время работы почистила данные из поиска и регулярно следит за комментариями и публикациями в интернете о нашей компании. Нас устраивает скорость работы, цена и постоянная обратная связь'
-  },
 ])
 
-const swiperProps = {
-  slidesPerView: reviews.value.length - 1,
-  loop: true,
-  spaceBetween: 24,
+if (reviews.value.length <= 6) {
+  reviews.value = [...reviews.value, ...reviews.value.map(review => ({ ...review}))]
 }
+
+const swiperProps = ref({
+  slidesPerView: reviews.value.length / 2,
+  loop: true,
+  spaceBetween: 0,
+})
 
 const onClickPrev = () => {
   swiperContainerTemplateRef.value.swiper.slidePrev(500)
@@ -210,8 +210,19 @@ const toggleVideo = (i: number) => {
   video.removeEventListener('timeupdate', timeUpdateListener)
 }
 
-onMounted(() => {
+onMounted(async () => {
   init()
+
+  if (window.innerWidth < 768) {
+    isMobile.value = true
+
+    await nextTick()
+
+    swiperContainerTemplateRef.value.slidesPerView = 1.15
+    swiperContainerTemplateRef.value.spaceBetween = 16
+
+    sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
+  }
 })
 </script>
 
@@ -219,7 +230,7 @@ onMounted(() => {
   <section class="reviews" :class="{'--ready': sectionIsReady}" :style="{marginLeft: marginLeft}">
     <h2 :style="{width: middleScreenWidth + 'px'}">Отзывы</h2>
     <div class="reviews__container">
-      <div class="reviews__slider-container">
+      <div class="reviews__slider-container" ref="sliderContainerTemplateRef">
         <div class="reviews__slider">
           <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
             <swiper-slide v-for="(review, i) in reviews" >

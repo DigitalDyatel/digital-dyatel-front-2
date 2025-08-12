@@ -218,9 +218,8 @@ onMounted(async () => {
 
     await nextTick()
 
-    swiperContainerTemplateRef.value.slidesPerView = 1.1
+    swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
-
     sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
   }
 })

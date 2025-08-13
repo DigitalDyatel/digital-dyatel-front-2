@@ -51,7 +51,8 @@
     z-index: 0;
 
     @media (max-width: 767px) {
-      padding: 64px 0 142px 0;
+      padding: 64px 24px 128px 24px;
+      border-radius: 24px;
     }
 
     &.--active {
@@ -93,8 +94,8 @@
     will-change: width;
 
     @media (max-width: 767px) {
-      height: 12px;
-      width: 12px;
+      height: 14px;
+      width: 14px;
     }
 
     &.--active {
@@ -121,6 +122,10 @@
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
     will-change: transform;
+
+    @media (max-width: 767px) {
+      height: 12px;
+    }
 
     &.--animation-is-active {
       animation-play-state: running;

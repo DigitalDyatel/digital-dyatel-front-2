@@ -115,7 +115,7 @@ onUnmounted(() => {
   <section class="sharing-experience">
     <h2>Делимся опытом</h2>
     <p class="sharing-experience__subtitle">
-      <span>Аналитика, кейсы, советы и практики по управлению репутацией и маркетингу</span>
+      <span>Аналитика, кейсы, советы и практики по управлению репутацией и маркетингу. </span>
       <span>Только реальные истории и работающие решения</span>
     </p>
     <div class="sharing-experience__container" ref="articlesContainerTemplateRef">

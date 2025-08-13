@@ -3,6 +3,11 @@
   max-width: var(--max-width);
   padding: 0 48px;
 
+  @media (max-width: 767px) {
+    margin: 80px auto 0 auto;
+    padding: 0 12px;
+  }
+
   &__container {
     border-radius: 32px;
     color: var(--color-white-contrast);
@@ -15,9 +20,17 @@
     gap: 48px;
     position: relative;
 
+    @media (max-width: 767px) {
+      margin-top: 24px;
+    }
+
     .btn {
       margin-top: 36px;
       width: 304px;
+
+      @media (max-width: 767px) {
+        margin-top: 32px;
+      }
     }
   }
 
@@ -36,6 +49,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 0;
+
+    @media (max-width: 767px) {
+      padding: 64px 0 142px 0;
+    }
 
     &.--active {
       opacity: 1;
@@ -56,6 +73,10 @@
     bottom: 78px;
     position: absolute;
     z-index: 1;
+
+    @media (max-width: 767px) {
+      bottom: 64px;
+    }
   }
 
   &__slider-point {
@@ -70,6 +91,11 @@
     border: 1px solid rgba(255, 255, 255, .16);
     transition: width 1s ease-in-out;
     will-change: width;
+
+    @media (max-width: 767px) {
+      height: 12px;
+      width: 12px;
+    }
 
     &.--active {
       width: 120px;
@@ -106,12 +132,20 @@
     font-weight: var(--font-weight-semi-bold);
     font-size: var(--font-size-5xl);
     color: var(--color-primary);
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-2xl);
+    }
   }
 
   h3 {
     font-weight: var(--font-weight-semi-bold);
     font-size: var(--font-size-3xl);
     text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-lg-xl);
+    }
 
     span {
       display: block;
@@ -124,9 +158,19 @@
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
 
+    @media (max-width: 767px) {
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
+      margin-top: 12px;
+    }
+
     span {
       line-height: 1.2;
       display: block;
+
+      @media (max-width: 767px) {
+        display: inline;
+      }
     }
   }
 
@@ -142,5 +186,10 @@
     color: var(--color-white-contrast);
     margin-top: 8px;
     max-width: 700px;
+
+    @media (max-width: 767px) {
+      font-size: var(--font-size-base);
+      margin-top: 12px;
+    }
   }
 }

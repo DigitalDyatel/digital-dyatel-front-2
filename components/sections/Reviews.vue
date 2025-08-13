@@ -37,7 +37,9 @@ const isMobile = ref(false)
 
 useSwiper(swiperContainerTemplateRef)
 
-const reviews = ref<Review[]>([
+const reviews: Review[] = ref([])
+
+const _reviews: Review[] = [
   {
     img: 'AllaMedvedeva.webp',
     name: 'Алла Медведева',
@@ -69,10 +71,10 @@ const reviews = ref<Review[]>([
     position: 'Генеральный директор',
     text: '3 месяца назад мы столкнулись с падением продаж в нашей компании. После анализа упоминаний и поисковых запросов, мы нашли отзывы и негатив, которые нанесли урон нашей репутации. Команда специалистов во время работы почистила данные из поиска и регулярно следит за комментариями и публикациями в интернете о нашей компании. Нас устраивает скорость работы, цена и постоянная обратная связь'
   },
-])
+]
 
-if (reviews.value.length <= 6) {
-  reviews.value = [...reviews.value, ...reviews.value.map(review => ({ ...review}))]
+if (_reviews.length <= 6) {
+  reviews.value = [..._reviews, ..._reviews]
 }
 
 const swiperProps = ref({
@@ -232,10 +234,10 @@ onMounted(async () => {
       <div class="reviews__slider-container" ref="sliderContainerTemplateRef">
         <div class="reviews__slider">
           <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
-            <swiper-slide v-for="(review, i) in reviews" >
+            <swiper-slide v-for="(review, i) in reviews" :key="review.name">
               <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
                 <template v-if="review.video">
-                  <video :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
+                  <video preload="metadata" :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
                   <div class="reviews__video-container">
                     <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
                     <div class="reviews__video-info" :class="{'--playing': videoStatuses[i]}">

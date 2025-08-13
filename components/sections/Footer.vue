@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import LogoAlt from '~/assets/svg/logo-alt.svg?component'
 import { type CustomRuntimeConfig } from '~/types'
+import { useModal } from 'vue-final-modal'
+import FormModal from '@/components/modals/FormModal.vue'
+import ThankYouModal from '@/components/modals/ThankYouModal.vue'
 
 const currentYear = (new Date()).getFullYear()
 
@@ -39,12 +42,30 @@ const clickOnPhone = async (phone) => {
 }
 
 const callMeModal = () => {
-  alert(1)
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Оставьте номер, обсудим детали',
+      buttonText: 'Жду звонка',
+      onConfirm: () => {
+        close()
+
+        const thankYouModal = useModal({
+          component: ThankYouModal,
+          attrs: {
+            onClose: () => {
+              thankYouModal.close()
+              contactUsIsOpen.value = false
+            }
+          }
+        })
+        thankYouModal.open()
+      }
+    },
+  })
+
+  open()
 }
-
-onMounted(() => {
-
-})
 </script>
 
 <template>

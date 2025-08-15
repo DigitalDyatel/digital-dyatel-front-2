@@ -17,12 +17,11 @@ const metro = ref(config.public.legal.metro.map((metro, i) => {
   return i < config.public.legal.metro.length - 1 ? metro + ',' : metro
 }))
 
-const copyEmailToClipboard = async (e) => {
-  await navigator.clipboard.writeText(config.public.email)
-  notification.fire({
-    title: 'Email скопирован!',
-    class: 'izi-toast --white',
-  })
+const clickEmail = () => {
+  const el = document.createElement('a')
+  el.href = `mailto:${config.public.email}`
+  el.click()
+  el.remove()
 }
 
 const clickOnPhone = async (phone) => {
@@ -94,7 +93,7 @@ const callMeModal = () => {
           </div>
         </div>
         <div class="footer__column --contacts">
-          <div><a class="footer__link --underline-on-hover" @pointerdown="copyEmailToClipboard" @contextmenu.prevent>{{ config.public.email }}</a></div>
+          <div><a class="footer__link --underline-on-hover" @pointerdown="clickEmail" @contextmenu.prevent aria-label="Написать на почту">{{ config.public.email }}</a></div>
           <div class="footer__social">
             <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
             <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram">Написать в Telegram</a></div>

@@ -93,9 +93,11 @@ const toggleContactUsForMobile = () => {
   contactUsIsOpen.value = true
 }
 
-const copyEmailToClipboard = async () => {
-  await navigator.clipboard.writeText(config.public.email)
-  notification.fire({title: 'Email скопирован!'})
+const clickEmail = async () => {
+  const el = document.createElement('a')
+  el.href = `mailto:${config.public.email}`
+  el.click()
+  el.remove()
 }
 
 const onClickMenu = (menuItem: MenuItem, isMobile = false) => {
@@ -258,7 +260,7 @@ onUnmounted(() => {
                 <use :href="'/sprite.svg#search'"/>
               </svg>
             </Button>
-            <Button class="--rounded --type-grey" @pointerdown="copyEmailToClipboard" @contextmenu.prevent>
+            <Button class="--rounded --type-grey" @pointerdown="clickEmail" @contextmenu.prevent aria-label="Написать на почту">
               {{ config.public.email }}
             </Button>
             <Button class="--rounded" @click="toggleContactUs">

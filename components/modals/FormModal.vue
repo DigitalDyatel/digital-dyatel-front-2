@@ -7,6 +7,8 @@ import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
 
+const { $baseFetch } = useNuxtApp()
+
 const props = withDefaults(defineProps<{
   title: string,
   buttonText?: string,
@@ -37,8 +39,12 @@ if (props.withFiles) {
 
 const formData = ref(initForm(formDataFields as const))
 
-const onSubmitForm = () => {
-  alert('Отправляем запрос')
+const onSubmitForm = async () => {
+  await $baseFetch('send-mail', {
+    method: 'POST',
+    body: formData.value,
+  })
+
   emit('confirm')
 }
 </script>

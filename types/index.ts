@@ -5,6 +5,7 @@ export interface Phone {
 
 export interface CustomRuntimeConfig {
     public: {
+        apiBase: string,
         casesMenuCount: number
         phones: Phone[],
         telegram: string,

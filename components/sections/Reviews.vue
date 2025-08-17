@@ -155,11 +155,20 @@ const isHTMLVideoElement = (el: unknown): el is HTMLVideoElement =>  {
 }
 
 const isVideoReview = (review: unknown): review is VideoReview => {
-  return typeof review === 'object' && review !== null && 'video' in review
+  return (
+      typeof review === 'object' &&
+      review !== null &&
+      'video' in review
+  )
 }
 
 const isTextReview = (review: unknown): review is TextReview => {
-  return typeof review === 'object' && review !== null && 'text' in review
+  return (
+      typeof review === 'object' &&
+      review !== null &&
+      'text' in review &&
+      'img' in review
+  )
 }
 
 const enableScrollbar = (i: number) => {

@@ -86,6 +86,10 @@ const reviews: (Review | LinkToAllReview)[] = ref([
     position: 'Управляющая агентством',
     text: 'В какой-то момент в интернете стали появляться вбросы — подозрительно однотипные негативные статьи и комментарии. Ситуация начала угрожать репутации. Мы обратились в агентство и получили быструю реакцию: команда провела аудит, выявила источники атак и предложила пошаговую стратегию. Уже через месяц в поисковой выдаче 80% негатива были вытеснены, а через два — доминировали только позитивные материалы. Благодаря этому мы сохранили 3 ключевых контракта'
   },
+  {
+    text: 'Больше отзывов',
+    link: '/',
+  }
 ])
 
 const swiperProps = ref({
@@ -223,29 +227,18 @@ const toggleVideo = (i: number) => {
   video.removeEventListener('timeupdate', timeUpdateListener)
 }
 
-onMounted(async () => {
+onMounted(() => {
   init()
 
   if (window.innerWidth < 768) {
     isMobile.value = true
-
-    reviews.value.push({
-      text: 'Больше отзывов',
-      link: '/',
-    })
-
-    await nextTick()
-
     swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
     sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
-
-    await nextTick()
-
-    swiperContainerTemplateRef.value.swiper.slideNext(0)
     return
   }
 
+  reviews.value.pop()
   swiperContainerTemplateRef.value.style.width = '2052px';
 })
 </script>

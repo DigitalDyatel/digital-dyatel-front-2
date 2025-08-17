@@ -5,8 +5,9 @@ import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
+import type { CustomRuntimeConfig } from '~/types'
 
-const config = useRuntimeConfig()
+const config = useRuntimeConfig() as unknown as CustomRuntimeConfig
 const notification = useNotification()
 const device = useDevice()
 const { goToAnchor } = useAnchor()

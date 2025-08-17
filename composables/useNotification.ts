@@ -1,10 +1,14 @@
+import type { IziToastPosition, IziToastSettings } from 'izitoast'
+
 interface NotificationProps {
     title: string
     blocking?: boolean
-    position?: string,
+    position?: IziToastPosition,
     timeout?: number,
     class?: 'izi-toast' | 'izi-toast --white'
 }
+
+type NotificationPropsWithIziToastSettings = NotificationProps & IziToastSettings
 
 export default () => {
     const notification = useToast()
@@ -12,7 +16,8 @@ export default () => {
 
     const fire = (notificationProps: NotificationProps) => {
 
-        const notificationPropsDefault: NotificationProps = {
+        const notificationPropsDefault: NotificationPropsWithIziToastSettings = {
+            title: 'Дефолтный текст',
             icon: undefined,
             position: 'bottomCenter',
             progressBarColor: 'var(--color-contrast)',

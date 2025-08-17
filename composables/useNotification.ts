@@ -10,10 +10,10 @@ export default () => {
     const notification = useToast()
     const isBlocked = ref(false)
 
-    const fire = (notificationProps: NotificationProps = {}) => {
+    const fire = (notificationProps: NotificationProps) => {
 
-        const notificationPropsDefault = {
-            icon: false,
+        const notificationPropsDefault: NotificationProps = {
+            icon: undefined,
             position: 'bottomCenter',
             progressBarColor: 'var(--color-contrast)',
             timeout: 2000,

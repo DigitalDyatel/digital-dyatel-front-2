@@ -73,6 +73,11 @@
       img {
         width: 48px;
         border-radius: 8px;
+
+        @media (max-width: 767px) {
+          width: 72px;
+          border-radius: 12px;
+        }
       }
 
       .reviews__review-overlay {
@@ -199,6 +204,10 @@
 
   &__review-scrollbar {
     height: 240px;
+
+    @media (max-width: 767px) {
+      height: 215px;
+    }
 
     .os-scrollbar {
       padding-bottom: 10px;

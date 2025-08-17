@@ -239,7 +239,6 @@ onMounted(async () => {
     swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
     sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
-    swiperContainerTemplateRef.value?.swiper.slideTo(1, 0)
     return
   }
 
@@ -254,8 +253,8 @@ onMounted(async () => {
       <div class="reviews__slider-container" ref="sliderContainerTemplateRef">
         <div class="reviews__slider">
           <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
-            <swiper-slide v-for="(review, i) in reviews" :key="review.name">
-              <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="review.name">
+            <swiper-slide v-for="(review, i) in reviews" :key="i">
+              <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="i">
                 <template v-if="review.video">
                   <video preload="metadata" :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
                   <div class="reviews__video-container">

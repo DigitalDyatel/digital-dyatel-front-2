@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
 import { useModal } from 'vue-final-modal'
-import { type CustomRuntimeConfig } from '~/types'
 import Logo from '~/assets/svg/logo.svg?component'
 import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
-const config = useRuntimeConfig() as CustomRuntimeConfig
+const config = useRuntimeConfig()
 const notification = useNotification()
 const device = useDevice()
 const { goToAnchor } = useAnchor()

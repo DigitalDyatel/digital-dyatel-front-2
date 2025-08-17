@@ -8,7 +8,7 @@ const allowCookies = () => {
     const notification = useToast()
 
     notification.show({
-        icon: false,
+        icon: undefined,
         position: 'bottomLeft',
         timeout: false,
         class: 'izi-toast --cookie',
@@ -18,7 +18,7 @@ const allowCookies = () => {
         buttons: [
             ['<button>Хорошо</button>', function (instance, toast) {
                 instance.hide({}, toast, 'button')
-                cookie.value = true
+                cookie.value = 'true'
             }, true]
         ]
     })

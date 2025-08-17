@@ -3,6 +3,7 @@ import config from './config.env.json'
 
 export default defineNuxtConfig({
   experimental: {
+    /** @ts-expect-error: Nuxt 3 пишет что такого типа нет, но он есть */
     inlineSSRStyles: false
   },
   runtimeConfig: {

@@ -1,7 +1,5 @@
-import { type CustomRuntimeConfig } from '~/types'
-
 export default defineNuxtPlugin((nuxtApp) => {
-    const config = useRuntimeConfig() as CustomRuntimeConfig
+    const config = useRuntimeConfig()
 
     const baseFetch = (request: string, opts = {}) => {
         return $fetch(request, {

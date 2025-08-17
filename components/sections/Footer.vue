@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import LogoAlt from '~/assets/svg/logo-alt.svg?component'
-import { type CustomRuntimeConfig } from '~/types'
 import { useModal } from 'vue-final-modal'
 import FormModal from '@/components/modals/FormModal.vue'
 import ThankYouModal from '@/components/modals/ThankYouModal.vue'
 
 const currentYear = (new Date()).getFullYear()
 
-const config = useRuntimeConfig() as CustomRuntimeConfig
+const config = useRuntimeConfig()
 
 const notification = useNotification()
 const device = useDevice()

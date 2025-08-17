@@ -54,7 +54,6 @@ const callMeModal = () => {
           attrs: {
             onClose: () => {
               thankYouModal.close()
-              contactUsIsOpen.value = false
             }
           }
         })
@@ -140,7 +139,7 @@ const callMeModal = () => {
             <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp">Написать в WhatsApp</a></div>
             <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram">Написать в Telegram</a></div>
           </div>
-          <div><a class="footer__link --underline-on-hover" @pointerdown="copyEmailToClipboard" @contextmenu.prevent>{{ config.public.email }}</a></div>
+          <div><a class="footer__link --underline-on-hover" @pointerdown="clickEmail" @contextmenu.prevent>{{ config.public.email }}</a></div>
         </div>
         <div class="footer__column --address">
           <div class="footer__text --primary --no-wrap">{{ config.public.legal.address }}</div>

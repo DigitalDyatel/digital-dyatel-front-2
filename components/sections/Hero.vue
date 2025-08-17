@@ -127,8 +127,8 @@ onUnmounted(() => {
     return
   }
 
-  tagsTemplateRef.value.removeEventListener('touchstart', touchStartEventListener, { passive: true });
-  tagsTemplateRef.value.removeEventListener('touchmove', touchMoveEventListener, { passive: false })
+  tagsTemplateRef.value.removeEventListener('touchstart', touchStartEventListener);
+  tagsTemplateRef.value.removeEventListener('touchmove', touchMoveEventListener)
   tagsTemplateRef.value.removeEventListener('touchend', touchEndEventListener)
   io.disconnect()
 })

@@ -5,7 +5,6 @@ import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?componen
 import TagWithLabel from '~/components/TagWithLabel.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
-import { onClickOutside } from '@vueuse/core'
 
 const isMobile = ref(true)
 const activeMobileServiceIndex = ref(null)
@@ -59,7 +58,7 @@ const onClickService = (service: Service) => {
   selectedService.value = service
 }
 
-const onClick = (_case?: Case, title: string) => {
+const onClick = (_case: Case | null, title: string) => {
 
   const attrs = {}
 
@@ -181,7 +180,7 @@ onMounted(() => {
             <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
             <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
           </p>
-          <Button class="--large --tertiary" @click="onClick(undefined, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Получить предложение</Button>
+          <Button class="--large --tertiary" @click="onClick(null, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Получить предложение</Button>
         </div>
         <div>
           <img src="/img/our-services-logo.png" alt="logo-alt">

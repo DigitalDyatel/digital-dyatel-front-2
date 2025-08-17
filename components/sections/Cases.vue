@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SwiperContainer } from 'swiper/element'
 import { onMounted } from 'vue'
 import { desktopCategories as _desktopCategories, categories as _categories, type Case } from '~/constants'
 import Button from '~/components/Button.vue'
@@ -17,7 +18,7 @@ const progressBarSliderTemplateRef = useTemplateRef<HTMLDivElement>('progressBar
 
 const categoriesContainerTemplateRef = useTemplateRef<HTMLDivElement>('categoriesContainerTemplateRef')
 const categoriesTemplateRef = useTemplateRef<HTMLDivElement[]>('categoriesTemplateRef')
-const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 
 const desktopCategories = ref(_desktopCategories)
 const categories = ref(_categories)

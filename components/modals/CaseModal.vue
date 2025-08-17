@@ -25,11 +25,11 @@ const onClickClose = async (e) => {
 }
 
 const onModalOpen = async () => {
-  modalHeight.value = (modalTemplateRef.value.offsetHeight - modalTemplateRef.value.children[0].offsetHeight) + 'px'
+  modalHeight.value = (modalTemplateRef.value.offsetHeight - (modalTemplateRef.value.children[0] as HTMLElement).offsetHeight) + 'px'
   isReady.value = true
 
   ro = new ResizeObserver(() => {
-    modalHeight.value = (modalTemplateRef.value.offsetHeight - modalTemplateRef.value.children[0].offsetHeight) + 'px'
+    modalHeight.value = (modalTemplateRef.value.offsetHeight - (modalTemplateRef.value.children[0] as HTMLElement).offsetHeight) + 'px'
   })
   ro.observe(modalTemplateRef.value)
 }

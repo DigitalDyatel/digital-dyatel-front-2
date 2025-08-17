@@ -25,7 +25,7 @@ export interface Case {
     finishRating: number,
     tags?: string[],
     category?: string,
-    content: ContentItem[]
+    content?: string
 }
 
 export const categories: Category[] = [

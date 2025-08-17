@@ -6,14 +6,12 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
 
-const { initForm } = useForm()
-
-const formData = ref(initForm([
-  'name',
-  'phone',
-  'email',
-  {isAgree: true}
-] as const))
+const formData = ref({
+  name: undefined,
+  phone: undefined,
+  email: undefined,
+  isAgree: true
+})
 
 const onSubmit = () => {
   (useModal({component: ThankYouModal})).open()

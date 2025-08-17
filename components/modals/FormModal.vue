@@ -16,28 +16,31 @@ const props = withDefaults(defineProps<{
   data?: any
 }>(), {
   buttonText: 'Оставить заявку',
-  withFiles: false
+  withFiles: true
 })
 
 const emit = defineEmits<{
   (e: 'confirm'): void
 }>()
 
-const { initForm } = useForm()
-
-const formDataFields = [
-    'name',
-    'phone',
-    'email',
-    'files',
-    {isAgree: true}
-]
-
-if (props.withFiles) {
-  formDataFields.push('files')
+const formDataFields: {
+  name: string | undefined,
+  phone: string | undefined,
+  email: string | undefined,
+  isAgree: boolean,
+  files?: FileList | undefined
+} = {
+  name: undefined,
+  phone: undefined,
+  email: undefined,
+  isAgree: true
 }
 
-const formData = ref(initForm(formDataFields as const))
+if (props.withFiles) {
+  formDataFields['files'] = undefined
+}
+
+const formData = ref(formDataFields)
 
 const onSubmitForm = async () => {
   await $baseFetch('send-mail', {

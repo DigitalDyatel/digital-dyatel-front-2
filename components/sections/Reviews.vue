@@ -239,6 +239,7 @@ onMounted(async () => {
     swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
     sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
+    swiperContainerTemplateRef.value?.swiper.slideTo(0, 0)
     return
   }
 

@@ -43,7 +43,7 @@ const isMobile = ref(false)
 useSwiper(swiperContainerTemplateRef)
 
 /** Нельзя делать меньше 7 штук */
-const reviews: (Review | LinkToAllReview)[] = ref([
+const reviews = ref<(Review | LinkToAllReview)[]>([
   {
     img: 'AllaMedvedeva.webp',
     name: 'Алла Медведева',
@@ -234,7 +234,6 @@ onMounted(() => {
     isMobile.value = true
     swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
-    sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
     return
   }
 

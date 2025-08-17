@@ -58,12 +58,12 @@ const onClickService = (service: Service) => {
   selectedService.value = service
 }
 
-const onClick = (_case: Case | null, title: string) => {
+const onClick = (service: Service | null, title: string) => {
 
-  const attrs = {}
+  const attrs: {[key:string]: any} = {}
 
-  if (_case) {
-    attrs.data = _case
+  if (service) {
+    attrs.data = service
   }
 
   const { open, close } = useModal({

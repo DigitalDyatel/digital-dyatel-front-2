@@ -11,7 +11,7 @@ const articlesTemplateRef = useTemplateRef('articlesTemplateRef')
 
 const animationIsActive = ref(false)
 
-const timer = ref<null, ReturnType<typeof useTimer>>(null)
+const timer = ref<ReturnType<typeof useTimer> | null>(null)
 
 const articles = ref([
   {

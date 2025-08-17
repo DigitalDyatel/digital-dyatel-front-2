@@ -55,11 +55,13 @@ const onClick = () => {
   }
 
   inputEl.addEventListener('change', (e) => {
-    if (!e.target.files) {
+    const target = e.target as HTMLInputElement
+
+    if (!target.files) {
       return
     }
 
-    handleFiles(e.target.files)
+    handleFiles(target.files)
   })
 
   inputEl.click()
@@ -81,7 +83,7 @@ const handleFiles = (files: FileList) => {
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
 
-    if (!props.types.includes(file.type)) {
+    if (!props.types.includes(file.type as Type)) {
       isValid = false
       errorMessage = 'Некорретный тип файла'
     }

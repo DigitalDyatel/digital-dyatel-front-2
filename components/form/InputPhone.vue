@@ -25,7 +25,7 @@ const options = reactive<MaskInputOptions>({
 <template>
   <div class="input" :class="{'--required': props.required}">
     <input
-        @input="emit('update:modelValue', $event.target.value)"
+        @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         ref="inputTemplateRef"
         :type="type"
         autocomplete="off"

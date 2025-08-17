@@ -18,6 +18,6 @@ const props = withDefaults(defineProps<{
 
 <template>
   <div class="input" :class="{'--required': props.required}">
-    <input @input="emit('update:modelValue', $event.target.value)" :type="type" autocomplete="off" :name="'field-' + serverTime" :placeholder="placeholder">
+    <input @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :type="type" autocomplete="off" :name="'field-' + serverTime" :placeholder="placeholder">
   </div>
 </template>

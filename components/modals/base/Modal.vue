@@ -14,6 +14,7 @@ const emit = defineEmits<{
       content-transition="vfm-fade"
       @closed="emit('close')"
   >
+    <!-- @vue-ignore -->
     <template #default="{ close }">
       <div class="modal__container" @click="(e) => e.target === e.currentTarget && close()">
         <div class="modal__close" @click="(e) => e.target === e.currentTarget && close()">

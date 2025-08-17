@@ -6,11 +6,16 @@ import { onClickOutside } from '@vueuse/core'
 import { onMounted } from 'vue'
 
 interface Review {
-  img: string,
   name: string,
   position: string,
   text: string,
+  img?: string,
   video?: string
+}
+
+interface LinkToAllReview {
+  text: string,
+  link: string
 }
 
 const linkContainerTemplateRef = useTemplateRef<HTMLDivElement>('linkContainerTemplateRef')
@@ -38,7 +43,7 @@ const isMobile = ref(false)
 useSwiper(swiperContainerTemplateRef)
 
 /** Нельзя делать меньше 7 штук */
-const reviews: Review[] = ref([
+const reviews: (Review | LinkToAllReview)[] = ref([
   {
     img: 'AllaMedvedeva.webp',
     name: 'Алла Медведева',
@@ -224,12 +229,17 @@ onMounted(async () => {
   if (window.innerWidth < 768) {
     isMobile.value = true
 
+    reviews.value.push({
+      text: 'Больше отзывов',
+      link: '/',
+    })
+
     await nextTick()
 
     swiperContainerTemplateRef.value.slidesPerView = 1.15
     swiperContainerTemplateRef.value.spaceBetween = 16
     sliderContainerTemplateRef.value.style.width = 166.75 * reviews.value.length
-
+    swiperContainerTemplateRef.value?.swiper.slideTo(1, 0)
     return
   }
 
@@ -257,7 +267,7 @@ onMounted(async () => {
                   </div>
                   <div class="reviews__video-timeline" :style="{transform: videoTimelines[i] ? 'translateX(' + videoTimelines[i] + '%)' : 'translateX(0)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
                 </template>
-                <template v-else>
+                <template v-else-if="review.img">
                   <div class="reviews__review-content">
                     <div class="reviews__review-header">
                       <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">
@@ -272,6 +282,11 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="reviews__review-overlay" />
+                </template>
+                <template v-else>
+                  <div class="reviews__review-content --more-reviews">
+                    <Link class="--white" :link="review.link">{{ review.text }}</Link>
+                  </div>
                 </template>
               </div>
             </swiper-slide>

@@ -8,6 +8,18 @@
     font-size: var(--font-size-base);
   }
 
+  &.--white {
+    color: var(--color-white);
+
+    span:first-child {
+      border-bottom: 2px solid var(--color-white);
+    }
+
+    svg {
+      color: var(--color-white-contrast);
+    }
+  }
+
   &.--contrast-on-hover {
     @media (hover: hover) {
       &:hover {

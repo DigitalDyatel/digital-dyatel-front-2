@@ -2,7 +2,7 @@ export default () => {
     type FormKey = string;
     type FormDefinition = FormKey | { [key: FormKey]: any };
     type ExtractKeys<T> = T extends string ? T : keyof T;
-    type ExtractValue<T, K extends keyof any> = T extends string ? undefined : T extends Record<K, infer V> ? V : never;
+    type ExtractValue<T, K extends keyof any> = T extends string ? string | undefined : T extends Record<K, infer V> ? V : never;
 
     const initForm = <T extends readonly FormDefinition[]>(formDataProperties: T = [] as unknown as T): {
         [K in ExtractKeys<T[number]>]: ExtractValue<T[number], K>

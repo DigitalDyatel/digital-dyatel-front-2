@@ -5,15 +5,21 @@ import Link from '~/components/Link.vue'
 import { onClickOutside } from '@vueuse/core'
 import { onMounted } from 'vue'
 
-interface Review {
+interface BaseReview {
   name: string,
   position: string,
-  text: string,
-  img?: string,
-  video?: string
 }
 
-interface LinkToAllReview {
+interface VideoReview extends BaseReview {
+  video: string
+}
+
+interface TextReview extends BaseReview {
+  text: string,
+  img: string
+}
+
+interface ReviewAsLinkToAllReviews {
   text: string,
   link: string
 }
@@ -43,7 +49,7 @@ const isMobile = ref(false)
 useSwiper(swiperContainerTemplateRef)
 
 /** Нельзя делать меньше 7 штук */
-const reviews = ref<(Review | LinkToAllReview)[]>([
+const reviews = ref<(VideoReview| TextReview | ReviewAsLinkToAllReviews)[]>([
   {
     img: 'AllaMedvedeva.webp',
     name: 'Алла Медведева',
@@ -146,6 +152,14 @@ const init = () => {
 
 const isHTMLVideoElement = (el: unknown): el is HTMLVideoElement =>  {
   return el instanceof HTMLVideoElement;
+}
+
+const isVideoReview = (review: unknown): review is VideoReview => {
+  return review && typeof review.video === 'string'
+}
+
+const isTextReview = (review: unknown): review is TextReview => {
+  return review && typeof review.text === 'string'
 }
 
 const enableScrollbar = (i: number) => {
@@ -251,7 +265,7 @@ onMounted(() => {
           <swiper-container ref="swiperContainerTemplateRef" v-bind="swiperProps">
             <swiper-slide v-for="(review, i) in reviews" :key="i">
               <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="i">
-                <template v-if="review.video">
+                <template v-if="isVideoReview(review)">
                   <video preload="metadata" :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
                   <div class="reviews__video-container">
                     <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
@@ -262,7 +276,7 @@ onMounted(() => {
                   </div>
                   <div class="reviews__video-timeline" :style="{transform: videoTimelines[i] ? 'translateX(' + videoTimelines[i] + '%)' : 'translateX(0)'}">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
                 </template>
-                <template v-else-if="review.img">
+                <template v-else-if="isTextReview(review)">
                   <div class="reviews__review-content">
                     <div class="reviews__review-header">
                       <img :src="'/img/reviews/' + review.img" :alt="review.name + ' - ' + review.position">

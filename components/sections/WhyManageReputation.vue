@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { SwiperContainer } from 'swiper/element'
 import TagWithLabel from '~/components/TagWithLabel.vue'
 
 const intersectedTemplateRef = useTemplateRef('intersectedTemplateRef')
 const bottomCardsTemplateRef = useTemplateRef('bottomCardsTemplateRef')
-const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 const containerTemplateRef = useTemplateRef('containerTemplateRef')
 
 const isMobileIntersected = ref(false)

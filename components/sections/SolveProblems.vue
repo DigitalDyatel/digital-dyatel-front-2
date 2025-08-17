@@ -7,7 +7,7 @@ const animationDuration = 5000
 const sliderTemplateRef = useTemplateRef('sliderTemplateRef')
 
 const animationIsActive = ref(false)
-const timer = ref<null, ReturnType<typeof useTimer>>(null)
+const timer = ref<ReturnType<typeof useTimer> | null>(null)
 const activeImageIndex = ref(0)
 const isPresentationAreLoaded = ref(false)
 const images = ref([

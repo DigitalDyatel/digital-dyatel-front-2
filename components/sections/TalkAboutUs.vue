@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import type { SwiperContainer } from 'swiper/element'
 import Link from '~/components/Link.vue'
 
-const swiperContainerTemplateRef = useTemplateRef('swiperContainerTemplateRef')
+const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 const h2TemplateRef = useTemplateRef('h2TemplateRef')
 
 const isMobile = ref(false)

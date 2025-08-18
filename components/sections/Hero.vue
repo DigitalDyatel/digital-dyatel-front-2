@@ -3,6 +3,7 @@ import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
+import { FROM_TRIGGER } from '~/constants'
 
 const tagsTemplateRef = useTemplateRef('tagsTemplateRef')
 
@@ -38,6 +39,7 @@ const onClick = () => {
     attrs: {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
       withFiles: true,
+      fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
       onConfirm: () => {
         close()
 

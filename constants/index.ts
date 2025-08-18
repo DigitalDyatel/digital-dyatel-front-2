@@ -223,3 +223,13 @@ const buildDesktopCategories = (categories: Category[]) => {
 }
 
 export const desktopCategories: DesktopCategory[] = buildDesktopCategories(categories)
+
+export enum FROM_TRIGGER {
+    GET_FREE_SERM_AUDIT = 'GET_FREE_SERM_AUDIT',
+    CALLBACK = 'CALLBACK',
+    OUR_SERVICES_REQUEST = 'OUR_SERVICES_REQUEST',
+    OUR_SERVICES_GET_THE_OFFER = 'OUR_SERVICES_GET_THE_OFFER',
+    CONTACT_FORM_1 = 'CONTACT_FORM_1',
+    CASES = 'CASES',
+    CONTACT_FORM_2 = 'CONTACT_FORM_2',
+}

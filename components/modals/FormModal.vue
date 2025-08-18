@@ -11,6 +11,7 @@ interface FormDataFields {
   name: string | undefined,
   phone: string | undefined,
   email: string | undefined,
+  from_trigger: string | undefined,
   isAgree: boolean,
   files?: FileList | undefined
 }
@@ -25,6 +26,7 @@ const { fetch } = useApi()
 
 const props = withDefaults(defineProps<{
   title: string,
+  fromTrigger: string,
   buttonText?: string,
   withFiles?: boolean,
   data?: any
@@ -41,7 +43,8 @@ const formDataFields: FormDataFields = {
   name: undefined,
   phone: undefined,
   email: undefined,
-  isAgree: true
+  isAgree: true,
+  from_trigger: props.fromTrigger
 }
 
 if (props.withFiles) {

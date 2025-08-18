@@ -6,6 +6,7 @@ import Button from '~/components/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import type { CustomRuntimeConfig } from '~/types'
+import { FROM_TRIGGER } from '~/constants'
 
 const config = useRuntimeConfig() as unknown as CustomRuntimeConfig
 const notification = useNotification()
@@ -139,6 +140,7 @@ const openFormModal = () => {
     attrs: {
       title: 'Оставьте номер, обсудим детали',
       buttonText: 'Жду звонка',
+      fromTrigger: FROM_TRIGGER.CALLBACK,
       onConfirm: () => {
         close()
 

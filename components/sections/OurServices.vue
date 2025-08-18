@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useModal } from 'vue-final-modal'
-import { type Case } from '~/constants'
+import { FROM_TRIGGER } from '~/constants'
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
 import TagWithLabel from '~/components/TagWithLabel.vue'
 import FormModal from '~/components/modals/FormModal.vue'
@@ -70,6 +70,7 @@ const onClick = (service: Service | null, title: string) => {
     component: FormModal,
     attrs: {
       title,
+      fromTrigger: service ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
       onConfirm: () => {
         close()
 

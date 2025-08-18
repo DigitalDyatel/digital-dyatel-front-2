@@ -7,7 +7,21 @@ import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
 
-const { $baseFetch } = useNuxtApp()
+interface FormDataFields {
+  name: string | undefined,
+  phone: string | undefined,
+  email: string | undefined,
+  isAgree: boolean,
+  files?: FileList | undefined
+}
+
+type FormDataFieldsErrors = {
+  [K in keyof FormDataFields]: string[]
+}
+
+const errors = ref<FormDataFieldsErrors>({} as FormDataFieldsErrors)
+
+const { fetch } = useApi()
 
 const props = withDefaults(defineProps<{
   title: string,
@@ -23,13 +37,7 @@ const emit = defineEmits<{
   (e: 'confirm'): void
 }>()
 
-const formDataFields: {
-  name: string | undefined,
-  phone: string | undefined,
-  email: string | undefined,
-  isAgree: boolean,
-  files?: FileList | undefined
-} = {
+const formDataFields: FormDataFields = {
   name: undefined,
   phone: undefined,
   email: undefined,
@@ -43,10 +51,15 @@ if (props.withFiles) {
 const formData = ref(formDataFields)
 
 const onSubmitForm = async () => {
-  await $baseFetch('send-mail', {
-    method: 'POST',
-    body: formData.value,
-  })
+  try {
+    await fetch('contacts/create', {
+      method: 'POST',
+      body: formData.value
+    })
+  } catch (error) {
+    errors.value = error
+    return
+  }
 
   emit('confirm')
 }
@@ -56,10 +69,10 @@ const onSubmitForm = async () => {
   <Modal class="modal-lead" @confirm="emit('confirm')">
     <h4>{{ props.title }}</h4>
     <form class="form">
-      <Input class="--light" placeholder="Имя" v-model="formData.name" />
+      <Input :errors="errors.name" class="--light" placeholder="Имя" v-model="formData.name"/>
       <div class="form__group">
-        <InputPhone class="--light" placeholder="Номер телефона" v-model="formData.phone" required />
-        <Input class="--light" placeholder="Email" v-model="formData.email" required />
+        <InputPhone :errors="errors.phone" class="--light" placeholder="Номер телефона" v-model="formData.phone" required/>
+        <Input :errors="errors.email" class="--light" placeholder="Email" v-model="formData.email" required/>
       </div>
       <FileInput
           class="--light"
@@ -69,6 +82,7 @@ const onSubmitForm = async () => {
           types-label-more="doc, docx, xlsx, xls, ods, pdf, md, txt"
           :max-count="2"
           :max-size="10"
+          :errors="errors.files"
           :types="[
             'application/pdf',
             'application/vnd.ms-excel',
@@ -81,8 +95,10 @@ const onSubmitForm = async () => {
           ]"
       />
       <Button class="--large" type="submit" @click.prevent="onSubmitForm">{{ props.buttonText }}</Button>
-      <ProcessingPersonalDataAgree />
-      <Checkbox class="--contrast" v-model="formData.isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
+      <ProcessingPersonalDataAgree/>
+      <Checkbox class="--contrast" v-model="formData.isAgree">
+        <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a>
+      </Checkbox>
     </form>
   </Modal>
 </template>

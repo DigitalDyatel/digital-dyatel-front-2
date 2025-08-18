@@ -23,7 +23,8 @@ const props = withDefaults(defineProps<{
   typesLabel: string,
   typesLabelMore?: string,
   maxSize?: number,
-  maxCount?: number
+  maxCount?: number,
+  errors?: string[]
 }>(), {
   multiple: false,
   maxSize: 10,
@@ -131,7 +132,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="file-input" :class="{'--filled': props.modelValue}">
+  <div class="file-input" :class="{'--filled': props.modelValue, '--has-error': props.errors}">
     <div class="file-input__flex" ref="dropzoneTemplateRef" @click="onClick">
       <div class="file-input__text">
         <template v-if="props.modelValue">
@@ -144,6 +145,9 @@ onMounted(() => {
       <div class="file-input__btn" @click="onRemove">
         <svg><use :href="'/sprite.svg#plus'" /></svg>
       </div>
+    </div>
+    <div v-if="props.errors" class="file-input__error">
+      <span>{{ props.errors[0] }}</span>
     </div>
     <div class="file-input__constraints">
       <svg><use :href="'/sprite.svg#attention'" /></svg>

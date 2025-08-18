@@ -8,7 +8,8 @@ const emit = defineEmits<{
 const props = withDefaults(defineProps<{
   required?: boolean,
   type?: 'text' | 'password' | 'email',
-  placeholder?: string
+  placeholder?: string,
+  errors?: string[]
 }>(), {
   required: false,
   type: 'text'
@@ -23,7 +24,7 @@ const options = reactive<MaskInputOptions>({
 </script>
 
 <template>
-  <div class="input" :class="{'--required': props.required}">
+  <div class="input" :class="{'--required': props.required, '--has-error': props.errors}">
     <input
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         ref="inputTemplateRef"
@@ -33,5 +34,8 @@ const options = reactive<MaskInputOptions>({
         :placeholder="placeholder"
         v-maska="options"
     />
+    <div v-if="props.errors" class="input__error">
+      <span>{{ props.errors[0] }}</span>
+    </div>
   </div>
 </template>

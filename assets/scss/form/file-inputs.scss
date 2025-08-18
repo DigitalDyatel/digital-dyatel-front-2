@@ -17,6 +17,12 @@
     }
   }
 
+  &.--has-error {
+    .file-input__flex {
+      border: 1px solid var(--color-error);
+    }
+  }
+
   &__constraints {
     display: inline-flex;
     gap: 14px;
@@ -128,6 +134,18 @@
         width: 16px;
         height: 16px;
       }
+    }
+  }
+
+  &__error {
+    margin-top: 2px;
+
+    span {
+      font-size: 12px;
+      color: var(--color-error);
+      top: 5px;
+      left: 1px;
+      font-weight: var(--font-weight-medium);
     }
   }
 }

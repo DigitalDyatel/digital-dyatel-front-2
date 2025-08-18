@@ -11,7 +11,7 @@ const onClick = () => {
     <div class="checkbox__container">
       <svg><use :href="'/sprite.svg#tick-square-filled'" /></svg>
     </div>
-    <div>
+    <div @click.stop>
       <slot />
     </div>
   </div>

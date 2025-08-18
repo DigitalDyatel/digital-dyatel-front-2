@@ -11,6 +11,7 @@ const activeMobileServiceIndex = ref(null)
 const mobileContentHeight: number[] = []
 const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
 const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
+const selectedServiceTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceTemplateRef')
 
 interface Service {
   title: string,
@@ -106,9 +107,34 @@ const toggleMobileService = (i: number) => {
   el.style.height = mobileContentHeight[i] + 'px'
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (window.innerWidth >= 768) {
     isMobile.value = false
+
+    let greatestServiceContentIndex = 0;
+    let maxServiceSymbols = 0;
+
+    services.value.forEach((service, i) => {
+      const _maxServiceSymbols = service.title.length +
+          service.title_short?.length +
+          service.subtitle?.length +
+          service.description.length +
+          service.price.length
+
+      if (maxServiceSymbols < _maxServiceSymbols) {
+        maxServiceSymbols = _maxServiceSymbols;
+        greatestServiceContentIndex = i;
+      }
+    })
+
+    selectedService.value = services.value[greatestServiceContentIndex]
+
+    await nextTick
+
+    const parent = selectedServiceTemplateRef.value?.parentNode as HTMLDivElement;
+    parent.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
+
+    selectedService.value = services.value[0]
     return
   }
 
@@ -147,7 +173,7 @@ onMounted(() => {
         </div>
       </div>
       <div v-else class="our-services__services">
-        <div class="our-services__selected-service">
+        <div class="our-services__selected-service" ref="selectedServiceTemplateRef">
           <div>
             <h3>{{ selectedService.title }}</h3>
             <h4 v-if="selectedService.subtitle">{{ selectedService.subtitle }}</h4>

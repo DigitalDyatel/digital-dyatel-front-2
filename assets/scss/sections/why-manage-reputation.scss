@@ -77,6 +77,11 @@
         &:nth-child(1) {
           width: 294px;
           height: 257px;
+          
+          @media (min-width: 1024px ) and (max-width: 1650px) {
+            width: clamp(147px, 23.482vw - 93.456px, 294px);
+            height: clamp(128.5px, 20.607vw - 83.008px, 257px);
+          }
 
           @media (max-width: 767px) {
             display: none;
@@ -93,6 +98,7 @@
         &:nth-child(3) {
           color: var(--color-secondary);
           font-size: var(--font-size-lg);
+          position: relative;
 
           @media (max-width: 767px) {
             font-size: var(--font-size-base);
@@ -110,6 +116,7 @@
           color: var(--color-primary);
           font-weight: var(--font-weight-medium);
           letter-spacing: normal;
+          position: relative;
 
           @media (max-width: 767px) {
             margin-top: 48px;

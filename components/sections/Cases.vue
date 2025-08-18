@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import type { SwiperContainer } from 'swiper/element'
 import { onMounted } from 'vue'
-import { desktopCategories as _desktopCategories, categories as _categories, type Case } from '~/constants'
+import {
+  desktopCategories as _desktopCategories,
+  categories as _categories,
+  type Case,
+  FROM_TRIGGER
+} from '~/constants'
 import Button from '~/components/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
@@ -121,6 +126,7 @@ const openFormModal = () => {
     component: FormModal,
     attrs: {
       title: 'Получить консультацию прямо сейчас!',
+      fromTrigger: FROM_TRIGGER.CASES,
       onConfirm: () => {
         close()
 

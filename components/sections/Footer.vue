@@ -4,6 +4,7 @@ import { useModal } from 'vue-final-modal'
 import FormModal from '@/components/modals/FormModal.vue'
 import ThankYouModal from '@/components/modals/ThankYouModal.vue'
 import type { CustomRuntimeConfig } from '~/types'
+import { FROM_TRIGGER } from '~/constants'
 
 const currentYear = (new Date()).getFullYear()
 
@@ -46,6 +47,7 @@ const callMeModal = () => {
     attrs: {
       title: 'Оставьте номер, обсудим детали',
       buttonText: 'Жду звонка',
+      fromTrigger: FROM_TRIGGER.CALLBACK,
       onConfirm: () => {
         close()
 

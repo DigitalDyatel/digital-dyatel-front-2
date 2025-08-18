@@ -180,6 +180,7 @@ const onClickGetFreeSERMAudit = () => {
     attrs: {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
       withFiles: true,
+      fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
       onConfirm: () => {
         close()
 

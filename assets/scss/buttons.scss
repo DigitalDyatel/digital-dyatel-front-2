@@ -14,9 +14,8 @@
   transition: all .3s ease-in-out;
   position: relative;
   line-height: 1.2;
-  appearance: none;
-  -webkit-appearance: none;
-  
+  align-items: center;
+
   @media (max-width: 767px) {
     font-size: var(--font-size-sm);
     padding: 13px;

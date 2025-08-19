@@ -6,6 +6,7 @@ const emit = defineEmits<{
 }>()
 
 const props = withDefaults(defineProps<{
+  modelValue?: string,
   required?: boolean,
   type?: 'text' | 'password' | 'email',
   placeholder?: string,
@@ -26,6 +27,7 @@ const options = reactive<MaskInputOptions>({
 <template>
   <div class="input" :class="{'--required': props.required, '--has-error': props.errors}">
     <input
+        :value="props.modelValue"
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         ref="inputTemplateRef"
         :type="type"

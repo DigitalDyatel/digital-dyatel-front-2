@@ -5,16 +5,36 @@ import Checkbox from '~/components/form/Checkbox.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
+import apiContacts, { type FormDataCreate} from '~/api/contacts'
+import { FROM_TRIGGER } from '~/constants'
 
-const formData = ref({
+type FormDataFieldsErrors = {
+  [K in keyof FormDataCreate]: string[]
+}
+
+const errors = ref<FormDataFieldsErrors>({} as FormDataFieldsErrors)
+
+const formData = ref<FormDataCreate>({
   name: undefined,
   phone: undefined,
   email: undefined,
-  isAgree: true
+  is_agree_to_receive_ads: true,
+  from_trigger: FROM_TRIGGER.CONTACT_FORM_1
 })
 
-const onSubmit = () => {
-  (useModal({component: ThankYouModal})).open()
+const onSubmit = async () => {
+
+  try {
+    await apiContacts().create(formData.value)
+  } catch (error) {
+    errors.value = error
+    return
+  }
+
+  errors.value = {} as FormDataFieldsErrors
+  formData.value = {} as FormDataCreate
+
+  await (useModal({component: ThankYouModal})).open()
 }
 </script>
 
@@ -34,14 +54,14 @@ const onSubmit = () => {
         </p>
       </div>
       <form autocomplete="off">
-        <Input v-model="formData.name" placeholder="Имя" />
+        <Input :errors="errors.name" v-model="formData.name" placeholder="Имя" />
         <div class="contact-form__group input__group">
-          <InputPhone v-model="formData.phone" placeholder="Номер телефона" required />
-          <Input v-model="formData.email" placeholder="Email" type="email" required />
+          <InputPhone :errors="errors.phone" v-model="formData.phone" placeholder="Номер телефона" required />
+          <Input :errors="errors.email" v-model="formData.email" placeholder="Email" type="email" required />
         </div>
         <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
         <ProcessingPersonalDataAgree />
-        <Checkbox v-model="formData.isAgree"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
+        <Checkbox v-model="formData.is_agree_to_receive_ads"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
       </form>
     </div>
     <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>

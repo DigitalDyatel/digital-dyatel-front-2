@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<{
 
 <template>
   <div class="input" :class="{'--required': props.required, '--has-error': props.errors }">
-    <input @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :type="type" autocomplete="off" :name="'field-' + serverTime" :placeholder="placeholder">
+    <input :value="props.modelValue" @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :type="type" autocomplete="off" :name="'field-' + serverTime" :placeholder="placeholder">
     <div v-if="props.errors" class="input__error">
       <span>{{ props.errors[0] }}</span>
     </div>

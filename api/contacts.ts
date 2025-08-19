@@ -9,8 +9,10 @@ export interface FormDataCreate {
     files?: FileList | undefined
 }
 
-export default class Contacts extends Api {
+class Contacts extends Api {
     public async create(data: FormDataCreate) {
         await this.post<FormDataCreate>('/contacts/create', data)
     }
 }
+
+export default () => new Contacts()

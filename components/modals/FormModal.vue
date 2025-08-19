@@ -6,7 +6,7 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
-import { default as apiContacts, type FormDataCreate} from '~/api/contacts'
+import apiContacts, { type FormDataCreate} from '~/api/contacts'
 
 type FormDataFieldsErrors = {
   [K in keyof FormDataCreate]: string[]
@@ -45,9 +45,7 @@ const formData = ref(formDataFields)
 
 const onSubmitForm = async () => {
   try {
-    const contacts = new apiContacts
-    await contacts.create(formData.value)
-
+    await apiContacts().create(formData.value)
   } catch (error) {
     errors.value = error
     return

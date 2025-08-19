@@ -6,23 +6,13 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
-
-interface FormDataFields {
-  name: string | undefined,
-  phone: string | undefined,
-  email: string | undefined,
-  from_trigger: string | undefined,
-  isAgree: boolean,
-  files?: FileList | undefined
-}
+import { default as apiContacts, type FormDataCreate} from '~/api/contacts'
 
 type FormDataFieldsErrors = {
-  [K in keyof FormDataFields]: string[]
+  [K in keyof FormDataCreate]: string[]
 }
 
 const errors = ref<FormDataFieldsErrors>({} as FormDataFieldsErrors)
-
-const { fetch } = useApi()
 
 const props = withDefaults(defineProps<{
   title: string,
@@ -39,11 +29,11 @@ const emit = defineEmits<{
   (e: 'confirm'): void
 }>()
 
-const formDataFields: FormDataFields = {
+const formDataFields: FormDataCreate = {
   name: undefined,
   phone: undefined,
   email: undefined,
-  isAgree: true,
+  is_agree_to_receive_ads: true,
   from_trigger: props.fromTrigger
 }
 
@@ -55,10 +45,9 @@ const formData = ref(formDataFields)
 
 const onSubmitForm = async () => {
   try {
-    await fetch('contacts/create', {
-      method: 'POST',
-      body: formData.value
-    })
+    const contacts = new apiContacts
+    await contacts.create(formData.value)
+
   } catch (error) {
     errors.value = error
     return
@@ -99,7 +88,7 @@ const onSubmitForm = async () => {
       />
       <Button class="--large" type="submit" @click.prevent="onSubmitForm">{{ props.buttonText }}</Button>
       <ProcessingPersonalDataAgree/>
-      <Checkbox class="--contrast" v-model="formData.isAgree">
+      <Checkbox class="--contrast" v-model="formData.is_agree_to_receive_ads">
         <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a>
       </Checkbox>
     </form>

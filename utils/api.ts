@@ -1,6 +1,9 @@
 import type { CustomRuntimeConfig } from '~/types'
 import { FetchError } from 'ofetch'
-import type { ReturnType } from 'birpc'
+
+export type FormDataErrors<T> = {
+    [K in keyof T]: string[]
+}
 
 export default abstract class Api {
     config: CustomRuntimeConfig

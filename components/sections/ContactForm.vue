@@ -5,22 +5,15 @@ import Checkbox from '~/components/form/Checkbox.vue'
 import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
-import apiContacts, { type FormDataCreate} from '~/api/contacts'
+import apiContacts, {
+  type FormDataCreate,
+  type FormDataCreateErrors,
+  getDefaultFormDataCreate
+} from '~/api/contacts'
 import { FROM_TRIGGER } from '~/constants'
 
-type FormDataFieldsErrors = {
-  [K in keyof FormDataCreate]: string[]
-}
-
-const errors = ref<FormDataFieldsErrors>({} as FormDataFieldsErrors)
-
-const formData = ref<FormDataCreate>({
-  name: undefined,
-  phone: undefined,
-  email: undefined,
-  is_agree_to_receive_ads: true,
-  from_trigger: FROM_TRIGGER.CONTACT_FORM_1
-})
+const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
+const formData = ref<FormDataCreate>(getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1))
 
 const onSubmit = async () => {
 
@@ -31,8 +24,8 @@ const onSubmit = async () => {
     return
   }
 
-  errors.value = {} as FormDataFieldsErrors
-  formData.value = {} as FormDataCreate
+  errors.value = {} as FormDataCreateErrors
+  formData.value = getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1)
 
   await (useModal({component: ThankYouModal})).open()
 }

@@ -6,13 +6,12 @@ import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDat
 import Checkbox from '~/components/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 import InputPhone from '~/components/form/InputPhone.vue'
-import apiContacts, { type FormDataCreate} from '~/api/contacts'
+import apiContacts, {
+  type FormDataCreate,
+  type FormDataCreateErrors
+} from '~/api/contacts'
 
-type FormDataFieldsErrors = {
-  [K in keyof FormDataCreate]: string[]
-}
-
-const errors = ref<FormDataFieldsErrors>({} as FormDataFieldsErrors)
+const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
 
 const props = withDefaults(defineProps<{
   title: string,

@@ -101,6 +101,7 @@
     padding: 24px;
     font-size: var(--font-size-lg);
     width: 304px;
+    max-height: 72px;
 
     @media (max-width: 767px) {
       font-size: var(--font-size-base);

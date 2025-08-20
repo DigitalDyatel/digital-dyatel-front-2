@@ -31,6 +31,9 @@ const reviewTemplateRef = useTemplateRef<HTMLDivElement[]>('reviewTemplateRef')
 const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 const sliderContainerTemplateRef = useTemplateRef<HTMLDivElement>('sliderContainerTemplateRef')
 
+let ro: ResizeObserver | undefined = undefined
+let roPrevWidth = 0;
+
 const scrollDefaultOptions = {
   scrollbars: {
     visibility: 'hidden',
@@ -124,6 +127,19 @@ const onClickReview = (i: number) => {
   enableScrollbar(i)
 }
 
+const updateDimensions = () => {
+  /** Т.к. ширина секции не ограничена, высчитываем середину экрана для других блоков */
+  const computedStyles = window.getComputedStyle(document.querySelector('section.hero'))
+
+  marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
+  middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
+
+  nextTick(() => {
+    emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
+    sectionIsReady.value = true
+  })
+}
+
 const init = () => {
 
   const videoStatusesData = []
@@ -138,16 +154,16 @@ const init = () => {
   videoStatuses.value = videoStatusesData
   videoTimelines.value = videoTimelinesData
 
-  /** Т.к. ширина секции не ограничена, высчитываем середину экрана для других блоков */
-  const computedStyles = window.getComputedStyle(document.querySelector('section.hero'))
+  ro = new ResizeObserver((entries) => {
+    const width = entries[0].borderBoxSize?.[0].inlineSize;
 
-  marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
-  middleScreenWidth.value = window.innerWidth - (parseInt(marginLeft.value) * 2)
+    if (typeof width !== 'number' || width === roPrevWidth) {
+      return
+    }
 
-  nextTick(() => {
-    emptyTemplateRef.value!.style.width = linkContainerTemplateRef.value!.getBoundingClientRect().width + 'px'
-    sectionIsReady.value = true
+    updateDimensions()
   })
+  ro.observe(document.documentElement)
 }
 
 const isHTMLVideoElement = (el: unknown): el is HTMLVideoElement =>  {
@@ -262,6 +278,10 @@ onMounted(() => {
 
   reviews.value.pop()
   swiperContainerTemplateRef.value.style.width = '2052px';
+})
+
+onUnmounted(() => {
+  ro?.disconnect()
 })
 </script>
 

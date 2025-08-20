@@ -10,6 +10,8 @@ const splideIsMounted = ref(false)
 const isMobile = ref(true)
 
 let io: IntersectionObserver | undefined = undefined
+let ro: ResizeObserver | undefined = undefined
+let roPrevWidth = 0;
 
 const teamSectionTemplateRef = useTemplateRef<HTMLElement>('teamSectionTemplateRef')
 const splideTemplateRef = useTemplateRef<InstanceType<typeof Splide>>('splideTemplateRef')
@@ -111,13 +113,32 @@ const onPointerOutSlider = () => {
   splideTemplateRef.value?.splide?.Components.Autoplay.play()
 }
 
-onMounted(() => {
+const updateDimensions = (entries: ResizeObserverEntry[]) => {
+
+  const width = entries[0].borderBoxSize?.[0].inlineSize;
+
+  if (typeof width !== 'number' || width === roPrevWidth) {
+    return
+  }
+
+  roPrevWidth = width
 
   const computedStyles = window.getComputedStyle(document.querySelector('section.hero'))
 
   marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
-
   paginatorTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
+
+  if (window.innerWidth >= 768) {
+    return
+  }
+
+  teamAboutTemplateRef.value!.style.width = paginatorTemplateRef.value!.style.width
+}
+
+onMounted(() => {
+
+  ro = new ResizeObserver(updateDimensions)
+  ro.observe(document.documentElement)
 
   io = new IntersectionObserver((entries) => {
 
@@ -138,12 +159,11 @@ onMounted(() => {
     isMobile.value = false
     return
   }
-
-  teamAboutTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 })
 
 onUnmounted(() => {
-  io.disconnect()
+  io?.disconnect()
+  ro?.disconnect()
 })
 </script>
 

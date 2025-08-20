@@ -14,6 +14,8 @@ import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 let progressBarTrackWidth: number | undefined = undefined
+let ro: ResizeObserver | undefined = undefined
+let roPrevWidth = 0;
 
 const translateX = ref(0)
 let gap = 24
@@ -139,9 +141,16 @@ const openFormModal = () => {
   open()
 }
 
+const updateProgressBarTrackWidth = () => {
+  progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
+}
+
 onMounted(async () => {
 
-  progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
+  ro = new ResizeObserver(updateProgressBarTrackWidth)
+  ro.observe(document.documentElement)
+
+  updateProgressBarTrackWidth()
 
   if (window.innerWidth < 768) {
     isMobile.value = true
@@ -150,6 +159,10 @@ onMounted(async () => {
   }
 
   setCategory(0)
+})
+
+onUnmounted(() => {
+  ro?.disconnect()
 })
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useFooter from '@/composables/sections/Footer'
+import { useFooter } from '@/composables/sections/Footer'
 import LogoAlt from 'assets/svg/logo-alt.svg?component'
 
 const {

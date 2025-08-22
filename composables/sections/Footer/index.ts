@@ -4,7 +4,7 @@ import { FROM_TRIGGER } from '~/constants'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
-export default () => {
+export const useFooter = () => {
     const currentYear = (new Date()).getFullYear()
     const config = useRuntimeConfig() as unknown as CustomRuntimeConfig
     const metro = config.public.legal.metro.map((metro, i) => {

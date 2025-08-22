@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Tag from '~/components/shared/Tag.vue'
+
 import { useTimer } from 'maz-ui'
 
 let io: IntersectionObserver | undefined = undefined

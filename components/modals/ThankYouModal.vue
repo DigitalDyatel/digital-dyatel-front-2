@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '~/components/Button.vue'
+import Button from '~/components/shared/Button.vue'
 import Modal from '~/components/modals/base/Modal.vue'
 
 const emit = defineEmits<{

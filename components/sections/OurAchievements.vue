@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TagWithLabel from '~/components/shared/TagWithLabel.vue'
+
 const achievements = ref([
   {
     left: '20+',

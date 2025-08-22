@@ -2,9 +2,10 @@
 import { useModal } from 'vue-final-modal'
 import { FROM_TRIGGER } from '~/constants'
 import BackgroundLightBlue from '~/assets/svg/background-light-blur.svg?component'
-import TagWithLabel from '~/components/TagWithLabel.vue'
+import TagWithLabel from '~/components/shared/TagWithLabel.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
+import Button from '~/components/shared/Button.vue'
 
 const isMobile = ref(true)
 const activeMobileServiceIndex = ref(null)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '~/components/Button.vue'
+import Button from '~/components/shared/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'

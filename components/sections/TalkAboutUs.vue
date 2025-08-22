@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { SwiperContainer } from 'swiper/element'
-import Link from '~/components/Link.vue'
+import Link from '~/components/shared/Link.vue'
+import TagWithLabel from '~/components/shared/TagWithLabel.vue'
 
 const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
 const h2TemplateRef = useTemplateRef('h2TemplateRef')

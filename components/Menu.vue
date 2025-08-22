@@ -2,7 +2,7 @@
 import { onClickOutside } from '@vueuse/core'
 import { useModal } from 'vue-final-modal'
 import Logo from '~/assets/svg/logo.svg?component'
-import Button from '~/components/Button.vue'
+import Button from '~/components/shared/Button.vue'
 import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import type { CustomRuntimeConfig } from '~/types'

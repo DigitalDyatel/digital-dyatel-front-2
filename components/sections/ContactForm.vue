@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useModal } from 'vue-final-modal'
-import Input from '~/components/form/Input.vue'
-import Checkbox from '~/components/form/Checkbox.vue'
-import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
+import Input from '~/components/shared/form/Input.vue'
+import Checkbox from '~/components/shared/form/Checkbox.vue'
+import ProcessingPersonalDataAgree from '~/components/shared/form/ProcessingPersonalDataAgree.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
-import InputPhone from '~/components/form/InputPhone.vue'
+import InputPhone from '~/components/shared/form/InputPhone.vue'
+import Button from '~/components/shared/Button.vue'
+import Tag from '~/components/shared/Tag.vue'
 import apiContacts, {
   type FormDataCreate,
   type FormDataCreateErrors,

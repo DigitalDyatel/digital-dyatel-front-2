@@ -7,7 +7,7 @@ import {
   type Case,
   FROM_TRIGGER
 } from '~/constants'
-import Button from '~/components/Button.vue'
+import Button from '~/components/shared/Button.vue'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
 import FormModal from '~/components/modals/FormModal.vue'

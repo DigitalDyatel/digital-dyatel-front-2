@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Input from '~/components/form/Input.vue'
-import FileInput from '~/components/form/FileInput.vue'
-import Button from '~/components/Button.vue'
-import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
-import Checkbox from '~/components/form/Checkbox.vue'
+import Input from '~/components/shared/form/Input.vue'
+import FileInput from '~/components/shared/form/FileInput.vue'
+import Button from '~/components/shared/Button.vue'
+import ProcessingPersonalDataAgree from '~/components/shared/form/ProcessingPersonalDataAgree.vue'
+import Checkbox from '~/components/shared/form/Checkbox.vue'
 import Modal from '~/components/modals/base/Modal.vue'
-import InputPhone from '~/components/form/InputPhone.vue'
+import InputPhone from '~/components/shared/form/InputPhone.vue'
 import apiContacts, {
   type FormDataCreate,
   type FormDataCreateErrors

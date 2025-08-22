@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SwiperContainer } from 'swiper/element'
-import TagWithLabel from '~/components/TagWithLabel.vue'
+import TagWithLabel from '~/components/shared/TagWithLabel.vue'
 
 const intersectedTemplateRef = useTemplateRef('intersectedTemplateRef')
 const bottomCardsTemplateRef = useTemplateRef('bottomCardsTemplateRef')

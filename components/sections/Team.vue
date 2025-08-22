@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import Link from '~/components/Link.vue'
-import TagAsLabel from '~/components/TagAsLabel.vue'
+import Link from '~/components/shared/Link.vue'
+import TagAsLabel from '~/components/shared/TagAsLabel.vue'
 import { onMounted, onUnmounted } from 'vue'
 
 const marginLeft = ref('0')

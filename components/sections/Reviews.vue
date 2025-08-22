@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { SwiperContainer } from 'swiper/element'
 import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
-import Link from '~/components/Link.vue'
+import Link from '~/components/shared/Link.vue'
+import Tag from '~/components/shared/Tag.vue'
 import { onClickOutside } from '@vueuse/core'
 import { onMounted } from 'vue'
 

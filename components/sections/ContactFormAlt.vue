@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import Input from '~/components/form/Input.vue'
-import InputPhone from '~/components/form/InputPhone.vue'
-import Checkbox from '~/components/form/Checkbox.vue'
-import ProcessingPersonalDataAgree from '~/components/form/ProcessingPersonalDataAgree.vue'
+import Input from '~/components/shared/form/Input.vue'
+import InputPhone from '~/components/shared/form/InputPhone.vue'
+import Checkbox from '~/components/shared/form/Checkbox.vue'
+import ProcessingPersonalDataAgree from '~/components/shared/form/ProcessingPersonalDataAgree.vue'
+import Button from '~/components/shared/Button.vue'
 import { useModal } from 'vue-final-modal'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import apiContacts, {

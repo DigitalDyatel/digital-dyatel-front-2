@@ -86,12 +86,25 @@ const openFormModal = () => {
 }
 
 const updateProgressBarTrackWidth = () => {
+  progressBarSliderTemplateRef.value.style.transition = 'none'
+  progressBarSliderTemplateRef.value!.style.width = (progressBarTrackWidth! / categories.value.length * (activeCategoryIndex.value + 1)) + 'px'
   progressBarTrackWidth = progressBarTrackTemplateRef.value!.getBoundingClientRect().width
+  progressBarSliderTemplateRef.value.style.transition = 'width .5s ease-in-out'
 }
 
 onMounted(async () => {
 
-  ro = new ResizeObserver(updateProgressBarTrackWidth)
+  ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+    const width = entries[0].borderBoxSize?.[0].inlineSize;
+
+    if (typeof width !== 'number' || width === roPrevWidth) {
+      return
+    }
+
+    roPrevWidth = width
+
+    updateProgressBarTrackWidth()
+  })
   ro.observe(document.documentElement)
 
   updateProgressBarTrackWidth()

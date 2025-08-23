@@ -16,7 +16,7 @@
   line-height: 1.2;
   align-items: center;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     font-size: var(--font-size-sm);
     padding: 13px;
   }
@@ -73,7 +73,7 @@
     font-size: var(--font-size-lg);
     line-height: 1.2;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-base);
       line-height: 1.5;
     }
@@ -85,7 +85,7 @@
     background: var(--color-white);
     font-weight: var(--font-weight-normal);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       padding: 10px;
     }
 
@@ -95,7 +95,7 @@
     }
     
     svg {
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         width: 20px;
         height: 20px;
       }
@@ -109,7 +109,7 @@
     font-weight: var(--font-weight-normal);
     padding: 12px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       padding: 10px;
     }
 
@@ -117,7 +117,7 @@
       width: 24px;
       height: 24px;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         width: 20px;
         height: 20px;
       }

@@ -101,7 +101,7 @@ const touchEndEventListener = e => {
 }
 
 onMounted(() => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     return
   }
 
@@ -125,7 +125,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     return
   }
 

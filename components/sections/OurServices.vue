@@ -14,6 +14,9 @@ const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
 const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
 const selectedServiceTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceTemplateRef')
 
+let ro: ResizeObserver | undefined = undefined
+let roPrevWidth = 0;
+
 interface Service {
   title: string,
   title_short?: string,
@@ -108,34 +111,49 @@ const toggleMobileService = (i: number) => {
   el.style.height = mobileContentHeight[i] + 'px'
 }
 
+const calculateContainerHeight = async () => {
+  let greatestServiceContentIndex = 0;
+  let maxServiceSymbols = 0;
+
+  services.value.forEach((service, i) => {
+    const _maxServiceSymbols = service.title.length +
+        service.title_short?.length +
+        service.subtitle?.length +
+        service.description.length +
+        service.price.length
+
+    if (maxServiceSymbols < _maxServiceSymbols) {
+      maxServiceSymbols = _maxServiceSymbols;
+      greatestServiceContentIndex = i;
+    }
+  })
+
+  selectedService.value = services.value[greatestServiceContentIndex]
+
+  await nextTick
+
+  const parent = selectedServiceTemplateRef.value?.parentNode as HTMLDivElement;
+  parent.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
+
+  selectedService.value = services.value[0]
+}
+
 onMounted(async () => {
   if (window.innerWidth >= 768) {
     isMobile.value = false
+    await calculateContainerHeight()
 
-    let greatestServiceContentIndex = 0;
-    let maxServiceSymbols = 0;
+    ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+      const width = entries[0].borderBoxSize?.[0].inlineSize;
 
-    services.value.forEach((service, i) => {
-      const _maxServiceSymbols = service.title.length +
-          service.title_short?.length +
-          service.subtitle?.length +
-          service.description.length +
-          service.price.length
-
-      if (maxServiceSymbols < _maxServiceSymbols) {
-        maxServiceSymbols = _maxServiceSymbols;
-        greatestServiceContentIndex = i;
+      if (typeof width !== 'number' || width === roPrevWidth) {
+        return
       }
+
+      roPrevWidth = width
+      calculateContainerHeight()
     })
-
-    selectedService.value = services.value[greatestServiceContentIndex]
-
-    await nextTick
-
-    const parent = selectedServiceTemplateRef.value?.parentNode as HTMLDivElement;
-    parent.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
-
-    selectedService.value = services.value[0]
+    ro.observe(document.documentElement)
     return
   }
 
@@ -145,6 +163,10 @@ onMounted(async () => {
   })
 
   toggleMobileService(0)
+})
+
+onUnmounted(() => {
+  ro?.disconnect()
 })
 </script>
 

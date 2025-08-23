@@ -5,7 +5,7 @@
   overflow: hidden;
   padding: 0 48px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     margin: 62px auto 0 auto;
     padding: 18px 12px 0 12px;
   }
@@ -26,7 +26,7 @@
       width: 24px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       top: 0;
       right: 48px;
       left: unset;
@@ -52,7 +52,7 @@
     animation-timing-function: linear;
     opacity: .8;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       width: 300px;
     }
 
@@ -62,7 +62,7 @@
       top: unset;
       animation-name: spin-1;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         top: -55px;
         left: -226px;
       }
@@ -74,7 +74,7 @@
       animation-name: spin-2;
       top: unset;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         top: -219px;
         left: -114px;
       }
@@ -89,7 +89,7 @@
     border-radius: 32px;
     flex-direction: row;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       flex-direction: column;
       padding: 36px 24px 32px 24px;
       border-radius: 24px;
@@ -99,7 +99,7 @@
       flex: 1;
       margin-top: 0;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         margin-top: 24px;
       }
     }
@@ -116,7 +116,7 @@
     font-size: var(--font-size-3xl);
     text-align: left;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-weight: var(--font-weight-semi-bold);
       font-size: var(--font-size-2xl);
       text-align: center;
@@ -134,7 +134,7 @@
     color: var(--color-secondary);
     text-align: left;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 12px;
       font-size: var(--font-size-sm);
       text-align: center;
@@ -149,7 +149,7 @@
   &__group {
     margin-top: 16px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 12px;
     }
   }
@@ -159,7 +159,7 @@
     display: flex;
     width: 100%;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 24px;
     }
   }
@@ -167,7 +167,7 @@
   form .processing-personal-data-agree {
     margin-top: 24px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 16px;
     }
   }

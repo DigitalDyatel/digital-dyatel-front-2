@@ -21,7 +21,7 @@
     transform: translateX(6px) rotate(-6deg);
     line-height: 1.2;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-xxs);
       padding: 11px;
       transform: translateX(4px) rotate(-6deg);
@@ -39,7 +39,7 @@
     width: 48px;
     transform: translate(-6px, -7px);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       height: 36px;
       width: 36px;
       padding: 10px;
@@ -51,7 +51,7 @@
       width: 24px;
       height: 24px;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         width: 16px;
         height: 16px;
       }
@@ -65,7 +65,7 @@
   display: inline-block;
   height: 48px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     padding: 10px;
     height: 36px;
   }
@@ -87,7 +87,7 @@
     width: 24px;
     height: 24px;
     
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       width: 16px;
       height: 16px;
     }

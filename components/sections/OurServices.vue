@@ -141,7 +141,7 @@ const calculateContainerHeight = async () => {
 }
 
 onMounted(async () => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     isMobile.value = false
 
     await nextTick()

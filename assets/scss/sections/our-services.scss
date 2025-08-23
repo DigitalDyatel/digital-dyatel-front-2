@@ -5,7 +5,7 @@
   padding: 0 48px;
   scroll-margin-block-start: 140px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     margin: 80px auto 0 auto;
     padding: 0 12px;
     scroll-margin-block-start: 80px;
@@ -16,7 +16,7 @@
     padding: 78px 48px 92px 48px;
     border-radius: 32px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       padding: 36px 16px 32px 16px;
       border-radius: 24px;
     }
@@ -28,7 +28,7 @@
     font-weight: var(--font-weight-semi-bold);
     text-align: center;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
     }
   }
@@ -39,7 +39,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       top: -25px;
     }
   }
@@ -183,14 +183,21 @@
     min-height: 318px;
     overflow: hidden;
 
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
+      background-size: 100%;
+    }
+
+    @media (max-width: 1023px) {
       margin-top: 32px;
       border-radius: 16px;
       padding: 16px;
       min-height: auto;
       background-image: url("/img/our-services-background.jpg");
       background-repeat: no-repeat;
-      background-size: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      background-size: 102%;
     }
 
     > div:first-child {
@@ -199,7 +206,7 @@
         color: var(--color-primary);
         font-weight: var(--font-weight-medium);
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           font-size: var(--font-size-lg-xl);
           color: var(--color-accent-dark);
         }
@@ -210,7 +217,7 @@
         color: var(--color-secondary);
         font-size: var(--font-size-lg);
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           margin-top: 12px;
           font-size: var(--font-size-sm);
         }
@@ -225,7 +232,7 @@
         margin-top: 48px;
         width: 304px;
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           width: 100%;
           margin-top: 36px;
         }
@@ -237,7 +244,7 @@
       width: 291px;
       display: block;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         display: none;
       }
 
@@ -256,7 +263,7 @@
         height: 657px;
         display: block;
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           display: none;
         }
       }

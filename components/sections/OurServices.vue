@@ -13,6 +13,7 @@ const mobileContentHeight: number[] = []
 const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
 const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
 const selectedServiceTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceTemplateRef')
+const selectedServiceContainerTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceContainerTemplateRef')
 
 let ro: ResizeObserver | undefined = undefined
 let roPrevWidth = 0;
@@ -112,6 +113,9 @@ const toggleMobileService = (i: number) => {
 }
 
 const calculateContainerHeight = async () => {
+
+  selectedServiceContainerTemplateRef.value.style.height = 'auto'
+
   let greatestServiceContentIndex = 0;
   let maxServiceSymbols = 0;
 
@@ -132,15 +136,15 @@ const calculateContainerHeight = async () => {
 
   await nextTick
 
-  const parent = selectedServiceTemplateRef.value?.parentNode as HTMLDivElement;
-  parent.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
-
+  selectedServiceContainerTemplateRef.value.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
   selectedService.value = services.value[0]
 }
 
 onMounted(async () => {
   if (window.innerWidth >= 768) {
     isMobile.value = false
+
+    await nextTick()
     await calculateContainerHeight()
 
     ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
@@ -195,7 +199,7 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-      <div v-else class="our-services__services">
+      <div v-else class="our-services__services" ref="selectedServiceContainerTemplateRef">
         <div class="our-services__selected-service" ref="selectedServiceTemplateRef">
           <div>
             <h3>{{ selectedService.title }}</h3>

@@ -86,7 +86,7 @@ const bottomCards = ref([
 ]);
 
 const initMobileIntersection = () => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     return
   }
 
@@ -118,7 +118,7 @@ const initMobileIntersection = () => {
 }
 
 const initMobileSlider = () => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1023) {
     return
   }
 
@@ -134,7 +134,9 @@ const initMobileSlider = () => {
     el.style.height = maxHeight + 'px'
   })
 
-  swiperContainerTemplateRef.value.style.width = window.getComputedStyle(containerTemplateRef.value).width
+  if (window.innerWidth < 768) {
+    swiperContainerTemplateRef.value.style.width = window.getComputedStyle(containerTemplateRef.value).width
+  }
 }
 
 onMounted(() => {
@@ -143,7 +145,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     return
   }
 

@@ -128,7 +128,7 @@ const updateDimensions = (entries: ResizeObserverEntry[]) => {
   marginLeft.value = (parseFloat(computedStyles.marginLeft) + parseFloat(computedStyles.paddingLeft)) + 'px'
   paginatorTemplateRef.value!.style.width = window.innerWidth - (parseFloat(marginLeft.value) * 2) + 'px'
 
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     return
   }
 
@@ -155,7 +155,7 @@ onMounted(() => {
 
   io.observe(teamSectionTemplateRef.value!)
 
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 1024) {
     isMobile.value = false
     return
   }

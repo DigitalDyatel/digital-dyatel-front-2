@@ -46,6 +46,7 @@ export default defineNuxtConfig({
     autoImportPath: false
   },
   vgsap: {
-    scroller: '.main-custom-scroll > div:first-child'
+    scroller: '.main-custom-scroll > div:first-child',
+    breakpoint: 1024
   }
 })

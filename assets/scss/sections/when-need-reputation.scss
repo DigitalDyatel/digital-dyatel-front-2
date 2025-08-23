@@ -7,7 +7,7 @@
   border-radius: 0;
   padding: 0;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     margin: 80px auto 0 auto;
     padding: 0 12px;
     height: auto;
@@ -17,7 +17,7 @@
     height: 100%;
     overflow: hidden;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       padding: 32px 24px;
       border-radius: 24px;
       background: url("/img/when-need-reputation-circles.png"), var(--color-white);
@@ -36,7 +36,7 @@
     z-index: 1;
     font-weight: var(--font-weight-semi-bold);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
       margin-top: 0;
       position: static;
@@ -52,7 +52,7 @@
     position: relative;
     display: block;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       display: none;
     }
 
@@ -90,7 +90,7 @@
     margin-top: 0;
     display: block;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 24px;
       display: flex;
       flex-direction: column;
@@ -109,12 +109,12 @@
     align-items: center;
     gap: 0;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       flex-direction: row-reverse;
       gap: 4px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       position: static;
     }
 
@@ -124,7 +124,7 @@
       div:first-child {
         margin-left: 8px;
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           margin-left: 0;
         }
       }
@@ -137,7 +137,7 @@
     &:nth-child(1) {
       transform: translate(-439px, -185px);
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         transform: none;
       }
 
@@ -149,7 +149,7 @@
     &:nth-child(2) {
       transform: translate(113px, -170px);
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         transform: none;
       }
 
@@ -161,7 +161,7 @@
     &:nth-child(3) {
       transform: translate(115px, 84px);
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         transform: none;
       }
 
@@ -173,7 +173,7 @@
     &:nth-child(4) {
       transform: translate(-625px, 105px);
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         transform: none;
       }
 
@@ -185,7 +185,7 @@
     &:nth-child(5) {
       transform: translate(-92px, 219px);
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         transform: none;
       }
 
@@ -199,7 +199,7 @@
       padding: 24px;
       border-radius: 100px;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         padding: 12px;
       }
 
@@ -209,7 +209,7 @@
         background: var(--color-white);
         line-height: 1;
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           background: var(--color-light-grey);
           padding: 13px;
           font-size: 13px;
@@ -220,7 +220,7 @@
       &:last-child {
         margin-left: 8px;
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
           margin-left: 0;
         }
 
@@ -229,7 +229,7 @@
           width: 24px;
           height: 24px;
 
-          @media (max-width: 767px) {
+          @media (max-width: 1023px) {
             width: 16px;
             height: 16px;
           }

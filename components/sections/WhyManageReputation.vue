@@ -9,6 +9,7 @@ const containerTemplateRef = useTemplateRef('containerTemplateRef')
 
 const isMobileIntersected = ref(false)
 const activeSlideIndex = ref(0)
+const isSliderReady = ref(false)
 
 let io: IntersectionObserver | undefined = undefined
 
@@ -137,6 +138,8 @@ const initMobileSlider = () => {
   if (window.innerWidth < 768) {
     swiperContainerTemplateRef.value.style.width = window.getComputedStyle(containerTemplateRef.value).width
   }
+
+  isSliderReady.value = true
 }
 
 onMounted(() => {
@@ -218,7 +221,7 @@ onUnmounted(() => {
           </p>
         </div>
       </div>
-      <div class="why-manage-reputation__bottom-cards --mobile">
+      <div class="why-manage-reputation__bottom-cards --mobile" :class="{'--ready': isSliderReady}">
         <swiper-container ref="swiperContainerTemplateRef" @swiperslidechange="onSlideChanged" :spaceBetween="16" :slides-per-view="1.1">
           <swiper-slide v-for="card in bottomCards">
             <div class="why-manage-reputation__bottom-card" ref="bottomCardsTemplateRef" :class="{'--alternative': card.alternative}">

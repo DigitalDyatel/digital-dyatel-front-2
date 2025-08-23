@@ -109,7 +109,7 @@ onMounted(async () => {
 
   updateProgressBarTrackWidth()
 
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 1024) {
     isMobile.value = true
     gap = 8
     await nextTick()

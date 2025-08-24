@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TagWithLabel from '~/components/shared/TagWithLabel.vue'
+import Link from '~/components/shared/Link.vue'
 
 const achievements = ref([
   {
@@ -38,6 +39,9 @@ const achievements = ref([
           <div class="our-achievements__achievement-description">{{ achievement.right }}</div>
         </div>
       </div>
+    </div>
+    <div class="our-achievements__link-container">
+      <Link link="/">Подробнее о нас</Link>
     </div>
   </section>
 </template>

@@ -82,16 +82,16 @@
       }
 
       &:first-child {
-        @media (max-width: 767px) {
-          height: 308px;
+        @media (max-width: 1349px) {
+          height: 550px;
         }
 
         @media (max-width: 1023px) {
           height: 470px;
         }
 
-        @media (max-width: 1349px) {
-          height: 550px;
+        @media (max-width: 767px) {
+          height: 308px;
         }
       }
 

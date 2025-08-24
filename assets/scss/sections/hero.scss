@@ -39,6 +39,10 @@
       font-weight: var(--font-weight-semi-bold);
       color: var(--color-primary);
 
+      @media (max-width: 1349px) {
+        font-size: var(--font-size-4xl);
+      }
+
       @media (max-width: 1023px) {
         font-size: var(--font-size-3xl);
       }
@@ -46,6 +50,7 @@
       span {
         display: block;
         line-height: 96%;
+        white-space: nowrap;
 
         @media (min-width: 790px) and (max-width: 1023px) {
           display: inline;
@@ -79,6 +84,10 @@
     margin-top: 52px;
     gap: 8px;
     overflow: hidden;
+    
+    @media (max-width: 1349px) {
+      margin-top: 38px;
+    }
 
     @media (max-width: 1023px) {
       margin-top: 24px;
@@ -86,13 +95,18 @@
     }
 
     div {
-      font-size: var(--font-size-md);
       color: var(--color-tertiary);
       display: inline-block;
       background: var(--color-light-grey);
-      padding: 16px;
       border-radius: 12px;
       white-space: nowrap;
+      font-size: var(--font-size-md);
+      padding: 16px;
+
+      @media (max-width: 1349px) {
+        font-size: var(--font-size-sm);
+        padding: 14px;
+      }
 
       @media (max-width: 1023px) {
         font-size: var(--font-size-sm);
@@ -187,7 +201,7 @@
     margin-top: 16px;
     background: linear-gradient(187.74deg, #47ADFF 5.97%, #91C9F6 18.38%, #FE3E0E 79.88%, #C9330D 89.05%, #621D0B 100.86%, #000000 109.18%);
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       display: block;
       overflow: hidden;
     }
@@ -272,6 +286,10 @@
           top: 50%;
           left: 50%;
           transform: translate(-169px, -226px);
+
+          @media (max-width: 1349px) {
+            transform: translate(-90px, -179px);
+          }
         }
 
         &:nth-child(2) {
@@ -279,6 +297,10 @@
           left: 50%;
           transform: translate(210px, -156px);
           animation-delay: 1s;
+
+          @media (max-width: 1349px) {
+            transform: translate(127px, -133px);
+          }
         }
 
         &:nth-child(3) {
@@ -286,12 +308,20 @@
           left: 50%;
           transform: translate(-234px, 132px);
           animation-delay: 2s;
+
+          @media (max-width: 1349px) {
+            transform: translate(-151px, 108px);
+          }
         }
 
         &:nth-child(4) {
           top: 50%;
           left: 50%;
           transform: translate(86px, 30px);
+
+          @media (max-width: 1349px) {
+            transform: translate(86px, 74px);
+          }
         }
       }
     }
@@ -313,6 +343,10 @@
     height: 532px;
     aspect-ratio: 1 / 1;
     mask-image: linear-gradient(#fff, #fff0);
+    
+    @media (max-width: 1349px) {
+      height: 370px;
+    }
   }
 
   &__advantages {
@@ -337,20 +371,40 @@
       backdrop-filter: blur(12.5px);
       white-space: nowrap;
 
+      @media (max-width: 1349px) {
+        font-size: var(--font-size-sm);
+      }
+
       &:nth-child(1) {
         transform: translate(-156px, -188px);
+
+        @media (max-width: 1349px) {
+          transform: translate(-153px, -141px);
+        }
       }
 
       &:nth-child(2) {
         transform: translate(2px, -124px);
+
+        @media (max-width: 1349px) {
+          transform: translate(-16px, -83px);
+        }
       }
 
       &:nth-child(3) {
         transform: translate(-125px, 70px);
+
+        @media (max-width: 1349px) {
+          transform: translate(-100px, 88px);
+        }
       }
 
       &:nth-child(4) {
         transform: translate(-190px, 160px);
+
+        @media (max-width: 1349px) {
+          transform: translate(-150px, 160px);
+        }
       }
     }
   }
@@ -416,6 +470,10 @@
     margin-top: 52px;
     transition: all .3s var(--default-transition-timing-function);
 
+    @media (max-width: 1349px) {
+      margin-top: 34px;
+    }
+
     @media (max-width: 1023px) {
       margin-top: 16px;
       width: 100%;
@@ -428,6 +486,10 @@
 
       &:first-child {
         width: 500px;
+
+        @media (max-width: 1350px) {
+          font-size: var(--font-size-md);
+        }
 
         @media (max-width: 1023px) {
           padding: 24px 16px;

@@ -51,10 +51,10 @@ const desktopCategories = ref(_desktopCategories)
           <div class="cases__case-content">
             <div>
               <div>{{ _case.header }}</div>
-              <div class="cases__case-tags">
-                <div v-for="tag in _case.tags">
-                  {{ tag }}
-                </div>
+              <div>
+                <Button class="--tertiary" @click="openCaseModal(_case)">
+                  <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
+                </Button>
               </div>
             </div>
             <div class="cases__case-description">
@@ -62,11 +62,6 @@ const desktopCategories = ref(_desktopCategories)
               <p>{{ _case.task }}</p>
               <div>Результат</div>
               <p>{{ _case.result }}</p>
-              <div>
-                <Button class="--tertiary" @click="openCaseModal(_case)">
-                  <span>Смотреть кейс <svg><use :href="'/sprite.svg#login'" /></svg></span>
-                </Button>
-              </div>
             </div>
           </div>
         </div>

@@ -326,6 +326,24 @@
             font-weight: var(--font-weight-semi-bold);
           }
         }
+
+        > div:last-child {
+          margin-top: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+
+          > .btn {
+            span {
+              line-height: 1.1;
+            }
+
+            svg {
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
       }
     }
 
@@ -390,18 +408,10 @@
         margin-top: 32px;
         display: flex;
         align-items: center;
-        justify-content: right;
-
-        @media (max-width: 1023px) {
-          justify-content: left;
-        }
+        justify-content: left;
 
         .btn {
-          padding: 13px;
-
-          @media (max-width: 1023px) {
-            padding: 16px;
-          }
+          padding: 16px;
 
           span {
             line-height: 1.1;

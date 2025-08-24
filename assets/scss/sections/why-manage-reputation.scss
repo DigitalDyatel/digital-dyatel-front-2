@@ -257,7 +257,7 @@
     animation-iteration-count: infinite;
     opacity: 1;
 
-    @media (max-width: 1349px) {
+    @media (min-width: 1024px) and (max-width: 1349px) {
       display: none;
     }
 
@@ -303,7 +303,7 @@
       height: auto;
 
       &:last-child {
-        @media (max-width: 1349px) {
+        @media (min-width: 1024px) and (max-width: 1349px) {
           display: none;
         }
       }
@@ -337,6 +337,10 @@
 
     @media (max-width: 1023px) {
       height: 69px;
+    }
+
+    @media (min-width: 450px) and (max-width: 768px) {
+      height: 100px;
     }
   }
 

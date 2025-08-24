@@ -221,7 +221,7 @@
 
       .cases__case-content {
         display: block;
-        margin-top: 32px;
+        margin-top: 16px;
 
         @media (max-width: 1023px) {
           margin-top: 24px;
@@ -328,10 +328,14 @@
         }
 
         > div:last-child {
-          margin-top: 32px;
+          margin-top: 16px;
           display: flex;
           align-items: center;
           justify-content: left;
+
+          @media (max-width: 767px) {
+            margin-top: 0;
+          }
 
           > .btn {
             span {

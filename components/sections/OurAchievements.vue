@@ -41,7 +41,7 @@ const achievements = ref([
       </div>
     </div>
     <div class="our-achievements__link-container">
-      <Link link="/">Подробнее о нас</Link>
+      <Link class="--contrast-on-hover" link="/">Подробнее о нас</Link>
     </div>
   </section>
 </template>

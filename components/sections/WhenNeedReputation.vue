@@ -33,8 +33,8 @@ const points = ref([
         <div v-for="_ in 3" />
       </div>
       <h2 v-gsap.desktop.parallax.faster>
-        <span>В каком случае обращаются за </span>
-        <span>услугами в репутационную компанию?</span>
+        <span>Когда нужны услуги</span>
+        <span>репутационной компании?</span>
       </h2>
 
       <div class="when-need-reputation__points">

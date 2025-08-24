@@ -207,6 +207,9 @@
     }
 
     > div:first-child {
+      position: relative;
+      z-index: 1;
+
       > div:first-child {
         font-size: var(--font-size-3xl);
         color: var(--color-primary);

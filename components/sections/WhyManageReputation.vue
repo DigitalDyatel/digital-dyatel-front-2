@@ -119,7 +119,7 @@ const initMobileIntersection = () => {
 }
 
 const initMobileSlider = () => {
-  if (window.innerWidth >= 1023) {
+  if (window.innerWidth >= 1024) {
     return
   }
 

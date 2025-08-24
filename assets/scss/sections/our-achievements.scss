@@ -26,6 +26,10 @@
     font-weight: var(--font-weight-semi-bold);
     color: var(--color-white);
 
+    @media (max-width: 1349px) {
+      font-size: var(--font-size-4xl);
+    }
+
     @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
     }

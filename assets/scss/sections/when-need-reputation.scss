@@ -33,8 +33,12 @@
     font-size: var(--font-size-5xl);
     color: var(--color-primary);
     margin-top: 211px;
-    z-index: 1;
+    z-index: 2;
     font-weight: var(--font-weight-semi-bold);
+
+    @media (max-width: 1349px) {
+      font-size: var(--font-size-4xl);
+    }
 
     @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
@@ -161,6 +165,10 @@
     &:nth-child(3) {
       transform: translate(115px, 84px);
 
+      @media (max-width: 1349px) {
+        transform: translate(48px, 131px);
+      }
+
       @media (max-width: 1023px) {
         transform: none;
       }
@@ -173,6 +181,10 @@
     &:nth-child(4) {
       transform: translate(-625px, 105px);
 
+      @media (max-width: 1349px) {
+        transform: translate(-486px, 133px);
+      }
+
       @media (max-width: 1023px) {
         transform: none;
       }
@@ -184,6 +196,10 @@
 
     &:nth-child(5) {
       transform: translate(-92px, 219px);
+
+      @media (max-width: 1349px) {
+        transform: translate(-13px, 219px);
+      }
 
       @media (max-width: 1023px) {
         transform: none;

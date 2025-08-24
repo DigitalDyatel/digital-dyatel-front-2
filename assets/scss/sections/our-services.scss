@@ -28,6 +28,10 @@
     font-weight: var(--font-weight-semi-bold);
     text-align: center;
 
+    @media (max-width: 1349px) {
+      font-size: var(--font-size-4xl);
+    }
+
     @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
     }
@@ -169,7 +173,8 @@
     margin-top: 48px;
 
     > button {
-      width: 304px;
+      // width: 304px;
+      width: 230px;
     }
   }
 

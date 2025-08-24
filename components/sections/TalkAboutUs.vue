@@ -4,6 +4,7 @@ import Link from '~/components/shared/Link.vue'
 import TagWithLabel from '~/components/shared/TagWithLabel.vue'
 
 const swiperContainerTemplateRef = useTemplateRef<SwiperContainer>('swiperContainerTemplateRef')
+const swiperPaginationTemplateRef = useTemplateRef<HTMLDivElement>('swiperPaginationTemplateRef')
 const h2TemplateRef = useTemplateRef('h2TemplateRef')
 
 const isMobile = ref(false)
@@ -68,6 +69,7 @@ onMounted(async() => {
     isMobile.value = true
     await nextTick()
     swiperContainerTemplateRef.value.style.width = window.getComputedStyle(h2TemplateRef.value).width
+    swiperPaginationTemplateRef.value.style.width = window.getComputedStyle(h2TemplateRef.value).width
   }
 })
 </script>
@@ -87,7 +89,7 @@ onMounted(async() => {
             </div>
           </swiper-slide>
         </swiper-container>
-        <div class="talk-about-us__resources-slider-pagination">
+        <div class="talk-about-us__resources-slider-pagination" ref="swiperPaginationTemplateRef">
           <div @click="setSlide(i)" :class="{'--current': currentSlideIndex === i}" v-for="(_, i) in mediaResourcesMobile" />
         </div>
       </template>

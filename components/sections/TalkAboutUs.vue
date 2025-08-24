@@ -64,7 +64,7 @@ const onSlideChanged = () => {
 }
 
 onMounted(async() => {
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 1024) {
     isMobile.value = true
     await nextTick()
     swiperContainerTemplateRef.value.style.width = window.getComputedStyle(h2TemplateRef.value).width

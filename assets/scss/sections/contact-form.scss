@@ -63,8 +63,7 @@
       animation-name: spin-1;
 
       @media (max-width: 1023px) {
-        top: -55px;
-        left: -226px;
+        display: none;
       }
     }
 
@@ -75,8 +74,7 @@
       top: unset;
 
       @media (max-width: 1023px) {
-        top: -219px;
-        left: -114px;
+        display: none;
       }
     }
   }

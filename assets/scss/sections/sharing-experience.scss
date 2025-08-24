@@ -3,7 +3,7 @@
   max-width: var(--max-width);
   padding: 0 48px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     margin: 80px auto 0 auto;
     padding: 0 12px;
   }
@@ -20,7 +20,7 @@
     gap: 48px;
     position: relative;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       margin-top: 24px;
     }
 
@@ -28,7 +28,7 @@
       margin-top: 36px;
       width: 304px;
 
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         margin-top: 32px;
       }
     }
@@ -50,7 +50,7 @@
     background-size: cover;
     z-index: 0;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       padding: 64px 24px 100px 24px;
       border-radius: 24px;
     }
@@ -75,7 +75,7 @@
     position: absolute;
     z-index: 1;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       bottom: 64px;
     }
   }
@@ -93,7 +93,7 @@
     transition: width 1s ease-in-out;
     will-change: width;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       height: 14px;
       width: 14px;
     }
@@ -123,7 +123,7 @@
     border-bottom-left-radius: 100px;
     will-change: transform;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       height: 12px;
     }
 
@@ -138,7 +138,7 @@
     font-size: var(--font-size-5xl);
     color: var(--color-primary);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-2xl);
     }
   }
@@ -148,7 +148,7 @@
     font-size: var(--font-size-3xl);
     text-align: center;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-lg-xl);
     }
 
@@ -163,7 +163,7 @@
     font-size: var(--font-size-lg);
     color: var(--color-secondary);
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-sm);
       color: var(--color-primary);
       margin-top: 12px;
@@ -192,7 +192,7 @@
     margin-top: 8px;
     max-width: 700px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       font-size: var(--font-size-base);
       margin-top: 12px;
     }

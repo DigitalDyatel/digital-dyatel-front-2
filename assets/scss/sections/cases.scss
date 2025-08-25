@@ -676,11 +676,16 @@
       display: flex;
       margin-top: 24px;
       padding: 0;
-      flex-wrap: wrap;
       column-gap: 16px;
       row-gap: 10px;
+      flex-direction: column;
 
-      &.--classic {
+      &.--inline {
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      &.--negative {
         li {
           display: flex;
           flex: unset;
@@ -699,7 +704,7 @@
         }
       }
 
-      &.--checked {
+      &.--completed {
         margin-top: 20px;
         gap: 12px;
 

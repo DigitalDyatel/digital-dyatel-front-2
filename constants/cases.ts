@@ -44,14 +44,14 @@ export const categories: Category[] = [
                         активно экспортирует отечественные MBA-программы на международный рынок. 
                         Обучает топ-менеджеров, владельцев бизнеса и управленцев, обеспечивая их знаниями и компетенциями для успешного ведения бизнеса.
                       </p>
-                      <ul>
+                      <ul class="--inline">
                         <li>15 Лет на рынке образования</li>
                         <li>12 000+ Выпускников по всему миру</li>
                         <li>165+ Международных экспертов</li>
                       </ul>
                       <h5>Бюджет: <span>960 000 ₽/год</span></h5>
                       <h4>Проблемы</h4>
-                      <ul class="--classic">
+                      <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Отсутствие заметного присутствия в поисковой выдаче по брендовым запросам</div>
@@ -103,7 +103,7 @@ export const categories: Category[] = [
                             </li>
                         </ol>
                       <h4>Результаты:</h4>
-                      <ul class="--checked">
+                      <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -147,12 +147,12 @@ export const categories: Category[] = [
                     MITM Институт — образовательная организация, специализирующаяся на высшем образовании и 
                     подготовке высококвалифицированных специалистов, востребованных как на российском, так и на международном рынке
                   </p>
-                  <ul>
+                  <ul class="--inline">
                     <li>11 Лет на рынке образования</li>
                     <li>10 000+ Выпускников</li>
                   </ul>
                   <h4>Проблемы</h4>
-                  <ul class="--classic">
+                  <ul class="--negative">
                     <li>
                       <div><svg><use href="/sprite.svg#play"></use></svg></div>
                       <div>Путаница с аббревиатурой MITM, которая в первую очередь ассоциировалась с уязвимостью в информационных системах (man-in-the-middle)</div>
@@ -203,7 +203,7 @@ export const categories: Category[] = [
                     </li>
                   </ol>
                   <h4>Результаты:</h4>
-                  <ul class="--checked">
+                  <ul class="--completed">
                     <li>
                         <div>
                             <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -239,7 +239,7 @@ export const categories: Category[] = [
                         Цель укрепить бренд среди профессионалов (косметологов и блогеров) и повысить доверие конечных потребителей
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Низкая узнаваемость бренда среди профессионального сообщества</div>
@@ -288,7 +288,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -333,7 +333,7 @@ export const categories: Category[] = [
                         Средний банк, предоставляющий полный спектр финансовых услуг для частных лиц и малого бизнеса.
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Негативные отзывы о высоких комиссиях, медленной работе с клиентами и непрозрачности условий</div>
@@ -378,7 +378,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -416,7 +416,7 @@ export const categories: Category[] = [
                         Цель укрепить бренд среди профессионалов (косметологов и блогеров) и повысить доверие конечных потребителей
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Низкая узнаваемость бренда среди профессионального сообщества</div>
@@ -465,7 +465,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -505,7 +505,7 @@ export const categories: Category[] = [
                         Компания стремится укрепить доверие покупателей и защитить свою репутацию от фальшивых отзывов
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Появление фальшивых и заказных негативных отзывов, искажающих реальное впечатление о магазине</div>
@@ -557,7 +557,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -602,7 +602,7 @@ export const categories: Category[] = [
                         Компания активно развивалась, но не имела системного контроля за репутацией в интернете
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Отсутствие регулярного мониторинга отзывов на площадках</div>
@@ -647,7 +647,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -695,7 +695,7 @@ export const categories: Category[] = [
                         туры по Мурманску и Кольскому Полуострову. Направление стартовало с нуля
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Отсутствие онлайн-репутации (новое направление)</div>
@@ -737,7 +737,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -790,7 +790,7 @@ export const categories: Category[] = [
                         После нескольких случаев недовольства пациентов клиника столкнулась с ростом негативных отзывов и падением доверия
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Негативные отзывы, связанные с качеством обслуживания</div>
@@ -829,7 +829,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -875,14 +875,14 @@ export const categories: Category[] = [
                         активно экспортирует отечественные MBA-программы на международный рынок. 
                         Обучает топ-менеджеров, владельцев бизнеса и управленцев, обеспечивая их знаниями и компетенциями для успешного ведения бизнеса.
                       </p>
-                      <ul>
+                      <ul class="--inline">
                         <li>15 Лет на рынке образования</li>
                         <li>12 000+ Выпускников по всему миру</li>
                         <li>165+ Международных экспертов</li>
                       </ul>
                       <h5>Бюджет: <span>960 000 ₽/год</span></h5>
                       <h4>Проблемы</h4>
-                      <ul class="--classic">
+                      <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Отсутствие заметного присутствия в поисковой выдаче по брендовым запросам</div>
@@ -936,7 +936,7 @@ export const categories: Category[] = [
                         </ol>
                       </p>
                       <h4>Результаты:</h4>
-                      <ul class="--checked">
+                      <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -979,12 +979,12 @@ export const categories: Category[] = [
                     MITM Институт — образовательная организация, специализирующаяся на высшем образовании и 
                     подготовке высококвалифицированных специалистов, востребованных как на российском, так и на международном рынке
                   </p>
-                  <ul>
+                  <ul class="--inline">
                     <li>11 Лет на рынке образования</li>
                     <li>10 000+ Выпускников</li>
                   </ul>
                   <h4>Проблемы:</h4>
-                  <ul class="--classic">
+                  <ul class="--negative">
                     <li>
                       <div><svg><use href="/sprite.svg#play"></use></svg></div>
                       <div>Путаница с аббревиатурой MITM, которая в первую очередь ассоциировалась с уязвимостью в информационных системах (man-in-the-middle)</div>
@@ -1035,7 +1035,7 @@ export const categories: Category[] = [
                     </li>
                   </ol>
                   <h4>Результаты:</h4>
-                  <ul class="--checked">
+                  <ul class="--completed">
                     <li>
                         <div>
                             <svg><use href="/sprite.svg#tick-square-filled" /></svg>
@@ -1070,7 +1070,7 @@ export const categories: Category[] = [
                         Цель укрепить доверие к образовательным программам в сфере психологии, повысить привлекательность для новых студентов и нейтрализовать негативный информационный фон, возникший после сокращений сотрудников
                     </p>
                     <h4>Проблемы:</h4>
-                    <ul class="--classic">
+                    <ul class="--negative">
                         <li>
                           <div><svg><use href="/sprite.svg#play"></use></svg></div>
                           <div>Снижение доверия к учебным программам из-за негативных отзывов от бывших сотрудников после сокращений</div>
@@ -1115,7 +1115,7 @@ export const categories: Category[] = [
                         </li>
                     </ol>
                     <h4>Результаты:</h4>
-                    <ul class="--checked">
+                    <ul class="--completed">
                         <li>
                             <div>
                                 <svg><use href="/sprite.svg#tick-square-filled" /></svg>

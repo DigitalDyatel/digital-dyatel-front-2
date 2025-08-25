@@ -640,6 +640,10 @@
       flex-direction: column;
       row-gap: 12px;
 
+      ::marker {
+        color: var(--color-secondary);
+      }
+
       &.--has-header {
         ::marker {
           font-weight: var(--font-weight-semi-bold);
@@ -648,6 +652,15 @@
       }
 
       li {
+
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-secondary);
+        line-height: 1.2;
+
+        @media (max-width: 767px) {
+          font-size: var(--font-size-sm);
+        }
 
         h5 {
           margin-top: 0;
@@ -692,7 +705,7 @@
 
         li {
           display: flex;
-          gap: 5px;
+          gap: 4px;
           align-items: start;
 
           div:last-child {

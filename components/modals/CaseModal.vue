@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal'
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
-import { type Case } from '@/constants'
+import { type Case } from '@/constants/cases'
 
 const modalTemplateRef = useTemplateRef('modalTemplateRef')
 const modalContentTemplateRef = useTemplateRef('modalContentTemplateRef')

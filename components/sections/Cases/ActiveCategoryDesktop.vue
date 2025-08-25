@@ -4,7 +4,7 @@ import { useActiveCategory } from '~/composables/sections/Cases'
 import {
   desktopCategories as _desktopCategories,
   categories as _categories,
-} from '~/constants'
+} from '~/constants/cases'
 
 const props = defineProps<{
   activeCategoryIndex: number

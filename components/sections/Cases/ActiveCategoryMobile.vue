@@ -2,7 +2,7 @@
 import type { SwiperContainer } from 'swiper/element'
 import Button from '~/components/shared/Button.vue'
 import { useActiveCategory } from '~/composables/sections/Cases'
-import { categories as _categories } from '~/constants'
+import { categories as _categories } from '~/constants/cases'
 
 const props = defineProps<{
   activeCategoryIndex: number,

@@ -1,4 +1,4 @@
-import type { Case } from '~/constants'
+import type { Case } from '~/constants/cases'
 import { useModal } from 'vue-final-modal'
 import CaseModal from '~/components/modals/CaseModal.vue'
 

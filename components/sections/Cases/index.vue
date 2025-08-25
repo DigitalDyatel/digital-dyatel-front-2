@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import {
-  categories as _categories,
-  FROM_TRIGGER
-} from '~/constants'
+import { categories as _categories } from '~/constants/cases'
+import { FROM_TRIGGER } from '~/constants'
 import Button from '~/components/shared/Button.vue'
 import { useModal } from 'vue-final-modal'
 import FormModal from '~/components/modals/FormModal.vue'

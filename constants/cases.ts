@@ -72,60 +72,54 @@ export const categories: Category[] = [
                         который занимал топовые позиции в поисковой выдаче Яндекса и Google по брендовым запросам
                       </p>
                       <h4>Решение:</h4>
-                        <ol class="--has-header">
-                            <li>
-                                <h5>Анализ репутации и поисковой выдачи:</h5>
-                                <p>
-                                    Проведен детальный анализ текущего положения бренда в поисковой выдаче и репутации в сети. 
-                                    Были выявлены основные проблемы, включая сильные позиции конкурента Moscow Business School в поисковых системах
-                                </p>
-                            </li>
-                            <li>
-                                <h5>Разработка стратегии ORM и SERM:</h5>
-                                <p>
-                                    Создана комплексная стратегия по управлению репутацией (ORM) и поисковой репутацией (SERM), 
-                                    направленная на вытеснение конкурента из топ-10 поисковой выдачи и улучшение позиций Moscow Business Academy
-                                </p>
-                            </li>
-                            <li>
-                                <h5>Создание позитивного контента:</h5>
-                                <p>
-                                    Разработаны и опубликованы статьи, исследования, интервью с выпускниками и преподавателями, 
-                                    которые подчеркивали уникальность программ MBA и их актуальность для российской и международной аудитории
-                                </p>
-                            </li>
-                            <li>
-                                <h5>Мониторинг и оперативное реагирование:</h5>
-                                <p>
-                                    Организован постоянный мониторинг упоминаний бренда и конкурентов для оперативного реагирования на любые кризисные ситуации,
-                                    а также для корректировки контента в поисковой выдаче
-                                </p>
-                            </li>
-                        </ol>
+                      <ol class="--has-header">
+                        <li>
+                            <h5>Анализ репутации и поисковой выдачи:</h5>
+                            <p>
+                                Проведен детальный анализ текущего положения бренда в поисковой выдаче и репутации в сети. 
+                                Были выявлены основные проблемы, включая сильные позиции конкурента Moscow Business School в поисковых системах
+                            </p>
+                        </li>
+                        <li>
+                            <h5>Разработка стратегии ORM и SERM:</h5>
+                            <p>
+                                Создана комплексная стратегия по управлению репутацией (ORM) и поисковой репутацией (SERM), 
+                                направленная на вытеснение конкурента из топ-10 поисковой выдачи и улучшение позиций Moscow Business Academy
+                            </p>
+                        </li>
+                        <li>
+                            <h5>Создание позитивного контента:</h5>
+                            <p>
+                                Разработаны и опубликованы статьи, исследования, интервью с выпускниками и преподавателями, 
+                                которые подчеркивали уникальность программ MBA и их актуальность для российской и международной аудитории
+                            </p>
+                        </li>
+                        <li>
+                            <h5>Мониторинг и оперативное реагирование:</h5>
+                            <p>
+                                Организован постоянный мониторинг упоминаний бренда и конкурентов для оперативного реагирования на любые кризисные ситуации,
+                                а также для корректировки контента в поисковой выдаче
+                            </p>
+                        </li>
+                      </ol>
                       <h4>Результаты:</h4>
                       <ul class="--completed">
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Выход в ТОП-10 выдачи Яндекс и Google:</h5>
                                 <p>Moscow Business Academy заняла стабильные позиции в топ-10 поисковой выдачи по брендовым запросам, вытеснив конкурента Moscow Business School</p>
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Увеличение органического трафика:</h5>
                                 <p>Органический трафик по брендовым запросам увеличился в несколько раз, что существенно повысило видимость бренда в поисковых системах</p>
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Повышение узнаваемости среди целевой аудитории:</h5>
                                 <p>Благодаря улучшению позиций и росту трафика, бренд стал более узнаваемым среди целевой аудитории, топ-менеджеров и владельцев бизнеса</p>
@@ -205,18 +199,14 @@ export const categories: Category[] = [
                   <h4>Результаты:</h4>
                   <ul class="--completed">
                     <li>
-                        <div>
-                            <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                        </div>
+                        <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                         <div>
                             <h5>Устранение путаницы с термином MITM:</h5>
                             <p>Создание четкой связи между брендом и образовательной деятельностью, что позволило избавиться от негативных ассоциаций с технологической уязвимостью</p>
                         </div>
                     </li>
                     <li>
-                        <div>
-                            <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                        </div>
+                        <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                         <div>
                             <h5>Увеличение видимости в поисковых системах:</h5>
                             <p>SEO-статьи с ключевыми запросами заняли высокие позиции в поисковой выдаче, что способствовало росту органического трафика</p>
@@ -290,27 +280,21 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Уровень узнаваемости бренда среди профессионального сообщества вырос в 3 раза</p>
+                                Уровень узнаваемости бренда среди профессионального сообщества вырос в 3 раза
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Более 300 косметологов начали рекомендовать продукцию клиентам</p>
+                                Более 300 косметологов начали рекомендовать продукцию клиентам
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Негативные упоминания снизились на 85%, а позитивный контент занял топовые позиции в поисковой выдаче Яндекс и Google</p>
+                                Негативные упоминания снизились на 85%, а позитивный контент занял топовые позиции в поисковой выдаче Яндекс и Google
                             </div>
                         </li>
                     </ul>
@@ -380,19 +364,15 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Количество негативных отзывов снизилось на 60%, а уровень удовлетворенности клиентов увеличился</p>
+                                Количество негативных отзывов снизилось на 60%, а уровень удовлетворенности клиентов увеличился
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Позитивные статьи и отзывы о банке начали занимать топовые позиции в поисковой выдаче, вытеснив негативные упоминаниям</p>
+                                Позитивные статьи и отзывы о банке начали занимать топовые позиции в поисковой выдаче, вытеснив негативные упоминаниям
                             </div>
                         </li>
                     </ul>
@@ -467,27 +447,21 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Уровень узнаваемости бренда среди профессионального сообщества вырос в 3 раза</p>
+                                Уровень узнаваемости бренда среди профессионального сообщества вырос в 3 раза
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Более 300 косметологов начали рекомендовать продукцию клиентам</p>
+                                Более 300 косметологов начали рекомендовать продукцию клиентам
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Негативные упоминания снизились на 85%, а позитивный контент занял топовые позиции в поисковой выдаче Яндекс и Google</p>
+                                Негативные упоминания снизились на 85%, а позитивный контент занял топовые позиции в поисковой выдаче Яндекс и Google
                             </div>
                         </li>
                     </ul>
@@ -559,27 +533,21 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Более 30% фальшивых отзывов успешно удалены с ключевых площадок</p>
+                                Более 30% фальшивых отзывов успешно удалены с ключевых площадок
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Средний рейтинг магазина вырос до 4,8</p>
+                                Средний рейтинг магазина вырос до 4,8
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Уровень доверия клиентов к бренду заметно повысился (отражено в росте повторных покупок и позитивных упоминаний в сети)</p>
+                                Уровень доверия клиентов к бренду заметно повысился (отражено в росте повторных покупок и позитивных упоминаний в сети)
                             </div>
                         </li>
                     </ul>
@@ -649,35 +617,27 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Время реакции на негатив сократилось с 5 дней до 12 часов</p>
+                                Время реакции на негатив сократилось с 5 дней до 12 часов
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Количество нерешенных конфликтов снизилось на 70%</p>
+                                Количество нерешенных конфликтов снизилось на 70%
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>На основе аналитики проведено обучение персонала</p>
+                                На основе аналитики проведено обучение персонала
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Уровень положительных отзывов вырос на 40% за 3 месяца</p>
+                                Уровень положительных отзывов вырос на 40% за 3 месяца
                             </div>
                         </li>
                     </ul>
@@ -739,35 +699,27 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Сформировали онлайн-репутацию нового направления с нуля</p>
+                                Сформировали онлайн-репутацию нового направления с нуля
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Получили более 100 реальных отзывов за первые месяцы</p>
+                                Получили более 100 реальных отзывов за первые месяцы
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>В поисковой выдаче закрепили позитивный контент, негатив отсутствует</p>
+                                В поисковой выдаче закрепили позитивный контент, негатив отсутствует
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Увеличили количество бронирований по сравнению с первым месяцем запуска</p>
+                                Увеличили количество бронирований по сравнению с первым месяцем запуска
                             </div>
                         </li>
                     </ul>
@@ -831,27 +783,21 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Количество негативных отзывов сократилось</p>
+                                Количество негативных отзывов сократилось
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Появился стабильный поток новых положительных отзывов от реальных пациентов</p>
+                                Появился стабильный поток новых положительных отзывов от реальных пациентов
                             </div>
                         </li>
                         <li>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
-                            <div>
-                                <p>Доля позитивного контента в поисковой выдаче выросла в 2 раза</p>
+                                Доля позитивного контента в поисковой выдаче выросла в 2 раза
                             </div>
                         </li>
                     </ul>
@@ -938,27 +884,21 @@ export const categories: Category[] = [
                       <h4>Результаты:</h4>
                       <ul class="--completed">
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Выход в ТОП-10 выдачи Яндекс и Google:</h5>
                                 <p>Moscow Business Academy заняла стабильные позиции в топ-10 поисковой выдачи по брендовым запросам, вытеснив конкурента Moscow Business School</p>
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Увеличение органического трафика:</h5>
                                 <p>Органический трафик по брендовым запросам увеличился в несколько раз, что существенно повысило видимость бренда в поисковых системах</p>
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 <h5>Повышение узнаваемости среди целевой аудитории:</h5>
                                 <p>Благодаря улучшению позиций и росту трафика, бренд стал более узнаваемым среди целевой аудитории, топ-менеджеров и владельцев бизнеса</p>
@@ -1037,18 +977,14 @@ export const categories: Category[] = [
                   <h4>Результаты:</h4>
                   <ul class="--completed">
                     <li>
-                        <div>
-                            <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                        </div>
+                        <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                         <div>
                             <h5>Устранение путаницы с термином MITM:</h5>
                             <p>Создание четкой связи между брендом и образовательной деятельностью, что позволило избавиться от негативных ассоциаций с технологической уязвимостью</p>
                         </div>
                     </li>
                     <li>
-                        <div>
-                            <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                        </div>
+                        <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                         <div>
                             <h5>Увеличение видимости в поисковых системах:</h5>
                             <p>SEO-статьи с ключевыми запросами заняли высокие позиции в поисковой выдаче, что способствовало росту органического трафика</p>
@@ -1117,25 +1053,19 @@ export const categories: Category[] = [
                     <h4>Результаты:</h4>
                     <ul class="--completed">
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 Репутация учебной организации улучшилась, и негативные отзывы были вытеснены с поисковых систем Яндекс и Google
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 Негативный фон заметно снизился. Количество положительных отзывов увеличилось на 70%
                             </div>
                         </li>
                         <li>
-                            <div>
-                                <svg><use href="/sprite.svg#tick-square-filled" /></svg>
-                            </div>
+                            <div><svg><use href="/sprite.svg#tick-square-filled" /></svg></div>
                             <div>
                                 Организация получила высокий рейтинг на образовательных платформах, что способствовало росту доверия и интереса к курсам
                             </div>

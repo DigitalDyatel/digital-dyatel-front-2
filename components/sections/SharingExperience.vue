@@ -7,7 +7,7 @@ let io: IntersectionObserver | undefined = undefined
 const animationDuration = 8000
 
 const articlesContainerTemplateRef = useTemplateRef('articlesContainerTemplateRef')
-const articlesTemplateRef = useTemplateRef('articlesTemplateRef')
+const articlesTemplateRef = useTemplateRef<HTMLDivElement[]>('articlesTemplateRef')
 
 const animationIsActive = ref(false)
 
@@ -16,12 +16,11 @@ const timer = ref<ReturnType<typeof useTimer> | null>(null)
 const articles = ref([
   {
     title: [
-      'Инфлюенс-маркетинг: ',
-      'что это и как найти блогера',
+      'Получить бесплатный чек-лист',
     ],
-    subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений ',
+    subtitle: 'методы борьбы с прокрастинацией',
     background: '1.png',
-    buttonText: 'Перейти в блог'
+    buttonText: 'Получить'
   },
   {
     title: [
@@ -74,10 +73,7 @@ const onClickPoint = (i) => {
   initTimer()
 }
 
-onMounted(() => {
-
-  articlesContainerTemplateRef.value.style.height = articlesTemplateRef.value[0].offsetHeight + 'px'
-
+onMounted(async() => {
   io = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       animationIsActive.value = true
@@ -126,9 +122,10 @@ onUnmounted(() => {
             :class="{'--active': i === activeArticleIndex}"
             :style="{backgroundImage: 'url(/img/blog/'+ article.background +')'}"
             ref="articlesTemplateRef"
+            :key="i"
         >
-          <h3><span v-for="title in articles[activeArticleIndex].title">{{ title }}</span></h3>
-          <p class="sharing-experience__article-subtitle">{{ articles[activeArticleIndex].subtitle }}</p>
+          <h3><span v-for="title in articles[i].title">{{ title }}</span></h3>
+          <p class="sharing-experience__article-subtitle">{{ article.subtitle }}</p>
           <Button class="--white --large">{{ article.buttonText }}</Button>
         </div>
       </div>

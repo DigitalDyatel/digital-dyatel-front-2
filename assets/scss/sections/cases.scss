@@ -633,6 +633,32 @@
       }
     }
 
+    ol {
+      padding-left: 20px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+
+      &.--has-header {
+        ::marker {
+          font-weight: var(--font-weight-semi-bold);
+          color: var(--color-primary);
+        }
+      }
+
+      li {
+
+        h5 {
+          margin-top: 0;
+        }
+
+        h5 + p {
+          margin-top: 10px;
+        }
+      }
+    }
+
     ul {
       display: flex;
       margin-top: 24px;
@@ -655,6 +681,42 @@
           svg {
             width: 12px;
             height: 12px;
+            color: var(--color-contrast);
+          }
+        }
+      }
+
+      &.--checked {
+        margin-top: 20px;
+        gap: 12px;
+
+        li {
+          display: flex;
+          gap: 5px;
+          align-items: start;
+
+          div:last-child {
+
+            h5 {
+              margin-top: 0;
+            }
+
+            h5 + p {
+              margin-top: 10px;
+            }
+          }
+
+          h5 {
+            display: block;
+          }
+
+          &:before {
+            display: none;
+          }
+
+          svg {
+            width: 16px;
+            height: 16px;
             color: var(--color-contrast);
           }
         }

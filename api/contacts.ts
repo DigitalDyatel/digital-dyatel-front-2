@@ -6,7 +6,8 @@ export interface FormDataCreate {
     email: string | undefined,
     from_trigger: string | undefined,
     is_agree_to_receive_ads: boolean,
-    files?: FileList | undefined
+    files?: FileList | undefined,
+    lead_magnet_id?: number
 }
 
 export type FormDataCreateErrors = FormDataErrors<FormDataCreate>

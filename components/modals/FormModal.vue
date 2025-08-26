@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
   fromTrigger: string,
   buttonText?: string,
   withFiles?: boolean,
+  leadMagnetId?: number,
   data?: any
 }>(), {
   buttonText: 'Оставить заявку',
@@ -38,6 +39,10 @@ const formDataFields: FormDataCreate = {
 
 if (props.withFiles) {
   formDataFields['files'] = undefined
+}
+
+if (props.leadMagnetId) {
+  formDataFields['lead_magnet_id'] = props.leadMagnetId
 }
 
 const formData = ref(formDataFields)

@@ -2,6 +2,10 @@
 import Button from '~/components/shared/Button.vue'
 import { onMounted, onUnmounted } from 'vue'
 import { useTimer } from 'maz-ui'
+import { useModal } from 'vue-final-modal'
+import FormModal from '~/components/modals/FormModal.vue'
+import { FROM_TRIGGER } from '~/constants'
+import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 
 let io: IntersectionObserver | undefined = undefined
 const animationDuration = 8000
@@ -44,7 +48,7 @@ const slides = ref<Slide[]>([
     subtitle: 'методы борьбы с прокрастинацией',
     background: '2.jpg',
     buttonText: 'Смотреть решение',
-    type: SlideType.LEAD_MAGNET,
+    type: SlideType.ARTICLE,
   },
   {
     title: [
@@ -54,7 +58,7 @@ const slides = ref<Slide[]>([
     subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
     background: '1.png',
     buttonText: 'Перейти в блог',
-    type: SlideType.LEAD_MAGNET,
+    type: SlideType.ARTICLE,
   },
 ])
 
@@ -89,9 +93,26 @@ const onClickPoint = (i) => {
   initTimer()
 }
 
-const onClickButton = (slide: Slide) => {
+const onClickButton = (i: number, slide: Slide) => {
   if (slide.type === SlideType.LEAD_MAGNET) {
-    // Open Modal
+    const { open, close } = useModal({
+      component: FormModal,
+      attrs: {
+        title: 'Получить бесплатный чек-лист',
+        withFiles: false,
+        fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE,
+        leadMagnetId: i + 1,
+        buttonText: 'Получить лид-магнит',
+        onConfirm: () => {
+          close()
+
+          const thankYouModal = useModal({component: ThankYouModal})
+          thankYouModal.open()
+        }
+      },
+    })
+
+    open()
     return
   }
 }
@@ -149,7 +170,7 @@ onUnmounted(() => {
         >
           <h3><span v-for="title in slides[i].title">{{ title }}</span></h3>
           <p class="sharing-experience__slide-subtitle">{{ slide.subtitle }}</p>
-          <Button class="--white --large" @click="onClickButton(slide)">{{ slide.buttonText }}</Button>
+          <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.buttonText }}</Button>
         </div>
       </div>
       <div class="sharing-experience__slider">

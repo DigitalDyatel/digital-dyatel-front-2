@@ -6,21 +6,35 @@ import { useTimer } from 'maz-ui'
 let io: IntersectionObserver | undefined = undefined
 const animationDuration = 8000
 
-const articlesContainerTemplateRef = useTemplateRef('articlesContainerTemplateRef')
-const articlesTemplateRef = useTemplateRef<HTMLDivElement[]>('articlesTemplateRef')
+const slidesContainerTemplateRef = useTemplateRef('slidesContainerTemplateRef')
+const slidesTemplateRef = useTemplateRef<HTMLDivElement[]>('slidesTemplateRef')
 
 const animationIsActive = ref(false)
 
 const timer = ref<ReturnType<typeof useTimer> | null>(null)
 
-const articles = ref([
+enum SlideType {
+  ARTICLE = 'ARTICLE',
+  LEAD_MAGNET = 'LEAD_MAGNET',
+}
+
+interface Slide {
+  title: string[],
+  subtitle: string,
+  background: string,
+  buttonText: string,
+  type: SlideType
+}
+
+const slides = ref<Slide[]>([
   {
     title: [
       'Получить бесплатный чек-лист',
     ],
     subtitle: 'методы борьбы с прокрастинацией',
     background: '1.png',
-    buttonText: 'Получить'
+    buttonText: 'Получить',
+    type: SlideType.LEAD_MAGNET,
   },
   {
     title: [
@@ -29,7 +43,8 @@ const articles = ref([
     ],
     subtitle: 'методы борьбы с прокрастинацией',
     background: '2.jpg',
-    buttonText: 'Смотреть решение'
+    buttonText: 'Смотреть решение',
+    type: SlideType.LEAD_MAGNET,
   },
   {
     title: [
@@ -38,23 +53,24 @@ const articles = ref([
     ],
     subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
     background: '1.png',
-    buttonText: 'Перейти в блог'
+    buttonText: 'Перейти в блог',
+    type: SlideType.LEAD_MAGNET,
   },
 ])
 
-const activeArticleIndex = ref(0)
+const activeSlideIndex = ref(0)
 
 const initTimer = () => {
   timer.value = useTimer({
     timeout: animationDuration,
     callback() {
-      if (activeArticleIndex.value === articles.value.length - 1) {
-        activeArticleIndex.value = 0
+      if (activeSlideIndex.value === slides.value.length - 1) {
+        activeSlideIndex.value = 0
         initTimer()
         return
       }
 
-      activeArticleIndex.value++
+      activeSlideIndex.value++
       initTimer()
     }
   })
@@ -62,15 +78,22 @@ const initTimer = () => {
 }
 
 const onClickPoint = (i) => {
-  if (i === activeArticleIndex.value) {
+  if (i === activeSlideIndex.value) {
     return
   }
 
   if (timer.value) {
     timer.value.stop()
   }
-  activeArticleIndex.value = i
+  activeSlideIndex.value = i
   initTimer()
+}
+
+const onClickButton = (slide: Slide) => {
+  if (slide.type === SlideType.LEAD_MAGNET) {
+    // Open Modal
+    return
+  }
 }
 
 onMounted(async() => {
@@ -96,7 +119,7 @@ onMounted(async() => {
     rootMargin: '0px 0px 0px 0px'
   })
 
-  io.observe(articlesContainerTemplateRef.value!)
+  io.observe(slidesContainerTemplateRef.value!)
 })
 
 onUnmounted(() => {
@@ -114,26 +137,26 @@ onUnmounted(() => {
       <span>Аналитика, кейсы, советы и практики по управлению репутацией и маркетингу. </span>
       <span>Только реальные истории и работающие решения</span>
     </p>
-    <div class="sharing-experience__container" ref="articlesContainerTemplateRef">
-      <div class="sharing-experience__articles">
+    <div class="sharing-experience__container" ref="slidesContainerTemplateRef">
+      <div class="sharing-experience__slides">
         <div
-            v-for="(article, i) in articles"
-            class="sharing-experience__article"
-            :class="{'--active': i === activeArticleIndex}"
-            :style="{backgroundImage: 'url(/img/blog/'+ article.background +')'}"
-            ref="articlesTemplateRef"
+            v-for="(slide, i) in slides"
+            class="sharing-experience__slide"
+            :class="{'--active': i === activeSlideIndex}"
+            :style="{backgroundImage: 'url(/img/blog/'+ slide.background +')'}"
+            ref="slidesTemplateRef"
             :key="i"
         >
-          <h3><span v-for="title in articles[i].title">{{ title }}</span></h3>
-          <p class="sharing-experience__article-subtitle">{{ article.subtitle }}</p>
-          <Button class="--white --large">{{ article.buttonText }}</Button>
+          <h3><span v-for="title in slides[i].title">{{ title }}</span></h3>
+          <p class="sharing-experience__slide-subtitle">{{ slide.subtitle }}</p>
+          <Button class="--white --large" @click="onClickButton(slide)">{{ slide.buttonText }}</Button>
         </div>
       </div>
       <div class="sharing-experience__slider">
         <div
-            v-for="(_, i) in articles"
+            v-for="(_, i) in slides"
             class="sharing-experience__slider-point"
-            :class="{'--active': i === activeArticleIndex}"
+            :class="{'--active': i === activeSlideIndex}"
             @click="onClickPoint(i)"
         >
           <div

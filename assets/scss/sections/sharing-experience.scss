@@ -34,7 +34,7 @@
     }
   }
 
-  &__article {
+  &__slide {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,13 +183,13 @@
     }
   }
 
-  &__articles {
+  &__slides {
     width: 100%;
     height: 100%;
     display: grid;
   }
 
-  &__article-subtitle {
+  &__slide-subtitle {
     font-size: var(--font-size-lg);
     text-align: center;
     color: var(--color-white-contrast);

@@ -21,6 +21,7 @@
     "nuxt-svgo": "^4.2.3",
     "nuxt-swiper": "^2.0.1",
     "nuxt-toast": "^1.1.4",
+    "nuxt-yandex-metrika": "^1.2.9",
     "overlayscrollbars": "^2.11.4",
     "overlayscrollbars-vue": "^0.5.9",
     "sass": "^1.89.2",

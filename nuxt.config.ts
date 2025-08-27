@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import config from './config.env.json'
 
+if (!config.yandexMetrikaId) {
+  throw new Error('Yandex Metrika ID is missing')
+}
+
 export default defineNuxtConfig({
   experimental: {
     /** @ts-expect-error: Nuxt 3 пишет что такого типа нет, но он есть */
@@ -39,8 +43,12 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     'nuxt-toast',
     'v-gsap-nuxt',
-    '@vue-final-modal/nuxt'
+    '@vue-final-modal/nuxt',
+    'nuxt-yandex-metrika'
   ],
+  yandexMetrika: {
+    id: config.yandexMetrikaId
+  },
   svgo: {
     global: false,
     autoImportPath: false

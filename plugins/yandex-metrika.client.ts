@@ -7,7 +7,7 @@ declare global {
 }
 
 export default defineNuxtPlugin(nuxtApp => {
-    const config = useRuntimeConfig() as unknown as CustomRuntimeConfig
+    /*const config = useRuntimeConfig() as unknown as CustomRuntimeConfig
     const yandexMetrikaId = config.public.yandexMetrikaId
 
     if (!yandexMetrikaId) {
@@ -26,17 +26,17 @@ export default defineNuxtPlugin(nuxtApp => {
 
     ym(${yandexMetrikaId}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     `
-    document.head.appendChild(script)
+    document.head.appendChild(script)*/
 
     // SPA: Отправка хита при каждой смене маршрута
-    nuxtApp.hook('page:finish', () => {
+/*    nuxtApp.hook('page:finish', () => {
         if (typeof window !== 'undefined' && window.ym) {
             window.ym(yandexMetrikaId, 'hit', window.location.href)
         }
-    })
+    })*/
 
     // <noscript> для пользователей без JS
-    const noscript = document.createElement('noscript')
+/*    const noscript = document.createElement('noscript')
     noscript.innerHTML = `<div><img src="https://mc.yandex.ru/watch/${yandexMetrikaId}" style="position:absolute; left:-9999px;" alt="" /></div>`
-    document.body.appendChild(noscript)
+    document.body.appendChild(noscript)*/
 })

@@ -104,7 +104,7 @@ const touchEndEventListener = e => {
 
 onMounted(() => {
 
-  reachGoal('test-2')
+  reachGoal('test_3')
 
   if (window.innerWidth >= 1024) {
     return

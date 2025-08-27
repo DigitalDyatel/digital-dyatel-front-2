@@ -101,6 +101,9 @@ const touchEndEventListener = e => {
 }
 
 onMounted(() => {
+
+  window.ym(103916962,'reachGoal','test')
+
   if (window.innerWidth >= 1024) {
     return
   }
@@ -125,8 +128,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-
-  window.ym(103916962,'reachGoal','test')
 
   if (window.innerWidth >= 1024) {
     return

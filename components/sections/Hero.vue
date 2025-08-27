@@ -5,6 +5,8 @@ import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
 import { FROM_TRIGGER } from '~/constants'
 
+const { reachGoal } = useYandexMetrika()
+
 const tagsTemplateRef = useTemplateRef('tagsTemplateRef')
 
 let isTouching = false;
@@ -102,7 +104,7 @@ const touchEndEventListener = e => {
 
 onMounted(() => {
 
-  window.ym(103916962,'reachGoal','test')
+  reachGoal('test-2')
 
   if (window.innerWidth >= 1024) {
     return

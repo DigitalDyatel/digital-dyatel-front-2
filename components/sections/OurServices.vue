@@ -8,15 +8,13 @@ import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import Button from '~/components/shared/Button.vue'
 
 const isMobile = ref(true)
-const activeMobileServiceIndex = ref(null)
+const activeServiceIndex = ref(null)
 const mobileContentHeight: number[] = []
+
 const mobileServiceTemplateRef = useTemplateRef('mobileServiceTemplateRef')
 const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
 const selectedServiceTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceTemplateRef')
 const selectedServiceContainerTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceContainerTemplateRef')
-
-let ro: ResizeObserver | undefined = undefined
-let roPrevWidth = 0;
 
 interface Service {
   title: string,
@@ -60,23 +58,23 @@ const services = ref<Service[]>([
 
 const selectedService = ref(services.value[0])
 
-const onClickService = (service: Service) => {
-  selectedService.value = service
+const onClickService = (i: number) => {
+  activeServiceIndex.value = i
 }
 
-const onClick = (service: Service | null, title: string) => {
+const onClick = (i: number | null, title: string) => {
 
   const attrs: {[key:string]: any} = {}
 
-  if (service) {
-    attrs.data = service
+  if (i) {
+    attrs.data = services.value[i]
   }
 
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
       title,
-      fromTrigger: service ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
+      fromTrigger: services.value[i] ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
       onConfirm: () => {
         close()
 
@@ -93,71 +91,29 @@ const onClick = (service: Service | null, title: string) => {
 const toggleMobileService = (i: number) => {
   const el = mobileContentTemplateRef.value[i]
 
-  if (i === activeMobileServiceIndex.value) {
-    activeMobileServiceIndex.value = null
+  if (i === activeServiceIndex.value) {
+    activeServiceIndex.value = null
     el.style.opacity = '0'
     el.style.height = '0'
     return
   }
 
-  const prevEl = mobileContentTemplateRef.value[activeMobileServiceIndex.value]
+  const prevEl = mobileContentTemplateRef.value[activeServiceIndex.value]
 
   if (prevEl) {
     prevEl.style.opacity = '0'
     prevEl.style.height = '0'
   }
 
-  activeMobileServiceIndex.value = i
+  activeServiceIndex.value = i
   el.style.opacity = '1'
   el.style.height = mobileContentHeight[i] + 'px'
-}
-
-const calculateContainerHeight = async () => {
-
-  selectedServiceContainerTemplateRef.value.style.height = 'auto'
-
-  let greatestServiceContentIndex = 0;
-  let maxServiceSymbols = 0;
-
-  services.value.forEach((service, i) => {
-    const _maxServiceSymbols = service.title.length +
-        service.title_short?.length +
-        service.subtitle?.length +
-        service.description.length +
-        service.price.length
-
-    if (maxServiceSymbols < _maxServiceSymbols) {
-      maxServiceSymbols = _maxServiceSymbols;
-      greatestServiceContentIndex = i;
-    }
-  })
-
-  selectedService.value = services.value[greatestServiceContentIndex]
-
-  await nextTick
-
-  selectedServiceContainerTemplateRef.value.style.height = window.getComputedStyle(selectedServiceTemplateRef.value).height
-  selectedService.value = services.value[0]
 }
 
 onMounted(async () => {
   if (window.innerWidth >= 1024) {
     isMobile.value = false
-
-    await nextTick()
-    await calculateContainerHeight()
-
-    ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-      const width = entries[0].borderBoxSize?.[0].inlineSize;
-
-      if (typeof width !== 'number' || width === roPrevWidth) {
-        return
-      }
-
-      roPrevWidth = width
-      calculateContainerHeight()
-    })
-    ro.observe(document.documentElement)
+    activeServiceIndex.value = 0
     return
   }
 
@@ -168,10 +124,6 @@ onMounted(async () => {
 
   toggleMobileService(0)
 })
-
-onUnmounted(() => {
-  ro?.disconnect()
-})
 </script>
 
 <template>
@@ -180,7 +132,7 @@ onUnmounted(() => {
       <h2>Наши услуги</h2>
       <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>
       <div v-if="isMobile" class="our-services__services-mobile">
-        <div class="our-services__service-mobile" :class="{'--open': i === activeMobileServiceIndex}" v-for="(service, i) in services" ref="mobileServiceTemplateRef">
+        <div class="our-services__service-mobile" :class="{'--open': i === activeServiceIndex}" v-for="(service, i) in services" ref="mobileServiceTemplateRef">
           <div class="our-services__service-mobile-header" @click="toggleMobileService(i)">
             <h3>{{ service.title_short ? service.title_short : service.title }}</h3>
             <div><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
@@ -193,35 +145,37 @@ onUnmounted(() => {
               <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
             </div>
             <div class="our-services__service-mobile-buttons">
-              <Button class="--large" @click="onClick(selectedService, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
+              <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
               <Button class="--large --quaternary">Подробнее</Button>
             </div>
           </div>
         </div>
       </div>
       <div v-else class="our-services__services" ref="selectedServiceContainerTemplateRef">
-        <div class="our-services__selected-service" ref="selectedServiceTemplateRef">
-          <div>
-            <h3>{{ selectedService.title }}</h3>
-            <h4 v-if="selectedService.subtitle">{{ selectedService.subtitle }}</h4>
-            <p>{{ selectedService.description }}</p>
-          </div>
-          <div>
-            <div class="our-services__price">
-              <div>{{ selectedService.price }}</div>
-              <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
+        <div class="our-services__service-container">
+          <div v-for="(service, i) in services" class="our-services__service" :class="{'--active': i === activeServiceIndex}" ref="selectedServiceTemplateRef">
+            <div>
+              <h3>{{ service.title }}</h3>
+              <h4 v-if="service.subtitle">{{ service.subtitle }}</h4>
+              <p>{{ service.description }}</p>
             </div>
-            <div class="our-services__buttons">
-              <Button class="--large" @click="onClick(selectedService, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
-              <Button class="--large --quaternary">Подробнее</Button>
+            <div>
+              <div class="our-services__price">
+                <div>{{ service.price }}</div>
+                <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
+              </div>
+              <div class="our-services__buttons">
+                <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
+                <Button class="--large --quaternary">Подробнее</Button>
+              </div>
             </div>
           </div>
         </div>
         <div class="our-services__services-list">
           <button
-              v-for="service in services"
-              :class="{'--selected': service === selectedService}"
-              @click="onClickService(service)"
+              v-for="(service, i) in services"
+              :class="{'--selected': i === activeServiceIndex}"
+              @click="onClickService(i)"
           >
             {{ service.title_short ?? service.title }}
           </button>

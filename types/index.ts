@@ -17,5 +17,6 @@ export interface CustomRuntimeConfig {
             metro: string[],
             openingHours: string
         },
+        yandexMetrikaId: number
     }
 }

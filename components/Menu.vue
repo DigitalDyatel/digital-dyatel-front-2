@@ -305,7 +305,7 @@ onUnmounted(() => {
                 </div>
               </div>
               <div class="menu__contact-us-line --social">
-                <Button @click="openFormModal">Обратный звонок</Button>
+                <Button @click="openFormModal(false)">Обратный звонок</Button>
                 <div class="menu__contact-us-social-group">
                   <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram); reachGoal('menu-d__telegram')"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
                   <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp); reachGoal('menu-d__whatsapp')"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>
@@ -355,7 +355,7 @@ onUnmounted(() => {
                 <div>{{ phone.description }}</div>
               </div>
             </div>
-            <Button @click="openFormModal">Обратный звонок</Button>
+            <Button @click="openFormModal(true)">Обратный звонок</Button>
           </div>
         </transition>
         <transition name="menu-contact-us-fade-in">

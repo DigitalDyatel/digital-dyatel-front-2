@@ -11,6 +11,8 @@ import apiContacts, {
   type FormDataCreateErrors
 } from '~/api/contacts'
 
+const { reachGoal } = useYandexMetrika()
+
 const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
 
 const props = withDefaults(defineProps<{
@@ -19,7 +21,8 @@ const props = withDefaults(defineProps<{
   buttonText?: string,
   withFiles?: boolean,
   leadMagnetId?: number,
-  data?: any
+  data?: any,
+  yandexMetrikaGoalID?: string
 }>(), {
   buttonText: 'Оставить заявку',
   withFiles: true
@@ -53,6 +56,10 @@ const onSubmitForm = async () => {
   } catch (error) {
     errors.value = error
     return
+  }
+
+  if (props.yandexMetrikaGoalID) {
+    reachGoal(props.yandexMetrikaGoalID)
   }
 
   emit('confirm')

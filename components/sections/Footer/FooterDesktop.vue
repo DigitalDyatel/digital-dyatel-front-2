@@ -8,7 +8,8 @@ const {
   metro,
   callMeModal,
   clickOnPhone,
-  clickEmail
+  clickEmail,
+  reachGoal
 } = useFooter()
 </script>
 
@@ -39,9 +40,9 @@ const {
       <div><a class="footer__link --underline-on-hover" @pointerdown="clickEmail" @contextmenu.prevent
               aria-label="Написать на почту">{{ config.public.email }}</a></div>
       <div class="footer__social">
-        <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp">Написать в WhatsApp</a>
+        <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp" @click="reachGoal('footer__whatsapp')">Написать в WhatsApp</a>
         </div>
-        <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram">Написать в Telegram</a>
+        <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram" @click="reachGoal('footer__telegram')">Написать в Telegram</a>
         </div>
       </div>
     </div>

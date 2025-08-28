@@ -17,6 +17,8 @@ const animationIsActive = ref(false)
 
 const timer = ref<ReturnType<typeof useTimer> | null>(null)
 
+const { reachGoal } = useYandexMetrika()
+
 enum SlideType {
   ARTICLE = 'ARTICLE',
   LEAD_MAGNET = 'LEAD_MAGNET',
@@ -27,7 +29,9 @@ interface Slide {
   subtitle: string,
   background: string,
   buttonText: string,
-  type: SlideType
+  type: SlideType,
+  yandexMetrikaOpenFormGoal?: string
+  yandexMetrikaSuccessGoal?: string
 }
 
 const slides = ref<Slide[]>([
@@ -39,6 +43,8 @@ const slides = ref<Slide[]>([
     background: '1.png',
     buttonText: 'Получить',
     type: SlideType.LEAD_MAGNET,
+    yandexMetrikaOpenFormGoal: 'share-exp__1__open-form',
+    yandexMetrikaSuccessGoal: 'share-exp__1__success'
   },
   {
     title: [
@@ -49,6 +55,8 @@ const slides = ref<Slide[]>([
     background: '2.jpg',
     buttonText: 'Смотреть решение',
     type: SlideType.ARTICLE,
+    yandexMetrikaOpenFormGoal: 'share-exp__2__open-form',
+    yandexMetrikaSuccessGoal: 'share-exp__2__success'
   },
   {
     title: [
@@ -59,6 +67,8 @@ const slides = ref<Slide[]>([
     background: '1.png',
     buttonText: 'Перейти в блог',
     type: SlideType.ARTICLE,
+    yandexMetrikaOpenFormGoal: 'share-exp__3__open-form',
+    yandexMetrikaSuccessGoal: 'share-exp__3__success'
   },
 ])
 
@@ -103,6 +113,7 @@ const onClickButton = (i: number, slide: Slide) => {
         fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE,
         leadMagnetId: i + 1,
         buttonText: 'Получить лид-магнит',
+        yandexMetrikaGoalID: slide.yandexMetrikaSuccessGoal,
         onConfirm: () => {
           close()
 
@@ -113,6 +124,7 @@ const onClickButton = (i: number, slide: Slide) => {
     })
 
     open()
+    reachGoal(slide.yandexMetrikaOpenFormGoal)
     return
   }
 }

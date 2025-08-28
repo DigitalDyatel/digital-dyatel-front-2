@@ -16,6 +16,7 @@ import { FROM_TRIGGER } from '~/constants'
 
 const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
 const formData = ref<FormDataCreate>(getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1))
+const { reachGoal } = useYandexMetrika()
 
 const onSubmit = async () => {
 
@@ -30,6 +31,7 @@ const onSubmit = async () => {
   formData.value = getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1)
 
   await (useModal({component: ThankYouModal})).open()
+  reachGoal('open-form__set-a-lid')
 }
 </script>
 

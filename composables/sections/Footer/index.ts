@@ -12,6 +12,7 @@ export const useFooter = () => {
     })
     const device = useDevice()
     const notification = useNotification()
+    const { reachGoal } = useYandexMetrika()
 
     const callMeModal = () => {
         const { open, close } = useModal({
@@ -20,6 +21,7 @@ export const useFooter = () => {
                 title: 'Оставьте номер, обсудим детали',
                 buttonText: 'Жду звонка',
                 fromTrigger: FROM_TRIGGER.CALLBACK,
+                yandexMetrikaGoalID: 'footer__button-call-me__success',
                 onConfirm: () => {
                     void close()
 
@@ -37,6 +39,7 @@ export const useFooter = () => {
         })
 
         void open()
+        reachGoal('footer__button-call-me__open-form')
     }
 
     const clickOnPhone = async (phone) => {
@@ -45,6 +48,7 @@ export const useFooter = () => {
             a.href = 'tel:' + phone.phoneRaw
             a.click()
             a.remove()
+            reachGoal('footer__copy-phone')
             return
         }
 
@@ -53,6 +57,7 @@ export const useFooter = () => {
             title: 'Телефон скопирован!',
             class: 'izi-toast --white',
         })
+        reachGoal('footer__copy-phone')
     }
 
     const clickEmail = () => {
@@ -60,6 +65,8 @@ export const useFooter = () => {
         el.href = `mailto:${config.public.email}`
         el.click()
         el.remove()
+
+        reachGoal('footer__email')
     }
 
     return {
@@ -68,6 +75,7 @@ export const useFooter = () => {
         metro,
         callMeModal,
         clickOnPhone,
-        clickEmail
+        clickEmail,
+        reachGoal
     }
 }

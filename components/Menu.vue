@@ -25,36 +25,44 @@ let isTicking = false
 
 let clickOutsideFunction: ReturnType<typeof onClickOutside> | undefined = undefined
 
+const { reachGoal } = useYandexMetrika()
+
 interface MenuItem {
   label: string,
   scrollSelector: string,
   class?: string,
   icon?: string,
-  sub?: any[]
+  sub?: any[],
+  yandexMetrikaGoal: string
 }
 
 const menuItems = ref<MenuItem[]>([
   {
     label: 'Услуги',
     icon: 'hashtag',
-    scrollSelector: '.our-services'
+    scrollSelector: '.our-services',
+    yandexMetrikaGoal: 'nav__our-services'
   },
   {
     label: 'О нас',
-    scrollSelector: '.solve-problems'
+    scrollSelector: '.solve-problems',
+    yandexMetrikaGoal: 'nav__about-us'
   },
   {
     label: 'Команда',
-    scrollSelector: '.team'
+    scrollSelector: '.team',
+    yandexMetrikaGoal: 'nav__team'
   },
   {
     label: 'Кейсы',
     class: '--cases',
-    scrollSelector: '.cases'
+    scrollSelector: '.cases',
+    yandexMetrikaGoal: 'nav__cases'
   },
   {
     label: 'Отзывы',
-    scrollSelector: '.reviews'
+    scrollSelector: '.reviews',
+    yandexMetrikaGoal: 'nav__reviews'
   },
 ])
 
@@ -95,6 +103,7 @@ const toggleContactUsForMobile = () => {
 }
 
 const clickEmail = async () => {
+  reachGoal('menu-d__email')
   const el = document.createElement('a')
   el.href = `mailto:${config.public.email}`
   el.click()
@@ -108,10 +117,12 @@ const onClickMenu = (menuItem: MenuItem, isMobile = false) => {
   }
 
   goToAnchor(menuItem.scrollSelector)
+  reachGoal(menuItem.yandexMetrikaGoal)
 }
 
 const clickOnPhone = async (phone) => {
   if (device.isMobile()) {
+    reachGoal('menu-m__phone-click')
     const a = document.createElement('a')
     a.href = 'tel:' + phone.phoneRaw
     a.click()
@@ -124,6 +135,7 @@ const clickOnPhone = async (phone) => {
     title: 'Телефон скопирован!',
     class: 'izi-toast',
   })
+  reachGoal('menu-d__copy-phone')
 }
 
 const createLinkAndFollow = (href: string) => {
@@ -134,13 +146,18 @@ const createLinkAndFollow = (href: string) => {
   a.remove()
 }
 
-const openFormModal = () => {
+const openFormModal = (fromMobile: boolean) => {
+
+  const openFormGoal = fromMobile ? 'menu-m__get-callback__open-form' : 'menu-m__get-callback__success'
+  const successGoal = fromMobile ? 'menu-d__get-callback__open-form' : 'menu-d__get-callback__success'
+
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
       title: 'Оставьте номер, обсудим детали',
       buttonText: 'Жду звонка',
       fromTrigger: FROM_TRIGGER.CALLBACK,
+      yandexMetrikaGoalID: successGoal,
       onConfirm: () => {
         close()
 
@@ -159,6 +176,7 @@ const openFormModal = () => {
   })
 
   open()
+  reachGoal(openFormGoal)
 }
 
 const scrollEventListener = (e) => {
@@ -181,6 +199,7 @@ const onClickGetFreeSERMAudit = () => {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
       withFiles: true,
       fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
+      yandexMetrikaGoalID: 'menu-m__get-free-serm-audit__success',
       onConfirm: () => {
         close()
 
@@ -199,6 +218,7 @@ const onClickGetFreeSERMAudit = () => {
   })
 
   open()
+  reachGoal('menu-m__get-free-serm-audit__open-form')
 }
 
 const onClickMobileLogo = () => {
@@ -287,8 +307,8 @@ onUnmounted(() => {
               <div class="menu__contact-us-line --social">
                 <Button @click="openFormModal">Обратный звонок</Button>
                 <div class="menu__contact-us-social-group">
-                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram)"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
-                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp)"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>
+                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram); reachGoal('menu-d__telegram')"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
+                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp); reachGoal('menu-d__whatsapp')"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>
                 </div>
               </div>
             </div>

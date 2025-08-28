@@ -16,6 +16,17 @@ const mobileContentTemplateRef = useTemplateRef('mobileContentTemplateRef')
 const selectedServiceTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceTemplateRef')
 const selectedServiceContainerTemplateRef = useTemplateRef<HTMLDivElement>('selectedServiceContainerTemplateRef')
 
+const { reachGoal } = useYandexMetrika()
+
+const yandexMetrikaGoalsMapper = {
+  0: ['our-services__orm__open-form', 'our-services__orm__success'],
+  1: ['our-services__serm__open-form', 'our-services__serm__success'],
+  2: ['our-services__rep-from-zero__open-form', 'our-services__rep-from-zero__success'],
+  3: ['our-services__poz-content__open-form', 'our-services__poz-content__success'],
+  4: ['our-services__monitoring__open-form', 'our-services__monitoring__success'],
+  null: ['our-services__get-offer__open-form', 'our-services__get-offer__success']
+}
+
 interface Service {
   title: string,
   title_short?: string,
@@ -64,6 +75,8 @@ const onClickService = (i: number) => {
 
 const onClick = (i: number | null, title: string) => {
 
+  const [openFormGoal, successGoal] = yandexMetrikaGoalsMapper[i]
+
   const attrs: {[key:string]: any} = {}
 
   if (i) {
@@ -75,6 +88,7 @@ const onClick = (i: number | null, title: string) => {
     attrs: {
       title,
       fromTrigger: services.value[i] ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
+      yandexMetrikaGoalID: successGoal,
       onConfirm: () => {
         close()
 
@@ -86,6 +100,7 @@ const onClick = (i: number | null, title: string) => {
   })
 
   open()
+  reachGoal(openFormGoal)
 }
 
 const toggleMobileService = (i: number) => {

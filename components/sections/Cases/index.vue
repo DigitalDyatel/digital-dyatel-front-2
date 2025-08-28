@@ -29,6 +29,8 @@ const activeCaseIndex = ref(0)
 
 const isMobile = ref(false)
 
+const { reachGoal } = useYandexMetrika()
+
 const setCategory = (i: number) => {
   activeCategoryIndex.value = i
   updateDimensions(i)
@@ -71,6 +73,7 @@ const openFormModal = () => {
     attrs: {
       title: 'Получить консультацию прямо сейчас!',
       fromTrigger: FROM_TRIGGER.CASES,
+      yandexMetrikaGoalID: 'cases__want__success',
       onConfirm: () => {
         close()
 
@@ -81,6 +84,7 @@ const openFormModal = () => {
   })
 
   open()
+  reachGoal('cases__want__open-form')
 }
 
 const updateProgressBarTrackWidth = () => {

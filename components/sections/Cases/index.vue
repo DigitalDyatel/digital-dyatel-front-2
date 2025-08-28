@@ -165,7 +165,7 @@ onUnmounted(() => {
       </div>
       <div class="cases__footer">
         <div class="cases__button-container">
-          <Button class="--large --tertiary">Все кейсы</Button>
+          <!--<Button class="--large --tertiary">Все кейсы</Button>-->
           <Button class="--large" @click="openFormModal">Хочу также</Button>
         </div>
         <p>

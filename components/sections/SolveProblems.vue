@@ -17,14 +17,14 @@ const images = ref([
     img: '1.png',
     alt: 'team'
   },
-  {
+/*  {
     img: '2.jpg',
     alt: 'team-2'
   },
   {
     img: '3.jpg',
     alt: 'team-3'
-  },
+  },*/
 ])
 
 const initTimer = () => {
@@ -104,7 +104,7 @@ onMounted(() => {
         <div class="solve-problems__slider-container">
           <img v-for="(image, i) in images" :class="{'--active': activeImageIndex === i}" :src="'/img/team-together/' + image.img" :alt="image.alt" />
           <div class="solve-problems__slider">
-            <div
+<!--            <div
                 v-for="(_, i) in images"
                 class="solve-problems__slider-point"
                 :class="{'--active': i === activeImageIndex}"
@@ -115,7 +115,7 @@ onMounted(() => {
                   :class="{'--animation-is-active': animationIsActive}"
                   :style="{animationDuration: `${animationDuration}ms`}"
               />
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@ onMounted(() => {
         внимания, независимо от его масштаба <Tag class="--black" icon="location-tick" as-span />
       </p>
     </div>
-    <div class="solve-problems__presentation" :class="{'--loaded': isPresentationAreLoaded}" @click="downloadPresentation">
+    <!--<div class="solve-problems__presentation" :class="{'--loaded': isPresentationAreLoaded}" @click="downloadPresentation">
       <div class="solve-problems__presentation-icon">
         <svg><use :href="'/sprite.svg#presentation-download'" /></svg>
         <svg><use :href="'/sprite.svg#presentation-downloaded'" /></svg>
@@ -170,6 +170,6 @@ onMounted(() => {
         <div>Презентация компании</div>
         <div>{{ isPresentationAreLoaded ? 'Загружено' : '44 кб' }}</div>
       </div>
-    </div>
+    </div>-->
   </section>
 </template>

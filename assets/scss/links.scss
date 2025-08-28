@@ -4,6 +4,11 @@
   font-size: var(--font-size-lg);
   transition: all .3s var(--default-transition-timing-function);
 
+  &.--hide {
+    pointer-events: none;
+    visibility: hidden;
+  }
+
   @media (max-width: 1023px) {
     font-size: var(--font-size-base);
   }

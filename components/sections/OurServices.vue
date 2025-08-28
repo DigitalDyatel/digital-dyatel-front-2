@@ -161,7 +161,7 @@ onMounted(async () => {
             </div>
             <div class="our-services__service-mobile-buttons">
               <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
-              <Button class="--large --quaternary">Подробнее</Button>
+              <!--<Button class="--large --quaternary">Подробнее</Button>-->
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@ onMounted(async () => {
               </div>
               <div class="our-services__buttons">
                 <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
-                <Button class="--large --quaternary">Подробнее</Button>
+                <!--<Button class="--large --quaternary">Подробнее</Button>-->
               </div>
             </div>
           </div>

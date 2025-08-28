@@ -96,10 +96,10 @@ const reviews = ref<(VideoReview| TextReview | ReviewAsLinkToAllReviews)[]>([
     position: 'Управляющая агентством',
     text: 'В какой-то момент в интернете стали появляться вбросы — подозрительно однотипные негативные статьи и комментарии. Ситуация начала угрожать репутации. Мы обратились в агентство и получили быструю реакцию: команда провела аудит, выявила источники атак и предложила пошаговую стратегию. Уже через месяц в поисковой выдаче 80% негатива были вытеснены, а через два — доминировали только позитивные материалы. Благодаря этому мы сохранили 3 ключевых контракта'
   },
-  {
+/*  {
     text: 'Больше отзывов',
     link: '/',
-  }
+  }*/
 ])
 
 const swiperProps = ref({
@@ -337,7 +337,7 @@ onUnmounted(() => {
               <div @click="onClickNext"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
             </div>
             <div ref="linkContainerTemplateRef">
-              <Link class="--contrast-on-hover" link="/">Больше отзывов</Link>
+              <Link class="--hide --contrast-on-hover" link="/">Больше отзывов</Link>
             </div>
           </div>
         </div>

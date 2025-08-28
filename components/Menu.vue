@@ -148,8 +148,8 @@ const createLinkAndFollow = (href: string) => {
 
 const openFormModal = (fromMobile: boolean) => {
 
-  const openFormGoal = fromMobile ? 'menu-m__get-callback__open-form' : 'menu-m__get-callback__success'
-  const successGoal = fromMobile ? 'menu-d__get-callback__open-form' : 'menu-d__get-callback__success'
+  const openFormGoal = fromMobile ? 'menu-m__get-callback__open-form' : 'menu-d__get-callback__open-form'
+  const successGoal = fromMobile ? 'menu-m__get-callback__success' : 'menu-d__get-callback__success'
 
   const { open, close } = useModal({
     component: FormModal,

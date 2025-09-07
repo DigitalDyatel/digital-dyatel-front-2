@@ -53,7 +53,7 @@ const isMobile = ref(false)
 useSwiper(swiperContainerTemplateRef)
 
 /** Нельзя делать меньше 7 штук */
-const reviews = ref<(VideoReview| TextReview | ReviewAsLinkToAllReviews)[]>([
+const reviews = ref<(VideoReview | TextReview | ReviewAsLinkToAllReviews)[]>([
   {
     img: 'AllaMedvedeva.webp',
     name: 'Алла Медведева',
@@ -65,6 +65,11 @@ const reviews = ref<(VideoReview| TextReview | ReviewAsLinkToAllReviews)[]>([
     name: 'Ольга Ильина',
     position: 'Руководитель отдела продаж',
     text: 'Шаблонность мышления и отсутствие индивидуального подхода – с этим мы часто встречались при работе с предыдущими агентствами по управлению репутацией. В результате сотрудничества с Digital Dyatel рейтинг нашей компании вырос до 4.8 баллов, а количество продаж увеличилось на 18%. Мы не просто ощущаем, что о нашей компании сформировался положительный образ в сети, но и, в том числе, видим это в цифрах'
+  },
+  {
+    name: 'Светлана',
+    position: 'Владелица салона красоты',
+    video: 'svetlana-salon-krasoti.mp4',
   },
   {
     img: 'EgorAleksandrov.png',

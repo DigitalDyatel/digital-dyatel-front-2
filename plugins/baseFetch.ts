@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     const baseFetch = (request: string, opts = {}) => {
         return $fetch(request, {
-            baseURL: config.public.apiBase,
+            baseURL: config.public.baseURL,
             ...opts,
         })
     }

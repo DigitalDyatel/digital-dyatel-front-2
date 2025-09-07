@@ -26,7 +26,7 @@ export default abstract class Api {
             }
 
             return await $fetch<T>(url, {
-                baseURL: this.config.public.apiBase,
+                baseURL: this.config.public.baseURL,
                 ...options
             })
         } catch (err: unknown) {
@@ -49,14 +49,14 @@ export default abstract class Api {
     }
 
     protected async post<T extends {[key: string]: any} = undefined>(url: string, data?: T): Promise<any> {
-        return await this.fetch(this.config.public.apiBase + url, {
+        return await this.fetch(url, {
             method: 'POST',
             body: data
         })
     }
 
     protected async get(url: string, data?: any): Promise<any> {
-        return await this.fetch(this.config.public.apiBase+ url, {
+        return await this.fetch(url, {
             body: data
         })
     }

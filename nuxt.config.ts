@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import config from './config.env.json'
+import runtimeConfigPublic from './config'
 
-if (!config.yandexMetrikaId) {
+if (!runtimeConfigPublic.yandexMetrikaId) {
   throw new Error('Yandex Metrika ID is missing')
 }
 
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     inlineSSRStyles: false
   },
   runtimeConfig: {
-    public: config
+    public: runtimeConfigPublic as unknown as any
   },
   app: {
     head: {
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     'nuxt-yandex-metrika'
   ],
   yandexMetrika: {
-    id: config.yandexMetrikaId
+    id: runtimeConfigPublic.yandexMetrikaId
   },
   svgo: {
     global: false,

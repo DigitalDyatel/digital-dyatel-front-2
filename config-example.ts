@@ -1,0 +1,25 @@
+import type { CustomRuntimeConfigPublic } from '~/types'
+
+const config: CustomRuntimeConfigPublic = {
+  baseURL: "https://api.example.ru",
+  casesMenuCount: 2,
+  phones: [
+    {
+      phone: "+7 999 999-99-99",
+      phoneRaw: "+79999999999",
+      description: "Связаться напрямую"
+    }
+  ],
+  telegram: "https://t.me/link",
+  whatsapp: "https://api.whatsapp.com/send?phone=79999999999",
+  email: "info@digitaldyatel.ru",
+  legal: {
+    details: "ИП Иванов Иван Иванович, ИНН: 999999999999, ОГРНИП: 999999999999999",
+    address: "г. Москва, ул. Московская, д.1",
+    metro: ["Павелецкая", "Пролетарская"],
+    openingHours: "будние дни 10:00–19:00"
+  },
+  yandexMetrikaId: "0"
+}
+
+export default config

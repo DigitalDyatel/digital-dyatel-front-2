@@ -23,4 +23,4 @@ logs
 .env.*
 !.env.example
 
-config.env.json
+config.ts

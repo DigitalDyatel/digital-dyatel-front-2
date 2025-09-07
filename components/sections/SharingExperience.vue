@@ -19,58 +19,57 @@ const timer = ref<ReturnType<typeof useTimer> | null>(null)
 
 const { reachGoal } = useYandexMetrika()
 
+const { data, error } = await useApiFetch<Slide[]>('marketing/slider-sharing-experience/list')
+
 enum SlideType {
-  ARTICLE = 'ARTICLE',
+  LINK = 'LINK',
   LEAD_MAGNET = 'LEAD_MAGNET',
 }
 
 interface Slide {
-  title: string[],
-  subtitle: string,
-  background: string,
-  buttonText: string,
+  header: string,
+  subheader: string,
+  background_img: {
+    standard: string
+  },
+  button_text: string,
   type: SlideType,
-  yandexMetrikaOpenFormGoal?: string
-  yandexMetrikaSuccessGoal?: string
+  yandex_metrika_open_form_goal?: string
+  yandex_metrika_success_goal?: string
 }
 
-const slides = ref<Slide[]>([
+/*const slides = ref<Slide[]>([
   {
-    title: [
-      'Получить бесплатный чек-лист',
-    ],
-    subtitle: 'методы борьбы с прокрастинацией',
-    background: '1.png',
-    buttonText: 'Получить',
+    header: 'Получить бесплатный чек-лист',
+    subheader: 'методы борьбы с прокрастинацией',
+    background_img: {standard: '1.png'},
+    button_text: 'Получить',
     type: SlideType.LEAD_MAGNET,
-    yandexMetrikaOpenFormGoal: 'share-exp__1__open-form',
-    yandexMetrikaSuccessGoal: 'share-exp__1__success'
+    yandex_metrika_open_form_goal: 'share-exp__1__open-form',
+    yandex_metrika_success_goal: 'share-exp__1__success'
   },
   {
-    title: [
-      'Прократинация в IT: ',
-      'как быть в условиях неопределенности?'
-    ],
-    subtitle: 'методы борьбы с прокрастинацией',
-    background: '2.jpg',
-    buttonText: 'Смотреть решение',
-    type: SlideType.ARTICLE,
-    yandexMetrikaOpenFormGoal: 'share-exp__2__open-form',
-    yandexMetrikaSuccessGoal: 'share-exp__2__success'
+    header: 'Прократинация в IT: как быть в условиях неопределенности?',
+    subheader: 'методы борьбы с прокрастинацией',
+    background_img: {standard: '2.png'},
+    button_text: 'Смотреть решение',
+    type: SlideType.LINK,
+    yandex_metrika_open_form_goal: 'share-exp__2__open-form',
+    yandex_metrika_success_goal: 'share-exp__2__success'
   },
   {
-    title: [
-      'Инфлюенс-маркетинг: ',
-      'что это и как найти блогера'
-    ],
-    subtitle: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
-    background: '1.png',
-    buttonText: 'Перейти в блог',
-    type: SlideType.ARTICLE,
-    yandexMetrikaOpenFormGoal: 'share-exp__3__open-form',
-    yandexMetrikaSuccessGoal: 'share-exp__3__success'
+    header: 'Инфлюенс-маркетинг: что это и как найти блогера',
+    subheader: 'продвижение товаров и услуг с помощью так называемых агентов влияния, или лидеров мнений',
+    background_img: {standard: '1.png'},
+    button_text: 'Перейти в блог',
+    type: SlideType.LINK,
+    yandex_metrika_open_form_goal: 'share-exp__3__open-form',
+    yandex_metrika_success_goal: 'share-exp__3__success'
   },
-])
+])*/
+
+const slides = data
+
 
 const activeSlideIndex = ref(0)
 
@@ -113,7 +112,7 @@ const onClickButton = (i: number, slide: Slide) => {
         fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE,
         leadMagnetId: i + 1,
         buttonText: 'Получить лид-магнит',
-        yandexMetrikaGoalID: slide.yandexMetrikaSuccessGoal,
+        yandexMetrikaGoalID: slide.yandex_metrika_success_goal,
         onConfirm: () => {
           close()
 
@@ -124,7 +123,9 @@ const onClickButton = (i: number, slide: Slide) => {
     })
 
     open()
-    reachGoal(slide.yandexMetrikaOpenFormGoal)
+    if (slide.yandex_metrika_open_form_goal) {
+      reachGoal(slide.yandex_metrika_open_form_goal)
+    }
     return
   }
 }
@@ -176,16 +177,16 @@ onUnmounted(() => {
             v-for="(slide, i) in slides"
             class="sharing-experience__slide"
             :class="{'--active': i === activeSlideIndex}"
-            :style="{backgroundImage: 'url(/img/blog/'+ slide.background +')'}"
+            :style="{backgroundImage: 'url('+ slide.background_img.standard +')'}"
             ref="slidesTemplateRef"
             :key="i"
         >
-          <h3><span v-for="title in slides[i].title">{{ title }}</span></h3>
-          <p class="sharing-experience__slide-subtitle">{{ slide.subtitle }}</p>
-          <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.buttonText }}</Button>
+          <h3><span>{{ slide.header }}</span></h3>
+          <p class="sharing-experience__slide-subtitle">{{ slide.subheader }}</p>
+          <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.button_text }}</Button>
         </div>
       </div>
-      <div class="sharing-experience__slider">
+      <div class="sharing-experience__slider" :class="{'--invisible': slides.length < 2}">
         <div
             v-for="(_, i) in slides"
             class="sharing-experience__slider-point"

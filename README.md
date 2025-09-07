@@ -10,4 +10,4 @@ node version `v22.17.1`
 
 # Деплой
 
-При деплое копировать `config.env-example.json`->`config.env.json` заменив параметры 
+При деплое копировать `config-example.ts`->`config.ts` заменив параметры 

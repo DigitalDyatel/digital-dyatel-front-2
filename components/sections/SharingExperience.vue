@@ -177,7 +177,7 @@ onUnmounted(() => {
             v-for="(slide, i) in slides"
             class="sharing-experience__slide"
             :class="{'--active': i === activeSlideIndex}"
-            :style="{backgroundImage: 'url('+ slide.background_img.standard +')'}"
+            :style="{backgroundImage: slide.background_img ? 'url('+ slide.background_img.standard +')' : 'auto'}"
             ref="slidesTemplateRef"
             :key="i"
         >

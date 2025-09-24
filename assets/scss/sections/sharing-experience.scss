@@ -151,6 +151,7 @@
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-3xl);
     text-align: center;
+    white-space: pre-line;
 
     @media (max-width: 1023px) {
       font-size: var(--font-size-lg-xl);
@@ -195,6 +196,7 @@
     color: var(--color-white-contrast);
     margin-top: 8px;
     max-width: 700px;
+    white-space: pre-line;
 
     @media (max-width: 1023px) {
       font-size: var(--font-size-base);

@@ -37,6 +37,7 @@
 @import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 * {
+  text-rendering: geometricPrecision;
   box-sizing: border-box;
   font-family: Involve, serif;
   line-height: 1;

@@ -111,7 +111,7 @@ const onClickButton = (i: number, slide: Slide) => {
         withFiles: false,
         fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE,
         leadMagnetId: i + 1,
-        buttonText: 'Получить лид-магнит',
+        buttonText: 'Получить файл',
         yandexMetrikaGoalID: slide.yandex_metrika_success_goal,
         onConfirm: () => {
           close()

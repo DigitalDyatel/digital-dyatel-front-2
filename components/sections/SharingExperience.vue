@@ -181,8 +181,8 @@ onUnmounted(() => {
             ref="slidesTemplateRef"
             :key="i"
         >
-          <h3>{{ slide.header }}</h3>
-          <p class="sharing-experience__slide-subtitle">{{ slide.subheader }}</p>
+          <h3 v-html="slide.header" />
+          <p class="sharing-experience__slide-subtitle" v-html="slide.header">{{ slide.subheader }}</p>
           <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.button_text }}</Button>
         </div>
       </div>

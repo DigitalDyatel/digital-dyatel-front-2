@@ -116,7 +116,13 @@ const onClickButton = (i: number, slide: Slide) => {
         onConfirm: () => {
           close()
 
-          const thankYouModal = useModal({component: ThankYouModal})
+          const thankYouModal = useModal({
+            component: ThankYouModal,
+            attrs: {
+              title: 'Готово! Файл уже отправлен на вашу почту',
+              content: 'Проверьте входящие и папку «Спам» на всякий случай'
+            }
+          })
           thankYouModal.open()
         }
       },

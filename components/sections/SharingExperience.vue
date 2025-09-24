@@ -182,7 +182,7 @@ onUnmounted(() => {
             :key="i"
         >
           <h3 v-html="slide.header" />
-          <p class="sharing-experience__slide-subtitle" v-html="slide.header">{{ slide.subheader }}</p>
+          <p class="sharing-experience__slide-subtitle" v-html="slide.header" />
           <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.button_text }}</Button>
         </div>
       </div>

@@ -97,7 +97,7 @@ const onSubmitForm = async () => {
       />
       <Button class="--large" type="submit" @click.prevent="onSubmitForm">{{ props.buttonText }}</Button>
       <ProcessingPersonalDataAgree/>
-      <Checkbox class="--contrast" v-model="formData.is_agree_to_receive_ads">
+      <Checkbox :errors="errors.is_agree_to_receive_ads" class="--contrast" v-model="formData.is_agree_to_receive_ads">
         <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a>
       </Checkbox>
     </form>

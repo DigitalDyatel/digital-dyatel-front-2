@@ -58,7 +58,11 @@ const onSubmit = async () => {
         </div>
         <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
         <ProcessingPersonalDataAgree />
-        <Checkbox v-model="formData.is_agree_to_receive_ads"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
+        <Checkbox
+            :errors="errors.is_agree_to_receive_ads"
+            v-model="formData.is_agree_to_receive_ads">
+          <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a>
+        </Checkbox>
       </form>
     </div>
     <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>

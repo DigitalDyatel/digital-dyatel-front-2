@@ -1,14 +1,24 @@
 .checkbox {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
 
   @media (max-width: 767px) {
     align-items: end;
   }
 
+  &.--has-error {
+    .checkbox__container {
+      border: 1px solid var(--color-contrast);
+    }
+  }
+
   &.--contrast {
-    > div:first-child {
+    .checkbox__container {
       background-color: var(--color-contrast);
 
       svg {
@@ -18,18 +28,19 @@
   }
 
   &.--checked {
-    > div:first-child svg {
+    .checkbox__container svg {
       opacity: 1;
     }
   }
 
-  > div:first-child {
+  &__container {
     position: relative;
     width: 20px;
     height: 20px;
     cursor: pointer;
     background-color: var(--color-white);
     border-radius: 5px;
+    border: 1px solid transparent;
 
     @media (max-width: 767px) {
       width: 16px;
@@ -40,16 +51,22 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: inherit;
-      height: inherit;
       user-select: none;
       opacity: 0;
       transition: opacity .1s var(--default-transition-timing-function);
       color: var(--color-accent-dark);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+
+      @media (max-width: 767px) {
+        width: 14px;
+        height: 14px;
+      }
     }
   }
 
-  > div:last-child {
+  &__text {
     font-size: var(--font-size-base);
     color: var(--color-secondary);
     border-bottom: 1px solid var(--color-secondary);
@@ -62,5 +79,14 @@
       color: var(--color-secondary);
       user-select: none;
     }
+  }
+
+  &__error {
+    font-size: 12px;
+    color: var(--color-error);
+    top: 5px;
+    left: 1px;
+    font-weight: var(--font-weight-medium);
+    margin-top: 5px;
   }
 }

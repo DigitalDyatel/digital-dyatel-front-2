@@ -47,7 +47,9 @@ const onSubmit = async () => {
         <Button class="contact-form-alt__submit-button --large" @click.prevent="onSubmit">Оставить заявку</Button>
       </form>
       <ProcessingPersonalDataAgree />
-      <Checkbox v-model="formData.is_agree_to_receive_ads"><a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a></Checkbox>
+      <Checkbox :errors="errors.is_agree_to_receive_ads" v-model="formData.is_agree_to_receive_ads">
+        <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Я согласен получить рекламу и звонки</a>
+      </Checkbox>
       <svg><use :href="'/sprite.svg#circle-star-1'" /></svg>
       <svg><use :href="'/sprite.svg#circle-star-3'" /></svg>
     </div>

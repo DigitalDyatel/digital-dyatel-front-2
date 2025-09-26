@@ -68,8 +68,7 @@ interface Slide {
   },
 ])*/
 
-const slides = data
-
+const slides = data.value ? data : ref([])
 
 const activeSlideIndex = ref(0)
 
@@ -171,7 +170,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="sharing-experience">
+  <section class="sharing-experience" :class="{'--invisible': slides.length < 2}">
     <h2>Делимся опытом</h2>
     <p class="sharing-experience__subtitle">
       <span>Аналитика, кейсы, советы и практики по управлению репутацией и маркетингу. </span>
@@ -192,7 +191,7 @@ onUnmounted(() => {
           <Button class="--white --large" @click="onClickButton(i, slide)">{{ slide.button_text }}</Button>
         </div>
       </div>
-      <div class="sharing-experience__slider" :class="{'--invisible': slides.length < 2}">
+      <div class="sharing-experience__slider">
         <div
             v-for="(_, i) in slides"
             class="sharing-experience__slider-point"

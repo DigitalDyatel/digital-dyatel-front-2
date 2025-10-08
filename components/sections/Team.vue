@@ -26,12 +26,6 @@ const cards = ref([
     position: 'Основатель компании',
   },
   {
-    img: '2.png',
-    altImg: '2-alt.png',
-    name: 'Данилов Денис',
-    position: 'Генеральный директор',
-  },
-  {
     img: '3.png',
     altImg: '3-alt.png',
     name: 'Панкова Мария',
@@ -69,7 +63,7 @@ const sliderOptions = {
   arrows: false,
   perMove: 1,
   type: 'loop',
-  gap: 338,
+  gap: 80,
   speed: 1000,
   interval: 2500
 }

@@ -43,9 +43,6 @@ const {
   </div>
   <div class="footer__line --only-mobile">
     <div class="footer__column">
-      <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/offer.pdf">Оферта</a>
-    </div>
-    <div class="footer__column">
       <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/privacy-policy.pdf">Политика конфиденциальности</a>
     </div>
     <div class="footer__column">

@@ -65,8 +65,5 @@ const {
       <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/privacy-policy.pdf">Политика
         конфиденциальности</a>
     </div>
-    <div class="footer__column --center">
-      <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/offer.pdf">Оферта</a>
-    </div>
   </div>
 </template>

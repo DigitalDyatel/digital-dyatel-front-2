@@ -14,6 +14,19 @@
   &.--cookie {
     cursor: default;
 
+    @media (max-width: 767px) {
+      padding: 10px 0 0 0;
+
+      .iziToast-title {
+        text-align: center;
+      }
+
+      .iziToast-buttons {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+
     .iziToast-buttons-child {
       outline: none;
       box-shadow: none;
@@ -25,6 +38,10 @@
       font-weight: var(--font-weight-bold);
       padding: 12px;
 
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+
       &:hover {
         background: var(--color-primary);
       }
@@ -34,10 +51,12 @@
       display: flex;
       align-items: center;
       justify-content: start;
-      margin: 0 0 0 15px;
+      margin: 0 0 0 5px;
+      flex-direction: row;
 
       @media (max-width: 767px) {
         justify-content: center;
+        flex-direction: column;
       }
 
       .iziToast-texts {

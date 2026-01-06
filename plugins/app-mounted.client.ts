@@ -14,9 +14,9 @@ const allowCookies = () => {
         class: 'izi-toast --cookie',
         drag: false,
         progressBar: false,
-        title: 'Мы используем <a target="_blank" href="/docs/cookies.pdf">cookies</a> ',
+        title: `Оставаясь на сайте, Вы даете согласие на обработку файлов cookie, пользовательских данных, собираемых, в том числе в целях обеспечения работы сайта, проведения статистических исследований и обзоров,в соответствии с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a>. Если вы не хотите, чтобы ваши данные обрабатывались, измените настройки браузера или покиньте сайт.`,
         buttons: [
-            ['<button>Хорошо</button>', function (instance, toast) {
+            ['<button>Принимаю</button>', function (instance, toast) {
                 instance.hide({}, toast, 'button')
                 cookie.value = 'true'
             }, true]

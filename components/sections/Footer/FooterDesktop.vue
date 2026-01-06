@@ -68,9 +68,5 @@ const {
     <div class="footer__column --center">
       <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/offer.pdf">Оферта</a>
     </div>
-    <div class="footer__column">
-      <a class="footer__link --secondary --contrast-on-hover" target="_blank" href="/docs/user-agreement.pdf">Пользовательское
-        соглашение</a>
-    </div>
   </div>
 </template>

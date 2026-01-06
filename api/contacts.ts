@@ -6,6 +6,7 @@ export interface FormDataCreate {
     email: string | undefined,
     from_trigger: string | undefined,
     is_agree_to_receive_ads: boolean,
+    is_agree_to_personal_data_processing: boolean,
     files?: FileList | undefined,
     lead_magnet_id?: number
 }
@@ -17,7 +18,8 @@ export const getDefaultFormDataCreate = (fromTrigger: string): FormDataCreate =>
         name: undefined,
         phone: undefined,
         email: undefined,
-        is_agree_to_receive_ads: true,
+        is_agree_to_receive_ads: false,
+        is_agree_to_personal_data_processing: false,
         from_trigger: fromTrigger
     }
 }

@@ -1,7 +1,9 @@
 <script setup lang="ts">
-
+const props = defineProps<{
+  buttonText: string
+}>()
 </script>
 
 <template>
-  <p class="processing-personal-data-agree">Нажимая на кнопку, я соглашаюсь на <a target="_blank" href="/docs/personal-data-processing-policy.pdf">обработку персональных данных</a></p>
+  <p class="processing-personal-data-agree">Нажимая на кнопку «{{ props.buttonText }}», я: </p>
 </template>

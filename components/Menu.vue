@@ -158,6 +158,7 @@ const openFormModal = (fromMobile: boolean) => {
       buttonText: 'Жду звонка',
       fromTrigger: FROM_TRIGGER.CALLBACK,
       yandexMetrikaGoalID: successGoal,
+      withFiles: false,
       onConfirm: () => {
         close()
 
@@ -197,7 +198,7 @@ const onClickGetFreeSERMAudit = () => {
     component: FormModal,
     attrs: {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
-      withFiles: true,
+      withFiles: false,
       fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
       yandexMetrikaGoalID: 'menu-m__get-free-serm-audit__success',
       onConfirm: () => {

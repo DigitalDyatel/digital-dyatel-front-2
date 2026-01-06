@@ -89,6 +89,7 @@ const onClick = (i: number | null, title: string) => {
       title,
       fromTrigger: services.value[i] ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
       yandexMetrikaGoalID: successGoal,
+      withFiles: false,
       onConfirm: () => {
         close()
 

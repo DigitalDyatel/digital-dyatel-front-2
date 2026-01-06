@@ -40,7 +40,7 @@ const onClick = () => {
     component: FormModal,
     attrs: {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
-      withFiles: true,
+      withFiles: false,
       fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
       yandexMetrikaGoalID: 'hero__get-free-serm-audit__success',
       onConfirm: () => {

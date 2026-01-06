@@ -74,6 +74,7 @@ const openFormModal = () => {
       title: 'Получить консультацию прямо сейчас!',
       fromTrigger: FROM_TRIGGER.CASES,
       yandexMetrikaGoalID: 'cases__want__success',
+      withFiles: false,
       onConfirm: () => {
         close()
 

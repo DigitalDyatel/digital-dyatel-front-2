@@ -94,12 +94,13 @@
   }
 
   h2 {
+    text-align: center;
     color: var(--color-white);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semi-bold);
   }
 
-  &__companies {
+  &__clients {
     display: flex;
     margin-top: 32px;
     align-items: center;
@@ -108,6 +109,113 @@
 
     img {
       height: 48px;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    gap: 4px;
+    transition: all .3s var(--default-transition-timing-function);
+
+    @media (max-width: 1349px) {
+      margin-top: 34px;
+    }
+
+    @media (max-width: 1023px) {
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    .btn {
+      transition: all .3s var(--default-transition-timing-function);
+      transform: none;
+      overflow: hidden;
+
+      &:first-child {
+        width: 100%;
+
+        @media (max-width: 1350px) {
+          font-size: var(--font-size-md);
+        }
+
+        @media (max-width: 1023px) {
+          padding: 24px 16px;
+          width: 100%;
+        }
+      }
+
+      &:last-child {
+        @media (max-width: 1023px) {
+          display: none;
+        }
+
+        svg:last-child {
+          position: absolute;
+          transform: translateX(-48px);
+        }
+      }
+
+      svg {
+        transition: all .3s var(--default-transition-timing-function);
+      }
+    }
+
+    &:hover {
+      gap: 7px;
+
+      .btn {
+        transform: scale(101%);
+
+        &:last-child {
+          svg:first-child {
+            transform: translateX(48px);
+          }
+          svg:last-child {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
+
+  &__gift {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+    padding: 32px;
+    border-radius: 36px;
+    background-image: url('/img/hero/gift-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--color-white-contrast);
+
+    > div {
+      width: 50%;
+
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: end;
+      }
+    }
+
+    button {
+      width: 304px;
+    }
+  }
+
+  &__gift-text {
+    font-size: var(--font-size-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    div {
+      &:last-child {
+        margin-top: 32px;
+        font-size: var(--font-size-base);
+      }
     }
   }
 }

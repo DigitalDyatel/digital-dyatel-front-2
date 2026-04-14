@@ -79,6 +79,10 @@
     }
   }
 
+  &.--black {
+    background-color: var(--color-accent-dark);
+  }
+
   &.--type-grey {
     color: var(--color-primary);
     border: 2px solid var(--color-light-grey);

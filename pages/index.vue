@@ -13,22 +13,19 @@ import Cases from '~/components/sections/Cases/index.vue'
 import ContactFormAlt from '~/components/sections/ContactFormAlt.vue'
 import FAQ from '~/components/sections/FAQ.vue'
 import Reviews from '~/components/sections/Reviews.vue'
+import FreeAudit from "~/components/sections/FreeAudit.vue";
 </script>
 
 <template>
   <Hero />
   <WhyManageReputation />
-  <WhenNeedReputation />
+  <FreeAudit />
   <DeepScrollHookIntersection />
   <OurServices />
-  <SolveProblems />
   <OurAchievements />
-  <Team />
   <ContactForm />
   <Cases />
   <Reviews />
-<!--  <TalkAboutUs />-->
-  <SharingExperience />
   <FAQ />
   <ContactFormAlt />
 </template>

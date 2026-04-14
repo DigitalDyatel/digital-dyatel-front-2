@@ -12,6 +12,7 @@ import apiContacts, {
 } from '~/api/contacts'
 import ProcessingPersonalDataAgree from "~/components/shared/form/ProcessingPersonalDataAgree.vue";
 import Checkbox from "~/components/shared/form/Checkbox.vue";
+import FormModal from "~/components/modals/FormModal.vue";
 
 const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
 const formData = ref<FormDataCreate>(getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1))
@@ -111,6 +112,35 @@ const onSubmit = async () => {
   reachGoal('open-form__set-a-lid')
 }
 
+const onClickButton = () => {
+  const { open, close } = useModal({
+    component: FormModal,
+    attrs: {
+      title: 'Получить бесплатный чек-лист',
+      withFiles: false,
+      fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE_HERO,
+      leadMagnetId: 1, // TODO: Хардкод
+      buttonText: 'Получить файл',
+      yandexMetrikaGoalID: null,
+      onConfirm: () => {
+        close()
+
+        const thankYouModal = useModal({
+          component: ThankYouModal,
+          attrs: {
+            title: 'Готово! Файл уже отправлен на вашу почту',
+            content: 'Проверьте входящие и папку «Спам» на всякий случай'
+          }
+        })
+        thankYouModal.open()
+      }
+    },
+  })
+
+  open()
+  return
+}
+
 onMounted(() => {
   interval = setInterval(() => {
     const diff = getDiff(Date.now())
@@ -178,7 +208,7 @@ onUnmounted(() => {
       </div>
       <div>
         <div>Предложение действует {{ timeLeft }}</div>
-        <Button class="--large --white">
+        <Button class="--large --white" @click="onClickButton">
           Получить
         </Button>
       </div>

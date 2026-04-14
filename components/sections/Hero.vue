@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import Button from '~/components/shared/Button.vue'
-import FormModal from '~/components/modals/FormModal.vue'
 import ThankYouModal from '~/components/modals/ThankYouModal.vue'
 import { useModal } from 'vue-final-modal'
 import { FROM_TRIGGER } from '~/constants'
+import Input from "~/components/shared/form/Input.vue";
+import InputPhone from "~/components/shared/form/InputPhone.vue";
+import apiContacts, {
+  type FormDataCreate,
+  type FormDataCreateErrors,
+  getDefaultFormDataCreate
+} from '~/api/contacts'
+import ProcessingPersonalDataAgree from "~/components/shared/form/ProcessingPersonalDataAgree.vue";
+import Checkbox from "~/components/shared/form/Checkbox.vue";
 
+const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
+const formData = ref<FormDataCreate>(getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1))
 const { reachGoal } = useYandexMetrika()
 
 const tags = ref([
@@ -48,25 +58,20 @@ const clients = [
   },
 ]
 
-const onClick = () => {
-  const { open, close } = useModal({
-    component: FormModal,
-    attrs: {
-      title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
-      withFiles: false,
-      fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
-      yandexMetrikaGoalID: 'hero__get-free-serm-audit__success',
-      onConfirm: () => {
-        close()
+const onSubmit = async () => {
 
-        const thankYouModal = useModal({component: ThankYouModal})
-        thankYouModal.open()
-      }
-    },
-  })
+  try {
+    await apiContacts().create(formData.value)
+  } catch (error) {
+    errors.value = error
+    return
+  }
 
-  open()
-  reachGoal('hero__get-free-serm-audit__open-form')
+  errors.value = {} as FormDataCreateErrors
+  formData.value = getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1)
+
+  await (useModal({component: ThankYouModal})).open()
+  reachGoal('open-form__set-a-lid')
 }
 </script>
 
@@ -94,9 +99,20 @@ const onClick = () => {
         </div>
       </div>
       <div class="hero__right">
-        <div class="hero__form">
+        <form class="hero__form form" autocomplete="off">
           <h2>Аудит репутации за 24 часа: найдем слабые места и точки роста</h2>
-        </div>
+          <Input class="--light" :errors="errors.name" v-model="formData.name" placeholder="Имя" />
+          <InputPhone class="--light" :errors="errors.phone" v-model="formData.phone" placeholder="Номер телефона" required />
+          <Input class="--light" :errors="errors.email" v-model="formData.email" placeholder="Email" type="email" required />
+          <ProcessingPersonalDataAgree class="--light" button-text="Получить бесплатный SERM аудит" />
+          <Checkbox class="--light" :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
+            Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
+          </Checkbox>
+          <Checkbox class="--light" :errors="errors.is_agree_to_receive_ads" v-model="formData.is_agree_to_receive_ads">
+            Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
+          </Checkbox>
+          <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
+        </form>
       </div>
     </div>
   </section>

@@ -2,6 +2,10 @@
   font-size: var(--font-size-base);
   color: var(--color-secondary);
 
+  &.--light {
+    color: var(--color-white);
+  }
+
   @media (max-width: 767px) {
     font-size: var(--font-size-xs);
   }

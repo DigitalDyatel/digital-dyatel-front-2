@@ -2,11 +2,21 @@
   margin: 100px auto 0 auto;
   max-width: var(--max-width);
   padding: 0 48px;
+  
+  @media (max-width: 1023px) {
+    margin: 80px auto 0 auto;
+    padding: 0 12px;
+  }
 
   &__container {
     border-radius: 32px;
     display: flex;
     gap: 24px;
+    flex-direction: row;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+    }
   }
 
   &__left {
@@ -14,6 +24,12 @@
     border-radius: 48px;
     background-color: var(--color-white);
     padding: 48px;
+
+    @media (max-width: 1023px) {
+      border-radius: 24px;
+      width: 100%;
+      padding: 16px;
+    }
   }
 
   &__right {
@@ -24,6 +40,12 @@
     border-radius: 48px;
     padding: 24px 12px;
     display: flex;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      border-radius: 24px;
+      padding: 8px;
+    }
   }
 
   h1 {
@@ -31,6 +53,11 @@
     color: var(--color-primary);
     font-size: var(--font-size-6xl);
     font-weight: var(--font-weight-semi-bold);
+
+    @media (max-width: 1023px) {
+      font-size: var(--font-size-3xl);
+      margin-top: 16px;
+    }
 
     span {
       display: block;
@@ -46,6 +73,11 @@
     margin-top: 32px;
     overflow: hidden;
 
+    @media (max-width: 1023px) {
+      margin-top: 24px;
+      flex-wrap: nowrap;
+    }
+
     div {
       background: var(--color-light-grey);
       border-radius: 12px;
@@ -54,6 +86,11 @@
       font-size: var(--font-size-md);
       padding: 16px;
       white-space: nowrap;
+
+      @media (max-width: 1023px) {
+        font-size: var(--font-size-sm);
+        padding: 13px;
+      }
 
       &.--accent {
         background: var(--color-tertiary);
@@ -71,14 +108,22 @@
     border-radius: 12px;
     gap: 16px;
 
-    div:first-child {
+    img:first-child {
       width: 64px;
       aspect-ratio: 1/1;
+
+      @media (max-width: 1023px) {
+        width: 40px;
+      }
     }
 
     div:last-child {
       font-size: var(--font-size-lg);
       color: var(--color-primary);
+
+      @media (max-width: 1023px) {
+        font-size: var(--font-size-sm);
+      }
     }
   }
 
@@ -91,6 +136,11 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @media (max-width: 1023px) {
+      padding: 32px 12px 12px 12px;
+      border-radius: 24px;
+    }
   }
 
   h2 {
@@ -98,6 +148,10 @@
     color: var(--color-white);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semi-bold);
+
+    @media (max-width: 1023px) {
+      font-size: var(--font-size-base);
+    }
   }
 
   &__clients {
@@ -105,10 +159,21 @@
     margin-top: 32px;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    row-gap: 16px;
+    column-gap: 16px;
+
+    @media (max-width: 1023px) {
+      margin-top: 16px;
+      row-gap: 4px;
+      column-gap: 4px;
+    }
 
     img {
       height: 48px;
+
+      @media (max-width: 1023px) {
+        height: 36px;
+      }
     }
   }
 
@@ -141,6 +206,7 @@
         @media (max-width: 1023px) {
           padding: 24px 16px;
           width: 100%;
+          font-size: var(--font-size-sm);
         }
       }
 
@@ -184,19 +250,43 @@
     margin-top: 16px;
     padding: 32px;
     border-radius: 36px;
-    background-image: url('/img/hero/gift-background.jpg');
+    background-image: url('/img/hero/gift-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: var(--color-white-contrast);
+    flex-direction: row;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      border-radius: 24px;
+      background-image: url('/img/hero/gift-bg-mobile.jpg');
+    }
 
     > div {
       width: 50%;
+
+      @media (max-width: 1023px) {
+        width: 100%;
+      }
 
       &:last-child {
         display: flex;
         flex-direction: column;
         gap: 16px;
         align-items: end;
+
+        @media (max-width: 1023px) {
+          align-items: start;
+          margin-top: 32px;
+          color: var(--color-error);
+        }
+
+        > .btn {
+          @media (max-width: 1023px) {
+            width: 100%;
+            margin-bottom: 100px;
+          }
+        }
       }
     }
 

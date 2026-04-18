@@ -42,6 +42,22 @@ const getDiff = (nowMs: number) => {
   return targetDate.getTime() - nowMs
 }
 
+const getDayWord = (n: number) => {
+  n = Math.abs(n) % 100;
+  const lastDigit = n % 10;
+
+  if (n > 10 && n < 20) {
+    return 'дней';
+  }
+  if (lastDigit > 1 && lastDigit < 5) {
+    return 'дня';
+  }
+  if (lastDigit === 1) {
+    return 'день';
+  }
+  return 'дней';
+}
+
 const format = (diff: number) => {
   if (diff <= 0) return 'Предложение недоступно'
 
@@ -50,7 +66,7 @@ const format = (diff: number) => {
   const minutes = Math.floor((diff / (1000 * 60)) % 60)
   const seconds = Math.floor((diff / 1000) % 60)
 
-  return `${days} дней ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  return `${days} ${getDayWord(days)} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
 timeLeft.value = format(getDiff(serverNow.value))

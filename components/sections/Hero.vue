@@ -23,6 +23,15 @@ let interval: ReturnType<typeof setInterval> | null = null
 const serverNow = useState<number>('server-now', () => Date.now())
 const timeLeft = ref('')
 
+const tagsTemplateRef = useTemplateRef('tagsTemplateRef')
+
+let isTouching = false;
+let startX = 0;
+let scrollStartX = 0;
+let lastX = 0;
+let velocity = 0;
+let lastTime = 0;
+
 const getEndOfWeek = (baseTime: number) => {
   const now = new Date(baseTime)
 
@@ -157,15 +166,81 @@ const onClickButton = () => {
   return
 }
 
+const touchStartEventListener = e => {
+  if (e.touches.length !== 1) return;
+
+  isTouching = true;
+  startX = e.touches[0].pageX;
+  scrollStartX = tagsTemplateRef.value.scrollLeft;
+  lastX = startX;
+  lastTime = Date.now();
+  velocity = 0;
+}
+
+const touchMoveEventListener = e => {
+  if (!isTouching || e.touches.length !== 1) return;
+
+  e.preventDefault()
+
+  const currentX = e.touches[0].pageX;
+  const dx = currentX - startX;
+  tagsTemplateRef.value.scrollLeft = scrollStartX - dx;
+
+  const now = Date.now();
+  const deltaX = currentX - lastX;
+  const deltaTime = now - lastTime;
+  velocity = (deltaX / deltaTime) * 16;
+
+  lastX = currentX;
+  lastTime = now;
+}
+
+const touchEndEventListener = () => {
+  if (!isTouching) return;
+  isTouching = false;
+
+  const friction = 0.95;
+  function inertiaScroll() {
+    velocity *= friction;
+    tagsTemplateRef.value.scrollLeft -= velocity;
+
+    if (Math.abs(velocity) > 0.5) {
+      requestAnimationFrame(inertiaScroll);
+    }
+  }
+
+  if (Math.abs(velocity) > 1) {
+    requestAnimationFrame(inertiaScroll);
+  }
+}
+
 onMounted(() => {
   interval = setInterval(() => {
     const diff = getDiff(Date.now())
     timeLeft.value = format(diff)
   }, 1000)
+
+  if (window.innerWidth >= 1024) {
+    return
+  }
+
+  tagsTemplateRef.value.addEventListener('touchstart', touchStartEventListener, { passive: true });
+  tagsTemplateRef.value.addEventListener('touchmove', touchMoveEventListener, { passive: false })
+  tagsTemplateRef.value.addEventListener('touchend', touchEndEventListener)
 })
 
 onUnmounted(() => {
-  if (interval) clearInterval(interval)
+  if (interval) {
+    clearInterval(interval)
+  }
+
+  if (window.innerWidth >= 1024) {
+    return
+  }
+
+  tagsTemplateRef.value.removeEventListener('touchstart', touchStartEventListener);
+  tagsTemplateRef.value.removeEventListener('touchmove', touchMoveEventListener)
+  tagsTemplateRef.value.removeEventListener('touchend', touchEndEventListener)
 })
 </script>
 
@@ -186,7 +261,7 @@ onUnmounted(() => {
           <div>Работаем с:</div>
           <div v-for="client in clients"><img :src="'/img/hero/' + client.src" :alt="client.alt"></div>
         </div>
-        <div class="hero__tags">
+        <div class="hero__tags" ref="tagsTemplateRef">
           <div v-for="tag in tags" :class="tag.class">
             {{ tag.title }}
           </div>

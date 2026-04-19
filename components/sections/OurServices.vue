@@ -37,6 +37,12 @@ interface Service {
 
 const services = ref<Service[]>([
   {
+    title: 'Работа с отзывами',
+    title_short: 'Работа с отзывами',
+    description: 'Работаем с отзывами на ключевых площадках: Яндекс, Google, 2GIS, Otzovik, IRecommend и др. Выстраиваем системную работу с обратной связью: отвечаем на отзывы от лица бренда, стимулируем реальные отзывы клиентов, снижаем долю негатива и формируем стабильный рейтинг на площадках',
+    price: 'от 65 000 ₽/мес'
+  },
+  {
     title: 'Управление репутацией в интернете',
     title_short: 'ORM',
     subtitle: '(ORM или Object Relational Mapping)',
@@ -181,7 +187,7 @@ onMounted(async () => {
                 <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
               </div>
               <div class="our-services__buttons">
-                <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
+                <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Подсчитать под мой кейс</Button>
                 <!--<Button class="--large --quaternary">Подробнее</Button>-->
               </div>
             </div>
@@ -204,7 +210,7 @@ onMounted(async () => {
             <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
             <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
           </p>
-          <Button class="--large --tertiary" @click="onClick(null, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Получить предложение</Button>
+          <Button class="--large --tertiary" @click="onClick(null, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Разобрать мою задачу</Button>
         </div>
         <div>
           <img src="/img/our-services-logo.png" alt="logo-alt">

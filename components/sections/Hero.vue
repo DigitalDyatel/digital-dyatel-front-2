@@ -75,7 +75,9 @@ const format = (diff: number) => {
   const minutes = Math.floor((diff / (1000 * 60)) % 60)
   const seconds = Math.floor((diff / 1000) % 60)
 
-  return `${days} ${getDayWord(days)} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  const daysString = days === 0 ? '' : days + getDayWord(days)
+
+  return `${daysString} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
 timeLeft.value = format(getDiff(serverNow.value))
@@ -141,11 +143,10 @@ const onClickButton = () => {
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
-      title: 'Получить бесплатный чек-лист',
+      title: 'Получите бесплатный разбор и рекомендации по улучшению имиджа в интернете',
       withFiles: false,
       fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE_HERO,
-      leadMagnetId: 1, // TODO: Хардкод
-      buttonText: 'Получить файл',
+      buttonText: 'Получить разбор',
       yandexMetrikaGoalID: null,
       onConfirm: () => {
         close()
@@ -275,14 +276,14 @@ onUnmounted(() => {
           <Input class="--light" :errors="errors.email" v-model="formData.email" placeholder="Email" type="email" required />
           <div class="hero__button-container" @click.prevent="onSubmit">
             <Button class="--large --no-wrap --black">
-              Получить бесплатный SERM аудит
+              Записаться на разбор
             </Button>
             <Button class="--large --black">
               <svg><use :href="'/sprite.svg#login'" /></svg>
               <svg><use :href="'/sprite.svg#login'" /></svg>
             </Button>
           </div>
-          <ProcessingPersonalDataAgree class="--light" button-text="Получить бесплатный SERM аудит" />
+          <ProcessingPersonalDataAgree class="--light" button-text="Записаться на разбор" />
           <Checkbox class="--light" :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
             Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
           </Checkbox>
@@ -295,12 +296,12 @@ onUnmounted(() => {
     <div class="hero__gift">
       <div class="hero__gift-text">
         <div>Выдача под контролем: как вытеснить негатив за 5 шагов</div>
-        <div>Показываем, как реально управлять репутацией, а не «ждать отзывов»</div>
+        <div>После разбора отправим чек-лист с шагами, которые можно внедрить сразу</div>
       </div>
       <div>
         <div>Предложение действует {{ timeLeft }}</div>
         <Button class="--large --white" @click="onClickButton">
-          Получить
+          Получить разбор
         </Button>
       </div>
     </div>

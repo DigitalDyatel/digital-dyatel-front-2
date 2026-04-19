@@ -22,6 +22,7 @@ export const useFooter = () => {
                 buttonText: 'Жду звонка',
                 fromTrigger: FROM_TRIGGER.CALLBACK,
                 yandexMetrikaGoalID: 'footer__button-call-me__success',
+                withFiles: false,
                 onConfirm: () => {
                     void close()
 

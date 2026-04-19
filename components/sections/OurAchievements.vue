@@ -4,16 +4,16 @@ import Link from '~/components/shared/Link.vue'
 
 const achievements = ref([
   {
+    left: 'Топ-5',
+    right: 'Входим в топ 5 SERM агенств СНГ'
+  },
+  {
     left: '20+',
     right: 'Вывод 20+ брендов в ТОП-10 поисковой выдачи'
   },
   {
     left: '200',
     right: 'Устранение более 200 единиц негатива из поисковых систем'
-  },
-  {
-    left: 'Топ-3',
-    right: 'Топ-3 среди агентств по управлению репутацией в области образования'
   },
   {
     left: '4.9 из 5',
@@ -28,7 +28,7 @@ const achievements = ref([
       <TagWithLabel class="--alternative-rotate" icon="award">#победители</TagWithLabel>
       <h2>Наши достижения</h2>
       <div class="our-achievements__achievements">
-        <div class="our-achievements__achievement" v-for="(achievement, i) in achievements" v-gsap.whenVisible.once.from='{ autoAlpha: 0, start: "top 80%", end: "bottom 10%"}'>
+        <div class="our-achievements__achievement" v-for="(achievement, i) in achievements" v-gsap.whenVisible.once.from='{ autoAlpha: 0, start: "top 88%", end: "bottom 10%"}'>
           <div class="our-achievements__achievement-group">
             <div class="our-achievements__achievement-badge">
               <span>{{ i + 1 }}</span>

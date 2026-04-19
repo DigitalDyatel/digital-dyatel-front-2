@@ -37,16 +37,16 @@ const onSubmit = async () => {
 <template>
   <section class="contact-form-alt">
     <div class="contact-form-alt__container">
-      <div class="contact-form-alt__title">Остались вопросы?</div>
+      <div class="contact-form-alt__title">Обсудим вашу задачу и предложим решение</div>
       <form>
         <div class="contact-form-alt__group">
           <Input v-model="formData.name" :errors="errors.name" placeholder="Имя"/>
           <InputPhone v-model="formData.phone" :errors="errors.phone" placeholder="Номер телефона" required/>
           <Input v-model="formData.email" :errors="errors.email" placeholder="Email" required/>
         </div>
-        <Button class="contact-form-alt__submit-button --large" @click.prevent="onSubmit">Оставить заявку</Button>
+        <Button class="contact-form-alt__submit-button --large" @click.prevent="onSubmit">Обсудить мою ситуацию</Button>
       </form>
-      <ProcessingPersonalDataAgree button-text="Оставить заявку" />
+      <ProcessingPersonalDataAgree button-text="Обсудить мою ситуацию" />
       <Checkbox :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
         Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
       </Checkbox>

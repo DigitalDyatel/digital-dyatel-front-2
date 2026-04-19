@@ -274,17 +274,26 @@
         flex-direction: column;
         gap: 16px;
         align-items: end;
+        color: var(--color-error);
 
         @media (max-width: 1023px) {
           align-items: start;
           margin-top: 32px;
-          color: var(--color-error);
         }
 
         > .btn {
           @media (max-width: 1023px) {
             width: 100%;
             margin-bottom: 100px;
+          }
+        }
+
+        > div:first-child {
+          width: 304px;
+          text-align: center;
+
+          @media (max-width: 1023px) {
+            text-align: left;
           }
         }
       }

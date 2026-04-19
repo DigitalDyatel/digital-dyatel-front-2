@@ -71,9 +71,10 @@ const openFormModal = () => {
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
-      title: 'Получить консультацию прямо сейчас!',
+      title: 'Получите бесплатный разбор и рекомендации по улучшению имиджа в интернете',
       fromTrigger: FROM_TRIGGER.CASES,
       yandexMetrikaGoalID: 'cases__want__success',
+      buttonText: 'Получить разбор',
       withFiles: false,
       onConfirm: () => {
         close()

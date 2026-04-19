@@ -41,13 +41,11 @@ const onSubmit = async () => {
     <div class="contact-form__container">
       <div>
         <p class="contact-form__title">
-          <span>Оставьте заявку — </span>
-          <span>мы свяжемся с вами</span>
+          <span>Разберём вашу репутацию и покажем слабые места</span>
         </p>
         <p class="contact-form__subtitle">
-          <span>Расскажем, как работать с репутацией,</span>
-          <span>покажем наши успешные кейсы</span>
-          <span>и предложим индивидуальное решение</span>
+          <span>Покажем, где вы теряете клиентов, и подскажем,</span>
+          <span>что можно исправить уже в ближайшие недели</span>
         </p>
       </div>
       <form autocomplete="off">
@@ -56,8 +54,8 @@ const onSubmit = async () => {
           <InputPhone :errors="errors.phone" v-model="formData.phone" placeholder="Номер телефона" required />
           <Input :errors="errors.email" v-model="formData.email" placeholder="Email" type="email" required />
         </div>
-        <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
-        <ProcessingPersonalDataAgree button-text="Заказать консультацию" />
+        <Button class="--large" type="submit" @click.prevent="onSubmit">Записаться на разбор</Button>
+        <ProcessingPersonalDataAgree button-text="Записаться на разбор" />
         <Checkbox :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
           Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
         </Checkbox>

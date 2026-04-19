@@ -45,10 +45,10 @@ const getEndOfWeek = (baseTime: number) => {
   return end
 }
 
-const targetDate = getEndOfWeek(serverNow.value)
+const targetDate = computed(() => getEndOfWeek(serverNow.value))
 
 const getDiff = (nowMs: number) => {
-  return targetDate.getTime() - nowMs
+  return targetDate.value.getTime() - nowMs
 }
 
 const getDayWord = (n: number) => {
@@ -216,9 +216,11 @@ const touchEndEventListener = () => {
 }
 
 onMounted(() => {
+  const start = Date.now()
+
   interval = setInterval(() => {
-    const diff = getDiff(Date.now())
-    timeLeft.value = format(diff)
+    const now = serverNow.value + (Date.now() - start)
+    timeLeft.value = format(getDiff(now))
   }, 1000)
 
   if (window.innerWidth >= 1024) {
@@ -260,10 +262,10 @@ onUnmounted(() => {
         </h1>
         <div class="hero__clients">
           <div>Работаем с:</div>
-          <div v-for="client in clients"><img :src="'/img/hero/' + client.src" :alt="client.alt"></div>
+          <div v-for="(client, i) in clients" :key="i"><img :src="'/img/hero/' + client.src" :alt="client.alt"></div>
         </div>
         <div class="hero__tags" ref="tagsTemplateRef">
-          <div v-for="tag in tags" :class="tag.class">
+          <div v-for="(tag, i) in tags" :key="i" :class="tag.class">
             {{ tag.title }}
           </div>
         </div>

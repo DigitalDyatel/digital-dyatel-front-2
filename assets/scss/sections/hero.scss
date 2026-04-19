@@ -317,4 +317,13 @@
       }
     }
   }
+
+  &__gift-timer {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+
+    &.--mounted {
+      opacity: 1;
+    }
+  }
 }

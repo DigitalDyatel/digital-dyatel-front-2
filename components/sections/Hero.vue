@@ -32,6 +32,8 @@ let lastX = 0;
 let velocity = 0;
 let lastTime = 0;
 
+const isMounted = ref(false)
+
 const getEndOfWeek = (baseTime: number) => {
   const now = new Date(baseTime)
 
@@ -79,8 +81,6 @@ const format = (diff: number) => {
 
   return `${daysString} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
-
-timeLeft.value = format(getDiff(serverNow.value))
 
 const tags = ref([
     {
@@ -219,6 +219,8 @@ onMounted(() => {
   interval = setInterval(() => {
     const diff = getDiff(Date.now())
     timeLeft.value = format(diff)
+
+    isMounted.value = true
   }, 1000)
 
   if (window.innerWidth >= 1024) {
@@ -299,7 +301,7 @@ onUnmounted(() => {
         <div>После разбора отправим чек-лист с шагами, которые можно внедрить сразу</div>
       </div>
       <div>
-        <div>Предложение действует {{ timeLeft }}</div>
+        <div class="hero__gift-timer" :class="{'--mounted': isMounted}">Предложение действует {{ timeLeft }}</div>
         <Button class="--large --white" @click="onClickButton">
           Получить разбор
         </Button>

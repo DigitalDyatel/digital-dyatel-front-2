@@ -49,11 +49,6 @@ const menuItems = ref<MenuItem[]>([
     yandexMetrikaGoal: 'nav__about-us'
   },
   {
-    label: 'Команда',
-    scrollSelector: '.team',
-    yandexMetrikaGoal: 'nav__team'
-  },
-  {
     label: 'Кейсы',
     class: '--cases',
     scrollSelector: '.cases',

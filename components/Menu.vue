@@ -154,6 +154,7 @@ const openFormModal = (fromMobile: boolean) => {
       fromTrigger: FROM_TRIGGER.CALLBACK,
       yandexMetrikaGoalID: successGoal,
       withFiles: false,
+      withEmail: false,
       onConfirm: () => {
         close()
 
@@ -322,7 +323,11 @@ onUnmounted(() => {
                 <div>{{ phone.description }}</div>
               </div>
             </div>
-            <Button @click="openFormModal(true)">Обратный звонок</Button>
+            <div class="menu-mobile__contact-us-social-group">
+              <button class="btn --tertiary"><svg><use href="/sprite.svg#telegram"></use></svg></button>
+              <button class="btn --tertiary"><svg><use href="/sprite.svg#whatsapp"></use></svg></button>
+            </div>
+            <Button class="--large" @click="openFormModal(true)">Обратный звонок</Button>
           </div>
         </transition>
         <transition name="menu-contact-us-fade-in">

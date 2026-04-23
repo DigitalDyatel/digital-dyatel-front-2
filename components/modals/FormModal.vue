@@ -22,10 +22,12 @@ const props = withDefaults(defineProps<{
   withFiles?: boolean,
   leadMagnetId?: number,
   data?: any,
-  yandexMetrikaGoalID?: string
+  yandexMetrikaGoalID?: string,
+  withEmail?: boolean,
 }>(), {
   buttonText: 'Оставить заявку',
-  withFiles: true
+  withFiles: true,
+  withEmail: true
 })
 
 const emit = defineEmits<{
@@ -47,6 +49,10 @@ if (props.withFiles) {
 
 if (props.leadMagnetId) {
   formDataFields['lead_magnet_id'] = props.leadMagnetId
+}
+
+if (!(props.withEmail)) {
+  formDataFields['only_phone'] = 1
 }
 
 const formData = ref(formDataFields)
@@ -74,7 +80,7 @@ const onSubmitForm = async () => {
       <Input :errors="errors.name" class="--light" placeholder="Имя" v-model="formData.name"/>
       <div class="form__group">
         <InputPhone :errors="errors.phone" class="--light" placeholder="Номер телефона" v-model="formData.phone" required/>
-        <Input :errors="errors.email" class="--light" placeholder="Email" v-model="formData.email" required/>
+        <Input v-if="withEmail" :errors="errors.email" class="--light" placeholder="Email" v-model="formData.email" required/>
       </div>
       <FileInput
           class="--light"

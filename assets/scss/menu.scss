@@ -272,7 +272,6 @@
         margin-top: 40px;
         width: 100%;
         line-height: 1;
-        padding: 17px 0;
       }
     }
 
@@ -400,5 +399,10 @@
       font-weight: var(--font-weight-normal);
       color: var(--color-tertiary);
     }
+  }
+
+  &__contact-us-social-group {
+    display: inline-flex;
+    gap: 8px;
   }
 }

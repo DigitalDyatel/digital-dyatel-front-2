@@ -79,7 +79,7 @@ const onClickService = (i: number) => {
   activeServiceIndex.value = i
 }
 
-const onClick = (i: number | null, title: string) => {
+const onClick = (i: number | null, title: string, buttonText: string) => {
 
   const [openFormGoal, successGoal] = yandexMetrikaGoalsMapper[i]
 
@@ -96,6 +96,7 @@ const onClick = (i: number | null, title: string) => {
       fromTrigger: services.value[i] ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
       yandexMetrikaGoalID: successGoal,
       withFiles: false,
+      buttonText,
       onConfirm: () => {
         close()
 
@@ -167,7 +168,7 @@ onMounted(async () => {
               <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
             </div>
             <div class="our-services__service-mobile-buttons">
-              <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Оставьте заявку</Button>
+              <Button class="--large" @click="onClick(i, 'Рассчитаем стоимость и предложим план работ под вашу задачу', 'Оставить заявку на расчет')">Рассчитать под мой кейс</Button>
               <!--<Button class="--large --quaternary">Подробнее</Button>-->
             </div>
           </div>
@@ -187,7 +188,7 @@ onMounted(async () => {
                 <div>на сайте приведены средние цены, конечная стоимость рассчитывается для каждого проекта индивидуально</div>
               </div>
               <div class="our-services__buttons">
-                <Button class="--large" @click="onClick(i, 'Оставьте заявку — подключимся к вашей задаче и предложим план действий')">Подсчитать под мой кейс</Button>
+                <Button class="--large" @click="onClick(i, 'Рассчитаем стоимость и предложим план работ под вашу задачу', 'Оставить заявку на расчет')">Рассчитать под мой кейс</Button>
                 <!--<Button class="--large --quaternary">Подробнее</Button>-->
               </div>
             </div>
@@ -210,7 +211,7 @@ onMounted(async () => {
             <span>Мы можем сформировать особый набор услуг по продвижению под ваши</span>
             <span>запросы и пожелания. Вам нужно лишь оставить свои контакты в форме</span>
           </p>
-          <Button class="--large --tertiary" @click="onClick(null, 'Оставьте заявку, свяжемся и предложим решение под вашу задачу')">Разобрать мою задачу</Button>
+          <Button class="--large --tertiary" @click="onClick(null, 'Разберем вашу задачу и предложим конкретное решение под вашу ситуацию', 'Получить решение')">Разобрать мою задачу</Button>
         </div>
         <div>
           <img src="/img/our-services-logo.png" alt="logo-alt">

@@ -188,35 +188,6 @@ const scrollEventListener = (e) => {
   }
 }
 
-const onClickGetFreeSERMAudit = () => {
-  const { open, close } = useModal({
-    component: FormModal,
-    attrs: {
-      title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
-      withFiles: false,
-      fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
-      yandexMetrikaGoalID: 'menu-m__get-free-serm-audit__success',
-      onConfirm: () => {
-        close()
-
-        const thankYouModal = useModal({
-          component: ThankYouModal,
-          attrs: {
-            onClose: () => {
-              thankYouModal.close()
-              isBurgerMenuOpen.value = false
-            }
-          }
-        })
-        thankYouModal.open()
-      }
-    },
-  })
-
-  open()
-  reachGoal('menu-m__get-free-serm-audit__open-form')
-}
-
 const onClickMobileLogo = () => {
 
   if (isBurgerMenuOpen.value || contactUsIsOpen.value) {
@@ -369,7 +340,6 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-            <Button @click="onClickGetFreeSERMAudit">Получить бесплатный SERM аудит</Button>
             <div class="menu-mobile__phones">
               <div class="menu-mobile__phone" @click="clickOnPhone(phone)" v-for="phone in config.public.phones">
                 <div>{{ phone.phone }}</div>

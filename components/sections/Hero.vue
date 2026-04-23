@@ -143,10 +143,10 @@ const onClickButton = () => {
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
-      title: 'Получите бесплатный разбор и рекомендации по улучшению имиджа в интернете',
+      title: 'Запишитесь на разбор — получите план действий по улучшению репутации',
       withFiles: false,
       fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE_HERO,
-      buttonText: 'Получить разбор',
+      buttonText: 'Записаться на разбор',
       yandexMetrikaGoalID: null,
       onConfirm: () => {
         close()
@@ -272,13 +272,13 @@ onUnmounted(() => {
       </div>
       <div class="hero__right">
         <form class="hero__form form" autocomplete="off">
-          <h2>Аудит репутации за 24 часа: найдем слабые места и точки роста</h2>
+          <h2>Бесплатный аудит репутации за 24 часа: найдем слабые места и точки роста</h2>
           <Input class="--light" :errors="errors.name" v-model="formData.name" placeholder="Имя" />
           <InputPhone class="--light" :errors="errors.phone" v-model="formData.phone" placeholder="Номер телефона" required />
           <Input class="--light" :errors="errors.email" v-model="formData.email" placeholder="Email" type="email" required />
           <div class="hero__button-container" @click.prevent="onSubmit">
             <Button class="--large --no-wrap --black">
-              Записаться на разбор
+              Записаться на аудит репутации
             </Button>
             <Button class="--large --black">
               <svg><use :href="'/sprite.svg#login'" /></svg>
@@ -287,23 +287,23 @@ onUnmounted(() => {
           </div>
           <ProcessingPersonalDataAgree class="--light" button-text="Записаться на разбор" />
           <Checkbox class="--light" :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
-            Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
+            Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">согласие на обработку персональных данных</a>
           </Checkbox>
           <Checkbox class="--light" :errors="errors.is_agree_to_receive_ads" v-model="formData.is_agree_to_receive_ads">
-            Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
+            Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
           </Checkbox>
         </form>
       </div>
     </div>
     <div class="hero__gift">
       <div class="hero__gift-text">
-        <div>Выдача под контролем: как вытеснить негатив за 5 шагов</div>
-        <div>После разбора отправим чек-лист с шагами, которые можно внедрить сразу</div>
+        <div>«Выдача под контролем: как вытеснить негатив за 5 шагов»</div>
+        <div>После разбора репутации отправим чек-лист с шагами, которые можно внедрить сразу</div>
       </div>
       <div>
         <div class="hero__gift-timer" :class="{'--mounted': isMounted}">Предложение действует {{ timeLeft }}</div>
         <Button class="--large --white" @click="onClickButton">
-          Получить разбор
+          Записаться на разбор
         </Button>
       </div>
     </div>

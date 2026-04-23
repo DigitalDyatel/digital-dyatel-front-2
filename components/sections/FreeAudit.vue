@@ -70,10 +70,10 @@ const onClickButton = () => {
   const { open, close } = useModal({
     component: FormModal,
     attrs: {
-      title: 'Бесплатный аудит за 24 часа',
+      title: 'Бесплатный аудит репутации за 24 часа: найдем слабые места и точки роста',
       withFiles: false,
       fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE_HERO,
-      buttonText: 'Записаться на разбор',
+      buttonText: 'Записаться на аудит репутации',
       yandexMetrikaGoalID: null,
       onConfirm: () => {
         close()
@@ -161,7 +161,7 @@ const onClickButton = () => {
             <li>Пошаговый план работ на 1-3 месяца с приоритетами</li>
           </ul>
         </div>
-        <Button class="--large" type="submit" @click="onClickButton">Записаться на разбор</Button>
+        <Button class="--large" type="submit" @click="onClickButton">Записаться на аудит репутации</Button>
       </div>
     </div>
   </section>

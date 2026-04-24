@@ -28,11 +28,25 @@ const advantages = [
 ]
 
 const tags = ref([
-    'ORM',
-    'SERM',
-    'Репутация с нуля',
-    'Мониторинг',
-    'Создание позитивного контента'
+  {
+    title: 'Работа с отзывами',
+    class: '--accent'
+  },
+  {
+    title: 'ORM',
+  },
+  {
+    title: 'SERM'
+  },
+  {
+    title: 'Репутация с нуля'
+  },
+  {
+    title: 'Мониторинг'
+  },
+  {
+    title: 'Создание позитивного контента'
+  }
 ])
 
 const onClick = () => {
@@ -153,8 +167,8 @@ onUnmounted(() => {
         <div class="hero__tags-container">
           <div class="hero__tags-overlay" :class="{'--hidden': isMobileTagsOverlayHidden}"/>
           <div class="hero__tags" ref="tagsTemplateRef">
-            <div v-for="tag in tags">
-              {{ tag }}
+            <div v-for="tag in tags" :class="tag.class">
+              {{ tag.title }}
             </div>
           </div>
         </div>

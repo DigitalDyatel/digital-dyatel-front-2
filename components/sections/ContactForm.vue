@@ -59,10 +59,10 @@ const onSubmit = async () => {
         <Button class="--large" type="submit" @click.prevent="onSubmit">Заказать консультацию</Button>
         <ProcessingPersonalDataAgree button-text="Заказать консультацию" />
         <Checkbox :errors="errors.is_agree_to_personal_data_processing" v-model="formData.is_agree_to_personal_data_processing">
-          Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
+          Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">согласие на обработку персональных данных</a>
         </Checkbox>
         <Checkbox :errors="errors.is_agree_to_receive_ads" v-model="formData.is_agree_to_receive_ads">
-          Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
+          Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
         </Checkbox>
       </form>
     </div>

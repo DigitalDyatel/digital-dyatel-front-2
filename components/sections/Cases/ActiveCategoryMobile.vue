@@ -76,7 +76,7 @@ watch(
           </div>
         </swiper-slide>
       </swiper-container>
-      <div class="cases__cases-pagination">
+      <div v-if="categories[activeCategoryIndex].cases.length > 1" class="cases__cases-pagination">
         <div @click="onClickPrevCase" :class="{'--disabled': activeCaseIndex === 0}"><svg><use :href="'/sprite.svg#chevron-left'" /></svg></div>
         <div @click="onClickNextCase" :class="{'--disabled': activeCaseIndex === categories[activeCategoryIndex].cases.length - 1}"><svg><use :href="'/sprite.svg#chevron-right'" /></svg></div>
       </div>

@@ -103,6 +103,11 @@
       font-size: var(--font-size-md);
       padding: 16px;
 
+      &.--accent {
+        background: var(--color-tertiary);
+        color: var(--color-white-contrast);
+      }
+
       @media (max-width: 1349px) {
         font-size: var(--font-size-sm);
         padding: 14px;

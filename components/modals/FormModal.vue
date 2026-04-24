@@ -22,10 +22,12 @@ const props = withDefaults(defineProps<{
   withFiles?: boolean,
   leadMagnetId?: number,
   data?: any,
-  yandexMetrikaGoalID?: string
+  yandexMetrikaGoalID?: string,
+  withEmail?: boolean,
 }>(), {
   buttonText: 'Оставить заявку',
-  withFiles: true
+  withFiles: true,
+  withEmail: true
 })
 
 const emit = defineEmits<{
@@ -47,6 +49,10 @@ if (props.withFiles) {
 
 if (props.leadMagnetId) {
   formDataFields['lead_magnet_id'] = props.leadMagnetId
+}
+
+if (!(props.withEmail)) {
+  formDataFields['only_phone'] = 1
 }
 
 const formData = ref(formDataFields)
@@ -74,7 +80,7 @@ const onSubmitForm = async () => {
       <Input :errors="errors.name" class="--light" placeholder="Имя" v-model="formData.name"/>
       <div class="form__group">
         <InputPhone :errors="errors.phone" class="--light" placeholder="Номер телефона" v-model="formData.phone" required/>
-        <Input :errors="errors.email" class="--light" placeholder="Email" v-model="formData.email" required/>
+        <Input v-if="withEmail" :errors="errors.email" class="--light" placeholder="Email" v-model="formData.email" required/>
       </div>
       <FileInput
           class="--light"
@@ -99,10 +105,10 @@ const onSubmitForm = async () => {
       <Button class="--large" type="submit" @click.prevent="onSubmitForm">{{ props.buttonText }}</Button>
       <ProcessingPersonalDataAgree :button-text="props.buttonText" />
       <Checkbox :errors="errors.is_agree_to_personal_data_processing" class="--contrast" v-model="formData.is_agree_to_personal_data_processing">
-        Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">Политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">Согласие на обработку персональных данных</a>
+        Соглашаюсь с <a target="_blank" href="/docs/personal-data-processing-policy.pdf">политикой обработки персональных данных</a> и даю <a target="_blank" href="/docs/consent-to-personal-data-processing.pdf">согласие на обработку персональных данных</a>
       </Checkbox>
       <Checkbox :errors="errors.is_agree_to_receive_ads" class="--contrast" v-model="formData.is_agree_to_receive_ads">
-        Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">Согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
+        Даю <a target="_blank" href="/docs/consent-to-receive-advertising.pdf">согласие на рекламу и обработку персональных данных в целях рекламной рассылки</a>
       </Checkbox>
     </form>
   </Modal>

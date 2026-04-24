@@ -324,8 +324,8 @@ onUnmounted(() => {
               </div>
             </div>
             <div class="menu-mobile__contact-us-social-group">
-              <button class="btn --tertiary"><svg><use href="/sprite.svg#telegram"></use></svg></button>
-              <button class="btn --tertiary"><svg><use href="/sprite.svg#whatsapp"></use></svg></button>
+              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.telegram); reachGoal('menu-d__telegram')"><svg><use href="/sprite.svg#telegram"></use></svg></Button>
+              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.whatsapp); reachGoal('menu-d__whatsapp')"><svg><use href="/sprite.svg#whatsapp"></use></svg></Button>
             </div>
             <Button class="--large" @click="openFormModal(true)">Обратный звонок</Button>
           </div>

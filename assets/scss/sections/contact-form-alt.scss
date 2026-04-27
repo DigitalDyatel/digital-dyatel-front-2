@@ -31,6 +31,10 @@
       animation-timing-function: linear;
       pointer-events: none;
 
+      @supports (-webkit-appearance: none) {
+        opacity: 0;
+      }
+
       @media (max-width: 1209px) {
         display: none;
         animation-play-state: paused;

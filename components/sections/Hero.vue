@@ -23,6 +23,7 @@ let interval: ReturnType<typeof setInterval> | null = null
 
 const serverNow = useState<number>('server-now', () => Date.now())
 const timeLeft = ref('')
+const daysLeft = ref('')
 
 const tagsTemplateRef = useTemplateRef('tagsTemplateRef')
 
@@ -70,7 +71,7 @@ const getDayWord = (n: number) => {
   return 'дней';
 }
 
-const format = (diff: number) => {
+const format = (diff: number, type: 'days'|'time') => {
   if (diff <= 0) return 'Предложение недоступно'
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24))
@@ -80,7 +81,11 @@ const format = (diff: number) => {
 
   const daysString = days === 0 ? '' : days + ' ' + getDayWord(days)
 
-  return `${daysString} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  if (type === 'days') {
+    return daysString
+  }
+
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
 const tags = ref([
@@ -219,7 +224,8 @@ const touchEndEventListener = () => {
 onMounted(() => {
   interval = setInterval(() => {
     const diff = getDiff(Date.now())
-    timeLeft.value = format(diff)
+    daysLeft.value = format(diff, 'days')
+    timeLeft.value = format(diff, 'time')
 
     isMounted.value = true
   }, 1000)
@@ -296,15 +302,20 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="hero__gift">
+      <img class="hero__gift-card" src="/img/hero/gift-bg.png" alt="">
       <div class="hero__gift-text">
         <div>«Выдача под контролем: как вытеснить негатив за 5 шагов»</div>
         <div>После разбора репутации отправим чек-лист с шагами, которые можно внедрить сразу</div>
-      </div>
-      <div>
-        <div class="hero__gift-timer" :class="{'--mounted': isMounted}">Предложение действует {{ timeLeft }}</div>
         <Button class="--large --white" @click="onClickButton">
           Записаться на разбор
         </Button>
+      </div>
+      <div>
+        <div class="hero__gift-timer" :class="{'--mounted': isMounted}">
+          <div>{{ daysLeft }}</div>
+          <div>{{ timeLeft }}</div>
+          <div>Предложение действует</div>
+        </div>
       </div>
     </div>
   </section>

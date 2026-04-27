@@ -81,8 +81,6 @@ const onClickService = (i: number) => {
 
 const onClick = (i: number | null, title: string, buttonText: string) => {
 
-  const [openFormGoal, successGoal] = yandexMetrikaGoalsMapper[i]
-
   const attrs: {[key:string]: any} = {}
 
   if (i) {
@@ -94,7 +92,7 @@ const onClick = (i: number | null, title: string, buttonText: string) => {
     attrs: {
       title,
       fromTrigger: services.value[i] ? FROM_TRIGGER.OUR_SERVICES_REQUEST : FROM_TRIGGER.OUR_SERVICES_GET_THE_OFFER,
-      yandexMetrikaGoalID: successGoal,
+      yandexMetrikaGoalID: 'lead',
       withFiles: false,
       buttonText,
       onConfirm: () => {
@@ -108,7 +106,6 @@ const onClick = (i: number | null, title: string, buttonText: string) => {
   })
 
   open()
-  reachGoal(openFormGoal)
 }
 
 const toggleMobileService = (i: number) => {

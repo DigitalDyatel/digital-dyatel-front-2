@@ -73,7 +73,7 @@ const openFormModal = () => {
     attrs: {
       title: 'Разберем вашу ситуацию и покажем, как повторить такой результат',
       fromTrigger: FROM_TRIGGER.CASES,
-      yandexMetrikaGoalID: 'cases__want__success',
+      yandexMetrikaGoalID: 'lead',
       buttonText: 'Разобрать мою ситуацию',
       withFiles: false,
       onConfirm: () => {
@@ -86,7 +86,6 @@ const openFormModal = () => {
   })
 
   open()
-  reachGoal('cases__want__open-form')
 }
 
 const updateProgressBarTrackWidth = () => {

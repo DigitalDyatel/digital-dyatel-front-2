@@ -31,7 +31,7 @@ const onSubmit = async () => {
   formData.value = getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1)
 
   await (useModal({component: ThankYouModal})).open()
-  reachGoal('open-form__set-a-lid')
+  reachGoal('lead')
 }
 </script>
 

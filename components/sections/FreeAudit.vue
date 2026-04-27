@@ -74,7 +74,7 @@ const onClickButton = () => {
       withFiles: false,
       fromTrigger: FROM_TRIGGER.SHARING_EXPERIENCE_HERO,
       buttonText: 'Записаться на аудит репутации',
-      yandexMetrikaGoalID: null,
+      yandexMetrikaGoalID: 'lead',
       onConfirm: () => {
         close()
 

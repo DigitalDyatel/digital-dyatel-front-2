@@ -30,7 +30,7 @@ const onSubmit = async () => {
   formData.value = getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_2)
 
   await (useModal({component: ThankYouModal})).open()
-  reachGoal('open-form__questions')
+  reachGoal('lead')
 }
 </script>
 

@@ -62,6 +62,10 @@
       top: unset;
       animation-name: spin-1;
 
+      @supports (-webkit-appearance: none) {
+        opacity: 0;
+      }
+
       @media (max-width: 1354px) {
         display: none;
       }
@@ -72,6 +76,10 @@
       left: -97px;
       animation-name: spin-2;
       top: unset;
+
+      @supports (-webkit-appearance: none) {
+        opacity: 0;
+      }
 
       @media (max-width: 1354px) {
         display: none;

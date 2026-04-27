@@ -114,6 +114,11 @@
         background-color: var(--color-accent-blue);
         color: var(--color-white-contrast);
         border-radius: 100px;
+
+        @media (max-width: 1023px) {
+          font-size: var(--font-size-xxs);
+          padding: 12px;
+        }
       }
 
       &:last-child {
@@ -151,12 +156,16 @@
   }
 
   &__clients {
-    height: 42px;
     display: flex;
     margin-top: 32px;
     align-items: center;
     flex-wrap: nowrap;
     gap: 16px;
+
+    @media (max-width: 1023px) {
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
   }
 
   &__button-container {
@@ -184,6 +193,12 @@
         @media (max-width: 1350px) {
           font-size: var(--font-size-md);
         }
+
+        @media (max-width: 1200px) and (min-width: 1024px) {
+          font-size: clamp(14px, calc(2.273vw - 9.27px), 18px);
+        }
+
+        //font-size: 14px;
 
         @media (max-width: 1023px) {
           padding: 24px 16px;
@@ -242,6 +257,7 @@
       flex-direction: column;
       border-radius: 24px;
       background-image: url('/img/hero/gift-bg-mobile.jpg');
+      padding: 36px 16px 16px 16px;
     }
 
     > div {
@@ -257,10 +273,13 @@
         gap: 16px;
         align-items: end;
         color: var(--color-error);
+        height: auto;
 
         @media (max-width: 1023px) {
           align-items: start;
           margin-top: 32px;
+          opacity: 0;
+          height: 96px;
         }
 
         > .btn {
@@ -294,29 +313,56 @@
     z-index: 0;
     padding: 24px 0 24px 24px;
 
+    @media (max-width: 1023px) {
+      padding: 0;
+    }
+
     div {
       &:first-child {
+        width: 80%;
         font-size: var(--font-size-2xl);
         font-weight: var(--font-weight-medium);
+
+        @media (max-width: 1023px) {
+          width: 100%;
+          font-size: var(--font-size-lg-xl);
+        }
       }
 
       &:nth-child(2) {
+        width: 80%;
         margin-top: 16px;
         font-size: var(--font-size-lg);
+        color: var(--color-secondary);
+
+        @media (max-width: 1023px) {
+          width: 100%;
+          font-size: var(--font-size-sm);
+        }
       }
     }
 
     .btn {
       margin-top: 48px;
       width: 304px;
+
+      @media (max-width: 1023px) {
+        width: 100%;
+        margin-top: 24px;
+      }
     }
   }
 
   &__gift-card {
     position: absolute;
-    left: 40%;
+    left: 35%;
     bottom: -8%;
     width: clamp(465px, calc(63.37vw - 183.6px), 811px);
+
+    @media (max-width: 1023px) {
+      left: 0;
+      bottom: -15%;
+    }
   }
 
   &__gift-timer {
@@ -325,6 +371,10 @@
     font-size: var(--font-size-6xl);
     font-weight: var(--font-weight-semi-bold);
     color: var(--color-primary);
+
+    @media (max-width: 1023px) {
+      font-size: var(--font-size-3xl);
+    }
 
     &.--mounted {
       opacity: 1;

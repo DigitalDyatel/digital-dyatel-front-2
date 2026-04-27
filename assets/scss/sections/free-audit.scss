@@ -94,6 +94,10 @@
       > div:first-child {
         font-size: var(--font-size-2xl);
         font-weight: var(--font-weight-medium);
+
+        @media (max-width: 1023px) {
+          font-size: var(--font-size-lg-xl);
+        }
       }
 
       @media (max-width: 1023px) {
@@ -130,6 +134,11 @@
         div:nth-child(2) {
           font-size: var(--font-size-md);
           color: var(--color-secondary);
+          text-align: left;
+
+          @media (max-width: 1023px) {
+            font-size: var(--font-size-sm);
+          }
         }
       }
     }

@@ -268,7 +268,7 @@ onUnmounted(() => {
           <span>в интернете</span>
         </h1>
         <div class="hero__clients">
-          <div v-for="client in clients"><img :src="'/img/hero/' + client.src" :alt="client.alt"></div>
+          <img v-for="client in clients" :src="'/img/hero/' + client.src" :alt="client.alt">
         </div>
         <div class="hero__tags" ref="tagsTemplateRef">
           <div v-for="tag in tags" :class="tag.class">

@@ -12,7 +12,8 @@ interface BaseReview {
 }
 
 interface VideoReview extends BaseReview {
-  video: string
+  video: string,
+  poster: string
 }
 
 interface TextReview extends BaseReview {
@@ -70,6 +71,7 @@ const reviews = ref<(VideoReview | TextReview | ReviewAsLinkToAllReviews)[]>([
     name: 'Светлана',
     position: 'Владелица салона красоты',
     video: 'svetlana-salon-krasoti.mp4',
+    poster: 'svetlana-salon-krasoti.jpg'
   },
   {
     img: 'EgorAleksandrov.png',
@@ -301,7 +303,7 @@ onUnmounted(() => {
             <swiper-slide v-for="(review, i) in reviews" :key="i">
               <div class="reviews__review" @click="onClickReview(i); toggleVideo(i)" :class="{'--active': i === activeReviewIndex}" ref="reviewTemplateRef" :key="i">
                 <template v-if="isVideoReview(review)">
-                  <video preload="metadata" :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
+                  <video preload="metadata" :poster="'/img/reviews/' + review.poster" :src="'/img/reviews/' + review.video" ref="scrollOrVideoTemplateRef"/>
                   <div class="reviews__video-container">
                     <div class="reviews__video-controls">{{ videoStatuses[i] ? 'Стоп' : 'Смотреть отзыв' }}</div>
                     <div class="reviews__video-info" :class="{'--playing': videoStatuses[i]}">

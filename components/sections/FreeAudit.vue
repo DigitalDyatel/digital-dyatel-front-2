@@ -66,6 +66,15 @@ const cards = [
   },
 ]
 
+const bullets = [
+  'Разбор поисковой выдачи (Яндекс/Google): что сейчас видит клиент',
+  'Ключевые площадки, влияющие на мнение клиентов о вашем бренде',
+  'Карта негатива: где он есть, какой и как влияет на решения клиентов',
+  'Точки роста: что можно быстро усилить и где теряются деньги',
+  'Конкретные гипотезы и решения под вашу ситуацию',
+  'Пошаговый план работ на 1-3 месяца с приоритетами',
+]
+
 const onClickButton = () => {
   const { open, close } = useModal({
     component: FormModal,
@@ -97,7 +106,7 @@ const onClickButton = () => {
 
 <template>
   <section class="free-audit">
-    <h2>Бесплатный аудит за 24 часа</h2>
+    <h2>Бесплатный аудит за <span>24 часа</span></h2>
     <div class="free-audit__container">
       <div class="free-audit__first">
         <Splide :options="sliderOptions" aria-label="slider">
@@ -152,13 +161,12 @@ const onClickButton = () => {
       <div class="free-audit__last">
         <div>
           <div>Что вы получите после аудита:</div>
+          <hr>
           <ul>
-            <li>Разбор поисковой выдачи (Яндекс/Google): что сейчас видит клиент</li>
-            <li>Ключевые площадки, влияющие на мнение клиентов о вашем бренде</li>
-            <li>Карта негатива: где он есть, какой и как влияет на решения клиентов</li>
-            <li>Точки роста: что можно быстро усилить и где теряются деньги</li>
-            <li>Конкретные гипотезы и решения под вашу ситуацию</li>
-            <li>Пошаговый план работ на 1-3 месяца с приоритетами</li>
+            <li v-for="bullet in bullets">
+              <div><svg><use href="/sprite.svg#play"></use></svg></div>
+              <div>{{ bullet }}</div>
+            </li>
           </ul>
         </div>
         <Button class="--large" type="submit" @click="onClickButton">Записаться на аудит репутации</Button>

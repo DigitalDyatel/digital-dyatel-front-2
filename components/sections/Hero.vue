@@ -13,6 +13,7 @@ import apiContacts, {
 import ProcessingPersonalDataAgree from "~/components/shared/form/ProcessingPersonalDataAgree.vue";
 import Checkbox from "~/components/shared/form/Checkbox.vue";
 import FormModal from "~/components/modals/FormModal.vue";
+import Tag from "~/components/shared/Tag.vue";
 
 const errors = ref<FormDataCreateErrors>({} as FormDataCreateErrors)
 const formData = ref<FormDataCreate>(getDefaultFormDataCreate(FROM_TRIGGER.CONTACT_FORM_1))
@@ -106,20 +107,20 @@ const tags = ref([
 
 const clients = [
   {
-    src: 'skypro.svg',
+    src: 'skypro-client.jpg',
     alt: 'skypro-company'
   },
   {
-    src: 'moscow.mba.png',
+    src: 'moscow-mba-client.jpg',
     alt: 'moscow-mba-company'
   },
   {
-    src: 'synergy.png',
+    src: 'synergy-client.jpg',
     alt: 'synergy-company'
   },
   {
-    src: 'mitm.jpeg',
-    alt: 'mitm-company'
+    src: 'mip-client.jpg',
+    alt: 'mip-company'
   },
 ]
 
@@ -251,9 +252,9 @@ onUnmounted(() => {
   <section class="hero">
     <div class="hero__container">
       <div class="hero__left">
-        <div class="hero__cup">
-          <img :src="'/img/hero/cup.png'" alt="cup">
-          <div>Входим в топ 5 SERM агенств СНГ</div>
+        <div class="hero__achievement">
+          <div>Входим в топ-5 SERM агенств СНГ</div>
+          <Tag  icon="award" />
         </div>
         <h1>
           <span>Управление </span>
@@ -261,7 +262,6 @@ onUnmounted(() => {
           <span>в интернете</span>
         </h1>
         <div class="hero__clients">
-          <div>Работаем с:</div>
           <div v-for="client in clients"><img :src="'/img/hero/' + client.src" :alt="client.alt"></div>
         </div>
         <div class="hero__tags" ref="tagsTemplateRef">

@@ -103,7 +103,10 @@ const toggleContactUsForMobile = () => {
 }
 
 const clickEmail = async () => {
-  reachGoal('menu-d__email')
+
+  reachGoal('email')
+  reachGoal('lead')
+
   const el = document.createElement('a')
   el.href = `mailto:${config.public.email}`
   el.click()
@@ -121,8 +124,11 @@ const onClickMenu = (menuItem: MenuItem, isMobile = false) => {
 }
 
 const clickOnPhone = async (phone) => {
+
+  reachGoal('phone')
+  reachGoal('lead')
+
   if (device.isMobile()) {
-    reachGoal('menu-m__phone-click')
     const a = document.createElement('a')
     a.href = 'tel:' + phone.phoneRaw
     a.click()
@@ -135,21 +141,20 @@ const clickOnPhone = async (phone) => {
     title: 'Телефон скопирован!',
     class: 'izi-toast',
   })
-  reachGoal('menu-d__copy-phone')
 }
 
-const createLinkAndFollow = (href: string) => {
+const createLinkAndFollow = (href: string, yandexMetrikaGoal: string) => {
   const a = document.createElement('a')
   a.target = '_blank'
   a.href = href
   a.click()
   a.remove()
+
+  reachGoal(yandexMetrikaGoal)
+  reachGoal('lead')
 }
 
 const openFormModal = (fromMobile: boolean) => {
-
-  const openFormGoal = fromMobile ? 'menu-m__get-callback__open-form' : 'menu-d__get-callback__open-form'
-  const successGoal = fromMobile ? 'menu-m__get-callback__success' : 'menu-d__get-callback__success'
 
   const { open, close } = useModal({
     component: FormModal,
@@ -157,7 +162,7 @@ const openFormModal = (fromMobile: boolean) => {
       title: 'Оставьте номер, обсудим детали',
       buttonText: 'Жду звонка',
       fromTrigger: FROM_TRIGGER.CALLBACK,
-      yandexMetrikaGoalID: successGoal,
+      yandexMetrikaGoalID: 'lead',
       withFiles: false,
       withEmail: false,
       onConfirm: () => {
@@ -178,7 +183,6 @@ const openFormModal = (fromMobile: boolean) => {
   })
 
   open()
-  reachGoal(openFormGoal)
 }
 
 const scrollEventListener = (e) => {
@@ -201,7 +205,7 @@ const onClickGetFreeSERMAudit = () => {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
       withFiles: false,
       fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
-      yandexMetrikaGoalID: 'menu-m__get-free-serm-audit__success',
+      yandexMetrikaGoalID: 'lead',
       onConfirm: () => {
         close()
 
@@ -220,7 +224,6 @@ const onClickGetFreeSERMAudit = () => {
   })
 
   open()
-  reachGoal('menu-m__get-free-serm-audit__open-form')
 }
 
 const onClickMobileLogo = () => {
@@ -309,8 +312,8 @@ onUnmounted(() => {
               <div class="menu__contact-us-line --social">
                 <Button @click="openFormModal(false)">Обратный звонок</Button>
                 <div class="menu__contact-us-social-group">
-                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram); reachGoal('menu-d__telegram')"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
-                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp); reachGoal('menu-d__whatsapp')"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>
+                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.telegram, 'telegram')"><svg><use :href="'/sprite.svg#telegram'" /></svg></Button>
+                  <Button class="--tertiary" @click="createLinkAndFollow(config.public.whatsapp, 'whatsapp')"><svg><use :href="'/sprite.svg#whatsapp'" /></svg></Button>
                 </div>
               </div>
             </div>
@@ -358,8 +361,8 @@ onUnmounted(() => {
               </div>
             </div>
             <div class="menu-mobile__contact-us-social-group">
-              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.telegram); reachGoal('menu-d__telegram')"><svg><use href="/sprite.svg#telegram"></use></svg></Button>
-              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.whatsapp); reachGoal('menu-d__whatsapp')"><svg><use href="/sprite.svg#whatsapp"></use></svg></Button>
+              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.telegram, 'telegram')"><svg><use href="/sprite.svg#telegram"></use></svg></Button>
+              <Button class="btn --tertiary" @click="createLinkAndFollow(config.public.whatsapp, 'whatsapp')"><svg><use href="/sprite.svg#whatsapp"></use></svg></Button>
             </div>
             <Button class="--large" @click="openFormModal(true)">Обратный звонок</Button>
           </div>

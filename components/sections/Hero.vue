@@ -56,7 +56,7 @@ const onClick = () => {
       title: 'Получите бесплатный аудит и рекомендации по улучшению имиджа в интернете',
       withFiles: false,
       fromTrigger: FROM_TRIGGER.GET_FREE_SERM_AUDIT,
-      yandexMetrikaGoalID: 'hero__get-free-serm-audit__success',
+      yandexMetrikaGoalID: 'lead',
       onConfirm: () => {
         close()
 
@@ -67,7 +67,6 @@ const onClick = () => {
   })
 
   open()
-  reachGoal('hero__get-free-serm-audit__open-form')
 }
 
 const touchStartEventListener = e => {

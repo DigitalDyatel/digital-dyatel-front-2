@@ -73,7 +73,7 @@ const openFormModal = () => {
     attrs: {
       title: 'Получить консультацию прямо сейчас!',
       fromTrigger: FROM_TRIGGER.CASES,
-      yandexMetrikaGoalID: 'cases__want__success',
+      yandexMetrikaGoalID: 'lead',
       withFiles: false,
       onConfirm: () => {
         close()
@@ -85,7 +85,6 @@ const openFormModal = () => {
   })
 
   open()
-  reachGoal('cases__want__open-form')
 }
 
 const updateProgressBarTrackWidth = () => {

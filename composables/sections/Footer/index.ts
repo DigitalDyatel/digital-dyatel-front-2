@@ -21,7 +21,8 @@ export const useFooter = () => {
                 title: 'Оставьте номер, обсудим детали',
                 buttonText: 'Жду звонка',
                 fromTrigger: FROM_TRIGGER.CALLBACK,
-                yandexMetrikaGoalID: 'footer__button-call-me__success',
+                yandexMetrikaGoalID: 'lead',
+                withFiles: false,
                 onConfirm: () => {
                     void close()
 
@@ -39,16 +40,18 @@ export const useFooter = () => {
         })
 
         void open()
-        reachGoal('footer__button-call-me__open-form')
     }
 
     const clickOnPhone = async (phone) => {
+
+        reachGoal('phone')
+        reachGoal('lead')
+
         if (device.isMobile()) {
             const a = document.createElement('a')
             a.href = 'tel:' + phone.phoneRaw
             a.click()
             a.remove()
-            reachGoal('footer__copy-phone')
             return
         }
 
@@ -57,7 +60,6 @@ export const useFooter = () => {
             title: 'Телефон скопирован!',
             class: 'izi-toast --white',
         })
-        reachGoal('footer__copy-phone')
     }
 
     const clickEmail = () => {
@@ -66,7 +68,8 @@ export const useFooter = () => {
         el.click()
         el.remove()
 
-        reachGoal('footer__email')
+        reachGoal('email')
+        reachGoal('lead')
     }
 
     return {

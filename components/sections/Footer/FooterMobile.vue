@@ -27,8 +27,8 @@ const {
           <a class="footer__link --underline-on-hover" @pointerdown="clickOnPhone(phone)" @contextmenu.prevent>{{ phone.phone }}</a>
           <div>{{ phone.description }}</div>
         </div>
-        <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp" @click="reachGoal('footer__whatsapp')">Написать в WhatsApp</a></div>
-        <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram" @click="reachGoal('footer__telegram')">Написать в Telegram</a></div>
+        <div><a class="footer__link --underline" target="_blank" :href="config.public.whatsapp" @click="reachGoal('whatsapp'); reachGoal('lead')">Написать в WhatsApp</a></div>
+        <div><a class="footer__link --underline" target="_blank" :href="config.public.telegram" @click="reachGoal('telegram'); reachGoal('lead')">Написать в Telegram</a></div>
       </div>
       <div><a class="footer__link --underline-on-hover" @pointerdown="clickEmail" @contextmenu.prevent>{{ config.public.email }}</a></div>
     </div>

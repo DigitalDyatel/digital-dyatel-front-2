@@ -146,7 +146,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="our-services">
+  <section class="our-services" id="our-services">
     <div class="our-services__container">
       <h2>Наши услуги</h2>
       <TagWithLabel icon="hashtag" class="--alternative-color our-services__tag">#мы предлагаем</TagWithLabel>

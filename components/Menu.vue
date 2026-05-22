@@ -40,28 +40,28 @@ const menuItems = ref<MenuItem[]>([
   {
     label: 'Услуги',
     icon: 'hashtag',
-    scrollSelector: '.our-services',
+    scrollSelector: '#our-services',
     yandexMetrikaGoal: 'nav__our-services'
   },
   {
     label: 'О нас',
-    scrollSelector: '.solve-problems',
+    scrollSelector: '#solve-problems',
     yandexMetrikaGoal: 'nav__about-us'
   },
   {
     label: 'Команда',
-    scrollSelector: '.team',
+    scrollSelector: '#team',
     yandexMetrikaGoal: 'nav__team'
   },
   {
     label: 'Кейсы',
     class: '--cases',
-    scrollSelector: '.cases',
+    scrollSelector: '#cases',
     yandexMetrikaGoal: 'nav__cases'
   },
   {
     label: 'Отзывы',
-    scrollSelector: '.reviews',
+    scrollSelector: '#reviews',
     yandexMetrikaGoal: 'nav__reviews'
   },
 ])
@@ -234,7 +234,7 @@ const onClickMobileLogo = () => {
     return
   }
 
-  goToAnchor('.hero')
+  goToAnchor('#hero')
 }
 
 watch(scrollIsDeep, (currentScrollIsDeep) => {
@@ -261,7 +261,7 @@ onUnmounted(() => {
   <div class="menu" :class="{'--hidden': !isShowMenuByScroll}">
     <div class="menu__container">
       <div class="menu__flex">
-        <div class="menu__left" @click="goToAnchor('.hero')">
+        <div class="menu__left" @click="goToAnchor('#hero')">
           <Logo width="48" height="48" />
           <div>
             <div>Digital Dyatel</div>

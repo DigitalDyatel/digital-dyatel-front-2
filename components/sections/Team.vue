@@ -162,7 +162,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="team" ref="teamSectionTemplateRef" :class="{'--mounted': marginLeft !== '0'}" :style="{marginLeft: marginLeft}">
+  <section class="team" id="team" ref="teamSectionTemplateRef" :class="{'--mounted': marginLeft !== '0'}" :style="{marginLeft: marginLeft}">
     <div class="team__container">
       <div class="team__slider">
         <div class="team__about" ref="teamAboutTemplateRef">

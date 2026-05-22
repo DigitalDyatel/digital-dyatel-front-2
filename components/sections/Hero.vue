@@ -155,7 +155,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero__container">
       <div class="hero__left">
         <h1>

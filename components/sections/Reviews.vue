@@ -294,7 +294,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="reviews" :class="{'--ready': sectionIsReady}" :style="{marginLeft: marginLeft}">
+  <section class="reviews" id="reviews" :class="{'--ready': sectionIsReady}" :style="{marginLeft: marginLeft}">
     <h2 :style="{width: middleScreenWidth + 'px'}">Отзывы</h2>
     <div class="reviews__container">
       <div class="reviews__slider-container" ref="sliderContainerTemplateRef">

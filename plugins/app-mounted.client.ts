@@ -25,7 +25,26 @@ const allowCookies = () => {
 }
 
 export default defineNuxtPlugin(nuxtApp => {
-    nuxtApp.hook('app:mounted', () => {
+    nuxtApp.hook('app:mounted', (): void => {
         allowCookies()
+    })
+
+    nuxtApp.hook('page:finish', () => {
+        const hash = window.location.hash
+
+        if (!hash) {
+            return
+        }
+
+        const el = document.querySelector(window.location.hash)
+
+        if (!el) {
+            return
+        }
+
+        el.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        })
     })
 })

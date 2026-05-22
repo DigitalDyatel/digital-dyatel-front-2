@@ -94,7 +94,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="solve-problems">
+  <section class="solve-problems" id="solve-problems">
     <h2>
       <span>Решаем репутационные </span>
       <span>проблемы любой сложности</span>

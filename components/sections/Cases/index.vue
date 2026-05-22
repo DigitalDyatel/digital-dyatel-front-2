@@ -126,7 +126,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="cases">
+  <section class="cases" id="cases">
     <h2>Нам доверили свою репутацию</h2>
     <p>
       <span>Мы помогаем компаниям выстраивать, защищать и улучшать репутацию в интернете.</span>
